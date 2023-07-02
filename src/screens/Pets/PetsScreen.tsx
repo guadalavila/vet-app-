@@ -1,11 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import React from 'react';
+import Container from '../../shared/components/Container';
+import Header from '../../shared/components/Header';
 
 const PetsScreen = () => {
     return (
-        <View>
+        <Container>
+            <Header title='Mascotas' buttonBack />
             <Text>PetsScreen</Text>
-        </View>
+        </Container>
     );
 };
 

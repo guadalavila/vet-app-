@@ -8,4 +8,5 @@ export type RootStackLoginParamList = {
     ClientDetailScreen: undefined;
     PetsScreen: undefined;
     PetDetailScreen: undefined;
+    SettingScreen: undefined;
 };

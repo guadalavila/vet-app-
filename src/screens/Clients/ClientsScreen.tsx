@@ -1,11 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import React from 'react';
+import Container from '../../shared/components/Container';
+import Header from '../../shared/components/Header';
 
 const ClientsScreen = () => {
     return (
-        <View>
+        <Container>
+            <Header title='Clientes' buttonBack />
             <Text>ClientsScreen</Text>
-        </View>
+        </Container>
     );
 };
 

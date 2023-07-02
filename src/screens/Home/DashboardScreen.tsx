@@ -1,28 +1,26 @@
-import React, { useContext } from 'react';
-import { StyleSheet } from 'react-native';
+import React from 'react';
+import { FlatList, StyleSheet } from 'react-native';
 import Container from '../../shared/components/Container';
-import Button from '../../shared/components/Button';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackLoginParamList } from '../../navigations/types';
-import { ThemeContext } from '../../contexts/ThemeContext';
 import Header from '../../shared/components/Header';
+import ItemCategory from '../../shared/components/ItemCategory';
+import { CATEGORIES } from '../../shared/utils/constants';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'DashboardScreen'> {}
 
 const DashboardScreen = ({ navigation }: Props) => {
-    const { setTheme } = useContext(ThemeContext);
     return (
         <Container>
-            <Header title='Home' />
-            <Button
-                title='Ir a Clientes'
-                onPress={() => {
-                    // navigation.navigate('ClientsScreen');
-                    setTheme();
-                }}
+            <Header title='Home' buttonRight iconRight='o' onPressRight={() => navigation.navigate('SettingScreen')} />
+            <FlatList
+                numColumns={2}
+                data={CATEGORIES}
+                renderItem={({ item }) => (
+                    <ItemCategory title={item.name} onPress={() => navigation.navigate(item.page)} />
+                )}
+                keyExtractor={(item) => String(item.id)}
             />
-            <Button title='Ir a Detalle Cliente' onPress={() => navigation.navigate('ClientDetailScreen')} />
-            <Button title='Ir a Mascotas' onPress={() => navigation.navigate('PetsScreen')} />
         </Container>
     );
 };
