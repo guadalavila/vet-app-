@@ -3,6 +3,8 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { typography } from '../utils/typography';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { colors } from '../utils/colors';
 
 interface IHeaderProps {
     title: string;
@@ -19,7 +21,7 @@ const Header = ({ title, buttonBack, buttonRight, iconRight, onPressRight }: IHe
         <View style={[styles.header, { backgroundColor: themeApp.colors.background }]}>
             {buttonBack ? (
                 <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.goBack()}>
-                    <Text>-</Text>
+                    <Icon name='arrow-back-outline' size={30} color={colors.dark.primary} />
                 </TouchableOpacity>
             ) : (
                 <View style={styles.button} />
@@ -27,7 +29,7 @@ const Header = ({ title, buttonBack, buttonRight, iconRight, onPressRight }: IHe
             <Text style={[styles.title, { color: themeApp.colors.text }]}>{title}</Text>
             {buttonRight && iconRight && onPressRight ? (
                 <TouchableOpacity style={styles.btnRight} activeOpacity={0.7} onPress={onPressRight}>
-                    <Text>ds</Text>
+                    <Icon name={iconRight} size={30} color={colors.dark.primary} />
                 </TouchableOpacity>
             ) : (
                 <View style={[styles.button]} />

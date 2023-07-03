@@ -12,12 +12,17 @@ interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'Dashboa
 const DashboardScreen = ({ navigation }: Props) => {
     return (
         <Container>
-            <Header title='Home' buttonRight iconRight='o' onPressRight={() => navigation.navigate('SettingScreen')} />
+            <Header
+                title='Vet App'
+                buttonRight
+                iconRight='settings-outline'
+                onPressRight={() => navigation.navigate('SettingScreen')}
+            />
             <FlatList
                 numColumns={2}
                 data={CATEGORIES}
                 renderItem={({ item }) => (
-                    <ItemCategory title={item.name} onPress={() => navigation.navigate(item.page)} />
+                    <ItemCategory icon={item.icon} title={item.name} onPress={() => navigation.navigate(item.page)} />
                 )}
                 keyExtractor={(item) => String(item.id)}
             />
