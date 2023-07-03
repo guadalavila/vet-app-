@@ -5,6 +5,7 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 import { typography } from '../utils/typography';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { colors } from '../utils/colors';
+import CustomText from './CustomText';
 
 interface IHeaderProps {
     title: string;
@@ -26,7 +27,7 @@ const Header = ({ title, buttonBack, buttonRight, iconRight, onPressRight }: IHe
             ) : (
                 <View style={styles.button} />
             )}
-            <Text style={[styles.title, { color: themeApp.colors.text }]}>{title}</Text>
+            <CustomText style={[styles.title]}>{title}</CustomText>
             {buttonRight && iconRight && onPressRight ? (
                 <TouchableOpacity style={styles.btnRight} activeOpacity={0.7} onPress={onPressRight}>
                     <Icon name={iconRight} size={30} color={colors.dark.primary} />

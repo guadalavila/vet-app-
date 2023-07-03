@@ -6,6 +6,7 @@ export const size = {
     M: 6,
     L: 8,
     XL: 10,
+    XXL: 14,
 };
 
 // export const size;

@@ -6,6 +6,8 @@ const size = {
     M: 20,
     L: 30,
     XL: 34,
+    XXL: 40,
+    XXXL: 48,
 };
 
 // const letterSpacing = {

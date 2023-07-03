@@ -1,11 +1,16 @@
 export type ThemeType = {
     colors: {
         primary: string;
+        secondary: string;
+        tertiary: string;
+        quaternary: string;
         white: string;
         black: string;
         error: string;
         background: string;
         text: string;
+        container: string;
+        separator: string;
     };
     typography: {
         size: {

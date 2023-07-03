@@ -15,7 +15,7 @@ const SettingScreen = ({}: Props) => {
     return (
         <Container>
             <Header title='Configuración' buttonBack />
-            <Select title={theme === 'dark' ? 'Modo Oscuro' : 'Modo Claro'} selected onChangeSelect={setTheme} />
+            <Select title={'Modo Oscuro'} selected={theme === 'dark'} onChangeSelect={setTheme} />
         </Container>
     );
 };

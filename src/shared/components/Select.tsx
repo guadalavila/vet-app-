@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import React from 'react';
+import { StyleSheet, Switch, View } from 'react-native';
 import { typography } from '../utils/typography';
+import CustomText from './CustomText';
+import { colors } from '../utils/colors';
 
 interface ISelectProps {
     title: string;
@@ -10,14 +11,17 @@ interface ISelectProps {
 }
 
 const Select = ({ title, selected, onChangeSelect }: ISelectProps) => {
-    const { themeApp } = useContext(ThemeContext);
-
     return (
         <View style={styles.container}>
-            <Text style={[styles.title, { color: themeApp.colors.text }]}>{title}</Text>
-            <TouchableOpacity activeOpacity={0.7} onPress={onChangeSelect}>
-                <Text>kj88k</Text>
-            </TouchableOpacity>
+            <CustomText style={[styles.title]}>{title}</CustomText>
+            <Switch
+                style={{ transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }] }}
+                trackColor={{ false: '#767577', true: colors.light.success }}
+                thumbColor={true ? colors.light.white : colors.light.grey}
+                ios_backgroundColor={colors.light.grey}
+                onValueChange={onChangeSelect}
+                value={selected}
+            />
         </View>
     );
 };
@@ -28,9 +32,12 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginHorizontal: typography.size.XXXS,
+        marginHorizontal: typography.size.XXL,
+        borderBottomWidth: 1,
+        borderBottomColor: colors.light.primary,
     },
     title: {
         fontSize: typography.size.M,
+        fontWeight: '600',
     },
 });
