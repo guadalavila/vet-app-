@@ -11,6 +11,7 @@ export type ThemeType = {
         text: string;
         container: string;
         separator: string;
+        border: string;
     };
     typography: {
         size: {

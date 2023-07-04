@@ -21,6 +21,7 @@ const light = {
     tertiary: '#E5BEEC',
     container: '#f5f4f6',
     separator: '#F1f1f1',
+    border: '#2A2F4F',
 };
 
 const dark = {
@@ -31,6 +32,7 @@ const dark = {
     secondary: '#E5BEEC',
     container: '#222125',
     separator: '#f0f0f0',
+    border: '#E5BEEC',
 };
 
 export const colors = { light, dark };
