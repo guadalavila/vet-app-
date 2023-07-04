@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { size } from './size';
 
 export const GlobalStyles = StyleSheet.create({
     flexCenter: {
@@ -15,6 +16,12 @@ export const GlobalStyles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    rowBetweenPd: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: size.XL,
+        marginVertical: size.M,
+    },
     rowAround: {
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -28,5 +35,8 @@ export const GlobalStyles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 4,
+    },
+    bold: {
+        fontWeight: 'bold',
     },
 });

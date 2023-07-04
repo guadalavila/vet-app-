@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { ThemeContext } from '../../contexts/ThemeContext';
 import { colors } from '../utils/colors';
 import { size } from '../utils/size';
 import { GlobalStyles } from '../utils/styles';

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FlatList, StyleSheet, Text } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import Container from '../../shared/components/Container';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackLoginParamList } from '../../navigations/types';
@@ -19,9 +19,9 @@ const DashboardScreen = ({ navigation }: Props) => {
     return (
         <Container>
             <Header
-                title="Vet App"
+                title='Vet App'
                 buttonRight
-                iconRight="settings-outline"
+                iconRight='settings-outline'
                 onPressRight={() => navigation.navigate('SettingScreen')}
             />
             <CustomText style={[styles.welcomeText, { color: themeApp.colors.secondary }]}>Hola Guada!</CustomText>

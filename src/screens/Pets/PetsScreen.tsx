@@ -1,5 +1,5 @@
-import { FlatList, StyleSheet, Text } from 'react-native';
 import React from 'react';
+import { FlatList, StyleSheet } from 'react-native';
 import Container from '../../shared/components/Container';
 import Header from '../../shared/components/Header';
 import { RootStackLoginParamList } from '../../navigations/types';
@@ -31,7 +31,7 @@ const PetsScreen = ({ navigation }: Props) => {
 
     return (
         <Container>
-            <Header title="Mascotas" buttonBack />
+            <Header title='Mascotas' buttonBack />
             <FlatList
                 data={DATA_MOCK}
                 renderItem={({ item }) => (

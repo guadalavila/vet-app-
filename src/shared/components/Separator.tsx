@@ -17,6 +17,6 @@ export default Separator;
 const styles = StyleSheet.create({
     separator: {
         borderWidth: 0.4,
-        marginVertical: size.XXL,
+        marginVertical: size.M,
     },
 });

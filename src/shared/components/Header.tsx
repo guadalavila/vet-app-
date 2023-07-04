@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useContext } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { typography } from '../utils/typography';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -22,7 +22,7 @@ const Header = ({ title, buttonBack, buttonRight, iconRight, onPressRight }: IHe
         <View style={[styles.header, { backgroundColor: themeApp.colors.background }]}>
             {buttonBack ? (
                 <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.goBack()}>
-                    <Icon name='arrow-back-outline' size={30} color={colors.dark.primary} />
+                    <Icon name="arrow-back-outline" size={30} color={colors.dark.primary} />
                 </TouchableOpacity>
             ) : (
                 <View style={styles.button} />

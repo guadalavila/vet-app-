@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Pet } from '../../models/Pet';
 import { typography } from '../utils/typography';
 import { size } from '../utils/size';

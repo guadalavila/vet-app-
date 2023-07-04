@@ -1,5 +1,5 @@
-import { StyleSheet, View } from 'react-native';
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import Container from '../../shared/components/Container';
 import Button from '../../shared/components/Button';
 import { GlobalStyles } from '../../shared/utils/styles';
@@ -8,7 +8,7 @@ const LoginScreen = () => {
     return (
         <Container>
             <View style={GlobalStyles.flexCenter}>
-                <Button title='Ingresar' onPress={() => {}} />
+                <Button title="Ingresar" onPress={() => {}} />
             </View>
         </Container>
     );
