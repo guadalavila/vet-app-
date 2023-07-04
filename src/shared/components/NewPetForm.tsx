@@ -4,6 +4,7 @@ import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
 import Button from './Button';
 import Separator from './Separator';
+import { colors } from '../utils/colors';
 
 interface INewPetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
@@ -18,48 +19,48 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
                 <FormInput
                     required
                     value={fields.weight || ''}
-                    placeholder='Peso'
+                    placeholder="Peso"
                     onChangeText={(value) => setFieldValue('weight', value)}
                 />
                 {errors.weight && <Text style={styles.error}>{errors.name}</Text>}
                 <FormInput
                     value={fields.temperature || ''}
-                    placeholder='Temperatura'
+                    placeholder="Temperatura"
                     onChangeText={(value) => setFieldValue('temperature', value)}
                 />
                 {errors.temperature && <Text style={styles.error}>{errors.name}</Text>}
                 <FormInput
                     isTextArea
                     value={fields.anamnestic || ''}
-                    placeholder='Anamnésicos'
+                    placeholder="Anamnésicos"
                     onChangeText={(value) => setFieldValue('anamnestic', value)}
                 />
                 {errors.anamnestic && <Text style={styles.error}>{errors.anamnestic}</Text>}
                 <FormInput
                     isTextArea
                     value={fields.diagnosis || ''}
-                    placeholder='Diagnóstico Diferencial'
+                    placeholder="Diagnóstico Diferencial"
                     onChangeText={(value) => setFieldValue('diagnosis', value)}
                 />
                 {errors.diagnosis && <Text style={styles.error}>{errors.diagnosis}</Text>}
                 <FormInput
                     isTextArea
                     value={fields.treatment || ''}
-                    placeholder='Tratamiento'
+                    placeholder="Tratamiento"
                     onChangeText={(value) => setFieldValue('treatment', value)}
                 />
                 {errors.treatment && <Text style={styles.error}>{errors.treatment}</Text>}
                 <FormInput
                     isTextArea
                     value={fields.hospitalization || ''}
-                    placeholder='Hospitalización'
+                    placeholder="Hospitalización"
                     onChangeText={(value) => setFieldValue('hospitalization', value)}
                 />
                 {errors.hospitalization && <Text style={styles.error}>{errors.hospitalization}</Text>}
                 <Separator />
             </ScrollView>
             <View style={styles.bottom}>
-                <Button title="Agregar Visita" onPress={handleSubmit} />
+                <Button title='Agregar Visita' onPress={handleSubmit} />
             </View>
         </>
     );
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
     error: {
-        color: 'red',
+        color: colors.light.error,
     },
     bottom: {
         marginTop: 20,

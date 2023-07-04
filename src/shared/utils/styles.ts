@@ -2,6 +2,9 @@ import { StyleSheet } from 'react-native';
 import { size } from './size';
 
 export const GlobalStyles = StyleSheet.create({
+    flex1: {
+        flex: 1,
+    },
     flexCenter: {
         flex: 1,
         justifyContent: 'center',

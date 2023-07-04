@@ -11,7 +11,7 @@ interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddVisi
 const AddVisitScreen = ({}: Props) => {
     return (
         <Container>
-            <Header title="Nueva Visita" buttonBack />
+            <Header title='Nueva Visita' buttonBack />
             <NewPetForm onSubmit={(data) => console.log(data)} />
         </Container>
     );

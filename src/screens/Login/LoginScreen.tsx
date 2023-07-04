@@ -1,19 +1,25 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Container from '../../shared/components/Container';
-import Button from '../../shared/components/Button';
-import { GlobalStyles } from '../../shared/utils/styles';
+import LoginForm from '../../shared/components/LoginForm';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackLogoutParamList } from '../../navigations/types';
+import useAuth from '../../shared/hooks/useAuth';
 
-const LoginScreen = () => {
+interface Props extends NativeStackScreenProps<RootStackLogoutParamList, 'LoginScreen'> {}
+
+const LoginScreen = ({}: Props) => {
+    const { isLoading, loginWithEmailAndPass } = useAuth();
+
     return (
         <Container>
-            <View style={GlobalStyles.flexCenter}>
-                <Button title="Ingresar" onPress={() => {}} />
-            </View>
+            <LoginForm
+                onSubmit={(data) => {
+                    loginWithEmailAndPass(data.email as string, data.password as string);
+                }}
+            />
         </Container>
     );
 };
 
 export default LoginScreen;
-
-const styles = StyleSheet.create({});

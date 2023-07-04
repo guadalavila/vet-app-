@@ -23,7 +23,7 @@ const FormInput: React.FC<IFormInputProps> = ({
 }) => {
     const { themeApp } = useContext(ThemeContext);
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, isTextArea ? styles.textArea : styles.inputText]}>
             <CustomText style={styles.label}>
                 {placeholder}
                 <CustomText>{required ? ' *' : ''}</CustomText>
@@ -31,7 +31,7 @@ const FormInput: React.FC<IFormInputProps> = ({
             <TextInput
                 autoCorrect={false}
                 multiline={isTextArea}
-                numberOfLines={isTextArea ? 1 : 4}
+                numberOfLines={isTextArea ? 4 : 2}
                 placeholderTextColor={themeApp.colors.border}
                 style={[
                     styles.input,
@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     input: {
-        height: 100,
         borderWidth: 1,
         borderRadius: 10,
         marginTop: size.L,
@@ -66,7 +65,7 @@ const styles = StyleSheet.create({
         height: 100,
     },
     inputText: {
-        height: 40,
+        height: 70,
     },
 });
 

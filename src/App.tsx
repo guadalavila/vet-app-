@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { StackNavigatorLogIn, StackNavigatorLogOut } from './navigations/StackNavigator';
+import React from 'react';
 import { ThemeContextProvider } from './contexts/ThemeContext';
+import { AuthContextProvider } from './contexts/AuthContext';
+import NavigatorApp from './shared/components/NavigatorApp';
 
 const App = () => {
-    const [isAuth, setIsAuth] = useState(true);
-
     return (
         <ThemeContextProvider>
-            <NavigationContainer>{isAuth ? <StackNavigatorLogIn /> : <StackNavigatorLogOut />}</NavigationContainer>
+            <AuthContextProvider>
+                <NavigatorApp />
+            </AuthContextProvider>
         </ThemeContextProvider>
     );
 };
