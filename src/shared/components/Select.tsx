@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginHorizontal: typography.size.XXL,
+        marginHorizontal: typography.size.S,
         borderBottomWidth: 1,
         borderBottomColor: colors.light.primary,
     },
     title: {
-        fontSize: typography.size.M,
+        fontSize: typography.size.S,
         fontWeight: '600',
     },
 });

@@ -19,9 +19,9 @@ const DashboardScreen = ({ navigation }: Props) => {
     return (
         <Container>
             <Header
-                title='Vet App'
+                title="Vet App"
                 buttonRight
-                iconRight='settings-outline'
+                iconRight="settings-outline"
                 onPressRight={() => navigation.navigate('SettingScreen')}
             />
             <CustomText style={[styles.welcomeText, { color: themeApp.colors.secondary }]}>Hola Guada!</CustomText>

@@ -18,6 +18,11 @@ const useAuth = () => {
             setIsLoading(false);
         }
     };
-    return { loginWithEmailAndPass, isLoading };
+
+    const logout = () => {
+        setIsAuth(false);
+    };
+
+    return { loginWithEmailAndPass, isLoading, logout };
 };
 export default useAuth;
