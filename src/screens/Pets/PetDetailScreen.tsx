@@ -20,28 +20,28 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
     const pet = route.params.pet;
     return (
         <Container>
-            <Header title='Reporte' buttonBack />
+            <Header title="Reporte" buttonBack />
             <View style={{ marginVertical: size.XXL }}>
                 <CustomText style={styles.name}>{pet.name}</CustomText>
                 <CustomText style={styles.race}>{pet.race} </CustomText>
             </View>
             <View />
             <View style={[GlobalStyles.rowAround]}>
-                <CardValue title='Edad' value={String(pet.age)} valueExtra=' años' icon='calendar-outline' />
-                <CardValue title='Tipo' value={getPetType(pet.type)} icon='paw-outline' />
+                <CardValue title="Edad" value={String(pet.age)} valueExtra=" años" icon="calendar-outline" />
+                <CardValue title="Tipo" value={getPetType(pet.type)} icon="paw-outline" />
             </View>
             <View style={[GlobalStyles.rowAround]}>
-                <CardValue title='Sexo' value={getPetGender(pet.gender)} icon='male-outline' />
-                <CardValue title='Color' value={pet.color} icon='color-palette-outline' />
+                <CardValue title="Sexo" value={getPetGender(pet.gender)} icon="male-outline" />
+                <CardValue title="Color" value={pet.color} icon="color-palette-outline" />
             </View>
             <View style={[GlobalStyles.rowAround]}>
-                <CardValue title='Tamaño' value={getPetSize(pet.size)} icon='trending-up-outline' />
-                <CardValue title='Chip' value={pet.chip === '' ? 'Sin chip' : pet.chip} icon='qr-code-outline' />
+                <CardValue title="Tamaño" value={getPetSize(pet.size)} icon="trending-up-outline" />
+                <CardValue title="Chip" value={pet.chip === '' ? 'Sin chip' : pet.chip} icon="qr-code-outline" />
             </View>
-            <Separator color='transparent' />
+            <Separator color="transparent" />
             <View style={styles.button}>
-                <Button onPress={() => navigation.navigate('VisitsScreen')} title='Historia clínica' />
-                <Button onPress={() => {}} title='Nueva Visita' />
+                <Button onPress={() => navigation.navigate('VisitsScreen')} title="Historia clínica" />
+                <Button onPress={() => navigation.navigate('AddVisitScreen')} title="Nueva Visita" />
             </View>
         </Container>
     );

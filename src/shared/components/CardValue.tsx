@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: '600',
-        color: colors.light.white,
+        color: colors.light.grey,
     },
     value: {
         marginVertical: size.L,

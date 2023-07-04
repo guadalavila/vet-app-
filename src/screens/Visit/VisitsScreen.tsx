@@ -28,7 +28,7 @@ const VisitsScreen = ({}: Props) => {
     ];
     return (
         <Container>
-            <Header title='Historial' buttonBack />
+            <Header title="Historia Clínica" buttonBack />
             <FlatList
                 data={DATA_MOCK}
                 renderItem={({ item }) => <ItemVisit visit={item} />}

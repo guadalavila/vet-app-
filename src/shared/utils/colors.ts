@@ -8,6 +8,7 @@ const common = {
     error: '#E74C3C',
     grey: '#EEEEEE',
     greySecondary: '#f5f5f5',
+    greyDark: '#A3A3A3',
     whatsapp: '#25d366',
     success: '#4E9F3D',
 };

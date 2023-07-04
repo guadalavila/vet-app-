@@ -13,4 +13,5 @@ export type RootStackLoginParamList = {
     PetDetailScreen: { pet: Pet };
     SettingScreen: undefined;
     VisitsScreen: undefined;
+    AddVisitScreen: undefined;
 };
