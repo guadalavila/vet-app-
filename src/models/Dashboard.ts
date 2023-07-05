@@ -1,9 +1,9 @@
 export type DashboardResponse = {
-    data: Dashboard;
+    data: Dashboard,
 };
 
 export type Dashboard = {
-    clients: number;
-    pets: number;
-    visits: number;
+    clients: number,
+    pets: number,
+    visits: number,
 };

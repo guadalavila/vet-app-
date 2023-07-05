@@ -15,7 +15,7 @@ interface IItemCategoryProps {
 
 const ItemCategory = ({ title, onPress, icon, data }: IItemCategoryProps) => {
     return (
-        <TouchableOpacity style={styles.container} activeOpacity={0.7} onPress={onPress}>
+        <TouchableOpacity style={[styles.container, GlobalStyles.shadowCard]} activeOpacity={0.7} onPress={onPress}>
             <View style={[GlobalStyles.selfCenter, styles.containerIcon]}>
                 <Icon name={icon} size={38} color={colors.light.primary} />
             </View>

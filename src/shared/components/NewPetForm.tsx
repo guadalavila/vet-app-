@@ -8,6 +8,7 @@ import { COLOR_PET, CONDITIONS, GENDER, SIZE_PET, TYPE_PET } from '../utils/cons
 import Dropdown from './Dropdown';
 import DropdownMultiple from './DropdownMultiple';
 import Select from './Select';
+import { GlobalStyles } from '../utils/styles';
 
 interface INewPetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
@@ -22,8 +23,8 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
     const [conditions, setConditions] = useState(CONDITIONS);
 
     return (
-        <>
-            <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={GlobalStyles.flex1}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
                 <FormInput
                     required
                     value={fields.name || ''}
@@ -91,21 +92,21 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
             <View style={styles.bottom}>
                 <Button title='Agregar Visita' onPress={handleSubmit} />
             </View>
-        </>
+        </View>
     );
 };
 
 export default NewPetForm;
 
 const styles = StyleSheet.create({
-    container: {
-        paddingHorizontal: 10,
+    contentContainer: {
+        paddingBottom: 100,
     },
     error: {
         color: colors.light.error,
     },
     bottom: {
-        marginTop: 20,
+        // marginTop: 20,
         position: 'absolute',
         bottom: 0,
         width: '100%',

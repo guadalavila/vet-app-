@@ -11,13 +11,22 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 import CustomText from '../../shared/components/CustomText';
 import useDashboard from '../../shared/hooks/useDashboard';
 import { AuthContext } from '../../contexts/AuthContext';
+import Loading from '../../shared/components/Loading';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'DashboardScreen'> {}
 
 const DashboardScreen = ({ navigation }: Props) => {
     const { themeApp } = useContext(ThemeContext);
     const { userData } = useContext(AuthContext);
-    const { categories } = useDashboard();
+    const { categories, isLoading } = useDashboard();
+
+    if (isLoading) {
+        return (
+            <Container>
+                <Loading />
+            </Container>
+        );
+    }
 
     return (
         <Container>

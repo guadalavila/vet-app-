@@ -3,10 +3,12 @@ import { TextInput, StyleSheet, View } from 'react-native';
 import { size } from '../utils/size';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import CustomText from './CustomText';
+import { typography } from '../utils/typography';
 
 interface IFormInputProps {
     value: string;
     placeholder: string;
+    helperText?: string;
     onlyNumber?: boolean;
     isTextArea?: boolean;
     required?: boolean;
@@ -17,6 +19,7 @@ const FormInput: React.FC<IFormInputProps> = ({
     value,
     placeholder,
     onChangeText,
+    helperText,
     onlyNumber = false,
     isTextArea = false,
     required = false,
@@ -42,6 +45,9 @@ const FormInput: React.FC<IFormInputProps> = ({
                 placeholder={placeholder}
                 onChangeText={onChangeText}
             />
+            {helperText && (
+                <CustomText style={[styles.helperText, { color: themeApp.colors.secondary }]}>{helperText}</CustomText>
+            )}
         </View>
     );
 };
@@ -60,12 +66,15 @@ const styles = StyleSheet.create({
         marginTop: size.L,
         paddingHorizontal: size.XL,
         flex: 1,
+        paddingVertical: size.XXL,
     },
     textArea: {
-        height: 100,
+        height: 120,
     },
-    inputText: {
-        height: 70,
+    inputText: {},
+    helperText: {
+        fontSize: typography.size.XS,
+        marginTop: size.S,
     },
 });
 
