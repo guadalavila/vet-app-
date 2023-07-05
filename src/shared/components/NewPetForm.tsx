@@ -1,10 +1,13 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
 import Button from './Button';
-import Separator from './Separator';
 import { colors } from '../utils/colors';
+import { COLOR_PET, CONDITIONS, GENDER, SIZE_PET, TYPE_PET } from '../utils/constants';
+import Dropdown from './Dropdown';
+import DropdownMultiple from './DropdownMultiple';
+import Select from './Select';
 
 interface INewPetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
@@ -12,52 +15,78 @@ interface INewPetFormProps {
 
 const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm(onSubmit);
+    const [gender, setGender] = useState(GENDER);
+    const [type, setType] = useState(TYPE_PET);
+    const [size, setSize] = useState(SIZE_PET);
+    const [color, setColor] = useState(COLOR_PET);
+    const [conditions, setConditions] = useState(CONDITIONS);
 
     return (
         <>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <FormInput
                     required
-                    value={fields.weight || ''}
-                    placeholder="Peso"
-                    onChangeText={(value) => setFieldValue('weight', value)}
+                    value={fields.name || ''}
+                    placeholder='Nombre'
+                    onChangeText={(value) => setFieldValue('name', value)}
                 />
-                {errors.weight && <Text style={styles.error}>{errors.name}</Text>}
+                {errors.name && <Text style={styles.error}>{errors.name}</Text>}
                 <FormInput
-                    value={fields.temperature || ''}
-                    placeholder="Temperatura"
-                    onChangeText={(value) => setFieldValue('temperature', value)}
+                    value={fields.chip || ''}
+                    placeholder='Chip'
+                    onChangeText={(value) => setFieldValue('chip', value)}
                 />
-                {errors.temperature && <Text style={styles.error}>{errors.name}</Text>}
+                {errors.chip && <Text style={styles.error}>{errors.chip}</Text>}
                 <FormInput
-                    isTextArea
-                    value={fields.anamnestic || ''}
-                    placeholder="Anamnésicos"
-                    onChangeText={(value) => setFieldValue('anamnestic', value)}
+                    required
+                    value={fields.age || ''}
+                    placeholder='Edad'
+                    onChangeText={(value) => setFieldValue('age', value)}
                 />
-                {errors.anamnestic && <Text style={styles.error}>{errors.anamnestic}</Text>}
+                {errors.age && <Text style={styles.error}>{errors.age}</Text>}
+                <Dropdown
+                    onSelectItem={(value) => setFieldValue('gender', value)}
+                    zIndex={2000}
+                    items={gender}
+                    setItems={setGender}
+                    placeholder='Sexo'
+                />
+                <Dropdown
+                    onSelectItem={(value) => setFieldValue('type', value)}
+                    zIndex={1000}
+                    items={type}
+                    setItems={setType}
+                    placeholder='Especie'
+                />
                 <FormInput
-                    isTextArea
-                    value={fields.diagnosis || ''}
-                    placeholder="Diagnóstico Diferencial"
-                    onChangeText={(value) => setFieldValue('diagnosis', value)}
+                    required
+                    value={fields.race || ''}
+                    placeholder='Raza'
+                    onChangeText={(value) => setFieldValue('race', value)}
                 />
-                {errors.diagnosis && <Text style={styles.error}>{errors.diagnosis}</Text>}
-                <FormInput
-                    isTextArea
-                    value={fields.treatment || ''}
-                    placeholder="Tratamiento"
-                    onChangeText={(value) => setFieldValue('treatment', value)}
+                {errors.race && <Text style={styles.error}>{errors.race}</Text>}
+                <Dropdown
+                    onSelectItem={(value) => setFieldValue('size', value)}
+                    zIndex={500}
+                    items={size}
+                    setItems={setSize}
+                    placeholder='Porte'
                 />
-                {errors.treatment && <Text style={styles.error}>{errors.treatment}</Text>}
-                <FormInput
-                    isTextArea
-                    value={fields.hospitalization || ''}
-                    placeholder="Hospitalización"
-                    onChangeText={(value) => setFieldValue('hospitalization', value)}
+                <Dropdown
+                    onSelectItem={(value) => setFieldValue('color', value)}
+                    zIndex={200}
+                    items={color}
+                    setItems={setColor}
+                    placeholder='Color'
                 />
-                {errors.hospitalization && <Text style={styles.error}>{errors.hospitalization}</Text>}
-                <Separator />
+                <DropdownMultiple
+                    onSelectItems={(values) => console.log(values)}
+                    zIndex={1000}
+                    items={conditions}
+                    setItems={setConditions}
+                    placeholder='Condiciones'
+                />
+                <Select title='Castrado/a' selected={false} onChangeSelect={() => console.log('')} />
             </ScrollView>
             <View style={styles.bottom}>
                 <Button title='Agregar Visita' onPress={handleSubmit} />

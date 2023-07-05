@@ -18,30 +18,30 @@ const Form = ({ onSubmit }: IFormProps) => {
         <View>
             <FormInput
                 value={fields.name || ''}
-                placeholder="Nombre"
+                placeholder='Nombre'
                 onChangeText={(value) => setFieldValue('name', value)}
             />
             {errors.name && <Text style={styles.error}>{errors.name}</Text>}
             <FormInput
                 value={fields.email || ''}
-                placeholder="Correo electrónico"
+                placeholder='Correo electrónico'
                 onChangeText={(value) => setFieldValue('email', value)}
             />
             {errors.email && <Text style={styles.error}>{errors.email}</Text>}
             <FormPasswordInput
                 value={fields.password || ''}
-                placeholder="Contraseña"
+                placeholder='Contraseña'
                 onChangeText={(value) => setFieldValue('password', value)}
             />
             {errors.password && <Text style={styles.error}>{errors.password}</Text>}
             <FormCheckbox
-                label="Acepto los términos y condiciones"
+                label='Acepto los términos y condiciones'
                 value={fields.acceptTerms || false}
                 onValueChange={(value) => setFieldValue('acceptTerms', value)}
             />
             {errors.acceptTerms && <Text style={styles.error}>{errors.acceptTerms}</Text>}
 
-            <Button title="Enviar" onPress={handleSubmit} />
+            <Button title='Enviar' onPress={handleSubmit} />
         </View>
     );
 };

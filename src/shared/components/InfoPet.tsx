@@ -29,7 +29,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: typography.size.S,
     },
-    info: {
-        fontSize: typography.size.S,
-    },
 });

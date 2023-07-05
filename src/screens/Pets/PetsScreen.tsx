@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList } from 'react-native';
 import Container from '../../shared/components/Container';
 import Header from '../../shared/components/Header';
 import { RootStackLoginParamList } from '../../navigations/types';
@@ -7,6 +7,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import ItemPetList from '../../shared/components/ItemPetList';
 import usePets from '../../shared/hooks/usePets';
 import Skeleton from '../../shared/components/Skeleton';
+import Fab from '../../shared/components/Fab';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetsScreen'> {}
 
@@ -35,10 +36,9 @@ const PetsScreen = ({ navigation }: Props) => {
                 )}
                 keyExtractor={(item) => item._id}
             />
+            <Fab onPress={() => navigation.navigate('AddPetScreen')} />
         </Container>
     );
 };
 
 export default PetsScreen;
-
-const styles = StyleSheet.create({});

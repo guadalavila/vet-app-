@@ -4,19 +4,19 @@ import { RootStackLoginParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Container from '../../shared/components/Container';
 import Header from '../../shared/components/Header';
-import NewVisitForm from '../../shared/components/NewVisitForm';
+import NewPetForm from '../../shared/components/NewPetForm';
 
-interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddVisitScreen'> {}
+interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddPetScreen'> {}
 
-const AddVisitScreen = ({}: Props) => {
+const AddPetScreen = ({}: Props) => {
     return (
         <Container>
-            <Header title='Nueva Visita' buttonBack />
-            <NewVisitForm onSubmit={(data) => console.log(data)} />
+            <Header title='Nueva Mascota' buttonBack />
+            <NewPetForm onSubmit={(data) => console.log(data)} />
         </Container>
     );
 };
 
-export default AddVisitScreen;
+export default AddPetScreen;
 
 const styles = StyleSheet.create({});

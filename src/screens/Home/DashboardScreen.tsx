@@ -10,11 +10,13 @@ import { size } from '../../shared/utils/size';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import CustomText from '../../shared/components/CustomText';
 import useDashboard from '../../shared/hooks/useDashboard';
+import { AuthContext } from '../../contexts/AuthContext';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'DashboardScreen'> {}
 
 const DashboardScreen = ({ navigation }: Props) => {
     const { themeApp } = useContext(ThemeContext);
+    const { userData } = useContext(AuthContext);
     const { categories } = useDashboard();
 
     return (
@@ -25,7 +27,9 @@ const DashboardScreen = ({ navigation }: Props) => {
                 iconRight='settings-outline'
                 onPressRight={() => navigation.navigate('SettingScreen')}
             />
-            <CustomText style={[styles.welcomeText, { color: themeApp.colors.secondary }]}>Hola Guada!</CustomText>
+            <CustomText style={[styles.welcomeText, { color: themeApp.colors.secondary }]}>
+                Hola {userData?.user.name}!
+            </CustomText>
             <FlatList
                 numColumns={2}
                 data={categories}

@@ -31,28 +31,28 @@ const ItemVisit = ({ visit, open = false }: IItemVisitProps) => {
                 <View>
                     <View style={[GlobalStyles.rowAround]}>
                         <CardValue
-                            title="Peso"
+                            title='Peso'
                             value={String(visit.weight)}
-                            valueExtra=" kgs"
-                            icon="analytics-outline"
+                            valueExtra=' kgs'
+                            icon='analytics-outline'
                         />
                         <CardValue
-                            title="Temperatura"
+                            title='Temperatura'
                             value={String(visit.temperature)}
-                            valueExtra="ºC"
-                            icon="thermometer-outline"
+                            valueExtra='ºC'
+                            icon='thermometer-outline'
                         />
                     </View>
                     <View style={styles.containerDetail}>
                         <CustomText style={styles.title}>Anamnésicos:</CustomText>
                         <CustomText style={styles.detail}>{visit.anamnestic}</CustomText>
-                        <Separator color="transparent" />
+                        <Separator color='transparent' />
                         <CustomText style={styles.title}>Diagnóstico Diferencia:</CustomText>
                         <CustomText style={styles.detail}>{visit.diagnosis}</CustomText>
-                        <Separator color="transparent" />
+                        <Separator color='transparent' />
                         <CustomText style={styles.title}>Tratamiento:</CustomText>
                         <CustomText style={styles.detail}>{visit.treatment}</CustomText>
-                        <Separator color="transparent" />
+                        <Separator color='transparent' />
                         <CustomText style={styles.title}>Hospitalización:</CustomText>
                         <CustomText style={styles.detail}>{visit.hospitalization}</CustomText>
                     </View>
