@@ -4,4 +4,5 @@ export const API_PATHS = {
     PETS: 'pets?page=1&limit=50',
     CLIENTS: 'clients?page=1&limit=50',
     CLIENT: 'clients/',
+    VISIT_PET: 'visits/pet/',
 };

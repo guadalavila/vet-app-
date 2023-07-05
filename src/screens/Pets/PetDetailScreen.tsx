@@ -40,7 +40,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             </View>
             <Separator color="transparent" />
             <View style={styles.button}>
-                <Button onPress={() => navigation.navigate('VisitsScreen')} title="Historia clínica" />
+                <Button onPress={() => navigation.navigate('VisitsScreen', { id: pet._id })} title="Historia clínica" />
                 <Button onPress={() => navigation.navigate('AddVisitScreen')} title="Nueva Visita" />
             </View>
         </Container>

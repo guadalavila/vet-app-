@@ -1,3 +1,9 @@
+export type VisitResponse = {
+    data: {
+        visits: Visit[];
+    };
+};
+
 export type Visit = {
     anamnestic: string;
     client: string;

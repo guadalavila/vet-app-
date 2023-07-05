@@ -19,7 +19,7 @@ const ItemVisit = ({ visit }: IItemVisitProps) => {
     return (
         <View>
             <TouchableOpacity style={styles.container} activeOpacity={0.7} onPress={() => setIsOpen(!isOpen)}>
-                <CustomText style={styles.date}>{visit.date}</CustomText>
+                <CustomText style={styles.date}>{new Date(visit.date).toLocaleString()}</CustomText>
                 <Icon
                     name={!isOpen ? 'chevron-down-outline' : 'chevron-up-outline'}
                     size={24}
