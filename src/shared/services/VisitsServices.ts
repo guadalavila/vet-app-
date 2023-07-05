@@ -10,7 +10,6 @@ class VisitsServices {
             networkManager
                 .get<VisitResponse>(API_PATHS.VISIT_PET.concat(idPet))
                 .then((res) => {
-                    console.log(res.data.data.visits);
                     resolve(res.data.data.visits);
                 })
                 .catch((error) => {
