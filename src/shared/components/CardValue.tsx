@@ -34,7 +34,7 @@ export default CardValue;
 const styles = StyleSheet.create({
     container: {
         width: '35%',
-        backgroundColor: colors.light.primary,
+        backgroundColor: colors.light.secondary,
         borderRadius: 10,
         padding: size.L,
         margin: size.S,

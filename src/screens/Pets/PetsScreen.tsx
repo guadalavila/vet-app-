@@ -15,6 +15,7 @@ const PetsScreen = ({ navigation }: Props) => {
     const {
         isLoading,
         dataPets: { pets, count, total },
+        getMorePets,
     } = usePets();
 
     if (isLoading) {
@@ -28,13 +29,15 @@ const PetsScreen = ({ navigation }: Props) => {
 
     return (
         <Container>
-            <Header title="Mascotas" buttonBack />
+            <Header title='Mascotas' buttonBack />
             <FlatList
                 data={pets}
                 renderItem={({ item }) => (
                     <ItemPetList pet={item} onPress={() => navigation.navigate('PetDetailScreen', { pet: item })} />
                 )}
                 keyExtractor={(item) => item._id}
+                onEndReached={() => getMorePets()}
+                onEndReachedThreshold={0.2}
             />
             <Fab onPress={() => navigation.navigate('AddPetScreen')} />
         </Container>
