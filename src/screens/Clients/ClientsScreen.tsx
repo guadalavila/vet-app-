@@ -7,6 +7,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import ItemClientList from '../../shared/components/ItemClientList';
 import useClients from '../../shared/hooks/useClients';
 import Skeleton from '../../shared/components/Skeleton';
+import Fab from '../../shared/components/Fab';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientsScreen'> {}
 
@@ -19,7 +20,7 @@ const ClientsScreen = ({ navigation }: Props) => {
     if (isLoading) {
         return (
             <Container>
-                <Header title="Clientes" />
+                <Header title='Clientes' />
                 <Skeleton />
             </Container>
         );
@@ -38,6 +39,7 @@ const ClientsScreen = ({ navigation }: Props) => {
                 )}
                 keyExtractor={(item) => item._id}
             />
+            <Fab onPress={() => navigation.navigate('AddClientScreen')} />
         </Container>
     );
 };
