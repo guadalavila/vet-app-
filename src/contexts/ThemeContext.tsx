@@ -8,7 +8,7 @@ export const ThemeContext = React.createContext<{
     setTheme: React.Dispatch<void>;
     themeApp: ThemeType;
 }>({
-    theme: 'light',
+    theme: 'dark',
     setTheme: () => {},
     themeApp: { colors: colors.light, typography: typography },
 });
@@ -18,7 +18,7 @@ interface ThemeContextProviderProps {
 }
 
 export const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({ children }) => {
-    const [theme, setTheme] = useState<'dark' | 'light'>('light');
+    const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
     const setThemeApp = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');

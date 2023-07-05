@@ -8,17 +8,18 @@ import { typography } from '../utils/typography';
 
 interface IItemCategoryProps {
     title: string;
+    data: number;
     icon: string;
     onPress: () => void;
 }
 
-const ItemCategory = ({ title, onPress, icon }: IItemCategoryProps) => {
+const ItemCategory = ({ title, onPress, icon, data }: IItemCategoryProps) => {
     return (
         <TouchableOpacity style={styles.container} activeOpacity={0.7} onPress={onPress}>
             <View style={[GlobalStyles.selfCenter, styles.containerIcon]}>
                 <Icon name={icon} size={38} color={colors.light.primary} />
             </View>
-            <Text style={[styles.count]}>23</Text>
+            <Text style={[styles.count]}>{data}</Text>
             <Text style={[styles.category]}>{title}</Text>
         </TouchableOpacity>
     );

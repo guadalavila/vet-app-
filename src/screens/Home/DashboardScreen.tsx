@@ -5,31 +5,37 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackLoginParamList } from '../../navigations/types';
 import Header from '../../shared/components/Header';
 import ItemCategory from '../../shared/components/ItemCategory';
-import { CATEGORIES } from '../../shared/utils/constants';
 import { typography } from '../../shared/utils/typography';
 import { size } from '../../shared/utils/size';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import CustomText from '../../shared/components/CustomText';
+import useDashboard from '../../shared/hooks/useDashboard';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'DashboardScreen'> {}
 
 const DashboardScreen = ({ navigation }: Props) => {
     const { themeApp } = useContext(ThemeContext);
+    const { categories } = useDashboard();
 
     return (
         <Container>
             <Header
-                title="Vet App"
+                title='Vet App'
                 buttonRight
-                iconRight="settings-outline"
+                iconRight='settings-outline'
                 onPressRight={() => navigation.navigate('SettingScreen')}
             />
             <CustomText style={[styles.welcomeText, { color: themeApp.colors.secondary }]}>Hola Guada!</CustomText>
             <FlatList
                 numColumns={2}
-                data={CATEGORIES}
+                data={categories}
                 renderItem={({ item }) => (
-                    <ItemCategory icon={item.icon} title={item.name} onPress={() => navigation.navigate(item.page)} />
+                    <ItemCategory
+                        data={item.data}
+                        icon={item.icon}
+                        title={item.name}
+                        onPress={() => navigation.navigate(item.page)}
+                    />
                 )}
                 keyExtractor={(item) => String(item.id)}
             />

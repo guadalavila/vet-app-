@@ -1,3 +1,13 @@
+export type PetResponse = {
+    data: PetData;
+};
+
+export type PetData = {
+    total: number;
+    count: number;
+    pets: Pet[];
+};
+
 export type Pet = {
     conditions: any[];
     _id: string;

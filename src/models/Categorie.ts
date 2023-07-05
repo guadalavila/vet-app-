@@ -3,4 +3,5 @@ export type Categorie = {
     name: string;
     icon: string;
     page: any;
+    data: number;
 };

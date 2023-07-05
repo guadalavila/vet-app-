@@ -1,3 +1,17 @@
+export type ClientResponse = {
+    data: ClientData;
+};
+
+export type ClientData = {
+    total: number;
+    count: number;
+    clients: Client[];
+};
+
+export type ClientDetail = {
+    data: Client;
+};
+
 export type Client = {
     adress: string;
     comment: string;

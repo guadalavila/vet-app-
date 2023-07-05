@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import Container from '../../shared/components/Container';
 import LoginForm from '../../shared/components/LoginForm';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
