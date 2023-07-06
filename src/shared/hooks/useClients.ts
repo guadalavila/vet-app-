@@ -9,15 +9,17 @@ const useClients = () => {
         clients: [],
     });
     const [isLoading, setIsLoading] = useState(false);
+    const [page, setPage] = useState(0);
 
     useEffect(() => {
         getListClients();
     }, []);
 
     const getListClients = () => {
+        setPage(page + 1);
         setIsLoading(true);
         try {
-            clientServices.getClients().then((res) => {
+            clientServices.getClients(page).then((res) => {
                 setDataClients({ ...res });
                 setIsLoading(false);
             });
@@ -26,7 +28,26 @@ const useClients = () => {
         }
     };
 
-    return { dataClients, isLoading };
+    const getMoreClients = () => {
+        // if (page < Math.round(dataClients.total / dataClients.count)) {
+        setPage(page + 1);
+        setIsLoading(true);
+        try {
+            clientServices.getClients(page).then((res) => {
+                const data: ClientData = {
+                    total: dataClients.total,
+                    count: dataClients.count,
+                    clients: [...res.clients],
+                };
+                setDataClients(data);
+                setIsLoading(false);
+            });
+        } catch (error) {
+            setIsLoading(false);
+        }
+        // }
+    };
+    return { dataClients, isLoading, getMoreClients };
 };
 
 export default useClients;

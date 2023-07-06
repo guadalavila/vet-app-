@@ -5,10 +5,10 @@ import networkManager from '../utils/axios/NetworkManager';
 class ClientsServices {
     constructor() {}
 
-    getClients(): Promise<ClientData> {
+    getClients(page: number): Promise<ClientData> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<ClientResponse>(API_PATHS.CLIENTS)
+                .get<ClientResponse>(`${API_PATHS.CLIENTS}?page=${page.toString()}&limit=50}`)
                 .then((res) => {
                     resolve(res.data.data);
                 })

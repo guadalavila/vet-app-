@@ -15,6 +15,7 @@ const ClientsScreen = ({ navigation }: Props) => {
     const {
         dataClients: { clients },
         isLoading,
+        getMoreClients,
     } = useClients();
 
     if (isLoading) {
@@ -38,6 +39,8 @@ const ClientsScreen = ({ navigation }: Props) => {
                     />
                 )}
                 keyExtractor={(item) => item._id}
+                onEndReached={() => getMoreClients()}
+                onEndReachedThreshold={0.2}
             />
             <Fab onPress={() => navigation.navigate('AddClientScreen')} />
         </Container>
