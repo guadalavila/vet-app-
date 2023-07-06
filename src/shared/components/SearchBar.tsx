@@ -11,11 +11,21 @@ interface ISearchBarProps {
     clicked: boolean;
     setCLicked: (value: boolean) => void;
     placeholder?: string;
+    onCancelSearch?: () => void;
 }
-const SearchBar = ({ value, onChangeValue, setCLicked, clicked, placeholder = 'Buscar...' }: ISearchBarProps) => {
+const SearchBar = ({
+    value,
+    onChangeValue,
+    setCLicked,
+    clicked,
+    placeholder = 'Buscar...',
+    onCancelSearch,
+}: ISearchBarProps) => {
     const cancelSearch = () => {
         Keyboard.dismiss();
         setCLicked(false);
+        onChangeValue('');
+        onCancelSearch && onCancelSearch();
     };
     return (
         <View style={styles.container}>
@@ -51,8 +61,8 @@ const styles = StyleSheet.create({
     searchBar__unclicked: {
         padding: size.L,
         flexDirection: 'row',
-        width: '95%',
-        backgroundColor: colors.light.grey,
+        width: '100%',
+        backgroundColor: colors.light.white,
         borderRadius: 15,
         alignItems: 'center',
     },
@@ -60,7 +70,7 @@ const styles = StyleSheet.create({
         padding: size.L,
         flexDirection: 'row',
         width: '80%',
-        backgroundColor: colors.light.grey,
+        backgroundColor: colors.light.white,
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'space-evenly',

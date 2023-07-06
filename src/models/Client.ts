@@ -24,3 +24,11 @@ export type Client = {
     createdAt: string,
     updatedAt: string,
 };
+
+export type ClientSearchResponse = {
+    data: ClientSearch,
+};
+
+export type ClientSearch = {
+    clients: Client[],
+};

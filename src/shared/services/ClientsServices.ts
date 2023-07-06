@@ -1,4 +1,4 @@
-import { Client, ClientData, ClientDetail, ClientResponse } from '../../models/Client';
+import { Client, ClientData, ClientDetail, ClientResponse, ClientSearchResponse } from '../../models/Client';
 import { API_PATHS } from '../utils/apiPaths';
 import networkManager from '../utils/axios/NetworkManager';
 
@@ -24,6 +24,19 @@ class ClientsServices {
                 .get<ClientDetail>(API_PATHS.CLIENT.concat(id))
                 .then((res) => {
                     resolve(res.data.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
+    searchClients(text: string): Promise<Client[]> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<ClientSearchResponse>(API_PATHS.SEARCH_CLIENTS.concat(text))
+                .then((res) => {
+                    resolve(res.data.data.clients);
                 })
                 .catch((error) => {
                     reject(error);

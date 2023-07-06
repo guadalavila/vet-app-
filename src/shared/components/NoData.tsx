@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'center',
         color: colors.light.greyDark,
+        textAlign: 'center',
     },
     icon: {
         alignSelf: 'center',

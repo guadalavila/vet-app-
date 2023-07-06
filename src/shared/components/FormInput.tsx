@@ -57,26 +57,25 @@ const FormInput: React.FC<IFormInputProps> = ({
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: size.XXL,
-        marginBottom: size.XL,
+        marginVertical: size.XL,
     },
     label: {
         fontWeight: 'bold',
-        marginBottom: size.XXL,
-        paddingVertical: size.L,
+        marginBottom: size.L,
     },
     input: {
         borderWidth: 1,
         borderRadius: 10,
-        // marginTop: size.L,
+        marginTop: size.L,
         paddingHorizontal: size.XL,
-        flex: 1,
-        // paddingVertical: 20,
+        paddingVertical: size.XXL,
+        marginVertical: size.XL,
     },
     textArea: {
         height: 120,
     },
     inputText: {
-        height: 100,
+        // height: 100,
     },
     helperText: {
         fontSize: typography.size.XS,
