@@ -22,6 +22,9 @@ const light = {
     container: '#f5f4f6',
     separator: '#F1f1f1',
     border: '#2A2F4F',
+    input: '#f2f1f6',
+    textInput: '#515151',
+    bottomSheet: '#F1f1f1',
 };
 
 const dark = {
@@ -33,6 +36,9 @@ const dark = {
     container: '#222125',
     separator: '#f0f0f0',
     border: '#E5BEEC',
+    input: '#4C4C4C',
+    textInput: '#DEDEDE',
+    bottomSheet: '#71717C',
 };
 
 export const colors = { light, dark };
