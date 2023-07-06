@@ -32,6 +32,8 @@ const FormInput: React.FC<IFormInputProps> = ({
                 <CustomText>{required ? ' *' : ''}</CustomText>
             </CustomText>
             <TextInput
+                focusable
+                editable
                 autoCorrect={false}
                 multiline={isTextArea}
                 numberOfLines={isTextArea ? 4 : 2}
@@ -59,19 +61,23 @@ const styles = StyleSheet.create({
     },
     label: {
         fontWeight: 'bold',
+        marginBottom: size.XXL,
+        paddingVertical: size.L,
     },
     input: {
         borderWidth: 1,
         borderRadius: 10,
-        marginTop: size.L,
+        // marginTop: size.L,
         paddingHorizontal: size.XL,
         flex: 1,
-        paddingVertical: size.XXL,
+        // paddingVertical: 20,
     },
     textArea: {
         height: 120,
     },
-    inputText: {},
+    inputText: {
+        height: 100,
+    },
     helperText: {
         fontSize: typography.size.XS,
         marginTop: size.S,

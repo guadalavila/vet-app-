@@ -42,3 +42,20 @@ const mapPetGender = () => {
 export const getPetGender = (gender: string) => {
     return mapPetGender().get(gender);
 };
+
+export function getConditionColor(condition: string): string {
+    const conditionColorMap = new Map();
+    conditionColorMap.set('Ciego', '#FFBF00');
+    conditionColorMap.set('Sordo', '#FF7F50');
+    conditionColorMap.set('Asmatico', '#593c8f');
+    conditionColorMap.set('Preñez', '#40E0D0');
+    conditionColorMap.set('Pancreatitis Cronica', '#6495ED');
+    conditionColorMap.set('Sobrepeso', '#78c091');
+    conditionColorMap.set('Alérgico', '#9a348e');
+    conditionColorMap.set('Insulinodependiente', '#00B295');
+    conditionColorMap.set('Hepatico', '#4281a4');
+    conditionColorMap.set('Diabetico', '#e57a44');
+    conditionColorMap.set('Obeso', '#afa2ff');
+    conditionColorMap.set('Renal', '#f56416');
+    return conditionColorMap.get(condition);
+}

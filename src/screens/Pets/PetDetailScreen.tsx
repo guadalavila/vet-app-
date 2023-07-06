@@ -5,7 +5,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Container from '../../shared/components/Container';
 import CustomText from '../../shared/components/CustomText';
 import Header from '../../shared/components/Header';
-import { getPetGender, getPetSize, getPetType } from '../../shared/utils/helpers';
+import { getConditionColor, getPetGender, getPetSize, getPetType } from '../../shared/utils/helpers';
 import { typography } from '../../shared/utils/typography';
 import Button from '../../shared/components/Button';
 import Separator from '../../shared/components/Separator';
@@ -13,6 +13,8 @@ import { GlobalStyles } from '../../shared/utils/styles';
 import { colors } from '../../shared/utils/colors';
 import { size } from '../../shared/utils/size';
 import CardValue from '../../shared/components/CardValue';
+import Badge from '../../shared/components/Badge';
+import Title from '../../shared/components/Title';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetDetailScreen'> {}
 
@@ -39,14 +41,24 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                 <CardValue title='Chip' value={pet.chip === '' ? 'Sin chip' : pet.chip} icon='qr-code-outline' />
             </View>
             <Separator color='transparent' />
+            {pet.conditions.length > 0 && (
+                <>
+                    <Title text='Condiciones:' />
+                    <View style={styles.containerConditions}>
+                        {pet.conditions.map((item) => (
+                            <Badge label={item} color={getConditionColor(item)} />
+                        ))}
+                    </View>
+                </>
+            )}
             <View style={styles.button}>
                 <Button onPress={() => navigation.navigate('VisitsScreen', { id: pet._id })} title='Historia clínica' />
                 <Button onPress={() => navigation.navigate('AddVisitScreen')} title='Nueva Visita' />
-                <Button
+                {/* <Button
                     style={styles.buttonDelete}
                     onPress={() => console.log('open modal')}
                     title='Eliminar mascota'
-                />
+                /> */}
             </View>
         </Container>
     );
@@ -70,7 +82,13 @@ const styles = StyleSheet.create({
         bottom: 0,
         width: '100%',
     },
-    buttonDelete: {
-        backgroundColor: colors.light.error,
+    // buttonDelete: {
+    //     backgroundColor: colors.light.error,
+    // },
+    containerConditions: {
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        paddingHorizontal: size.L,
     },
 });
