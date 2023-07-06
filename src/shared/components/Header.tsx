@@ -22,7 +22,7 @@ const Header = ({ title, buttonBack, buttonRight, iconRight, onPressRight }: IHe
         <View style={[styles.header, { backgroundColor: themeApp.colors.background }]}>
             {buttonBack ? (
                 <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.goBack()}>
-                    <Icon name='arrow-back-outline' size={30} color={colors.dark.primary} />
+                    <Icon name='arrow-back-outline' size={28} color={colors.dark.primary} />
                 </TouchableOpacity>
             ) : (
                 <View style={styles.button} />
@@ -30,7 +30,7 @@ const Header = ({ title, buttonBack, buttonRight, iconRight, onPressRight }: IHe
             <CustomText style={[styles.title]}>{title}</CustomText>
             {buttonRight && iconRight && onPressRight ? (
                 <TouchableOpacity style={styles.btnRight} activeOpacity={0.7} onPress={onPressRight}>
-                    <Icon name={iconRight} size={30} color={colors.dark.primary} />
+                    <Icon name={iconRight} size={28} color={colors.dark.primary} />
                 </TouchableOpacity>
             ) : (
                 <View style={[styles.button]} />

@@ -1,5 +1,5 @@
+import React, { useRef } from 'react';
 import { FlatList, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React, { useContext } from 'react';
 import Header from '../../shared/components/Header';
 import Container from '../../shared/components/Container';
 import { RootStackLoginParamList } from '../../navigations/types';
@@ -12,15 +12,15 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import ItemPet from '../../shared/components/ItemPet';
 import Title from '../../shared/components/Title';
 import { Pet } from '../../models/Pet';
-import { ThemeContext } from '../../contexts/ThemeContext';
 import Card from '../../shared/components/Card';
 import CustomText from '../../shared/components/CustomText';
+import BottomSheet from '../../shared/components/BottomSheet';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientDetailScreen'> {}
 
 const ClientDetailScreen = ({ navigation, route }: Props) => {
     const client = route.params.client;
-    const { themeApp } = useContext(ThemeContext);
+    const bottomSheetRef = useRef();
 
     const getCodeName = () => client.name.charAt(0).concat(client.lastName.charAt(0)).toUpperCase();
 
@@ -43,7 +43,14 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
 
     return (
         <Container>
-            <Header title={''} buttonBack />
+            <Header
+                title={''}
+                buttonBack
+                buttonRight
+                iconRight='ellipsis-vertical'
+                //@ts-ignore
+                onPressRight={() => bottomSheetRef.current && bottomSheetRef.current.show()}
+            />
             <Card>
                 <View style={styles.containerAvatar}>
                     <Text style={styles.textAvatar}>{getCodeName()}</Text>
@@ -52,24 +59,31 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
                     {client.name} {client.lastName}
                 </CustomText>
                 <CustomText style={[styles.dni]}>DNI {client.dni}</CustomText>
+                <CustomText style={styles.emailText}> {client.email}</CustomText>
                 <TouchableOpacity
                     style={[GlobalStyles.row, styles.containerPhone]}
                     activeOpacity={0.7}
-                    onPress={() => Linking.openURL('https://api.whatsapp.com/send?phone=000000000000')}>
+                    onPress={() => Linking.openURL(`https://api.whatsapp.com/send?phone=${client.phone}}`)}>
                     <Icon name='logo-whatsapp' size={24} color={colors.light.whatsapp} />
                     <CustomText style={styles.phone}>{client.phone}</CustomText>
                 </TouchableOpacity>
-                <Text> {client.email}</Text>
             </Card>
             <Title text='Mascotas' />
-            <Card>
-                <FlatList
-                    numColumns={2}
-                    data={pets}
-                    renderItem={({ item }) => <ItemPet pet={item} />}
-                    keyExtractor={(item) => item._id}
-                />
-            </Card>
+            {pets.length > 0 && (
+                <Card>
+                    <FlatList
+                        numColumns={2}
+                        data={pets}
+                        renderItem={({ item }) => <ItemPet pet={item} />}
+                        keyExtractor={(item) => item._id}
+                    />
+                </Card>
+            )}
+            <BottomSheet refBottomSheet={bottomSheetRef} height={200}>
+                <View>
+                    <CustomText>sad</CustomText>
+                </View>
+            </BottomSheet>
         </Container>
     );
 };
@@ -77,12 +91,6 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
 export default ClientDetailScreen;
 
 const styles = StyleSheet.create({
-    card: {
-        marginHorizontal: size.XXL,
-        borderRadius: 16,
-        paddingVertical: size.XL,
-        paddingHorizontal: size.L,
-    },
     name: {
         color: colors.light.primary,
         fontSize: typography.size.L,
@@ -97,6 +105,7 @@ const styles = StyleSheet.create({
     },
     containerPhone: {
         marginVertical: size.XL,
+        alignSelf: 'center',
     },
     phone: {
         fontWeight: 'bold',
@@ -119,10 +128,9 @@ const styles = StyleSheet.create({
         color: colors.light.white,
         alignSelf: 'center',
     },
-    separator: {
-        marginTop: size.XXL,
-    },
-    containerPet: {
-        borderRadius: 8,
+    emailText: {
+        marginHorizontal: size.L,
+        marginBottom: size.XL,
+        textAlign: 'center',
     },
 });

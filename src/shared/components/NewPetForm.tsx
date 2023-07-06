@@ -21,6 +21,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
     const [size, setSize] = useState(SIZE_PET);
     const [color, setColor] = useState(COLOR_PET);
     const [conditions, setConditions] = useState(CONDITIONS);
+    const [sterilized, setSterilized] = useState(false);
 
     return (
         <View style={GlobalStyles.flex1}>
@@ -32,26 +33,22 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
                     onChangeText={(value) => setFieldValue('name', value)}
                 />
                 {errors.name && <Text style={styles.error}>{errors.name}</Text>}
-                <FormInput
-                    value={fields.chip || ''}
-                    placeholder='Chip'
-                    onChangeText={(value) => setFieldValue('chip', value)}
-                />
-                {errors.chip && <Text style={styles.error}>{errors.chip}</Text>}
-                <FormInput
-                    required
-                    value={fields.age || ''}
-                    placeholder='Edad'
-                    onChangeText={(value) => setFieldValue('age', value)}
-                />
-                {errors.age && <Text style={styles.error}>{errors.age}</Text>}
-                <Dropdown
-                    onSelectItem={(value) => setFieldValue('gender', value)}
-                    zIndex={2000}
-                    items={gender}
-                    setItems={setGender}
-                    placeholder='Sexo'
-                />
+                <View style={GlobalStyles.row}>
+                    <FormInput
+                        width={'43%'}
+                        value={fields.age || ''}
+                        placeholder='Edad'
+                        onChangeText={(value) => setFieldValue('age', value)}
+                    />
+                    {errors.age && <Text style={styles.error}>{errors.age}</Text>}
+                    <FormInput
+                        width={'43%'}
+                        value={fields.chip || ''}
+                        placeholder='Chip'
+                        onChangeText={(value) => setFieldValue('chip', value)}
+                    />
+                    {errors.chip && <Text style={styles.error}>{errors.chip}</Text>}
+                </View>
                 <Dropdown
                     onSelectItem={(value) => setFieldValue('type', value)}
                     zIndex={1000}
@@ -59,6 +56,26 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
                     setItems={setType}
                     placeholder='Especie'
                 />
+
+                <View style={GlobalStyles.row}>
+                    <Dropdown
+                        width='43%'
+                        onSelectItem={(value) => setFieldValue('size', value)}
+                        zIndex={500}
+                        items={size}
+                        setItems={setSize}
+                        placeholder='Porte'
+                    />
+                    <Dropdown
+                        width='43%'
+                        onSelectItem={(value) => setFieldValue('gender', value)}
+                        zIndex={2000}
+                        items={gender}
+                        setItems={setGender}
+                        placeholder='Sexo'
+                    />
+                </View>
+
                 <FormInput
                     required
                     value={fields.race || ''}
@@ -66,13 +83,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
                     onChangeText={(value) => setFieldValue('race', value)}
                 />
                 {errors.race && <Text style={styles.error}>{errors.race}</Text>}
-                <Dropdown
-                    onSelectItem={(value) => setFieldValue('size', value)}
-                    zIndex={500}
-                    items={size}
-                    setItems={setSize}
-                    placeholder='Porte'
-                />
+
                 <Dropdown
                     onSelectItem={(value) => setFieldValue('color', value)}
                     zIndex={200}
@@ -87,7 +98,11 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
                     setItems={setConditions}
                     placeholder='Condiciones'
                 />
-                <Select title='Castrado/a' selected={false} onChangeSelect={() => console.log('')} />
+                <Select
+                    title='Esterilizado/a'
+                    selected={sterilized}
+                    onChangeSelect={() => setSterilized(!sterilized)}
+                />
             </ScrollView>
             <View style={styles.bottom}>
                 <Button title='Agregar Visita' onPress={handleSubmit} />

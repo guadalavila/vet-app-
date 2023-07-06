@@ -32,3 +32,9 @@ export type ClientSearchResponse = {
 export type ClientSearch = {
     clients: Client[],
 };
+
+export type ClientDetailResponse = {
+    data: {
+        client: Client,
+    },
+};

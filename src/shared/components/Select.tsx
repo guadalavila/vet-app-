@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginHorizontal: typography.size.S,
-        borderBottomWidth: 1,
-        borderBottomColor: colors.light.primary,
+        // borderBottomWidth: 1,
+        // borderBottomColor: colors.light.primary,
     },
     title: {
         fontSize: typography.size.S,

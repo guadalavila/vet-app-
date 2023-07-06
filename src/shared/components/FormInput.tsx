@@ -4,6 +4,7 @@ import { size } from '../utils/size';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import CustomText from './CustomText';
 import { typography } from '../utils/typography';
+import { colors } from '../utils/colors';
 
 interface IFormInputProps {
     value: string;
@@ -12,6 +13,7 @@ interface IFormInputProps {
     onlyNumber?: boolean;
     isTextArea?: boolean;
     required?: boolean;
+    width?: string;
     onChangeText: (value: string) => void;
 }
 
@@ -20,13 +22,14 @@ const FormInput: React.FC<IFormInputProps> = ({
     placeholder,
     onChangeText,
     helperText,
+    width,
     onlyNumber = false,
     isTextArea = false,
     required = false,
 }) => {
     const { themeApp } = useContext(ThemeContext);
     return (
-        <View style={[styles.container, isTextArea ? styles.textArea : styles.inputText]}>
+        <View style={[styles.container, isTextArea ? styles.textArea : styles.inputText, width && { width: width }]}>
             <CustomText style={styles.label}>
                 {placeholder}
                 <CustomText>{required ? ' *' : ''}</CustomText>
@@ -37,11 +40,15 @@ const FormInput: React.FC<IFormInputProps> = ({
                 autoCorrect={false}
                 multiline={isTextArea}
                 numberOfLines={isTextArea ? 4 : 2}
-                placeholderTextColor={themeApp.colors.border}
+                placeholderTextColor={themeApp.colors.textInput}
                 style={[
                     styles.input,
                     isTextArea ? styles.textArea : styles.inputText,
-                    { borderColor: themeApp.colors.border, color: themeApp.colors.text },
+                    {
+                        borderColor: themeApp.colors.border,
+                        color: themeApp.colors.textInput,
+                        backgroundColor: themeApp.colors.input,
+                    },
                 ]}
                 value={value}
                 placeholder={placeholder}
@@ -70,6 +77,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: size.XL,
         paddingVertical: size.XXL,
         marginVertical: size.XL,
+        backgroundColor: colors.light.input,
     },
     textArea: {
         height: 120,

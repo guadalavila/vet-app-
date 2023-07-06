@@ -33,7 +33,7 @@ export default CardValue;
 
 const styles = StyleSheet.create({
     container: {
-        width: '35%',
+        width: '30%',
         backgroundColor: colors.light.secondary,
         borderRadius: 10,
         padding: size.L,
@@ -44,9 +44,10 @@ const styles = StyleSheet.create({
         color: colors.light.grey,
     },
     value: {
-        marginVertical: size.L,
+        marginVertical: size.S,
         color: colors.light.white,
-        fontSize: typography.size.L,
+        fontSize: typography.size.M,
+        fontWeight: 'bold',
     },
     valueExtra: {
         fontSize: typography.size.S,

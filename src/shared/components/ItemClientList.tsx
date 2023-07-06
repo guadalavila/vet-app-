@@ -23,7 +23,7 @@ const ItemClientList = ({ client, onPress }: IItemClientListProps) => {
                 <CustomText style={[styles.nameAndLastName]}>
                     {client.name} {client.lastName}
                 </CustomText>
-                <CustomText style={[styles.dni]}>{client.dni}</CustomText>
+                <CustomText style={[styles.dni]}>DNI: {client.dni}</CustomText>
             </View>
         </TouchableOpacity>
     );

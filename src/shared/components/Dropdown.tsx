@@ -15,20 +15,21 @@ interface IDropdownProps {
     onSelectItem: (value: string) => void;
     required?: boolean;
     zIndex?: number;
+    width?: string;
 }
 
-const Dropdown = ({ placeholder, items, setItems, onSelectItem, required, zIndex }: IDropdownProps) => {
+const Dropdown = ({ placeholder, items, setItems, onSelectItem, required, zIndex, width = '92%' }: IDropdownProps) => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
-    const { theme } = useContext(ThemeContext);
+    const { theme, themeApp } = useContext(ThemeContext);
     return (
         <DropDownPicker
             onSelectItem={(item) => onSelectItem(item.value)}
             listMode='SCROLLVIEW'
             zIndex={zIndex}
-            listItemContainerStyle={styles.listItemContainer}
-            containerStyle={styles.dropdown}
-            selectedItemLabelStyle={styles.selectedItemLabel}
+            listItemContainerStyle={[styles.listItemContainer, { backgroundColor: themeApp.colors.input }]}
+            containerStyle={[styles.dropdown, { width: width }]}
+            selectedItemLabelStyle={[styles.selectedItemLabel, { color: themeApp.colors.white }]}
             selectedItemContainerStyle={styles.selectedItemContainer}
             theme={theme === 'dark' ? 'DARK' : 'LIGHT'}
             placeholder={placeholder}
@@ -41,6 +42,8 @@ const Dropdown = ({ placeholder, items, setItems, onSelectItem, required, zIndex
             bottomOffset={500}
             setItems={setItems}
             dropDownContainerStyle={styles.dropDownContainer}
+            textStyle={{ color: themeApp.colors.textInput }}
+            modalTitle={placeholder}
         />
     );
 };
@@ -54,9 +57,7 @@ const styles = StyleSheet.create({
         width: '92%',
         alignSelf: 'center',
     },
-    label: {
-        fontWeight: 'bold',
-    },
+
     dropDownContainer: {
         position: 'relative',
         top: 0,

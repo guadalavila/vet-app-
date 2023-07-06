@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RootStackLoginParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -10,19 +10,40 @@ import { typography } from '../../shared/utils/typography';
 import Button from '../../shared/components/Button';
 import Separator from '../../shared/components/Separator';
 import { GlobalStyles } from '../../shared/utils/styles';
-import { colors } from '../../shared/utils/colors';
 import { size } from '../../shared/utils/size';
 import CardValue from '../../shared/components/CardValue';
 import Badge from '../../shared/components/Badge';
 import Title from '../../shared/components/Title';
+import BottomSheet from '../../shared/components/BottomSheet';
+import Option from '../../shared/components/Option';
+import clientServices from '../../shared/services/ClientsServices';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetDetailScreen'> {}
 
 const PetDetailScreen = ({ route, navigation }: Props) => {
     const pet = route.params.pet;
+    const bottomSheetRef = useRef();
+
+    const getDetailOwner = () => {
+        try {
+            clientServices.searchOneClient(pet.owner).then((res) => {
+                navigation.navigate('ClientDetailScreen', { client: res });
+            });
+            //@ts-ignore
+            bottomSheetRef.current.close();
+        } catch (error) {}
+    };
+
     return (
         <Container>
-            <Header title='Reporte' buttonBack />
+            <Header
+                title='Reporte'
+                buttonBack
+                buttonRight
+                iconRight='ellipsis-vertical'
+                //@ts-ignore
+                onPressRight={() => bottomSheetRef.current && bottomSheetRef.current.show()}
+            />
             <View style={{ marginVertical: size.XXL }}>
                 <CustomText style={styles.name}>{pet.name}</CustomText>
                 <CustomText style={styles.race}>{pet.race} </CustomText>
@@ -31,15 +52,14 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             <View style={[GlobalStyles.rowAround]}>
                 <CardValue title='Edad' value={String(pet.age)} valueExtra=' años' icon='calendar-outline' />
                 <CardValue title='Tipo' value={getPetType(pet.type)} icon='paw-outline' />
-            </View>
-            <View style={[GlobalStyles.rowAround]}>
                 <CardValue title='Sexo' value={getPetGender(pet.gender)} icon='male-outline' />
-                <CardValue title='Color' value={pet.color} icon='color-palette-outline' />
             </View>
             <View style={[GlobalStyles.rowAround]}>
+                <CardValue title='Color' value={pet.color} icon='color-palette-outline' />
                 <CardValue title='Tamaño' value={getPetSize(pet.size)} icon='trending-up-outline' />
                 <CardValue title='Chip' value={pet.chip === '' ? 'Sin chip' : pet.chip} icon='qr-code-outline' />
             </View>
+            <View style={[GlobalStyles.rowAround]} />
             <Separator color='transparent' />
             {pet.conditions.length > 0 && (
                 <>
@@ -60,6 +80,31 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                     title='Eliminar mascota'
                 /> */}
             </View>
+            <BottomSheet refBottomSheet={bottomSheetRef} height={300}>
+                <View style={styles.containerContent}>
+                    <Option
+                        label='Agregar visita'
+                        icon='add'
+                        onPress={() => {
+                            //@ts-ignore
+                            bottomSheetRef.current.close();
+                            navigation.navigate('AddVisitScreen');
+                        }}
+                    />
+                    <Option
+                        label='Ver Historia Clinica'
+                        icon='document'
+                        onPress={() => {
+                            //@ts-ignore
+                            bottomSheetRef.current.close();
+                            navigation.navigate('VisitsScreen', { id: pet._id });
+                        }}
+                    />
+                    <Option label='Ver Detalle Responsable' icon='people' onPress={getDetailOwner} />
+                    <Option label='Ver Calendario de vacunas' icon='calendar' onPress={() => {}} />
+                    <Option label='Compartir' icon='share' onPress={() => {}} />
+                </View>
+            </BottomSheet>
         </Container>
     );
 };
@@ -90,5 +135,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         paddingHorizontal: size.L,
+    },
+    containerContent: {
+        marginVertical: size.M,
     },
 });
