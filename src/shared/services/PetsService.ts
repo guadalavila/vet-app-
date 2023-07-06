@@ -1,4 +1,4 @@
-import { Pet, PetData, PetResponse } from '../../models/Pet';
+import { Pet, PetData, PetResponse, SearchPetsResponse } from '../../models/Pet';
 import { API_PATHS } from '../utils/apiPaths';
 import networkManager from '../utils/axios/NetworkManager';
 
@@ -11,6 +11,19 @@ class PetsServices {
                 .get<PetResponse>(`${API_PATHS.PETS}?page=${page.toString()}&limit=50}`)
                 .then((res) => {
                     resolve(res.data.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
+    getPetsByClient(dni: string): Promise<Pet[]> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<SearchPetsResponse>(`${API_PATHS.PETS_BY_CLIENT}${dni}`)
+                .then((res) => {
+                    resolve(res.data.data.pets);
                 })
                 .catch((error) => {
                     reject(error);

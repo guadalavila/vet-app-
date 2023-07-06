@@ -8,4 +8,5 @@ export const API_PATHS = {
     SEARCH_ONE_CLIENT: 'clients/search/one/',
     VISIT_PET: 'visits/pet/',
     SEARCH_PETS: 'pets/search/',
+    PETS_BY_CLIENT: 'pets/client/',
 };

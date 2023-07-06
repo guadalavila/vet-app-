@@ -15,6 +15,7 @@ interface IFormInputProps {
     required?: boolean;
     width?: string;
     onChangeText: (value: string) => void;
+    secureTextEntry?: boolean;
 }
 
 const FormInput: React.FC<IFormInputProps> = ({
@@ -26,6 +27,7 @@ const FormInput: React.FC<IFormInputProps> = ({
     onlyNumber = false,
     isTextArea = false,
     required = false,
+    secureTextEntry = false,
 }) => {
     const { themeApp } = useContext(ThemeContext);
     return (
@@ -35,6 +37,7 @@ const FormInput: React.FC<IFormInputProps> = ({
                 <CustomText>{required ? ' *' : ''}</CustomText>
             </CustomText>
             <TextInput
+                secureTextEntry={secureTextEntry}
                 focusable
                 editable
                 autoCorrect={false}

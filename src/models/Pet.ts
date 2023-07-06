@@ -24,3 +24,9 @@ export type Pet = {
     createdAt?: string,
     updatedAt?: string,
 };
+
+export type SearchPetsResponse = {
+    data: {
+        pets: Pet[],
+    },
+};

@@ -7,15 +7,16 @@ import CustomText from './CustomText';
 
 interface IItemPetProps {
     pet: Pet;
+    onPress: () => void;
 }
 
-const ItemPet = ({ pet }: IItemPetProps) => {
+const ItemPet = ({ pet, onPress }: IItemPetProps) => {
     return (
-        <TouchableOpacity style={styles.containerPet} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.containerPet} activeOpacity={0.7} onPress={onPress}>
             <Image
                 style={styles.image}
                 source={{
-                    uri: 'https://res.cloudinary.com/deoaxotzs/image/upload/v1631590195/vet-app/pets/feline_ww1mju.png',
+                    uri: pet.imageURL,
                 }}
             />
             <CustomText style={styles.name}>{pet.name}</CustomText>

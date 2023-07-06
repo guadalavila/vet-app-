@@ -3,14 +3,14 @@ import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { UserData } from '../models/UserData';
 
 export const AuthContext = React.createContext<{
-    isAuth: boolean;
-    setIsAuth: React.Dispatch<boolean>;
-    setUser: React.Dispatch<FirebaseAuthTypes.UserCredential>;
-    currentUser: FirebaseAuthTypes.UserCredential | undefined;
-    isLoading: boolean;
-    setIsLoading: React.Dispatch<boolean>;
-    userData: UserData | undefined;
-    setUserData: React.Dispatch<UserData>;
+    isAuth: boolean,
+    setIsAuth: React.Dispatch<boolean>,
+    setUser: React.Dispatch<FirebaseAuthTypes.UserCredential>,
+    currentUser: FirebaseAuthTypes.UserCredential | undefined,
+    isLoading: boolean,
+    setIsLoading: React.Dispatch<boolean>,
+    userData: UserData | undefined,
+    setUserData: React.Dispatch<UserData>,
 }>({
     isAuth: false,
     setIsAuth: () => {},

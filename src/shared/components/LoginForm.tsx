@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
 import { colors } from '../utils/colors';
@@ -7,11 +7,20 @@ import Button from './Button';
 import { GlobalStyles } from '../utils/styles';
 
 interface ILoginFormProps {
-    onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
+    onSubmit: (fields: { [fieldName: string]: string }) => void;
 }
 
 const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm(onSubmit);
+    const [validateForm, setValidateForm] = useState(false);
+
+    useEffect(() => {
+        if (fields.email === '' || fields.password === '' || (fields.password && fields.password.length >= 6)) {
+            setValidateForm(true);
+        } else {
+            setValidateForm(false);
+        }
+    }, [fields]);
 
     return (
         <View style={GlobalStyles.flex1}>
@@ -24,6 +33,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit }) => {
                 />
                 {errors.email && <Text style={styles.error}>{errors.email}</Text>}
                 <FormInput
+                    secureTextEntry
                     required
                     value={fields.password || ''}
                     placeholder='Contraseña'
@@ -32,7 +42,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit }) => {
                 {errors.password && <Text style={styles.error}>{errors.password}</Text>}
             </View>
             <View style={[GlobalStyles.flexCenter, styles.containerButton]}>
-                <Button title='Ingresar' onPress={handleSubmit} />
+                <Button diabled={!validateForm} title='Ingresar' onPress={handleSubmit} />
             </View>
         </View>
     );
@@ -41,18 +51,10 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit }) => {
 export default LoginForm;
 
 const styles = StyleSheet.create({
-    container: {
-        paddingHorizontal: 10,
-    },
     error: {
         color: colors.light.error,
     },
-    bottom: {
-        marginTop: 20,
-        position: 'absolute',
-        bottom: 0,
-        width: '100%',
-    },
+
     containerInputs: {
         flex: 3,
         justifyContent: 'flex-end',

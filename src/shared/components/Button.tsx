@@ -8,12 +8,17 @@ import { typography } from '../utils/typography';
 interface IButtonProps {
     title: string;
     onPress: () => void;
+    diabled?: boolean;
     style?: StyleProp<ViewStyle> | undefined;
 }
 
-const Button = ({ title, onPress, style = {} }: IButtonProps) => {
+const Button = ({ title, onPress, style = {}, diabled }: IButtonProps) => {
     return (
-        <TouchableOpacity style={[styles.button, style]} activeOpacity={0.7} onPress={onPress}>
+        <TouchableOpacity
+            disabled={diabled}
+            style={[styles.button, style, { backgroundColor: !diabled ? colors.light.primary : colors.light.greyDark }]}
+            activeOpacity={0.7}
+            onPress={onPress}>
             <CustomText style={[styles.text]}>{title}</CustomText>
         </TouchableOpacity>
     );

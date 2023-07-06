@@ -80,7 +80,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                     title='Eliminar mascota'
                 /> */}
             </View>
-            <BottomSheet refBottomSheet={bottomSheetRef} height={300}>
+            <BottomSheet refBottomSheet={bottomSheetRef} height={350}>
                 <View style={styles.containerContent}>
                     <Option
                         label='Agregar visita'
@@ -100,6 +100,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                             navigation.navigate('VisitsScreen', { id: pet._id });
                         }}
                     />
+                    <Option label='Editar Mascota' icon='pencil' onPress={() => {}} />
                     <Option label='Ver Detalle Responsable' icon='people' onPress={getDetailOwner} />
                     <Option label='Ver Calendario de vacunas' icon='calendar' onPress={() => {}} />
                     <Option label='Compartir' icon='share' onPress={() => {}} />
