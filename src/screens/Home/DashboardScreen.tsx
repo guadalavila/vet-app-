@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import Container from '../../shared/components/Container';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackLoginParamList } from '../../navigations/types';
@@ -12,6 +12,7 @@ import CustomText from '../../shared/components/CustomText';
 import useDashboard from '../../shared/hooks/useDashboard';
 import { AuthContext } from '../../contexts/AuthContext';
 import Loading from '../../shared/components/Loading';
+import { colors } from '../../shared/utils/colors';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'DashboardScreen'> {}
 
@@ -36,9 +37,9 @@ const DashboardScreen = ({ navigation }: Props) => {
                 iconRight='settings-outline'
                 onPressRight={() => navigation.navigate('SettingScreen')}
             />
-            <CustomText style={[styles.welcomeText, { color: themeApp.colors.secondary }]}>
-                Hola {userData?.user.name}!
-            </CustomText>
+            <View style={styles.containerWelcome}>
+                <CustomText style={[styles.welcomeText]}>Hola {userData?.user.name.split(' ')[0]}!</CustomText>
+            </View>
             <FlatList
                 numColumns={2}
                 data={categories}
@@ -62,6 +63,10 @@ const styles = StyleSheet.create({
     welcomeText: {
         fontSize: typography.size.L,
         marginLeft: size.XL,
+        marginBottom: size.XXL,
+        fontWeight: '600',
+    },
+    containerWelcome: {
         marginBottom: size.XXL,
     },
 });

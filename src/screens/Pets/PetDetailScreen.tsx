@@ -83,7 +83,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             <BottomSheet refBottomSheet={bottomSheetRef} height={350}>
                 <View style={styles.containerContent}>
                     <Option
-                        label='Agregar visita'
+                        label='Agregar Visita'
                         icon='add'
                         onPress={() => {
                             //@ts-ignore

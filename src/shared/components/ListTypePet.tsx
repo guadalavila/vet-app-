@@ -5,6 +5,7 @@ import { colors } from '../utils/colors';
 import { PetType, TYPE_PET } from '../utils/constants';
 import { size } from '../utils/size';
 import { ThemeContext } from '../../contexts/ThemeContext';
+import { GlobalStyles } from '../utils/styles';
 
 interface IListTypePetProps {
     selected: PetType;
@@ -32,6 +33,7 @@ const ListTypePet = ({ selected, setSelected }: IListTypePetProps) => {
                             style={[
                                 { backgroundColor: themeApp.colors.card },
                                 styles.containerColor,
+                                GlobalStyles.shadowCard,
                                 selected.value === item.value ? styles.containerSelected : {},
                             ]}>
                             <Image style={styles.image} source={item.image} />
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
         // backgroundColor: colors.light.input,
         marginHorizontal: size.S,
         marginVertical: size.M,
-        borderRadius: 10,
+        borderRadius: 20,
         padding: size.L,
     },
     image: {
@@ -68,6 +70,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     containerSelected: {
-        backgroundColor: colors.light.primary,
+        borderWidth: 3.5,
+        borderColor: colors.light.primary,
+        // backgroundColor: colors.light.primary,
     },
 });

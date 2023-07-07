@@ -15,7 +15,7 @@ interface IItemCategoryProps {
 
 const ItemCategory = ({ title, onPress, icon, data }: IItemCategoryProps) => {
     return (
-        <TouchableOpacity style={[styles.container, GlobalStyles.shadowCard]} activeOpacity={0.7} onPress={onPress}>
+        <TouchableOpacity style={[GlobalStyles.shadowCard, styles.container]} activeOpacity={0.7} onPress={onPress}>
             <View style={[GlobalStyles.selfCenter, styles.containerIcon]}>
                 <Icon name={icon} size={38} color={colors.light.primary} />
             </View>
@@ -34,10 +34,13 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         margin: size.XS,
         marginHorizontal: size.M,
+        marginBottom: size.XXL,
         paddingTop: size.XXL,
         padding: size.S,
         flex: 1,
         backgroundColor: colors.light.primary,
+        justifyContent: 'space-around',
+        height: 250,
     },
     category: {
         fontSize: typography.size.M,
@@ -53,9 +56,9 @@ const styles = StyleSheet.create({
         padding: size.L,
     },
     count: {
-        fontSize: typography.size.M,
+        fontSize: typography.size.XXXL,
         textAlign: 'center',
-        fontWeight: '500',
+        fontWeight: 'bold',
         marginVertical: size.XL,
         color: colors.light.secondary,
     },

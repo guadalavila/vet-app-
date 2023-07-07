@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         marginHorizontal: size.L,
         marginBottom: size.XXL,
         borderWidth: 1,
-        borderColor: colors.light.white,
+        borderColor: colors.light.black,
         alignSelf: 'center',
         justifyContent: 'center',
     },

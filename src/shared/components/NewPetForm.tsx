@@ -72,13 +72,6 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
                 </View>
                 <ListItemsText items={GENDER} item={genderPet} setItem={setGenderPet} placeholder='Seleccione sexo' />
                 <ListTypePet selected={type} setSelected={setType} />
-                {/* <Dropdown
-                    onSelectItem={(value) => setFieldValue('type', value)}
-                    zIndex={1000}
-                    items={type}
-                    setItems={setType}
-                    placeholder='Especie'
-                /> */}
                 <ListColors colorPet={colorPet} setColorPet={setColorPet} />
                 <FormInput
                     required

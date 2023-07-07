@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Keyboard, StyleSheet, TextInput, View } from 'react-native';
 import { colors } from '../utils/colors';
 import { size } from '../utils/size';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { typography } from '../utils/typography';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 interface ISearchBarProps {
     value: string;
@@ -27,12 +28,18 @@ const SearchBar = ({
         onChangeValue('');
         onCancelSearch && onCancelSearch();
     };
+    const { themeApp } = useContext(ThemeContext);
     return (
         <View style={styles.container}>
-            <View style={clicked ? styles.searchBar__clicked : styles.searchBar__unclicked}>
+            <View
+                style={[
+                    clicked ? styles.searchBar__clicked : styles.searchBar__unclicked,
+                    { backgroundColor: themeApp.colors.backgroundInput },
+                ]}>
                 <Icon name='search' size={20} color={colors.light.greyDark} />
                 <TextInput
-                    style={styles.input}
+                    placeholderTextColor={themeApp.colors.textInput}
+                    style={[styles.input, { color: themeApp.colors.textInput }]}
                     placeholder={placeholder}
                     value={value}
                     onChangeText={onChangeValue}
@@ -62,7 +69,6 @@ const styles = StyleSheet.create({
         padding: size.L,
         flexDirection: 'row',
         width: '100%',
-        backgroundColor: colors.light.white,
         borderRadius: 15,
         alignItems: 'center',
     },
@@ -70,7 +76,6 @@ const styles = StyleSheet.create({
         padding: size.L,
         flexDirection: 'row',
         width: '80%',
-        backgroundColor: colors.light.white,
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'space-evenly',
@@ -79,5 +84,6 @@ const styles = StyleSheet.create({
         fontSize: typography.size.S,
         marginLeft: size.XXL,
         width: '90%',
+        color: 'red',
     },
 });

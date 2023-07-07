@@ -16,6 +16,7 @@ export type ThemeType = {
         textInput: string,
         input: string,
         card: string,
+        backgroundInput: string,
     },
     typography: {
         size: {

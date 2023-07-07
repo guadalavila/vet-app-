@@ -45,7 +45,12 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
                     {client.name} {client.lastName}
                 </CustomText>
                 <CustomText style={[styles.dni]}>DNI {client.dni}</CustomText>
-                <CustomText style={styles.emailText}> {client.email}</CustomText>
+                {client.email && client.email.length > 0 && (
+                    <CustomText style={styles.emailText}> {client.email}</CustomText>
+                )}
+                {client.adress && client.adress.length > 0 && (
+                    <CustomText style={styles.emailText}> {client.adress}</CustomText>
+                )}
                 <TouchableOpacity
                     style={[GlobalStyles.row, styles.containerPhone]}
                     activeOpacity={0.7}
@@ -57,7 +62,7 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
             {pets?.length > 0 && (
                 <>
                     <Title text='Mascotas' />
-                    <Card>
+                    <View style={styles.containerPets}>
                         <FlatList
                             numColumns={2}
                             data={pets}
@@ -69,7 +74,7 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
                             )}
                             keyExtractor={(item) => item._id}
                         />
-                    </Card>
+                    </View>
                 </>
             )}
         </Container>
@@ -120,5 +125,8 @@ const styles = StyleSheet.create({
         marginHorizontal: size.L,
         marginBottom: size.XL,
         textAlign: 'center',
+    },
+    containerPets: {
+        marginHorizontal: size.XXL,
     },
 });

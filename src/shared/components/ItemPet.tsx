@@ -27,7 +27,7 @@ export default ItemPet;
 const styles = StyleSheet.create({
     containerPet: {
         backgroundColor: colors.light.card,
-        borderRadius: 80,
+        borderRadius: 30,
         width: 100,
         height: 100,
         marginHorizontal: size.S,
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         fontSize: typography.size.M,
         textAlign: 'center',
         fontWeight: '600',
-        color: colors.light.primary,
+        color: colors.light.secondary,
         marginBottom: size.M,
     },
 });

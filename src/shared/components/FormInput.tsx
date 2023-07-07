@@ -48,9 +48,9 @@ const FormInput: React.FC<IFormInputProps> = ({
                     styles.input,
                     isTextArea ? styles.textArea : styles.inputText,
                     {
-                        borderColor: themeApp.colors.border,
+                        borderColor: themeApp.colors.backgroundInput,
                         color: themeApp.colors.textInput,
-                        backgroundColor: themeApp.colors.input,
+                        backgroundColor: themeApp.colors.backgroundInput,
                     },
                 ]}
                 value={value}
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: size.XL,
         paddingVertical: size.XXL,
         marginVertical: size.XL,
-        backgroundColor: colors.light.input,
+        // backgroundColor: 'red',
     },
     textArea: {
         height: 100,

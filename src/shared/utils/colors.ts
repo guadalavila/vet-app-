@@ -2,23 +2,26 @@ import { Theme } from 'react-native-calendars/src/types';
 import { typography } from './typography';
 
 const common = {
+    // primary: '#FD9340',
     primary: '#917FB3',
+
     // secondary: '#2A2F4F',
     // tertiary: '#E5BEEC',
     quaternary: '#FDE2F3',
     white: '#FFFFFF',
-    black: '#000000',
+    black: '#2F2F2F',
     error: '#E74C3C',
     grey: '#EEEEEE',
     greySecondary: '#f5f5f5',
     greyDark: '#A3A3A3',
     whatsapp: '#25d366',
     success: '#4E9F3D',
+    teal: '#73B4B0',
 };
 
 const light = {
     ...common,
-    background: '#f0f0f0',
+    background: '#FFFFFF',
     text: '#11100F',
     secondary: '#2A2F4F',
     tertiary: '#E5BEEC',
@@ -29,11 +32,12 @@ const light = {
     textInput: '#515151',
     bottomSheet: '#F1f1f1',
     card: '#D6D6D6',
+    backgroundInput: '#f6f8fe',
 };
 
 const dark = {
     ...common,
-    background: '#2c2c31',
+    background: '#131313',
     text: '#F1F1F1',
     tertiary: '#2A2F4F',
     secondary: '#E5BEEC',
@@ -44,6 +48,7 @@ const dark = {
     textInput: '#DEDEDE',
     bottomSheet: '#71717C',
     card: '#D6D6D6',
+    backgroundInput: '#414141',
 };
 
 export const colors = { light, dark };
