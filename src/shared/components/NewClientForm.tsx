@@ -39,6 +39,12 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit }) => {
                 />
                 {errors.dni && <Text style={styles.error}>{errors.dni}</Text>}
                 <FormInput
+                    value={fields.email || ''}
+                    placeholder='Email'
+                    onChangeText={(value) => setFieldValue('email', value)}
+                />
+                {errors.email && <Text style={styles.error}>{errors.email}</Text>}
+                <FormInput
                     required
                     value={fields.phone || '+54'}
                     placeholder='Teléfono'

@@ -7,37 +7,43 @@ export const CATEGORIES: Categorie[] = [
 ];
 
 export const GENDER = [
-    { label: 'Macho', value: 'male' },
-    { label: 'Hembra', value: 'female' },
-    { label: 'Desconocido', value: 'unknow' },
+    { label: 'Macho', value: 'male', code: '' },
+    { label: 'Hembra', value: 'female', code: '' },
+    { label: 'Desconocido', value: 'unknow', code: '' },
 ];
 
-export const TYPE_PET = [
-    { label: 'Aves', value: 'birds' },
-    { label: 'Canino', value: 'canine' },
-    { label: 'Equino', value: 'equine' },
-    { label: 'Felino', value: 'feline' },
-    { label: 'Huron', value: 'ferret' },
-    { label: 'Insecto', value: 'insect' },
-    { label: 'Roedor', value: 'rodent' },
-    { label: 'Desconocido', value: 'unknown' },
+export type PetType = {
+    label: string,
+    value: string,
+    image: any,
+};
+
+export const TYPE_PET: PetType[] = [
+    { label: 'Canino', value: 'canine', image: require('../../../assets/images/dog.png') },
+    { label: 'Felino', value: 'feline', image: require('../../../assets/images/cat.png') },
+    { label: 'Equino', value: 'equine', image: require('../../../assets/images/horse.png') },
+    { label: 'Aves', value: 'birds', image: require('../../../assets/images/bird.png') },
+    { label: 'Huron', value: 'ferret', image: require('../../../assets/images/ferret.png') },
+    { label: 'Insecto', value: 'insect', image: require('../../../assets/images/insect.png') },
+    { label: 'Roedor', value: 'rodent', image: require('../../../assets/images/mouse.png') },
+    { label: 'Desconocido', value: 'unknown', image: require('../../../assets/images/unknow.png') },
 ];
 
 export const SIZE_PET = [
-    { label: 'Chico', value: 'small' },
-    { label: 'Mediano', value: 'medium' },
-    { label: 'Grande', value: 'big' },
-    { label: 'Otro', value: 'other' },
+    { label: 'Chico', value: 'small', code: 'S' },
+    { label: 'Mediano', value: 'medium', code: 'M' },
+    { label: 'Grande', value: 'big', code: 'XL' },
+    { label: 'Otro', value: 'other', code: '' },
 ];
 
 export const COLOR_PET = [
-    { label: 'Blanco', value: 'Blanco' },
-    { label: 'Negro', value: 'Negro' },
-    { label: 'Marrón', value: 'Marrón' },
-    { label: 'Amarillo', value: 'Amarillo' },
-    { label: 'Gris', value: 'Gris' },
-    { label: 'Rojo', value: 'Rojo' },
-    { label: 'Otro', value: 'Otro' },
+    { label: 'Blanco', value: 'Blanco', code: '#FFFFFF' },
+    { label: 'Negro', value: 'Negro', code: '#000000' },
+    { label: 'Marrón', value: 'Marrón', code: '#734516' },
+    { label: 'Amarillo', value: 'Amarillo', code: '#EED93C' },
+    { label: 'Gris', value: 'Gris', code: '#8C8C8C' },
+    { label: 'Rojo', value: 'Rojo', code: '#8F1818' },
+    { label: 'Otro', value: 'Otro', code: 'transparent' },
 ];
 
 export const CONDITIONS = [

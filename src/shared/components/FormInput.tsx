@@ -32,7 +32,7 @@ const FormInput: React.FC<IFormInputProps> = ({
     const { themeApp } = useContext(ThemeContext);
     return (
         <View style={[styles.container, isTextArea ? styles.textArea : styles.inputText, width && { width: width }]}>
-            <CustomText style={styles.label}>
+            <CustomText style={[isTextArea ? styles.labelTextArea : styles.label]}>
                 {placeholder}
                 <CustomText>{required ? ' *' : ''}</CustomText>
             </CustomText>
@@ -67,11 +67,18 @@ const FormInput: React.FC<IFormInputProps> = ({
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: size.XXL,
-        marginVertical: size.XL,
+        marginVertical: size.M,
     },
     label: {
         fontWeight: 'bold',
         marginBottom: size.L,
+        marginHorizontal: size.S,
+    },
+    labelTextArea: {
+        fontWeight: 'bold',
+        marginHorizontal: size.S,
+        paddingTop: size.XXL,
+        marginBottom: size.S,
     },
     input: {
         borderWidth: 1,
@@ -83,7 +90,8 @@ const styles = StyleSheet.create({
         backgroundColor: colors.light.input,
     },
     textArea: {
-        height: 120,
+        height: 100,
+        marginBottom: 50,
     },
     inputText: {
         // height: 100,

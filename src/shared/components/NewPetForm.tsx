@@ -1,14 +1,18 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
 import Button from './Button';
 import { colors } from '../utils/colors';
-import { COLOR_PET, CONDITIONS, GENDER, SIZE_PET, TYPE_PET } from '../utils/constants';
+import { COLOR_PET, CONDITIONS, GENDER, PetType, SIZE_PET, TYPE_PET } from '../utils/constants';
 import Dropdown from './Dropdown';
 import DropdownMultiple from './DropdownMultiple';
 import Select from './Select';
 import { GlobalStyles } from '../utils/styles';
+import ListColors from './ListColors';
+import ListItemsText from './ListItemsText';
+import { ItemList } from '../../models/ItemList';
+import ListTypePet from './ListTypePet';
 
 interface INewPetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
@@ -17,11 +21,28 @@ interface INewPetFormProps {
 const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm(onSubmit);
     const [gender, setGender] = useState(GENDER);
-    const [type, setType] = useState(TYPE_PET);
+    const [type, setType] = useState<PetType>({
+        ...TYPE_PET[TYPE_PET.length - 1],
+    });
     const [size, setSize] = useState(SIZE_PET);
     const [color, setColor] = useState(COLOR_PET);
     const [conditions, setConditions] = useState(CONDITIONS);
     const [sterilized, setSterilized] = useState(false);
+    const [colorPet, setColorPet] = useState('');
+    const [sizePet, setSizePet] = useState<ItemList>({
+        label: '',
+        value: '',
+        code: '',
+    });
+    const [genderPet, setGenderPet] = useState<ItemList>({
+        label: '',
+        value: '',
+        code: '',
+    });
+
+    useEffect(() => {
+        console.log({ colorPet });
+    }, [colorPet]);
 
     return (
         <View style={GlobalStyles.flex1}>
@@ -49,33 +70,16 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
                     />
                     {errors.chip && <Text style={styles.error}>{errors.chip}</Text>}
                 </View>
-                <Dropdown
+                <ListItemsText items={GENDER} item={genderPet} setItem={setGenderPet} placeholder='Seleccione sexo' />
+                <ListTypePet selected={type} setSelected={setType} />
+                {/* <Dropdown
                     onSelectItem={(value) => setFieldValue('type', value)}
                     zIndex={1000}
                     items={type}
                     setItems={setType}
                     placeholder='Especie'
-                />
-
-                <View style={GlobalStyles.row}>
-                    <Dropdown
-                        width='43%'
-                        onSelectItem={(value) => setFieldValue('size', value)}
-                        zIndex={500}
-                        items={size}
-                        setItems={setSize}
-                        placeholder='Porte'
-                    />
-                    <Dropdown
-                        width='43%'
-                        onSelectItem={(value) => setFieldValue('gender', value)}
-                        zIndex={2000}
-                        items={gender}
-                        setItems={setGender}
-                        placeholder='Sexo'
-                    />
-                </View>
-
+                /> */}
+                <ListColors colorPet={colorPet} setColorPet={setColorPet} />
                 <FormInput
                     required
                     value={fields.race || ''}
@@ -83,14 +87,8 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
                     onChangeText={(value) => setFieldValue('race', value)}
                 />
                 {errors.race && <Text style={styles.error}>{errors.race}</Text>}
+                <ListItemsText items={SIZE_PET} item={sizePet} setItem={setSizePet} placeholder='Seleccione porte' />
 
-                <Dropdown
-                    onSelectItem={(value) => setFieldValue('color', value)}
-                    zIndex={200}
-                    items={color}
-                    setItems={setColor}
-                    placeholder='Color'
-                />
                 <DropdownMultiple
                     onSelectItems={(values) => console.log(values)}
                     zIndex={1000}
@@ -105,7 +103,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
                 />
             </ScrollView>
             <View style={styles.bottom}>
-                <Button title='Agregar Visita' onPress={handleSubmit} />
+                <Button title='Agregar Mascota' onPress={handleSubmit} />
             </View>
         </View>
     );

@@ -15,6 +15,7 @@ export type ThemeType = {
         bottomSheet: string,
         textInput: string,
         input: string,
+        card: string,
     },
     typography: {
         size: {
