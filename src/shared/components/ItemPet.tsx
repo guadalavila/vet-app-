@@ -4,6 +4,9 @@ import { Pet } from '../../models/Pet';
 import { typography } from '../utils/typography';
 import { size } from '../utils/size';
 import CustomText from './CustomText';
+import { TYPE_PET } from '../utils/constants';
+import { colors } from '../utils/colors';
+import { GlobalStyles } from '../utils/styles';
 
 interface IItemPetProps {
     pet: Pet;
@@ -12,13 +15,8 @@ interface IItemPetProps {
 
 const ItemPet = ({ pet, onPress }: IItemPetProps) => {
     return (
-        <TouchableOpacity style={styles.containerPet} activeOpacity={0.7} onPress={onPress}>
-            <Image
-                style={styles.image}
-                source={{
-                    uri: pet.imageURL,
-                }}
-            />
+        <TouchableOpacity style={[styles.containerPet, GlobalStyles.shadowCard]} activeOpacity={0.7} onPress={onPress}>
+            <Image style={styles.image} source={TYPE_PET.find((x) => x.value === pet.type)?.image} />
             <CustomText style={styles.name}>{pet.name}</CustomText>
         </TouchableOpacity>
     );
@@ -28,18 +26,24 @@ export default ItemPet;
 
 const styles = StyleSheet.create({
     containerPet: {
-        borderRadius: 8,
-        width: '50%',
-    },
-    image: {
+        backgroundColor: colors.light.card,
+        borderRadius: 80,
         width: 100,
         height: 100,
+        marginHorizontal: size.S,
+        marginVertical: size.M,
+    },
+    image: {
+        width: 50,
+        height: 50,
         alignSelf: 'center',
+        marginTop: size.M,
     },
     name: {
         fontSize: typography.size.M,
         textAlign: 'center',
         fontWeight: '600',
-        marginVertical: size.M,
+        color: colors.light.primary,
+        marginBottom: size.M,
     },
 });
