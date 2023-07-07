@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import dashboardServices from '../services/DashboardServices';
 import { Categorie } from '../../models/Categorie';
+import { CATEGORIES_DASHBOARD } from '../utils/constants';
 
 const useDashboard = () => {
     const [categories, setCategories] = useState<Categorie[] | []>([]);
@@ -18,9 +19,12 @@ const useDashboard = () => {
         try {
             dashboardServices.getInitialData().then((res) => {
                 setCategories([
-                    { id: 1, name: 'Clientes', page: 'ClientsScreen', icon: 'people-outline', data: res.clients },
-                    { id: 2, name: 'Mascotas', page: 'PetsScreen', icon: 'paw-outline', data: res.pets },
-                    { id: 3, name: 'Visitas', page: 'PetsScreen', icon: 'document-outline', data: res.visits },
+                    { ...CATEGORIES_DASHBOARD[0], data: res.clients },
+                    { ...CATEGORIES_DASHBOARD[1], data: res.pets },
+                    {
+                        ...CATEGORIES_DASHBOARD[2],
+                        data: res.visits,
+                    },
                 ]);
             });
             setIsLoading(false);

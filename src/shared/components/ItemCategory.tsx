@@ -11,11 +11,15 @@ interface IItemCategoryProps {
     data: number;
     icon: string;
     onPress: () => void;
+    height?: number;
 }
 
-const ItemCategory = ({ title, onPress, icon, data }: IItemCategoryProps) => {
+const ItemCategory = ({ title, onPress, icon, data, height = 250 }: IItemCategoryProps) => {
     return (
-        <TouchableOpacity style={[GlobalStyles.shadowCard, styles.container]} activeOpacity={0.7} onPress={onPress}>
+        <TouchableOpacity
+            style={[GlobalStyles.shadowCard, styles.container, { height: height }]}
+            activeOpacity={0.7}
+            onPress={onPress}>
             <View style={[GlobalStyles.selfCenter, styles.containerIcon]}>
                 <Icon name={icon} size={38} color={colors.light.primary} />
             </View>
@@ -40,7 +44,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.light.primary,
         justifyContent: 'space-around',
-        height: 250,
     },
     category: {
         fontSize: typography.size.M,

@@ -118,7 +118,7 @@ class NetworkManager {
         const config: AxiosRequestConfig = {
             headers: {
                 Authorization:
-                    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjEyYWE4ODNkM2UwZDU0NWM3MWVjMTVjIiwiaWF0IjoxNjg4NTU5OTczLCJleHAiOjE2ODg2NDYzNzN9.o2AaiiMffVmpAcf29VN__t-VjGiJqtQns3xSw3ELE1w',
+                    'Bearer',
                 // Cookie: '',
                 ...params,
             },

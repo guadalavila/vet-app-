@@ -59,3 +59,25 @@ export const CONDITIONS = [
     { label: 'Obeso', value: 'Obeso' },
     { label: 'Renal', value: 'Renal' },
 ];
+
+export const CATEGORIES_DASHBOARD = [
+    {
+        id: 1,
+        name: 'Clientes',
+        page: 'ClientsScreen',
+        icon: 'people-outline',
+    },
+    {
+        id: 2,
+        name: 'Mascotas',
+        page: 'PetsScreen',
+        icon: 'paw-outline',
+    },
+    {
+        id: 3,
+        name: 'Visitas',
+        page: 'PetsScreen',
+        icon: 'document-outline',
+        height: 200,
+    },
+];

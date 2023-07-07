@@ -47,6 +47,7 @@ const DashboardScreen = ({ navigation }: Props) => {
                     <ItemCategory
                         data={item.data}
                         icon={item.icon}
+                        height={item.height}
                         title={item.name}
                         onPress={() => navigation.navigate(item.page)}
                     />

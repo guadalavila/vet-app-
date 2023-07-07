@@ -20,7 +20,7 @@ const CardDate = ({ label, date, selectedDate, onSelected, isSelected }: ICardDa
             activeOpacity={0.7}
             style={[styles.button, isSelected ? styles.buttonSelected : styles.buttonNoSelected]}>
             <CustomText style={styles.text}>{label}</CustomText>
-            <CustomText>{formatDate(date)}</CustomText>
+            <CustomText style={styles.date}>{formatDate(date)}</CustomText>
         </TouchableOpacity>
     );
 };
@@ -43,5 +43,11 @@ const styles = StyleSheet.create({
     text: {
         textAlign: 'center',
         marginBottom: size.M,
+        color: colors.light.white,
+    },
+    date: {
+        color: colors.light.white,
+        fontWeight: 'bold',
+        marginBottom: size.L,
     },
 });
