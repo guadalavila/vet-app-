@@ -4,6 +4,7 @@ import { size } from '../utils/size';
 import { colors } from '../utils/colors';
 import CustomText from './CustomText';
 import { ItemList } from '../../models/ItemList';
+import Icon from './Icon';
 
 interface IListItemsTextProps {
     placeholder: string;
@@ -32,6 +33,14 @@ const ListItemsText = ({ placeholder, items, item, setItem }: IListItemsTextProp
                                 { color: item.label === item_.label ? 'white' : colors.light.greyDark },
                             ]}>
                             {item_.label}
+                            {item_.icon && (
+                                <Icon
+                                    name={item_.icon.name}
+                                    type={item_.icon.type}
+                                    color={item.label === item_.label ? colors.light.card : colors.light.primary}
+                                    size={20}
+                                />
+                            )}
                         </CustomText>
                     </TouchableOpacity>
                 ))}

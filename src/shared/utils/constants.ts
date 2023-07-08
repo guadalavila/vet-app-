@@ -1,4 +1,5 @@
 import { Categorie } from '../../models/Categorie';
+import { ItemList } from '../../models/ItemList';
 
 export const CATEGORIES: Categorie[] = [
     { id: 1, name: 'Clientes', page: 'ClientsScreen', icon: 'people-outline', data: 23 },
@@ -6,10 +7,10 @@ export const CATEGORIES: Categorie[] = [
     { id: 3, name: 'Visitas', page: 'PetsScreen', icon: 'document-outline', data: 3 },
 ];
 
-export const GENDER = [
-    { label: 'Macho', value: 'male', code: '' },
-    { label: 'Hembra', value: 'female', code: '' },
-    { label: 'Desconocido', value: 'unknow', code: '' },
+export const GENDER: ItemList[] = [
+    { label: 'Macho', value: 'male', code: '', icon: { name: 'gender-male', type: 'MaterialCommunityIcons' } },
+    { label: 'Hembra', value: 'female', code: '', icon: { name: 'gender-female', type: 'MaterialCommunityIcons' } },
+    // { label: 'Desconocido', value: 'unknow', code: '' },
 ];
 
 export type PetType = {
