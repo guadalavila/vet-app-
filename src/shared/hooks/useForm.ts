@@ -34,6 +34,8 @@ const useForm = (
         // validaciones
         if (form === 'NetPet') {
             validateNewPet();
+        } else if (form === 'Login') {
+            validateLogin();
         }
         // setErrors(formErrors);
 
@@ -68,6 +70,21 @@ const useForm = (
         } else if (!fields.size) {
             setErrors({
                 size: 'Debes seleccionar un tamaño ',
+            });
+        } else {
+            setErrors({});
+            onSubmit(fields);
+        }
+    };
+
+    const validateLogin = () => {
+        if (!fields.email) {
+            setErrors({
+                email: 'Debes ingresar el email',
+            });
+        } else if (!fields.password) {
+            setErrors({
+                password: 'Debes ingresar la contraseña',
             });
         } else {
             setErrors({});

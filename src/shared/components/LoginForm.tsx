@@ -5,6 +5,8 @@ import useForm from '../hooks/useForm';
 import { colors } from '../utils/colors';
 import Button from './Button';
 import { GlobalStyles } from '../utils/styles';
+import { typography } from '../utils/typography';
+import { size } from '../utils/size';
 
 interface ILoginFormProps {
     onSubmit: (fields: { [fieldName: string]: string }) => void;
@@ -31,7 +33,9 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit }) => {
                     placeholder='Email'
                     onChangeText={(value) => setFieldValue('email', value)}
                 />
-                {errors.email && <Text style={styles.error}>{errors.email}</Text>}
+                <View style={styles.marginDefault}>
+                    {errors.email && <Text style={styles.error}>{errors.email}</Text>}
+                </View>
                 <FormInput
                     secureTextEntry
                     required
@@ -39,7 +43,9 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit }) => {
                     placeholder='Contraseña'
                     onChangeText={(value) => setFieldValue('password', value)}
                 />
-                {errors.password && <Text style={styles.error}>{errors.password}</Text>}
+                <View style={styles.marginDefault}>
+                    {errors.password && <Text style={styles.error}>{errors.password}</Text>}
+                </View>
             </View>
             <View style={[GlobalStyles.flexCenter, styles.containerButton]}>
                 <Button diabled={!validateForm} title='Ingresar' onPress={handleSubmit} />
@@ -53,13 +59,17 @@ export default LoginForm;
 const styles = StyleSheet.create({
     error: {
         color: colors.light.error,
+        fontSize: typography.size.S,
+        marginBottom: size.L,
     },
-
     containerInputs: {
         flex: 3,
         justifyContent: 'flex-end',
     },
     containerButton: {
         flex: 2,
+    },
+    marginDefault: {
+        marginHorizontal: size.XXL,
     },
 });
