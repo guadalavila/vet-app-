@@ -66,7 +66,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                     <Title text='Condiciones:' />
                     <View style={styles.containerConditions}>
                         {pet.conditions.map((item) => (
-                            <Badge label={item} color={getConditionColor(item)} />
+                            <Badge key={item} label={item} color={getConditionColor(item)} />
                         ))}
                     </View>
                 </>

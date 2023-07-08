@@ -26,6 +26,12 @@ const PetsScreen = ({ navigation }: Props) => {
     const { result, searchPets, searching, setSearching, emptyResult } = useSearchPets();
 
     useEffect(() => {
+        navigation.addListener('focus', () => {
+            console.log('se debe refrescar');
+        });
+    }, [navigation]);
+
+    useEffect(() => {
         if (textSearch.length >= 3) {
             searchPets(textSearch);
         }

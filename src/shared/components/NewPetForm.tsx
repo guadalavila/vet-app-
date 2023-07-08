@@ -13,20 +13,21 @@ import ListColors from './ListColors';
 import ListItemsText from './ListItemsText';
 import { ItemList } from '../../models/ItemList';
 import ListTypePet from './ListTypePet';
+import SearchBar from './SearchBar';
+import CustomText from './CustomText';
+import { size } from '../utils/size';
+import { typography } from '../utils/typography';
 
 interface INewPetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
 }
 
 const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
-    const { fields, errors, setFieldValue, handleSubmit } = useForm(onSubmit);
-    const [gender, setGender] = useState(GENDER);
+    const { fields, errors, setFieldValue, handleSubmit } = useForm('NetPet', onSubmit);
     const [type, setType] = useState<PetType>({
         ...TYPE_PET[TYPE_PET.length - 1],
     });
-    const [size, setSize] = useState(SIZE_PET);
-    const [color, setColor] = useState(COLOR_PET);
-    const [conditions, setConditions] = useState(CONDITIONS);
+    const [conditions, setConditions] = useState([]);
     const [sterilized, setSterilized] = useState(false);
     const [colorPet, setColorPet] = useState('');
     const [sizePet, setSizePet] = useState<ItemList>({
@@ -39,21 +40,34 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
         value: '',
         code: '',
     });
+    const [dniOwner, setDniOwner] = useState('');
 
     useEffect(() => {
-        console.log({ colorPet });
-    }, [colorPet]);
+        if (dniOwner.length >= 3) {
+            // searchPets(textSearch);
+        }
+    }, [dniOwner]);
 
     return (
         <View style={GlobalStyles.flex1}>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
+                <SearchBar
+                    fullWidth
+                    placeholder='DNI responsable'
+                    value={dniOwner}
+                    onChangeValue={setDniOwner}
+                    clicked
+                    setCLicked={() => {}}
+                />
                 <FormInput
                     required
                     value={fields.name || ''}
                     placeholder='Nombre'
                     onChangeText={(value) => setFieldValue('name', value)}
                 />
-                {errors.name && <Text style={styles.error}>{errors.name}</Text>}
+                <View style={styles.marginDefault}>
+                    {errors.name && <Text style={styles.error}>{errors.name}</Text>}
+                </View>
                 <View style={GlobalStyles.row}>
                     <FormInput
                         width={'43%'}
@@ -61,34 +75,74 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
                         placeholder='Edad'
                         onChangeText={(value) => setFieldValue('age', value)}
                     />
-                    {errors.age && <Text style={styles.error}>{errors.age}</Text>}
                     <FormInput
                         width={'43%'}
                         value={fields.chip || ''}
                         placeholder='Chip'
                         onChangeText={(value) => setFieldValue('chip', value)}
                     />
-                    {errors.chip && <Text style={styles.error}>{errors.chip}</Text>}
                 </View>
-                <ListItemsText items={GENDER} item={genderPet} setItem={setGenderPet} placeholder='Seleccione sexo' />
-                <ListTypePet selected={type} setSelected={setType} />
-                <ListColors colorPet={colorPet} setColorPet={setColorPet} />
+                <View style={styles.marginDefault}>{errors.age && <Text style={styles.error}>{errors.age}</Text>}</View>
+                <ListItemsText
+                    items={GENDER}
+                    item={genderPet}
+                    setItem={(item) => {
+                        setFieldValue('gender', item.value);
+                        setGenderPet(item);
+                    }}
+                    placeholder='Seleccione sexo'
+                />
+                <View style={styles.marginDefault}>
+                    {errors.gender && <Text style={styles.error}>{errors.gender}</Text>}
+                </View>
+                <ListTypePet
+                    selected={type}
+                    setSelected={(item) => {
+                        setType(item);
+                        setFieldValue('type', item.value);
+                    }}
+                />
+                <View style={styles.marginDefault}>
+                    {errors.type && <Text style={styles.error}>{errors.type}</Text>}
+                </View>
+                <ListColors
+                    colorPet={colorPet}
+                    setColorPet={(item) => {
+                        setColorPet(item);
+                        setFieldValue('color', item.value);
+                    }}
+                />
+                <View style={styles.marginDefault}>
+                    {errors.color && <Text style={styles.error}>{errors.color}</Text>}
+                </View>
                 <FormInput
-                    required
                     value={fields.race || ''}
                     placeholder='Raza'
                     onChangeText={(value) => setFieldValue('race', value)}
                 />
-                {errors.race && <Text style={styles.error}>{errors.race}</Text>}
-                <ListItemsText items={SIZE_PET} item={sizePet} setItem={setSizePet} placeholder='Seleccione porte' />
-
-                <DropdownMultiple
-                    onSelectItems={(values) => console.log(values)}
-                    zIndex={1000}
-                    items={conditions}
-                    setItems={setConditions}
-                    placeholder='Condiciones'
+                <ListItemsText
+                    items={SIZE_PET}
+                    item={sizePet}
+                    setItem={(item) => {
+                        setSizePet(item);
+                        setFieldValue('size', item.value);
+                    }}
+                    placeholder='Seleccione porte'
                 />
+                <View style={styles.marginDefault}>
+                    {errors.size && <Text style={styles.error}>{errors.size}</Text>}
+                </View>
+                {/* <DropdownMultiple
+                    onSelectItems={(values) => setFieldValue('conditions', values)}
+                    zIndex={1000}
+                    items={CONDITIONS}
+                    setItems={(list) => {
+                        // setConditions();
+                        // console.log(list);
+                        // setFieldValue('conditions', CONDITIONS);
+                    }}
+                    placeholder='Condiciones'
+                /> */}
                 <Select
                     title='Esterilizado/a'
                     selected={sterilized}
@@ -110,11 +164,16 @@ const styles = StyleSheet.create({
     },
     error: {
         color: colors.light.error,
+        fontSize: typography.size.S,
+        marginBottom: size.L,
     },
     bottom: {
         // marginTop: 20,
         position: 'absolute',
         bottom: 0,
         width: '100%',
+    },
+    marginDefault: {
+        marginHorizontal: size.XXL,
     },
 });

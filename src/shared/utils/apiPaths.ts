@@ -2,6 +2,7 @@ export const API_PATHS = {
     LOGIN: 'auth/login',
     DASHBOARD: 'dashboard',
     PETS: 'pets',
+    PET: 'pet',
     CLIENTS: 'clients',
     CLIENT: 'clients/',
     SEARCH_CLIENTS: 'clients/search/',

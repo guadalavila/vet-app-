@@ -13,6 +13,7 @@ interface ISearchBarProps {
     setCLicked: (value: boolean) => void;
     placeholder?: string;
     onCancelSearch?: () => void;
+    fullWidth?: boolean;
 }
 const SearchBar = ({
     value,
@@ -21,6 +22,7 @@ const SearchBar = ({
     clicked,
     placeholder = 'Buscar...',
     onCancelSearch,
+    fullWidth = false,
 }: ISearchBarProps) => {
     const cancelSearch = () => {
         Keyboard.dismiss();
@@ -33,6 +35,7 @@ const SearchBar = ({
         <View style={styles.container}>
             <View
                 style={[
+                    fullWidth ? styles.fullWidth : styles.width,
                     clicked ? styles.searchBar__clicked : styles.searchBar__unclicked,
                     { backgroundColor: themeApp.colors.backgroundInput },
                 ]}>
@@ -49,7 +52,7 @@ const SearchBar = ({
                     <Icon name='close' size={20} color={colors.light.greyDark} onPress={() => onChangeValue('')} />
                 )}
             </View>
-            {clicked && <Button title='Cancelar' onPress={cancelSearch} />}
+            {clicked && !fullWidth && <Button title='Cancelar' onPress={cancelSearch} />}
         </View>
     );
 };
@@ -67,6 +70,7 @@ const styles = StyleSheet.create({
     },
     searchBar__unclicked: {
         padding: size.L,
+        paddingVertical: size.XL,
         flexDirection: 'row',
         width: '100%',
         borderRadius: 15,
@@ -74,8 +78,9 @@ const styles = StyleSheet.create({
     },
     searchBar__clicked: {
         padding: size.L,
+        paddingVertical: size.XL,
         flexDirection: 'row',
-        width: '80%',
+        // width: '80%',
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'space-evenly',
@@ -85,5 +90,11 @@ const styles = StyleSheet.create({
         marginLeft: size.XXL,
         width: '90%',
         color: 'red',
+    },
+    fullWidth: {
+        width: '100%',
+    },
+    width: {
+        width: '80%',
     },
 });

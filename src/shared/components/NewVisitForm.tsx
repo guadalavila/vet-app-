@@ -20,7 +20,7 @@ interface INewVisitFormProps {
 }
 
 const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit }) => {
-    const { fields, errors, setFieldValue, handleSubmit } = useForm(onSubmit);
+    const { fields, errors, setFieldValue, handleSubmit } = useForm('NewVisit', onSubmit);
     const [showCalendar, setShowCalendar] = useState(false);
     const [dateVisit, setDateVisit] = useState<any>();
     const [selectedValue, setSelectedValue] = useState(new Date());

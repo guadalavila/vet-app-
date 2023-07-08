@@ -12,7 +12,7 @@ interface IFormProps {
 }
 
 const Form = ({ onSubmit }: IFormProps) => {
-    const { fields, errors, setFieldValue, handleSubmit } = useForm(onSubmit);
+    const { fields, errors, setFieldValue, handleSubmit } = useForm('NetPet', onSubmit);
 
     return (
         <View>

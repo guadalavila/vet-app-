@@ -25,6 +25,19 @@ export type Pet = {
     updatedAt?: string,
 };
 
+export type NewPet = {
+    owner: string,
+    name: string,
+    chip: string,
+    type: string,
+    race: string,
+    gender: string,
+    color: string,
+    size: string,
+    age: number,
+    conditions: string[],
+};
+
 export type SearchPetsResponse = {
     data: {
         pets: Pet[],

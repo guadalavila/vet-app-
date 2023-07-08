@@ -11,7 +11,7 @@ interface ILoginFormProps {
 }
 
 const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit }) => {
-    const { fields, errors, setFieldValue, handleSubmit } = useForm(onSubmit);
+    const { fields, errors, setFieldValue, handleSubmit } = useForm('Login', onSubmit);
     const [validateForm, setValidateForm] = useState(false);
 
     useEffect(() => {

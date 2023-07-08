@@ -11,7 +11,7 @@ interface INewClientFormProps {
 }
 
 const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit }) => {
-    const { fields, errors, setFieldValue, handleSubmit } = useForm(onSubmit);
+    const { fields, errors, setFieldValue, handleSubmit } = useForm('NewClient', onSubmit);
 
     return (
         <View style={GlobalStyles.flex1}>
