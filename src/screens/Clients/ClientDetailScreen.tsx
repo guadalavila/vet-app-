@@ -15,6 +15,7 @@ import { Pet } from '../../models/Pet';
 import Card from '../../shared/components/Card';
 import CustomText from '../../shared/components/CustomText';
 import petsServices from '../../shared/services/PetsService';
+import Button from '../../shared/components/Button';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientDetailScreen'> {}
 
@@ -77,6 +78,9 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
                     </View>
                 </>
             )}
+            <View style={styles.button}>
+                <Button onPress={() => navigation.navigate('AddPetScreen')} title='Agregar Mascota' />
+            </View>
         </Container>
     );
 };
@@ -130,5 +134,10 @@ const styles = StyleSheet.create({
         marginHorizontal: size.XXL,
         alignContent: 'center',
         alignSelf: 'center',
+    },
+    button: {
+        position: 'absolute',
+        bottom: 10,
+        width: '100%',
     },
 });

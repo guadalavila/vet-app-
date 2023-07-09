@@ -1,16 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { colors } from '../utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface IFabProps {
     onPress: () => void;
+    icon?: string;
 }
 
-const Fab = ({ onPress }: IFabProps) => {
+const Fab = ({ onPress, icon = 'add' }: IFabProps) => {
     return (
         <TouchableOpacity style={styles.fab} activeOpacity={0.7} onPress={onPress}>
-            <Icon style={styles.icon} name='add' color={colors.light.grey} size={40} />
+            <Icon style={styles.icon} name={icon} color={colors.light.grey} size={40} />
         </TouchableOpacity>
     );
 };

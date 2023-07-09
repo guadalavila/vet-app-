@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     },
     button: {
         position: 'absolute',
-        bottom: 0,
+        bottom: 10,
         width: '100%',
     },
     // buttonDelete: {
