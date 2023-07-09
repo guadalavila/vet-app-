@@ -21,7 +21,7 @@ const Header = ({ title, buttonBack, buttonRight, iconRight, onPressRight }: IHe
     return (
         <View style={[styles.header, { backgroundColor: themeApp.colors.background }]}>
             {buttonBack ? (
-                <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.goBack()}>
+                <TouchableOpacity style={styles.button} activeOpacity={0.7} onPress={() => navigation.goBack()}>
                     <Icon name='arrow-back-outline' size={28} color={colors.dark.primary} />
                 </TouchableOpacity>
             ) : (
