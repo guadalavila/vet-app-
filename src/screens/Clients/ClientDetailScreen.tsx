@@ -61,11 +61,10 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
             </Card>
             {pets?.length > 0 && (
                 <>
-                    <Title text='Mascotas' />
+                    <Title text={'Mascotas (' + pets.length + ')'} />
                     <View style={styles.containerPets}>
                         <FlatList
-                            showsVerticalScrollIndicator={false}
-                            numColumns={2}
+                            horizontal
                             data={pets}
                             renderItem={({ item }) => (
                                 <ItemPet
