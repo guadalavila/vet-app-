@@ -83,7 +83,7 @@ export const CATEGORIES_DASHBOARD = [
     {
         id: 3,
         name: 'Visitas',
-        page: 'PetsScreen',
+        page: 'VisitsListScreen',
         icon: 'document-outline',
         height: 200,
     },

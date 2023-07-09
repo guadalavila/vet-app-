@@ -7,17 +7,14 @@ import Header from '../../shared/components/Header';
 import ItemCategory from '../../shared/components/ItemCategory';
 import { typography } from '../../shared/utils/typography';
 import { size } from '../../shared/utils/size';
-import { ThemeContext } from '../../contexts/ThemeContext';
 import CustomText from '../../shared/components/CustomText';
 import useDashboard from '../../shared/hooks/useDashboard';
 import { AuthContext } from '../../contexts/AuthContext';
 import Loading from '../../shared/components/Loading';
-import { colors } from '../../shared/utils/colors';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'DashboardScreen'> {}
 
 const DashboardScreen = ({ navigation }: Props) => {
-    const { themeApp } = useContext(ThemeContext);
     const { userData } = useContext(AuthContext);
     const { categories, isLoading } = useDashboard();
 
