@@ -5,6 +5,8 @@ import {
     ClientDetailResponse,
     ClientResponse,
     ClientSearchResponse,
+    NewClient,
+    NewClientResponse,
 } from '../../models/Client';
 import { API_PATHS } from '../utils/apiPaths';
 import networkManager from '../utils/axios/NetworkManager';
@@ -15,8 +17,10 @@ class ClientsServices {
     getClients(page: number): Promise<ClientData> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<ClientResponse>(`${API_PATHS.CLIENTS}?page=${page.toString()}&limit=50}`)
+                .get<ClientResponse>(`${API_PATHS.CLIENTS}?page=${page}&limit=20}`)
                 .then((res) => {
+                    console.log({ page });
+                    console.log(res.data);
                     resolve(res.data.data);
                 })
                 .catch((error) => {
@@ -57,6 +61,19 @@ class ClientsServices {
                 .get<ClientDetailResponse>(API_PATHS.SEARCH_ONE_CLIENT.concat(id))
                 .then((res) => {
                     resolve(res.data.data.client);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
+    addClient(client: NewClient): Promise<Client> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .post<NewClientResponse>(API_PATHS.CLIENTS, client)
+                .then((res) => {
+                    resolve(res.data.data);
                 })
                 .catch((error) => {
                     reject(error);

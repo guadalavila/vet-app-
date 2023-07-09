@@ -36,6 +36,8 @@ const useForm = (
             validateNewPet();
         } else if (form === 'Login') {
             validateLogin();
+        } else if (form === 'NewClient') {
+            validateNewClient();
         }
         // setErrors(formErrors);
 
@@ -85,6 +87,29 @@ const useForm = (
         } else if (!fields.password) {
             setErrors({
                 password: 'Debes ingresar la contraseña',
+            });
+        } else {
+            setErrors({});
+            onSubmit(fields);
+        }
+    };
+
+    const validateNewClient = () => {
+        if (!fields.name) {
+            setErrors({
+                name: 'Debes ingresar el nombre',
+            });
+        } else if (!fields.lastName) {
+            setErrors({
+                lastName: 'Debes ingresar un apellido',
+            });
+        } else if (!fields.dni) {
+            setErrors({
+                dni: 'Debes ingresar el DNI',
+            });
+        } else if (!fields.phone) {
+            setErrors({
+                phone: 'Debes ingresar el teléfono',
             });
         } else {
             setErrors({});

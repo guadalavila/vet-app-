@@ -6,7 +6,7 @@ import Container from '../../shared/components/Container';
 import Header from '../../shared/components/Header';
 import NewPetForm from '../../shared/components/NewPetForm';
 import useAddPet from '../../shared/hooks/useAddPet';
-import { NewPet, Pet } from '../../models/Pet';
+import { NewPet } from '../../models/Pet';
 import Loading from '../../shared/components/Loading';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddPetScreen'> {}
@@ -30,11 +30,11 @@ const AddPetScreen = ({ navigation }: Props) => {
                             gender: String(data.gender),
                             type: String(data.type),
                             color: String(data.color),
-                            race: String(data.race),
+                            race: data.race ? String(data.race) : 'Otro',
                             size: String(data.size),
                             conditions: [],
                         };
-                        createPet(pet_).then(() => navigation.navigate('DashboardScreen'));
+                        createPet(pet_).then((res) => navigation.navigate('DashboardScreen'));
                     }}
                 />
             )}

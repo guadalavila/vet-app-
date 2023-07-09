@@ -1,4 +1,4 @@
-import { NewPet, Pet, PetData, PetResponse, SearchPetsResponse } from '../../models/Pet';
+import { NewPet, NewPetResponse, Pet, PetData, PetResponse, SearchPetsResponse } from '../../models/Pet';
 import { API_PATHS } from '../utils/apiPaths';
 import networkManager from '../utils/axios/NetworkManager';
 
@@ -44,12 +44,12 @@ class PetsServices {
         });
     }
 
-    addPet(pet: NewPet): Promise<any> {
+    addPet(pet: NewPet): Promise<Pet> {
         return new Promise((resolve, reject) => {
             networkManager
-                .post<any>(API_PATHS.PETS, pet)
+                .post<NewPetResponse>(API_PATHS.PETS, pet)
                 .then((res) => {
-                    resolve(res.data.data.pets);
+                    resolve(res.data.data);
                 })
                 .catch((error) => {
                     reject(error);

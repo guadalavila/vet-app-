@@ -50,7 +50,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             />
             <View style={{ marginVertical: size.XXL }}>
                 <CustomText style={styles.name}>{pet.name}</CustomText>
-                <CustomText style={styles.race}>{pet.race} </CustomText>
+                {pet.race && <CustomText style={styles.race}>{pet.race} </CustomText>}
             </View>
             <View />
             <View style={[GlobalStyles.rowAround]}>
@@ -84,7 +84,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             </View>
             <View style={[GlobalStyles.rowAround]} />
             <Separator color='transparent' />
-            {pet.conditions.length > 0 && (
+            {pet.conditions && pet.conditions.length > 0 && (
                 <>
                     <Title text='Condiciones:' />
                     <View style={styles.containerConditions}>

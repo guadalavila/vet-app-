@@ -5,6 +5,8 @@ import useForm from '../hooks/useForm';
 import Button from './Button';
 import { colors } from '../utils/colors';
 import { GlobalStyles } from '../utils/styles';
+import { typography } from '../utils/typography';
+import { size } from '../utils/size';
 
 interface INewClientFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
@@ -22,14 +24,18 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit }) => {
                     placeholder='Nombre'
                     onChangeText={(value) => setFieldValue('name', value)}
                 />
-                {errors.name && <Text style={styles.error}>{errors.name}</Text>}
+                <View style={styles.marginDefault}>
+                    {errors.name && <Text style={styles.error}>{errors.name}</Text>}
+                </View>
                 <FormInput
                     required
                     value={fields.lastName || ''}
                     placeholder='Apellido'
                     onChangeText={(value) => setFieldValue('lastName', value)}
                 />
-                {errors.lastName && <Text style={styles.error}>{errors.lastName}</Text>}
+                <View style={styles.marginDefault}>
+                    {errors.lastName && <Text style={styles.error}>{errors.lastName}</Text>}
+                </View>
                 <FormInput
                     required
                     value={fields.dni || ''}
@@ -37,13 +43,12 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit }) => {
                     helperText='Solo números'
                     onChangeText={(value) => setFieldValue('dni', value)}
                 />
-                {errors.dni && <Text style={styles.error}>{errors.dni}</Text>}
+                <View style={styles.marginDefault}>{errors.dni && <Text style={styles.error}>{errors.dni}</Text>}</View>
                 <FormInput
                     value={fields.email || ''}
                     placeholder='Email'
                     onChangeText={(value) => setFieldValue('email', value)}
                 />
-                {errors.email && <Text style={styles.error}>{errors.email}</Text>}
                 <FormInput
                     required
                     value={fields.phone || '+54'}
@@ -51,20 +56,20 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit }) => {
                     helperText='Código de área sin 0'
                     onChangeText={(value) => setFieldValue('phone', value)}
                 />
-                {errors.phone && <Text style={styles.error}>{errors.phone}</Text>}
+                <View style={styles.marginDefault}>
+                    {errors.phone && <Text style={styles.error}>{errors.phone}</Text>}
+                </View>
                 <FormInput
                     value={fields.adress || ''}
                     placeholder='Dirección'
                     onChangeText={(value) => setFieldValue('adress', value)}
                 />
-                {errors.adress && <Text style={styles.error}>{errors.adress}</Text>}
                 <FormInput
                     isTextArea
                     value={fields.comment || ''}
                     placeholder='Comentario'
                     onChangeText={(value) => setFieldValue('comment', value)}
                 />
-                {errors.comment && <Text style={styles.error}>{errors.comment}</Text>}
             </ScrollView>
             <View style={styles.bottom}>
                 <Button title='Agregar Cliente' onPress={handleSubmit} />
@@ -81,11 +86,16 @@ const styles = StyleSheet.create({
     },
     error: {
         color: colors.light.error,
+        fontSize: typography.size.S,
+        marginBottom: size.L,
     },
     bottom: {
         // marginTop: 20,
         position: 'absolute',
         bottom: 0,
         width: '100%',
+    },
+    marginDefault: {
+        marginHorizontal: size.XXL,
     },
 });

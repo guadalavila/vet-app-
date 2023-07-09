@@ -25,6 +25,20 @@ export type Client = {
     updatedAt: string,
 };
 
+export type NewClient = {
+    adress: string,
+    comment: string,
+    dni: string,
+    email: string,
+    lastName: string,
+    name: string,
+    phone: string,
+};
+
+export type NewClientResponse = {
+    data: Client,
+};
+
 export type ClientSearchResponse = {
     data: ClientSearch,
 };

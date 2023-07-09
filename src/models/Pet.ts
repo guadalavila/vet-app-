@@ -38,6 +38,10 @@ export type NewPet = {
     conditions: string[],
 };
 
+export type NewPetResponse = {
+    data: Pet,
+};
+
 export type SearchPetsResponse = {
     data: {
         pets: Pet[],

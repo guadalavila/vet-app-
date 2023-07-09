@@ -29,22 +29,25 @@ const useClients = () => {
     };
 
     const getMoreClients = () => {
+        //TODO
+        //hay un bug cuando hay pocos items
+        console.log('getMoreClients');
         // if (page < Math.round(dataClients.total / dataClients.count)) {
-        setPage(page + 1);
-        setIsLoading(true);
-        try {
-            clientServices.getClients(page).then((res) => {
-                const data: ClientData = {
-                    total: dataClients.total,
-                    count: dataClients.count,
-                    clients: [...res.clients],
-                };
-                setDataClients(data);
-                setIsLoading(false);
-            });
-        } catch (error) {
-            setIsLoading(false);
-        }
+        // setPage(page + 1);
+        // setIsLoading(true);
+        // try {
+        //     clientServices.getClients(page).then((res) => {
+        //         const data: ClientData = {
+        //             total: dataClients.total,
+        //             count: dataClients.count,
+        //             clients: [...res.clients],
+        //         };
+        //         setDataClients(data);
+        //         setIsLoading(false);
+        //     });
+        // } catch (error) {
+        //     setIsLoading(false);
+        // }
         // }
     };
     return { dataClients, isLoading, getMoreClients };
