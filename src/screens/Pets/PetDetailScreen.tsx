@@ -54,7 +54,12 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             </View>
             <View />
             <View style={[GlobalStyles.rowAround]}>
-                <CardValue title='Edad' value={String(pet.age)} valueExtra=' años' icon='calendar-outline' />
+                <CardValue
+                    title='Edad'
+                    value={String(pet.age)}
+                    valueExtra={pet.age === 1 ? ' año' : ' años'}
+                    icon='calendar-outline'
+                />
                 <CardValue title='Tipo' value={getPetType(pet.type)} icon='paw-outline' />
                 <CardCustom
                     title='Sexo'
