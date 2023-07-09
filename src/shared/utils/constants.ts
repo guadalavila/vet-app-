@@ -1,5 +1,6 @@
 import { Categorie } from '../../models/Categorie';
 import { ItemList } from '../../models/ItemList';
+import { colors } from './colors';
 
 export const CATEGORIES: Categorie[] = [
     { id: 1, name: 'Clientes', page: 'ClientsScreen', icon: 'people-outline', data: 23 },
@@ -37,7 +38,12 @@ export const SIZE_PET = [
     { label: 'Otro', value: 'other', code: '' },
 ];
 
-export const COLOR_PET = [
+export type ColorType = {
+    label: string,
+    value: string,
+    code: string,
+};
+export const COLOR_PET: ColorType[] = [
     { label: 'Blanco', value: 'Blanco', code: '#FFFFFF' },
     { label: 'Negro', value: 'Negro', code: '#000000' },
     { label: 'Marrón', value: 'Marrón', code: '#734516' },
@@ -82,3 +88,7 @@ export const CATEGORIES_DASHBOARD = [
         height: 200,
     },
 ];
+
+export const getCodeColor = (name: string) => {
+    return COLOR_PET.find((x) => x.value === name)?.code || colors.light.greyDark;
+};
