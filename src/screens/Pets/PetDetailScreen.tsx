@@ -41,7 +41,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
     return (
         <Container>
             <Header
-                title='Reporte'
+                title='Detalle Mascota'
                 buttonBack
                 buttonRight
                 iconRight='ellipsis-vertical'
@@ -50,7 +50,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             />
             <View style={{ marginVertical: size.XXL }}>
                 <CustomText style={styles.name}>{pet.name}</CustomText>
-                {pet.race && <CustomText style={styles.race}>{pet.race} </CustomText>}
+                {pet.race && <CustomText style={styles.race}>Raza: {pet.race} </CustomText>}
             </View>
             <View />
             <View style={[GlobalStyles.rowAround]}>
@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
         fontSize: typography.size.S,
         textAlign: 'center',
         fontWeight: '600',
+        marginTop: size.M,
     },
     button: {
         position: 'absolute',
