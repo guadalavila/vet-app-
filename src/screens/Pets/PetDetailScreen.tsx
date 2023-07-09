@@ -17,6 +17,10 @@ import Title from '../../shared/components/Title';
 import BottomSheet from '../../shared/components/BottomSheet';
 import Option from '../../shared/components/Option';
 import clientServices from '../../shared/services/ClientsServices';
+import CardCustom from '../../shared/components/CardCustom';
+import ItemColor from '../../shared/components/ItemColor';
+import { getCodeColor } from '../../shared/utils/constants';
+import Icon from '../../shared/components/Icon';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetDetailScreen'> {}
 
@@ -52,10 +56,24 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             <View style={[GlobalStyles.rowAround]}>
                 <CardValue title='Edad' value={String(pet.age)} valueExtra=' años' icon='calendar-outline' />
                 <CardValue title='Tipo' value={getPetType(pet.type)} icon='paw-outline' />
-                <CardValue title='Sexo' value={getPetGender(pet.gender)} icon='male-outline' />
+                <CardCustom
+                    title='Sexo'
+                    value={getPetGender(pet.gender)}
+                    childExtra={
+                        <Icon
+                            type='MaterialCommunityIcons'
+                            name={pet.gender === 'male' ? 'gender-male' : 'gender-female'}
+                            color='white'
+                        />
+                    }
+                />
             </View>
             <View style={[GlobalStyles.rowAround]}>
-                <CardValue title='Color' value={pet.color} icon='color-palette-outline' />
+                <CardCustom
+                    title='Color'
+                    value={pet.color}
+                    childExtra={<ItemColor size={22} color={getCodeColor(pet.color)} />}
+                />
                 <CardValue title='Tamaño' value={getPetSize(pet.size)} icon='trending-up-outline' />
                 <CardValue title='Chip' value={pet.chip === '' ? 'Sin chip' : pet.chip} icon='qr-code-outline' />
             </View>
