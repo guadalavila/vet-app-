@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import React, { useCallback, useContext } from 'react';
+import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
 import Container from '../../shared/components/Container';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackLoginParamList } from '../../navigations/types';
@@ -10,18 +10,26 @@ import { size } from '../../shared/utils/size';
 import CustomText from '../../shared/components/CustomText';
 import useDashboard from '../../shared/hooks/useDashboard';
 import { AuthContext } from '../../contexts/AuthContext';
-import Loading from '../../shared/components/Loading';
+import SkeletonDashboard from '../../shared/components/SkeletonDashboard';
+import { GlobalStyles } from '../../shared/utils/styles';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'DashboardScreen'> {}
 
 const DashboardScreen = ({ navigation }: Props) => {
     const { userData } = useContext(AuthContext);
-    const { categories, isLoading } = useDashboard();
+    const { categories, isLoading, refreshDashboard, refreshing } = useDashboard();
 
-    if (isLoading) {
+    const onRefresh = useCallback(() => {
+        refreshDashboard();
+    }, []);
+
+    if (isLoading || refreshing) {
         return (
             <Container>
-                <Loading />
+                <Header title='Vet App' />
+                <View style={GlobalStyles.flex1}>
+                    <SkeletonDashboard />
+                </View>
             </Container>
         );
     }
@@ -49,6 +57,7 @@ const DashboardScreen = ({ navigation }: Props) => {
                         onPress={() => navigation.navigate(item.page)}
                     />
                 )}
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
                 keyExtractor={(item) => String(item.id)}
             />
         </Container>
