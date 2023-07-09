@@ -64,6 +64,7 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
                     <Title text='Mascotas' />
                     <View style={styles.containerPets}>
                         <FlatList
+                            showsVerticalScrollIndicator={false}
                             numColumns={2}
                             data={pets}
                             renderItem={({ item }) => (
@@ -128,5 +129,7 @@ const styles = StyleSheet.create({
     },
     containerPets: {
         marginHorizontal: size.XXL,
+        alignContent: 'center',
+        alignSelf: 'center',
     },
 });
