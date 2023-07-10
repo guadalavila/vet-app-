@@ -1,5 +1,5 @@
+import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import React, { useEffect, useState } from 'react';
 import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
 import { colors } from '../utils/colors';
@@ -14,16 +14,6 @@ interface ILoginFormProps {
 
 const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('Login', onSubmit);
-    const [validateForm, setValidateForm] = useState(false);
-
-    useEffect(() => {
-        if (fields.email === '' || fields.password === '' || (fields.password && fields.password.length >= 6)) {
-            setValidateForm(true);
-        } else {
-            setValidateForm(false);
-        }
-    }, [fields]);
-
     return (
         <View style={GlobalStyles.flex1}>
             <View style={styles.containerInputs}>
@@ -48,7 +38,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit }) => {
                 </View>
             </View>
             <View style={[GlobalStyles.flexCenter, styles.containerButton]}>
-                <Button diabled={!validateForm} title='Ingresar' onPress={handleSubmit} />
+                <Button title='Ingresar' onPress={handleSubmit} />
             </View>
         </View>
     );

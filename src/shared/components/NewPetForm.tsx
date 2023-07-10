@@ -4,7 +4,7 @@ import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
 import Button from './Button';
 import { colors } from '../utils/colors';
-import { COLOR_PET, CONDITIONS, GENDER, PetType, SIZE_PET, TYPE_PET } from '../utils/constants';
+import { CONDITIONS, GENDER, PetType, SIZE_PET, TYPE_PET } from '../utils/constants';
 import Select from './Select';
 import { GlobalStyles } from '../utils/styles';
 import ListColors from './ListColors';
@@ -18,9 +18,10 @@ import useSearchClients from '../hooks/useSearchClients';
 import ItemClient from './ItemClient';
 import { Client } from '../../models/Client';
 import Loading from './Loading';
+import DropdownMultiple from './DropdownMultiple';
 
 interface INewPetFormProps {
-    onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
+    onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;
     client: Client | undefined;
 }
 
@@ -30,7 +31,6 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
     const [type, setType] = useState<PetType>({
         ...TYPE_PET[TYPE_PET.length - 1],
     });
-    const [conditions, setConditions] = useState([]);
     const [sterilized, setSterilized] = useState(false);
     const [colorPet, setColorPet] = useState('');
     const [sizePet, setSizePet] = useState<ItemList>({
@@ -43,7 +43,6 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
         value: '',
         code: '',
     });
-    const [owner, setOwner] = useState<Client | undefined>(undefined);
     const [dniOwner, setDniOwner] = useState(client?.dni ? client.name.concat(' ').concat(client.lastName) : '');
     const [selectDNI, setSelectDNI] = useState(false);
 
@@ -85,7 +84,6 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
                                     onPress={() => {
                                         setDniOwner(item.name.concat(' ').concat(item.lastName));
                                         setFieldValue('dni', item.dni);
-                                        setOwner(item);
                                         setSelectDNI(true);
                                     }}
                                 />
@@ -167,17 +165,18 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
                 <View style={styles.marginDefault}>
                     {errors.size && <Text style={styles.error}>{errors.size}</Text>}
                 </View>
-                {/* <DropdownMultiple
-                    onSelectItems={(values) => setFieldValue('conditions', values)}
+                <DropdownMultiple
+                    onSelectItems={(values) => {
+                        setFieldValue(
+                            'conditions',
+                            values.map((x) => x.value),
+                        );
+                    }}
                     zIndex={1000}
                     items={CONDITIONS}
-                    setItems={(list) => {
-                        // setConditions();
-                        // console.log(list);
-                        // setFieldValue('conditions', CONDITIONS);
-                    }}
+                    setItems={(list) => {}}
                     placeholder='Condiciones'
-                /> */}
+                />
                 <Select
                     title='Esterilizado/a'
                     selected={sterilized}

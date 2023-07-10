@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { validateEmail } from '../utils/validations';
 
 interface IFormFields {
-    [fieldName: string]: string;
+    [fieldName: string]: any;
 }
 
 interface IFormErrors {
@@ -11,7 +12,7 @@ interface IFormErrors {
 interface IUseFormReturn {
     fields: IFormFields;
     errors: IFormErrors;
-    setFieldValue: (fieldName: string, value: string) => void;
+    setFieldValue: (fieldName: string, value: any) => void;
     handleSubmit: () => void;
 }
 
@@ -22,7 +23,7 @@ const useForm = (
     const [fields, setFields] = useState<IFormFields>({});
     const [errors, setErrors] = useState<IFormErrors>({});
 
-    const setFieldValue = (fieldName: string, value: string) => {
+    const setFieldValue = (fieldName: string, value: any) => {
         setFields((prevFields) => ({
             ...prevFields,
             [fieldName]: value,
@@ -96,6 +97,10 @@ const useForm = (
         if (!fields.email) {
             setErrors({
                 email: 'Debes ingresar el email',
+            });
+        } else if (fields.email && !validateEmail(String(fields.email))) {
+            setErrors({
+                email: 'El formato del email no es válido',
             });
         } else if (!fields.password) {
             setErrors({
