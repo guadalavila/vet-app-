@@ -73,32 +73,27 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
                     setCLicked={() => {}}
                 />
                 {/* <View style={styles.marginDefault}>{errors.dni && <Text style={styles.error}>{errors.dni}</Text>}</View> */}
-                {dniOwner.length > 3 && result && result.length > 0 && !selectDNI && (
-                    <View>
-                        {!searching ? (
-                            <View style={styles.containerListClients}>
-                                <FlatList
-                                    showsVerticalScrollIndicator={false}
-                                    data={result}
-                                    renderItem={({ item }) => (
-                                        <ItemClient
-                                            client={item}
-                                            onPress={() => {
-                                                setDniOwner(item.name.concat(' ').concat(item.lastName));
-                                                setFieldValue('dni', item.dni);
-                                                setOwner(item);
-                                                setSelectDNI(true);
-                                            }}
-                                        />
-                                    )}
-                                    keyExtractor={(item) => item._id}
+                <View style={styles.containerListClients}>
+                    {searching && <Loading />}
+                    {dniOwner.length > 3 && result && result.length > 0 && !selectDNI && (
+                        <FlatList
+                            showsVerticalScrollIndicator={false}
+                            data={result}
+                            renderItem={({ item }) => (
+                                <ItemClient
+                                    client={item}
+                                    onPress={() => {
+                                        setDniOwner(item.name.concat(' ').concat(item.lastName));
+                                        setFieldValue('dni', item.dni);
+                                        setOwner(item);
+                                        setSelectDNI(true);
+                                    }}
                                 />
-                            </View>
-                        ) : (
-                            <Loading />
-                        )}
-                    </View>
-                )}
+                            )}
+                            keyExtractor={(item) => item._id}
+                        />
+                    )}
+                </View>
                 <FormInput
                     required
                     value={fields.name || ''}
