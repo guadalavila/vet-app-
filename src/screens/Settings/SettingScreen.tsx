@@ -1,5 +1,5 @@
+import React, { useContext, useState } from 'react';
 import { StyleSheet } from 'react-native';
-import React, { useContext } from 'react';
 import Container from '../../shared/components/Container';
 import { RootStackLoginParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -9,20 +9,29 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 import Item from '../../shared/components/Item';
 import Separator from '../../shared/components/Separator';
 import useAuth from '../../shared/hooks/useAuth';
+import ModalCustom from '../../shared/components/ModalCustom';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'SettingScreen'> {}
 
 const SettingScreen = ({}: Props) => {
     const { setTheme, theme } = useContext(ThemeContext);
     const { logout } = useAuth();
-
+    const [showModal, setShowModal] = useState(false);
     return (
         <Container>
-            <Header title="Configuración" buttonBack />
+            <Header title='Configuración' buttonBack />
             <Separator />
             <Select title={'Modo Oscuro'} selected={theme === 'dark'} onChangeSelect={setTheme} />
-            <Item label="Cambiar contraseña" onPress={() => {}} />
-            <Item label="Cerrar Sesión" onPress={logout} />
+            <Item label='Cambiar contraseña' onPress={() => {}} />
+            <Item label='Cerrar Sesión' onPress={() => setShowModal(true)} />
+            <ModalCustom
+                title='¿Deseas cerrar sesión?'
+                visible={showModal}
+                confirmButton={'Aceptar'}
+                cancelButton='Cancelar'
+                onConfirmPressed={logout}
+                onCancelPressed={() => setShowModal(false)}
+            />
         </Container>
     );
 };
