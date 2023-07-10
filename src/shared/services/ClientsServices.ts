@@ -19,8 +19,6 @@ class ClientsServices {
             networkManager
                 .get<ClientResponse>(`${API_PATHS.CLIENTS}?page=${page}&limit=20}`)
                 .then((res) => {
-                    console.log({ page });
-                    console.log(res.data);
                     resolve(res.data.data);
                 })
                 .catch((error) => {
@@ -74,6 +72,19 @@ class ClientsServices {
                 .post<NewClientResponse>(API_PATHS.CLIENTS, client)
                 .then((res) => {
                     resolve(res.data.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
+    getClientsByDNI(dni: string): Promise<Client[]> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<ClientSearchResponse>(API_PATHS.SEARCH_CLIENTS.concat(dni))
+                .then((res) => {
+                    resolve(res.data.data.clients);
                 })
                 .catch((error) => {
                     reject(error);

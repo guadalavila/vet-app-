@@ -16,10 +16,20 @@ interface IDropdownProps {
     required?: boolean;
     zIndex?: number;
     width?: string;
+    isOpen?: boolean;
 }
 
-const Dropdown = ({ placeholder, items, setItems, onSelectItem, required, zIndex, width = '92%' }: IDropdownProps) => {
-    const [open, setOpen] = useState(false);
+const Dropdown = ({
+    placeholder,
+    items,
+    setItems,
+    onSelectItem,
+    required,
+    zIndex,
+    width = '92%',
+    isOpen = false,
+}: IDropdownProps) => {
+    const [open, setOpen] = useState(isOpen);
     const [value, setValue] = useState(null);
     const { theme, themeApp } = useContext(ThemeContext);
     return (

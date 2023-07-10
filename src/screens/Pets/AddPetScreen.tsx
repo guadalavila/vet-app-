@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet } from 'react-native';
 import { RootStackLoginParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -11,8 +11,9 @@ import Loading from '../../shared/components/Loading';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddPetScreen'> {}
 
-const AddPetScreen = ({ navigation }: Props) => {
+const AddPetScreen = ({ navigation, route }: Props) => {
     const { createPet, loading } = useAddPet();
+    const client_ = route.params.client;
 
     return (
         <Container>
@@ -21,6 +22,7 @@ const AddPetScreen = ({ navigation }: Props) => {
                 <Loading />
             ) : (
                 <NewPetForm
+                    client={client_}
                     onSubmit={(data) => {
                         const pet_: NewPet = {
                             owner: '',

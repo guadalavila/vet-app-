@@ -88,7 +88,7 @@ const PetsScreen = ({ navigation }: Props) => {
                 </View>
             )}
 
-            <Fab onPress={() => navigation.navigate('AddPetScreen')} />
+            <Fab onPress={() => navigation.navigate('AddPetScreen', { client: undefined })} />
         </Container>
     );
 };

@@ -1,12 +1,10 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, FlatList } from 'react-native';
 import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
 import Button from './Button';
 import { colors } from '../utils/colors';
 import { COLOR_PET, CONDITIONS, GENDER, PetType, SIZE_PET, TYPE_PET } from '../utils/constants';
-import Dropdown from './Dropdown';
-import DropdownMultiple from './DropdownMultiple';
 import Select from './Select';
 import { GlobalStyles } from '../utils/styles';
 import ListColors from './ListColors';
@@ -14,16 +12,21 @@ import ListItemsText from './ListItemsText';
 import { ItemList } from '../../models/ItemList';
 import ListTypePet from './ListTypePet';
 import SearchBar from './SearchBar';
-import CustomText from './CustomText';
 import { size } from '../utils/size';
 import { typography } from '../utils/typography';
+import useSearchClients from '../hooks/useSearchClients';
+import ItemClient from './ItemClient';
+import { Client } from '../../models/Client';
+import Loading from './Loading';
 
 interface INewPetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
+    client: Client | undefined;
 }
 
-const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
+const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NetPet', onSubmit);
+    const { searchClientsByDNI, searching, result } = useSearchClients();
     const [type, setType] = useState<PetType>({
         ...TYPE_PET[TYPE_PET.length - 1],
     });
@@ -40,25 +43,62 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit }) => {
         value: '',
         code: '',
     });
-    const [dniOwner, setDniOwner] = useState('');
+    const [owner, setOwner] = useState<Client | undefined>(undefined);
+    const [dniOwner, setDniOwner] = useState(client?.dni ? client.name.concat(' ').concat(client.lastName) : '');
+    const [selectDNI, setSelectDNI] = useState(false);
 
     useEffect(() => {
-        if (dniOwner.length >= 3) {
+        if (owner && owner?.dni.length >= 3) {
             // searchPets(textSearch);
         }
-    }, [dniOwner]);
+    }, [owner]);
 
     return (
         <View style={GlobalStyles.flex1}>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
                 <SearchBar
+                    editable={client?.dni ? false : true}
                     fullWidth
                     placeholder='DNI responsable'
                     value={dniOwner}
-                    onChangeValue={setDniOwner}
+                    onChangeValue={(value) => {
+                        setDniOwner(value);
+                        if (Number(value) && value.length > 3) {
+                            searchClientsByDNI(value);
+                        } else {
+                            setSelectDNI(false);
+                        }
+                    }}
                     clicked
                     setCLicked={() => {}}
                 />
+                {/* <View style={styles.marginDefault}>{errors.dni && <Text style={styles.error}>{errors.dni}</Text>}</View> */}
+                {dniOwner.length > 3 && result && result.length > 0 && !selectDNI && (
+                    <View>
+                        {!searching ? (
+                            <View style={styles.containerListClients}>
+                                <FlatList
+                                    showsVerticalScrollIndicator={false}
+                                    data={result}
+                                    renderItem={({ item }) => (
+                                        <ItemClient
+                                            client={item}
+                                            onPress={() => {
+                                                setDniOwner(item.name.concat(' ').concat(item.lastName));
+                                                setFieldValue('dni', item.dni);
+                                                setOwner(item);
+                                                setSelectDNI(true);
+                                            }}
+                                        />
+                                    )}
+                                    keyExtractor={(item) => item._id}
+                                />
+                            </View>
+                        ) : (
+                            <Loading />
+                        )}
+                    </View>
+                )}
                 <FormInput
                     required
                     value={fields.name || ''}
@@ -175,5 +215,10 @@ const styles = StyleSheet.create({
     },
     marginDefault: {
         marginHorizontal: size.XXL,
+    },
+    containerListClients: {
+        marginTop: -12,
+        marginHorizontal: size.XXL,
+        borderRadius: 4,
     },
 });

@@ -79,7 +79,10 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
                 </>
             )}
             <View style={styles.button}>
-                <Button onPress={() => navigation.navigate('AddPetScreen')} title='Agregar Mascota' />
+                <Button
+                    onPress={() => navigation.navigate('AddPetScreen', { client: client })}
+                    title='Agregar Mascota'
+                />
             </View>
         </Container>
     );

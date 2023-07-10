@@ -4,6 +4,7 @@ import { Client } from '../../models/Client';
 
 const useSearchClients = () => {
     const [result, setResult] = useState<Client[] | []>([]);
+
     const [searching, setSearching] = useState(false);
     const [emptyResult, setEmptyResult] = useState(false);
 
@@ -18,7 +19,19 @@ const useSearchClients = () => {
         } catch (error) {}
     };
 
-    return { result, searchClients, searching, setSearching, emptyResult };
+    const searchClientsByDNI = (dni: string) => {
+        setSearching(true);
+        setEmptyResult(false);
+        try {
+            clientServices.getClientsByDNI(dni).then((res) => {
+                setResult(res);
+                setSearching(false);
+                if (res.length === 0) setEmptyResult(true);
+            });
+        } catch (error) {}
+    };
+
+    return { result, searchClients, searching, setSearching, emptyResult, searchClientsByDNI };
 };
 
 export default useSearchClients;

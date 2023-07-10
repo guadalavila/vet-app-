@@ -49,6 +49,15 @@ const useForm = (
     };
 
     const validateNewPet = () => {
+        // if (!fields.dni) {
+        //     setErrors({
+        //         dni: 'Debes ingresar el DNI',
+        //     });
+        // } else if (fields.dni && !Number(fields.dni)) {
+        //     setErrors({
+        //         dni: 'El DNI debe ser un valor numérico',
+        //     });
+        // } else
         if (!fields.name) {
             setErrors({
                 name: 'Debes ingresar el nombre',
@@ -56,6 +65,10 @@ const useForm = (
         } else if (!fields.age) {
             setErrors({
                 age: 'Debes ingresar edad',
+            });
+        } else if (fields.age && !Number(fields.age)) {
+            setErrors({
+                age: 'La edad debe ser un valor numérico',
             });
         } else if (!fields.gender) {
             setErrors({
@@ -107,9 +120,17 @@ const useForm = (
             setErrors({
                 dni: 'Debes ingresar el DNI',
             });
+        } else if (fields.dni && !Number(fields.dni)) {
+            setErrors({
+                dni: 'El DNI debe ser un valor numérico',
+            });
         } else if (!fields.phone) {
             setErrors({
                 phone: 'Debes ingresar el teléfono',
+            });
+        } else if (fields.phone && !Number(fields.phone)) {
+            setErrors({
+                phone: 'El teléfono debe ser un valor numérico',
             });
         } else {
             setErrors({});

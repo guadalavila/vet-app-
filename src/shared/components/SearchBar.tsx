@@ -14,6 +14,7 @@ interface ISearchBarProps {
     placeholder?: string;
     onCancelSearch?: () => void;
     fullWidth?: boolean;
+    editable?: boolean;
 }
 const SearchBar = ({
     value,
@@ -23,6 +24,7 @@ const SearchBar = ({
     placeholder = 'Buscar...',
     onCancelSearch,
     fullWidth = false,
+    editable = true,
 }: ISearchBarProps) => {
     const cancelSearch = () => {
         Keyboard.dismiss();
@@ -41,6 +43,7 @@ const SearchBar = ({
                 ]}>
                 <Icon name='search' size={20} color={colors.light.greyDark} />
                 <TextInput
+                    editable={editable}
                     placeholderTextColor={themeApp.colors.textInput}
                     style={[styles.input, { color: themeApp.colors.textInput }]}
                     placeholder={placeholder}
@@ -48,11 +51,11 @@ const SearchBar = ({
                     onChangeText={onChangeValue}
                     onFocus={() => setCLicked(true)}
                 />
-                {clicked && (
+                {editable && clicked && (
                     <Icon name='close' size={20} color={colors.light.greyDark} onPress={() => onChangeValue('')} />
                 )}
             </View>
-            {clicked && !fullWidth && <Button title='Cancelar' onPress={cancelSearch} />}
+            {editable && clicked && !fullWidth && <Button title='Cancelar' onPress={cancelSearch} />}
         </View>
     );
 };
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
         color: 'red',
     },
     fullWidth: {
-        width: '100%',
+        width: '103%',
     },
     width: {
         width: '80%',
