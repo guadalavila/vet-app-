@@ -17,6 +17,14 @@ const common = {
     whatsapp: '#25d366',
     success: '#4E9F3D',
     teal: '#73B4B0',
+    toastErrorLight: '#fdedef',
+    toastSuccessLight: '#ebfbf5',
+    toastWarningLight: '#fff9ea',
+    toastDefaultLight: '#e5fafd',
+    toastError: '#ef4d61',
+    toastSuccess: '#3bd39d',
+    toastWarning: '#fcc12f',
+    toastDefault: '#36d0ea',
 };
 
 const light = {
