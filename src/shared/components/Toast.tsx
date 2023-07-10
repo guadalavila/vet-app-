@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import CustomText from './CustomText';
 import { colors } from '../utils/colors';
@@ -9,9 +9,21 @@ import { GlobalStyles } from '../utils/styles';
 interface IToastProps {
     type: 'success' | 'warning' | 'error' | 'default';
     text: string;
+    position?: 'bottom' | 'top';
+    callback?: () => void;
 }
 
-const Toast = ({ type, text }: IToastProps) => {
+const Toast = ({ type, text, position = 'top', callback }: IToastProps) => {
+    const [isVisible, setIsVisible] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsVisible(false);
+            callback && callback();
+        }, 3500);
+        return () => clearTimeout(timer);
+    }, []);
+
     let customStyles = {
         backgroundColor: colors.light.toastDefaultLight,
     };
@@ -40,14 +52,18 @@ const Toast = ({ type, text }: IToastProps) => {
     }
 
     return (
-        <View style={[styles.container, customStyles]}>
-            <View style={GlobalStyles.row}>
-                <View style={[styles.containerIcon, customIcon]}>
-                    <Icon name='alert-outline' size={30} />
+        <>
+            {isVisible && (
+                <View style={[styles.container, customStyles, position === 'top' ? styles.top : styles.bottom]}>
+                    <View style={GlobalStyles.row}>
+                        <View style={[styles.containerIcon, customIcon]}>
+                            <Icon name='alert-outline' size={30} />
+                        </View>
+                        <CustomText style={styles.text}>{text}</CustomText>
+                    </View>
                 </View>
-                <CustomText style={styles.text}>{text}</CustomText>
-            </View>
-        </View>
+            )}
+        </>
     );
 };
 
@@ -57,12 +73,17 @@ const styles = StyleSheet.create({
     container: {
         position: 'absolute',
         right: 10,
-        bottom: 30,
         left: 10,
         height: 50,
         borderRadius: 10,
         backgroundColor: 'red',
         justifyContent: 'center',
+    },
+    top: {
+        top: 50,
+    },
+    bottom: {
+        bottom: 30,
     },
     text: {
         fontWeight: '600',
