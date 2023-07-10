@@ -17,7 +17,7 @@ const ItemPet = ({ pet, onPress }: IItemPetProps) => {
     return (
         <TouchableOpacity style={[styles.containerPet, GlobalStyles.shadowCard]} activeOpacity={0.7} onPress={onPress}>
             <Image style={styles.image} source={TYPE_PET.find((x) => x.value === pet.type)?.image} />
-            <CustomText style={styles.name}>{pet.name}</CustomText>
+            <CustomText style={styles.name}>{pet.name.split(' ')[0]}</CustomText>
         </TouchableOpacity>
     );
 };
@@ -26,8 +26,8 @@ export default ItemPet;
 
 const styles = StyleSheet.create({
     containerPet: {
-        backgroundColor: colors.light.card,
-        borderRadius: 30,
+        backgroundColor: colors.light.primaryLight,
+        borderRadius: 10,
         width: 100,
         height: 100,
         marginHorizontal: size.S,
@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: '600',
         color: colors.light.secondary,
-        marginBottom: size.M,
+        marginVertical: size.M,
     },
 });
