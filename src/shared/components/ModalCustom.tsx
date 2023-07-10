@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Overlay from './Overlay';
 import CustomText from './CustomText';
 import { colors } from '../utils/colors';
 import { size } from '../utils/size';
 import { typography } from '../utils/typography';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 interface IModalCustomProps {
     title: string;
@@ -25,8 +26,12 @@ const ModalCustom = ({
     onCancelPressed,
     message,
 }: IModalCustomProps) => {
+    const { themeApp } = useContext(ThemeContext);
     return (
-        <Overlay isVisible={visible} backdropStyle={styles.backdrop} overlayStyle={styles.overlay}>
+        <Overlay
+            isVisible={visible}
+            backdropStyle={styles.backdrop}
+            overlayStyle={[styles.overlay, { backgroundColor: themeApp.colors.backgroundInput }]}>
             <View>
                 <View style={styles.containerInfo}>
                     <CustomText style={styles.title}>{title}</CustomText>
@@ -111,6 +116,6 @@ const styles = StyleSheet.create({
     },
     textButtonSecondary: {
         fontSize: typography.size.S,
-        color: colors.light.black,
+        color: colors.light.greyDark,
     },
 });
