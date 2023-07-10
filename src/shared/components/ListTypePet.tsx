@@ -31,9 +31,13 @@ const ListTypePet = ({ selected, setSelected }: IListTypePetProps) => {
                             activeOpacity={0.7}
                             onPress={() => setSelected(item)}
                             style={[
-                                { backgroundColor: themeApp.colors.card },
+                                {
+                                    backgroundColor:
+                                        selected.value === item.value
+                                            ? themeApp.colors.primaryLight
+                                            : themeApp.colors.white,
+                                },
                                 styles.containerColor,
-                                GlobalStyles.shadowCard,
                                 selected.value === item.value ? styles.containerSelected : {},
                             ]}>
                             <Image style={styles.image} source={item.image} />

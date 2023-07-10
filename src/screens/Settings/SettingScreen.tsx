@@ -13,7 +13,7 @@ import ModalCustom from '../../shared/components/ModalCustom';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'SettingScreen'> {}
 
-const SettingScreen = ({}: Props) => {
+const SettingScreen = ({ navigation }: Props) => {
     const { setTheme, theme } = useContext(ThemeContext);
     const { logout } = useAuth();
     const [showModal, setShowModal] = useState(false);
@@ -24,6 +24,8 @@ const SettingScreen = ({}: Props) => {
             <Select title={'Modo Oscuro'} selected={theme === 'dark'} onChangeSelect={setTheme} />
             <Item label='Cambiar contraseña' onPress={() => {}} />
             <Item label='Cerrar Sesión' onPress={() => setShowModal(true)} />
+            <Item label='Administrar Condiciones' onPress={() => navigation.navigate('ConditionsScreen')} />
+
             <ModalCustom
                 title='¿Deseas cerrar sesión?'
                 visible={showModal}

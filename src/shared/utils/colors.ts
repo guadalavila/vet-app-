@@ -4,6 +4,7 @@ import { typography } from './typography';
 const common = {
     // primary: '#FD9340',
     primary: '#917FB3',
+    primaryLight: '#D2C6EA',
 
     // secondary: '#2A2F4F',
     // tertiary: '#E5BEEC',

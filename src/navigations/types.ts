@@ -17,4 +17,5 @@ export type RootStackLoginParamList = {
     AddPetScreen: { client: Client | undefined },
     AddClientScreen: undefined,
     VisitsListScreen: undefined,
+    ConditionsScreen: undefined,
 };

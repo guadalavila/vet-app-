@@ -1,6 +1,7 @@
 export type ThemeType = {
     colors: {
         primary: string,
+        primaryLight: string,
         secondary: string,
         tertiary: string,
         quaternary: string,

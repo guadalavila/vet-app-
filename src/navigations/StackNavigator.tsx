@@ -13,6 +13,7 @@ import AddVisitScreen from '../screens/Visit/AddVisitScreen';
 import AddPetScreen from '../screens/Pets/AddPetScreen';
 import AddClientScreen from '../screens/Clients/AddClientScreen';
 import VisitsListScreen from '../screens/Visit/VisitsListScreen';
+import ConditionsScreen from '../screens/Conditions/ConditionsScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
@@ -39,6 +40,7 @@ export function StackNavigatorLogIn() {
             <StackLoggedIn.Screen name={'AddPetScreen'} component={AddPetScreen} />
             <StackLoggedIn.Screen name={'AddClientScreen'} component={AddClientScreen} />
             <StackLoggedIn.Screen name={'VisitsListScreen'} component={VisitsListScreen} />
+            <StackLoggedIn.Screen name={'ConditionsScreen'} component={ConditionsScreen} />
         </StackLoggedIn.Navigator>
     );
 }
