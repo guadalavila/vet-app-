@@ -48,10 +48,10 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
     const [selectDNI, setSelectDNI] = useState(false);
 
     useEffect(() => {
-        if (owner && owner?.dni.length >= 3) {
-            // searchPets(textSearch);
+        if (client) {
+            setFieldValue('dni', client.dni);
         }
-    }, [owner]);
+    }, [client]);
 
     return (
         <View style={GlobalStyles.flex1}>

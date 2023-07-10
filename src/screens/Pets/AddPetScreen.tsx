@@ -25,7 +25,7 @@ const AddPetScreen = ({ navigation, route }: Props) => {
                     client={client_}
                     onSubmit={(data) => {
                         const pet_: NewPet = {
-                            owner: '',
+                            owner: String(data.dni),
                             name: String(data.name),
                             age: data.age ? Number(data.age) : 0,
                             chip: data.chip ? String(data.chip) : '',
