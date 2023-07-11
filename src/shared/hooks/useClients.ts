@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ClientData } from '../../models/Client';
-import clientServices from '../services/ClientsServices';
+import clientServices from '../../services/ClientsServices';
 
 const useClients = () => {
     const [dataClients, setDataClients] = useState<ClientData>({

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NewClient } from '../../models/Client';
-import clientServices from '../services/ClientsServices';
+import clientServices from '../../services/ClientsServices';
 
 const useAddClient = () => {
     const [loading, setLoading] = useState(false);

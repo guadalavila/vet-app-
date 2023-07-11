@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Client } from '../../models/Client';
-import clientServices from '../services/ClientsServices';
+import clientServices from '../../services/ClientsServices';
 
 const useDetailClient = (id: string) => {
     const [client, setClient] = useState<Client>();

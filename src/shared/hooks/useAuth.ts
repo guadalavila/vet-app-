@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import auth from '@react-native-firebase/auth';
 import { AuthContext } from '../../contexts/AuthContext';
-import authServices from '../services/AuthServices';
+import authServices from '../../services/AuthServices';
 import { ToastContext } from '../../contexts/ToastContext';
 
 const useAuth = () => {

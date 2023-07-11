@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import dashboardServices from '../services/DashboardServices';
+import dashboardServices from '../../services/DashboardServices';
 import { Categorie } from '../../models/Categorie';
 import { CATEGORIES_DASHBOARD } from '../utils/constants';
 

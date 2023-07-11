@@ -1,6 +1,6 @@
-import { NewVisit, NewVisitResponse, Visit, VisitResponse } from '../../models/Visit';
-import { API_PATHS } from '../utils/apiPaths';
-import networkManager from '../utils/axios/NetworkManager';
+import { NewVisit, NewVisitResponse, Visit, VisitResponse } from '../models/Visit';
+import { API_PATHS } from '../shared/utils/apiPaths';
+import networkManager from '../shared/utils/axios/NetworkManager';
 
 class VisitsServices {
     constructor() {}

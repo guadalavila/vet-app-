@@ -7,9 +7,9 @@ import {
     ClientSearchResponse,
     NewClient,
     NewClientResponse,
-} from '../../models/Client';
-import { API_PATHS } from '../utils/apiPaths';
-import networkManager from '../utils/axios/NetworkManager';
+} from '../models/Client';
+import { API_PATHS } from '../shared/utils/apiPaths';
+import networkManager from '../shared/utils/axios/NetworkManager';
 
 class ClientsServices {
     constructor() {}

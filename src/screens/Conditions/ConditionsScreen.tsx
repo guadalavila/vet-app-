@@ -4,7 +4,7 @@ import { RootStackLoginParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Container from '../../shared/components/Container';
 import Header from '../../shared/components/Header';
-import conditionsServices from '../../shared/services/ConditionsServices';
+import conditionsServices from '../../services/ConditionsServices';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ConditionsScreen'> {}
 

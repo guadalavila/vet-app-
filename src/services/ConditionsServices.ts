@@ -1,6 +1,6 @@
-import { Condition, ConditionsDataResponse } from '../../models/Condition';
-import { API_PATHS } from '../utils/apiPaths';
-import networkManager from '../utils/axios/NetworkManager';
+import { Condition, ConditionsDataResponse } from '../models/Condition';
+import { API_PATHS } from '../shared/utils/apiPaths';
+import networkManager from '../shared/utils/axios/NetworkManager';
 
 class ConditionsServices {
     constructor() {}

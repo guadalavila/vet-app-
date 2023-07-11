@@ -1,6 +1,6 @@
-import { UserData, UserDataResponse } from '../../models/UserData';
-import { API_PATHS } from '../utils/apiPaths';
-import networkManager from '../utils/axios/NetworkManager';
+import { UserData, UserDataResponse } from '../models/UserData';
+import { API_PATHS } from '../shared/utils/apiPaths';
+import networkManager from '../shared/utils/axios/NetworkManager';
 
 class AuthServices {
     constructor() {}

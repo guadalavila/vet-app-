@@ -16,7 +16,7 @@ import Badge from '../../shared/components/Badge';
 import Title from '../../shared/components/Title';
 import BottomSheet from '../../shared/components/BottomSheet';
 import Option from '../../shared/components/Option';
-import clientServices from '../../shared/services/ClientsServices';
+import clientServices from '../../services/ClientsServices';
 import CardCustom from '../../shared/components/CardCustom';
 import ItemColor from '../../shared/components/ItemColor';
 import { getCodeColor } from '../../shared/utils/constants';

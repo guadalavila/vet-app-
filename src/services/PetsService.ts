@@ -1,6 +1,6 @@
-import { NewPet, NewPetResponse, Pet, PetData, PetResponse, SearchPetsResponse } from '../../models/Pet';
-import { API_PATHS } from '../utils/apiPaths';
-import networkManager from '../utils/axios/NetworkManager';
+import { NewPet, NewPetResponse, Pet, PetData, PetResponse, SearchPetsResponse } from '../models/Pet';
+import { API_PATHS } from '../shared/utils/apiPaths';
+import networkManager from '../shared/utils/axios/NetworkManager';
 
 class PetsServices {
     constructor() {}

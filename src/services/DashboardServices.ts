@@ -1,6 +1,6 @@
-import { Dashboard, DashboardResponse } from '../../models/Dashboard';
-import { API_PATHS } from '../utils/apiPaths';
-import networkManager from '../utils/axios/NetworkManager';
+import { Dashboard, DashboardResponse } from '../models/Dashboard';
+import { API_PATHS } from '../shared/utils/apiPaths';
+import networkManager from '../shared/utils/axios/NetworkManager';
 
 class DashboardServices {
     constructor() {}

@@ -14,7 +14,7 @@ import Title from '../../shared/components/Title';
 import { Pet } from '../../models/Pet';
 import Card from '../../shared/components/Card';
 import CustomText from '../../shared/components/CustomText';
-import petsServices from '../../shared/services/PetsService';
+import petsServices from '../../services/PetsService';
 import Button from '../../shared/components/Button';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientDetailScreen'> {}

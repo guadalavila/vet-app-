@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import clientServices from '../services/ClientsServices';
+import clientServices from '../../services/ClientsServices';
 import { Client } from '../../models/Client';
 
 const useSearchClients = () => {
