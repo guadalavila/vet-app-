@@ -1,5 +1,7 @@
 import axios from 'axios';
 import Config from 'react-native-config';
+import { removeMultiple } from '../storage/asyncStorage';
+import { STORAGE_KEYS } from '../storage/keys';
 
 export const instance = axios.create({
     baseURL: Config.API_URL,
@@ -8,6 +10,7 @@ export const instance = axios.create({
         'Content-Type': 'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin': '*',
         Accept: 'application/json',
+        channel: Config.CHANNEL,
     },
 });
 
@@ -19,7 +22,8 @@ export const setup = () => {
         async function (error) {
             if (error) {
                 if (error.response && error.response?.status === 401) {
-                    // store.dispatch(setLogout());
+                    await removeMultiple([STORAGE_KEYS.TOKEN, STORAGE_KEYS.USER, STORAGE_KEYS.USER_DATA]);
+                    //TODO desloguearlo dispatch(setLogout());
                 }
                 return Promise.reject(error);
             }
