@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
 import Container from '../../shared/components/Container';
 import Header from '../../shared/components/Header';
 import { RootStackLoginParamList } from '../../navigations/types';
@@ -20,6 +20,8 @@ const PetsScreen = ({ navigation }: Props) => {
         isLoading,
         dataPets: { pets, count, total },
         getMorePets,
+        refreshPets,
+        refreshing,
     } = usePets();
     const [textSearch, setTextSearch] = useState('');
     const [clicked, setClicked] = useState(false);
@@ -38,7 +40,11 @@ const PetsScreen = ({ navigation }: Props) => {
         if (textSearch.length === 0) setSearching(false);
     }, [textSearch]);
 
-    if (isLoading) {
+    const onRefresh = useCallback(() => {
+        refreshPets();
+    }, []);
+
+    if (isLoading || refreshing) {
         return (
             <Container>
                 <Header title='Mascotas' />
@@ -66,6 +72,7 @@ const PetsScreen = ({ navigation }: Props) => {
                     keyExtractor={(item) => item._id}
                     onEndReached={() => getMorePets()}
                     onEndReachedThreshold={0.2}
+                    refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
                 />
             ) : (
                 <View>
@@ -87,7 +94,6 @@ const PetsScreen = ({ navigation }: Props) => {
                     )}
                 </View>
             )}
-
             <Fab onPress={() => navigation.navigate('AddPetScreen', { client: undefined })} />
         </Container>
     );

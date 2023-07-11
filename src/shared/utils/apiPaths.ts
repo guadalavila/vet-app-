@@ -11,4 +11,5 @@ export const API_PATHS = {
     VISIT_PET: 'visits/pet/',
     SEARCH_PETS: 'pets/search/',
     PETS_BY_CLIENT: 'pets/client/',
+    CONDITIONS: 'conditions',
 };

@@ -10,6 +10,7 @@ const usePets = () => {
     });
     const [isLoading, setIsLoading] = useState(false);
     const [page, setPage] = useState(0);
+    const [refreshing, setRefreshing] = useState(false);
 
     useEffect(() => {
         getListPets();
@@ -48,7 +49,19 @@ const usePets = () => {
         }
     };
 
-    return { dataPets, isLoading, getListPets, getMorePets };
+    const refreshPets = () => {
+        setRefreshing(true);
+        try {
+            petsServices.getPets(0).then((res) => {
+                setDataPets(res);
+                setRefreshing(false);
+            });
+        } catch (error) {
+            setRefreshing(false);
+        }
+    };
+
+    return { dataPets, isLoading, getListPets, getMorePets, refreshPets, refreshing };
 };
 
 export default usePets;
