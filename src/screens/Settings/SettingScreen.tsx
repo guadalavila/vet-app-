@@ -23,8 +23,8 @@ const SettingScreen = ({ navigation }: Props) => {
             <Separator />
             <Select title={'Modo Oscuro'} selected={theme === 'dark'} onChangeSelect={setTheme} />
             <Item label='Cambiar contraseña' onPress={() => {}} />
-            <Item label='Cerrar Sesión' onPress={() => setShowModal(true)} />
             <Item label='Administrar Condiciones' onPress={() => navigation.navigate('ConditionsScreen')} />
+            <Item label='Cerrar Sesión' onPress={() => setShowModal(true)} />
 
             <ModalCustom
                 title='¿Deseas cerrar sesión?'
