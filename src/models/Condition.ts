@@ -1,6 +1,8 @@
 export type Condition = {
     name: string,
     description: string,
+    colorCode: string,
+    _id: string,
 };
 
 export type ConditionsDataResponse = {
@@ -9,4 +11,13 @@ export type ConditionsDataResponse = {
         count: number,
         conditions: Condition[],
     },
+};
+
+export type NewCondition = {
+    name: string,
+    description: string,
+};
+
+export type NewConditionResponse = {
+    data: Condition,
 };
