@@ -1,16 +1,16 @@
 export type UserDataResponse = {
-    data: UserData;
+    data: UserData,
 };
 
 export type UserData = {
-    user: User;
-    token: string;
+    user: User,
+    token: string,
 };
 
 type User = {
-    _id: string;
-    email?: string;
-    name: string;
-    imageUrl?: string;
-    role: 'user' | 'admin';
+    _id: string,
+    email?: string,
+    name: string,
+    imageUrl?: string,
+    role: 'user' | 'admin',
 };

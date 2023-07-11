@@ -1,5 +1,7 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { instance } from './setup';
+import { STORAGE_KEYS } from '../storage/keys';
+import { getData } from '../storage/asyncStorage';
 
 class NetworkManager {
     postNoAuth<T>(url: string, data: any, params?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
@@ -112,14 +114,10 @@ class NetworkManager {
     }
 
     private async getTokenAndCookies(params?: any) {
-        // const jwt = (await getData(STORAGE_KEYS.JWT)) ?? '';
-        // const cookies = await getData(STORAGE_KEYS.COOKIES);
-
+        const jwt = (await getData(STORAGE_KEYS.TOKEN)) ?? '';
         const config: AxiosRequestConfig = {
             headers: {
-                Authorization:
-                    'Bearer',
-                // Cookie: '',
+                Authorization: `Bearer ${jwt}`,
                 ...params,
             },
         };
