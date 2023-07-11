@@ -1,14 +1,10 @@
 import React, { useContext } from 'react';
-import { View, TouchableOpacity, Dimensions, StyleSheet, SafeAreaView, Platform } from 'react-native';
-import CustomText from './CustomText';
+import { View, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { colors } from '../utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { getIconByRoute } from '../utils/routes';
 import { size } from '../utils/size';
-import { typography } from '../utils/typography';
 import { ThemeContext } from '../../contexts/ThemeContext';
-
-const windowHeight = Dimensions.get('window').height;
 
 const CustomTabBar = ({ state, navigation, descriptors }: any) => {
     const { themeApp } = useContext(ThemeContext);
@@ -41,15 +37,6 @@ const CustomTabBar = ({ state, navigation, descriptors }: any) => {
                                 size={24}
                                 color={isFocused ? colors.light.primary : colors.light.greyDark}
                             />
-                            <CustomText
-                                style={[
-                                    styles.textIcon,
-                                    { color: themeApp.colors.textInput },
-                                    isFocused && styles.textSelected,
-                                ]}
-                                props={{ numberOfLines: 1 }}>
-                                {label}
-                            </CustomText>
                         </TouchableOpacity>
                     </View>
                 );
@@ -62,32 +49,22 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         position: 'absolute',
-        bottom: 0,
-        height: Platform.OS === 'android' ? windowHeight * 0.1 : windowHeight * 0.11,
-        width: '100%',
-        backgroundColor: colors.light.grey,
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
+        bottom: 16,
+        width: '80%',
+        alignSelf: 'center',
+        borderRadius: 30,
     },
     containerItem: {
         flex: 1,
+        height: '100%',
         justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: size.XXL,
+        width: '80%',
+        borderRadius: 30,
+        marginTop: size.XL,
     },
     icon: {
-        paddingVertical: size.XL,
+        paddingVertical: size.L,
         alignItems: 'center',
-    },
-    textIcon: {
-        marginTop: size.L,
-        color: 'black',
-        fontSize: typography.size.XS,
-    },
-    textSelected: {
-        color: colors.light.primary,
-        fontWeight: '600',
-        fontSize: typography.size.XS,
     },
 });
 
