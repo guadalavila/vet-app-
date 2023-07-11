@@ -14,6 +14,7 @@ import AddPetScreen from '../screens/Pets/AddPetScreen';
 import AddClientScreen from '../screens/Clients/AddClientScreen';
 import VisitsListScreen from '../screens/Visit/VisitsListScreen';
 import ConditionsScreen from '../screens/Conditions/ConditionsScreen';
+import BottomTabScreen from '../screens/BottomTab/BottomTabScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
@@ -28,7 +29,8 @@ export function StackNavigatorLogOut() {
 
 export function StackNavigatorLogIn() {
     return (
-        <StackLoggedIn.Navigator screenOptions={{ headerShown: false }}>
+        <StackLoggedIn.Navigator screenOptions={{ headerShown: false }} initialRouteName='BottomTabScreen'>
+            <StackLoggedIn.Screen name={'BottomTabScreen'} component={BottomTabScreen} />
             <StackLoggedIn.Screen name={'DashboardScreen'} component={DashboardScreen} />
             <StackLoggedIn.Screen name={'ClientsScreen'} component={ClientsScreen} />
             <StackLoggedIn.Screen name={'ClientDetailScreen'} component={ClientDetailScreen} />

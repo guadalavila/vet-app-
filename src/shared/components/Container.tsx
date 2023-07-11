@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ThemeContext } from '../../contexts/ThemeContext';
 
@@ -10,10 +10,12 @@ interface IContainerProps {
 const Container = ({ children }: IContainerProps) => {
     const {
         themeApp: { colors },
+        theme,
     } = useContext(ThemeContext);
     const { top, bottom } = useSafeAreaInsets();
     return (
         <>
+            <StatusBar translucent barStyle={theme === 'dark' ? 'light-content' : 'dark-content'} />
             <View
                 style={[
                     styles.container,

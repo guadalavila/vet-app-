@@ -18,4 +18,12 @@ export type RootStackLoginParamList = {
     AddClientScreen: undefined,
     VisitsListScreen: undefined,
     ConditionsScreen: undefined,
+    BottomTabScreen: undefined,
+};
+
+export type BottomTabStackParamList = {
+    DashboardScreen: undefined,
+    ClientsScreen: undefined,
+    PetsScreen: undefined,
+    SettingScreen: undefined,
 };

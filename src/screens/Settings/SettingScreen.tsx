@@ -19,7 +19,7 @@ const SettingScreen = ({ navigation }: Props) => {
     const [showModal, setShowModal] = useState(false);
     return (
         <Container>
-            <Header title='Configuración' buttonBack />
+            <Header title='Configuración' />
             <Separator />
             <Select title={'Modo Oscuro'} selected={theme === 'dark'} onChangeSelect={setTheme} />
             <Item label='Cambiar contraseña' onPress={() => {}} />

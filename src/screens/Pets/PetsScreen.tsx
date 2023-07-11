@@ -49,7 +49,7 @@ const PetsScreen = ({ navigation }: Props) => {
 
     return (
         <Container>
-            <Header title='Mascotas' buttonBack />
+            <Header title='Mascotas' />
             <SearchBar
                 placeholder='Buscar por nombre mascota o DNI responsable'
                 value={textSearch}

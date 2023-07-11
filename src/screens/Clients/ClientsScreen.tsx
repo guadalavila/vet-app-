@@ -43,7 +43,7 @@ const ClientsScreen = ({ navigation }: Props) => {
 
     return (
         <Container>
-            <Header title='Clientes' buttonBack />
+            <Header title='Clientes' />
             <SearchBar
                 placeholder='Buscar por DNI'
                 value={textSearch}
