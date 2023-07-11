@@ -39,6 +39,8 @@ const useForm = (
             validateLogin();
         } else if (form === 'NewClient') {
             validateNewClient();
+        } else if (form === 'NewVisit') {
+            validateNewVisit();
         }
         // setErrors(formErrors);
 
@@ -136,6 +138,37 @@ const useForm = (
         } else if (fields.phone && !Number(fields.phone)) {
             setErrors({
                 phone: 'El teléfono debe ser un valor numérico',
+            });
+        } else {
+            setErrors({});
+            onSubmit(fields);
+        }
+    };
+
+    const validateNewVisit = () => {
+        if (!fields.date) {
+            setErrors({
+                date: 'Debes ingresar la fecha',
+            });
+        } else if (!fields.weight) {
+            setErrors({
+                weight: 'Debes ingresar el peso',
+            });
+        } else if (fields.weight && !Number(fields.weight)) {
+            setErrors({
+                weight: 'El peso debe ser un valor numérico',
+            });
+        } else if (!fields.temperature) {
+            setErrors({
+                temperature: 'Debes ingresar la temperatura',
+            });
+        } else if (fields.temperature && !Number(fields.temperature)) {
+            setErrors({
+                temperature: 'La temperatura debe ser un valor numérico',
+            });
+        } else if (!fields.anamnestic) {
+            setErrors({
+                anamnestic: 'Debes ingresar anamnésicos',
             });
         } else {
             setErrors({});

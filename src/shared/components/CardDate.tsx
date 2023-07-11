@@ -8,12 +8,11 @@ import { colors } from '../utils/colors';
 interface ICardDateProps {
     label: string;
     date: Date;
-    selectedDate: Date;
     isSelected: boolean;
     onSelected: () => void;
 }
 
-const CardDate = ({ label, date, selectedDate, onSelected, isSelected }: ICardDateProps) => {
+const CardDate = ({ label, date, onSelected, isSelected }: ICardDateProps) => {
     return (
         <TouchableOpacity
             onPress={onSelected}

@@ -1,6 +1,3 @@
-import { Theme } from 'react-native-calendars/src/types';
-import { typography } from './typography';
-
 const common = {
     // primary: '#FD9340',
     primary: '#917FB3',
@@ -62,20 +59,4 @@ const dark = {
 
 export const colors = { light, dark };
 
-export const THEME_CUSTOM_CALENDAR: Theme = {
-    textSectionTitleColor: colors.light.primary,
-    textDayHeaderFontSize: typography.size.M,
-    calendarBackground: colors.light.grey,
-    todayTextColor: colors.light.black,
-    arrowHeight: 50,
-    textMonthFontSize: typography.size.S,
-    textDayHeaderFontWeight: 'bold',
-    arrowColor: colors.light.primary,
-    dayTextColor: colors.light.black,
-    monthTextColor: colors.light.primary,
-    selectedDayTextColor: 'white',
-    selectedDayBackgroundColor: colors.light.primary,
-    textDisabledColor: colors.light.grey,
-
-    // selectedDayBackgroundColor: '#333248',
-};
+// selectedDayBackgroundColor: '#333248',

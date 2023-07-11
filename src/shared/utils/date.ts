@@ -20,3 +20,8 @@ export const isSelectedDate = (dateA: Date, dateB: Date) => {
 export const formatDateCalendar = (date: Date) => {
     return [date.getFullYear(), padTo2Digits(date.getMonth() + 1), padTo2Digits(date.getDate())].join('-');
 };
+
+export const getFirstDayOfMonth = () => {
+    const date = new Date();
+    return new Date(date.getFullYear(), date.getMonth() - 1, 1);
+};

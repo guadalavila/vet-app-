@@ -96,7 +96,10 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             )}
             <View style={styles.button}>
                 <Button onPress={() => navigation.navigate('VisitsScreen', { id: pet._id })} title='Historia clínica' />
-                <Button onPress={() => navigation.navigate('AddVisitScreen')} title='Nueva Visita' />
+                <Button
+                    onPress={() => navigation.navigate('AddVisitScreen', { client: pet.owner, pet: pet._id })}
+                    title='Nueva Visita'
+                />
                 {/* <Button
                     style={styles.buttonDelete}
                     onPress={() => console.log('open modal')}
@@ -111,7 +114,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                         onPress={() => {
                             //@ts-ignore
                             bottomSheetRef.current.close();
-                            navigation.navigate('AddVisitScreen');
+                            navigation.navigate('AddVisitScreen', { client: pet.owner, pet: pet._id });
                         }}
                     />
                     <Option
