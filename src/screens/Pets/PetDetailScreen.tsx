@@ -81,7 +81,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             </View>
 
             <View style={[GlobalStyles.rowAround]}>
-                <CardValue title='Esterilizado' value={pet.sterilized ? 'Si' : 'No'} icon='bandage-outline' />
+                <CardValue title='¿Está Castrado?' value={pet.sterilized ? 'Si' : 'No'} icon='bandage-outline' />
                 <CardCustom
                     title='Color'
                     value={pet.color}
@@ -95,7 +95,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             <Separator color='transparent' />
             {pet.conditions && pet.conditions.length > 0 && (
                 <>
-                    <Title text='Condiciones:' />
+                    <Title text='Patología/s preexistentes:' />
                     <View style={styles.containerConditions}>
                         {pet.conditions.map((item) => (
                             <Badge key={item} label={item} color={getConditionColorCode(item)} />
@@ -104,7 +104,10 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                 </>
             )}
             <View style={styles.button}>
-                <Button onPress={() => navigation.navigate('VisitsScreen', { id: pet._id })} title='Historia clínica' />
+                <Button
+                    onPress={() => navigation.navigate('VisitsScreen', { id: pet._id })}
+                    title='Historial Clínico'
+                />
                 <Button
                     onPress={() => navigation.navigate('AddVisitScreen', { client: pet.owner, pet: pet._id })}
                     title='Nueva Visita'
@@ -127,7 +130,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                         }}
                     />
                     <Option
-                        label='Ver Historia Clinica'
+                        label='Ver Historial Clínico'
                         icon='document'
                         onPress={() => {
                             //@ts-ignore
@@ -136,7 +139,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                         }}
                     />
                     <Option label='Editar Mascota' icon='pencil' onPress={() => {}} />
-                    <Option label='Ver Detalle Responsable' icon='people' onPress={getDetailOwner} />
+                    <Option label='Ver Detalle propietario' icon='people' onPress={getDetailOwner} />
                     <Option label='Ver Calendario de vacunas' icon='calendar' onPress={() => {}} />
                     <Option label='Compartir' icon='share' onPress={() => {}} />
                 </View>

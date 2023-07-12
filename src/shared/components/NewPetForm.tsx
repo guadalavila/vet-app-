@@ -195,7 +195,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
                             : CONDITIONS
                     }
                     setItems={(list) => {}}
-                    placeholder='Condiciones'
+                    placeholder='Patologías preexistentes'
                 />
             </ScrollView>
             <View style={styles.bottom}>

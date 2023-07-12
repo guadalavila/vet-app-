@@ -31,10 +31,10 @@ const ConditionsScreen = ({}: Props) => {
 
     return (
         <Container>
-            <Header title='Condiciones' buttonBack />
+            <Header title='Patologías' buttonBack />
             <View style={styles.containerInformation}>
                 <CustomText style={styles.textInformation}>
-                    En esta sección podrás administrar las precondiciones de una mascota.
+                    En esta sección podrás administrar las patologías preexistentes de una mascota.
                 </CustomText>
             </View>
             {loading ? (
@@ -56,7 +56,7 @@ const ConditionsScreen = ({}: Props) => {
             <ModalInput
                 loading={saving}
                 visible={showModalInput}
-                title={'Agregar Condición'}
+                title={'Agregar Patología'}
                 confirmButton={'Aceptar'}
                 cancelButton={'Cancelar'}
                 onConfirmPressed={(value) => handleAddCondition(value)}

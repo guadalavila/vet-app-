@@ -39,7 +39,7 @@ const ModalInput = ({
                         <View style={styles.containerInfo}>
                             <CustomText style={styles.title}>{title}</CustomText>
                             <TextInput
-                                placeholder={'Ingresá la condición'}
+                                placeholder={'Ingresá..'}
                                 numberOfLines={1}
                                 placeholderTextColor={themeApp.colors.textInput}
                                 style={[

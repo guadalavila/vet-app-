@@ -17,7 +17,7 @@ const VisitsScreen = ({ route }: Props) => {
     if (isLoading) {
         return (
             <Container>
-                <Header title='Historia Clínica' />
+                <Header title='Historial Clínico' />
                 <Skeleton />
             </Container>
         );
@@ -25,7 +25,7 @@ const VisitsScreen = ({ route }: Props) => {
 
     return (
         <Container>
-            <Header title='Historia Clínica' buttonBack />
+            <Header title='Historial Clínico' buttonBack />
             {visits.length > 0 ? (
                 <FlatList
                     data={visits}
