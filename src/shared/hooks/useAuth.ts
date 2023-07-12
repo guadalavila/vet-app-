@@ -5,6 +5,7 @@ import authServices from '../../services/AuthServices';
 import { ToastContext } from '../../contexts/ToastContext';
 import { getData, removeMultiple, setMultiData } from '../utils/storage/asyncStorage';
 import { STORAGE_KEYS } from '../utils/storage/keys';
+import { resetUserProperties, setUserProperties } from '../utils/firebase/analytics';
 
 const useAuth = () => {
     const { setIsAuth, setUser, setIsLoading, isLoading, setUserData } = useContext(AuthContext);
@@ -15,6 +16,7 @@ const useAuth = () => {
         const user = await getData(STORAGE_KEYS.USER);
         const userData = await getData(STORAGE_KEYS.USER_DATA);
         if (user && userData) {
+            setUserProperties({ ...userData.user });
             setIsAuth(true);
             setUser(user);
             setUserData(userData);
@@ -29,6 +31,7 @@ const useAuth = () => {
         try {
             const user = await auth().signInWithEmailAndPassword(email, password);
             const data = await authServices.login(email.toLowerCase(), password);
+            setUserProperties({ ...data.user });
             await setMultiData([
                 [STORAGE_KEYS.USER, user],
                 [STORAGE_KEYS.USER_DATA, data],
@@ -50,6 +53,7 @@ const useAuth = () => {
 
     const logout = async () => {
         await removeMultiple([STORAGE_KEYS.TOKEN, STORAGE_KEYS.USER, STORAGE_KEYS.USER_DATA]);
+        resetUserProperties();
         setIsAuth(false);
     };
 

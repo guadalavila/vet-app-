@@ -7,7 +7,7 @@ export type UserData = {
     token: string,
 };
 
-type User = {
+export type User = {
     _id: string,
     email?: string,
     name: string,

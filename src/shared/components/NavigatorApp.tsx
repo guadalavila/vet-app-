@@ -1,13 +1,16 @@
 import React, { useContext, useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
 import { StackNavigatorLogIn, StackNavigatorLogOut } from '../../navigations/StackNavigator';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ToastContext } from '../../contexts/ToastContext';
 import Toast from './Toast';
 import useAuth from '../hooks/useAuth';
+import { logScreenView } from '../utils/firebase/analytics';
 
 const NavigatorApp = () => {
     const { isAuth } = useContext(AuthContext);
+    const navigationRef = useNavigationContainerRef();
+
     const { restoreUser } = useAuth();
     const {
         resetToast,
@@ -18,9 +21,16 @@ const NavigatorApp = () => {
         restoreUser();
     }, []);
 
+    const _onStateChange = () => {
+        const currentRouteName = navigationRef.getCurrentRoute()?.name;
+        if (currentRouteName) logScreenView(currentRouteName);
+    };
+
     return (
         <>
-            <NavigationContainer>{isAuth ? <StackNavigatorLogIn /> : <StackNavigatorLogOut />}</NavigationContainer>
+            <NavigationContainer ref={navigationRef} onStateChange={async (_state) => _onStateChange()}>
+                {isAuth ? <StackNavigatorLogIn /> : <StackNavigatorLogOut />}
+            </NavigationContainer>
             {isError && <Toast type='error' text={message} callback={resetToast} />}
         </>
     );
