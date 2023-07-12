@@ -70,7 +70,7 @@ export default ConditionsScreen;
 
 const styles = StyleSheet.create({
     containerInformation: {
-        width: '90%',
+        width: '94%',
         backgroundColor: colors.light.primaryLight,
         borderRadius: 10,
         alignSelf: 'center',
