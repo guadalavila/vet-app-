@@ -78,6 +78,7 @@ const ItemDate = ({ onChangeValue }: IItemDateProps) => {
                 </View>
             </View>
             <DatePicker
+                locale={'es'}
                 mode='date'
                 maximumDate={new Date()}
                 minimumDate={getFirstDayOfMonth()}
