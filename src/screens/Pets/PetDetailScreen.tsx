@@ -1,11 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RootStackLoginParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Container from '../../shared/components/Container';
 import CustomText from '../../shared/components/CustomText';
 import Header from '../../shared/components/Header';
-import { getConditionColor, getPetGender, getPetSize, getPetType } from '../../shared/utils/helpers';
+import { getPetGender, getPetSize, getPetType, getRandomColor } from '../../shared/utils/helpers';
 import { typography } from '../../shared/utils/typography';
 import Button from '../../shared/components/Button';
 import Separator from '../../shared/components/Separator';
@@ -21,12 +21,14 @@ import CardCustom from '../../shared/components/CardCustom';
 import ItemColor from '../../shared/components/ItemColor';
 import { getCodeColor } from '../../shared/utils/constants';
 import Icon from '../../shared/components/Icon';
+import { ConditionsContext } from '../../contexts/ConditionsContext';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetDetailScreen'> {}
 
 const PetDetailScreen = ({ route, navigation }: Props) => {
     const pet = route.params.pet;
     const bottomSheetRef = useRef();
+    const { conditionsApp } = useContext(ConditionsContext);
 
     const getDetailOwner = () => {
         try {
@@ -36,6 +38,10 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             //@ts-ignore
             bottomSheetRef.current.close();
         } catch (error) {}
+    };
+
+    const getConditionColorCode = (name: string) => {
+        return conditionsApp.find((x) => name === x.name)?.colorCode ?? getRandomColor();
     };
 
     return (
@@ -89,7 +95,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                     <Title text='Condiciones:' />
                     <View style={styles.containerConditions}>
                         {pet.conditions.map((item) => (
-                            <Badge key={item} label={item} color={getConditionColor(item)} />
+                            <Badge key={item} label={item} color={getConditionColorCode(item)} />
                         ))}
                     </View>
                 </>

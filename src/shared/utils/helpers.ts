@@ -59,3 +59,7 @@ export function getConditionColor(condition: string): string {
     conditionColorMap.set('Renal', '#f56416');
     return conditionColorMap.get(condition);
 }
+
+export const getRandomColor = () => {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+};
