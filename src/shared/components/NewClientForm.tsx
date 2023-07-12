@@ -40,6 +40,7 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit }) => {
                     required
                     value={fields.dni || ''}
                     placeholder='DNI'
+                    keyboardType='number-pad'
                     helperText='Solo números'
                     onChangeText={(value) => setFieldValue('dni', value)}
                 />
@@ -47,12 +48,14 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit }) => {
                 <FormInput
                     value={fields.email || ''}
                     placeholder='Email'
+                    keyboardType='email-address'
                     onChangeText={(value) => setFieldValue('email', value)}
                 />
                 <FormInput
                     required
                     value={fields.phone || '+54'}
                     placeholder='Teléfono'
+                    keyboardType='number-pad'
                     helperText='Código de área sin 0'
                     onChangeText={(value) => setFieldValue('phone', value)}
                 />

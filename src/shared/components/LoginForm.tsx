@@ -21,6 +21,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit }) => {
                     required
                     value={fields.email || ''}
                     placeholder='Email'
+                    keyboardType='email-address'
                     onChangeText={(value) => setFieldValue('email', value)}
                 />
                 <View style={styles.marginDefault}>

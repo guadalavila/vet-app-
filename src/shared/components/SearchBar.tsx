@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Keyboard, StyleSheet, TextInput, View } from 'react-native';
+import { Button, Keyboard, KeyboardType, StyleSheet, TextInput, View } from 'react-native';
 import { colors } from '../utils/colors';
 import { size } from '../utils/size';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -15,6 +15,7 @@ interface ISearchBarProps {
     onCancelSearch?: () => void;
     fullWidth?: boolean;
     editable?: boolean;
+    keyboardType?: KeyboardType;
 }
 const SearchBar = ({
     value,
@@ -25,6 +26,7 @@ const SearchBar = ({
     onCancelSearch,
     fullWidth = false,
     editable = true,
+    keyboardType,
 }: ISearchBarProps) => {
     const cancelSearch = () => {
         Keyboard.dismiss();
@@ -49,6 +51,7 @@ const SearchBar = ({
                     placeholder={placeholder}
                     value={value}
                     onChangeText={onChangeValue}
+                    keyboardType={keyboardType}
                     onFocus={() => setCLicked(true)}
                 />
                 {editable && clicked && (

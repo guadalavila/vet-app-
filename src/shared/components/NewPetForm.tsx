@@ -58,6 +58,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
         <View style={GlobalStyles.flex1}>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
                 <SearchBar
+                    keyboardType='number-pad'
                     editable={client?.dni ? false : true}
                     fullWidth
                     placeholder='DNI responsable'
@@ -108,6 +109,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
                         width={'43%'}
                         value={fields.age || ''}
                         placeholder='Edad'
+                        keyboardType='decimal-pad'
                         onChangeText={(value) => setFieldValue('age', value)}
                     />
                     <FormInput

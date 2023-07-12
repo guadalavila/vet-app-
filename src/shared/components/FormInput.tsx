@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TextInput, StyleSheet, View } from 'react-native';
+import { TextInput, StyleSheet, View, KeyboardType } from 'react-native';
 import { size } from '../utils/size';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import CustomText from './CustomText';
@@ -16,6 +16,7 @@ interface IFormInputProps {
     width?: string;
     onChangeText: (value: string) => void;
     secureTextEntry?: boolean;
+    keyboardType?: KeyboardType;
 }
 
 const FormInput: React.FC<IFormInputProps> = ({
@@ -28,6 +29,7 @@ const FormInput: React.FC<IFormInputProps> = ({
     isTextArea = false,
     required = false,
     secureTextEntry = false,
+    keyboardType,
 }) => {
     const { themeApp } = useContext(ThemeContext);
     return (
@@ -41,6 +43,7 @@ const FormInput: React.FC<IFormInputProps> = ({
                 focusable
                 editable
                 autoCorrect={false}
+                keyboardType={keyboardType}
                 multiline={isTextArea}
                 numberOfLines={isTextArea ? 4 : 2}
                 placeholderTextColor={themeApp.colors.textInput}

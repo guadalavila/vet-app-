@@ -47,6 +47,7 @@ const ClientsScreen = ({ navigation }: Props) => {
             <SearchBar
                 placeholder='Buscar por DNI'
                 value={textSearch}
+                keyboardType='number-pad'
                 onChangeValue={setTextSearch}
                 clicked={clicked}
                 setCLicked={setClicked}
