@@ -69,9 +69,9 @@ class ClientsServices {
     addClient(client: NewClient): Promise<Client> {
         return new Promise((resolve, reject) => {
             networkManager
-                .post<NewClientResponse>(API_PATHS.CLIENTS, client)
+                .post<ClientDetailResponse>(API_PATHS.CLIENTS, client)
                 .then((res) => {
-                    resolve(res.data.data);
+                    resolve(res.data.data.client);
                 })
                 .catch((error) => {
                     reject(error);

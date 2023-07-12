@@ -49,7 +49,7 @@ class PetsServices {
             networkManager
                 .post<NewPetResponse>(API_PATHS.PETS, pet)
                 .then((res) => {
-                    resolve(res.data.data);
+                    resolve(res.data.data.pet);
                 })
                 .catch((error) => {
                     reject(error);

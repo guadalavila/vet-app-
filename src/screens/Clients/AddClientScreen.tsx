@@ -30,7 +30,10 @@ const AddClientScreen = ({ navigation }: Props) => {
                             adress: data.adress ? String(data.adress) : '',
                             comment: data.comment ? String(data.comment) : '',
                         };
-                        createClient(newClient).then((res) => navigation.navigate('DashboardScreen'));
+
+                        createClient(newClient).then((res) =>
+                            navigation.replace('ClientDetailScreen', { client: res }),
+                        );
                     }}
                 />
             )}

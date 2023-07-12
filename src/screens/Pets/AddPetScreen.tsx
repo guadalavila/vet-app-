@@ -37,7 +37,9 @@ const AddPetScreen = ({ navigation, route }: Props) => {
                             conditions: data.conditions ? data.conditions : [],
                             sterilized: data.sterilized === undefined ? 'false' : data.sterilized,
                         };
-                        createPet(pet_).then((res) => navigation.navigate('DashboardScreen'));
+                        createPet(pet_).then((res) => {
+                            navigation.replace('PetDetailScreen', { pet: res });
+                        });
                     }}
                 />
             )}

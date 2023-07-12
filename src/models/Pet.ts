@@ -41,7 +41,9 @@ export type NewPet = {
 };
 
 export type NewPetResponse = {
-    data: Pet,
+    data: {
+        pet: Pet,
+    },
 };
 
 export type SearchPetsResponse = {
