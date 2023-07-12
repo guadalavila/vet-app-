@@ -21,6 +21,7 @@ export type Pet = {
     size: string,
     age: number,
     imageURL: string,
+    sterilized: boolean,
     createdAt?: string,
     updatedAt?: string,
 };
@@ -35,6 +36,7 @@ export type NewPet = {
     color: string,
     size: string,
     age: number,
+    sterilized: boolean,
     conditions: string[],
 };
 

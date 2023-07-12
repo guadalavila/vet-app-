@@ -137,6 +137,11 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
                         setFieldValue('type', item.value);
                     }}
                 />
+                <FormInput
+                    value={fields.race || ''}
+                    placeholder='Raza'
+                    onChangeText={(value) => setFieldValue('race', value)}
+                />
                 <View style={styles.marginDefault}>
                     {errors.type && <Text style={styles.error}>{errors.type}</Text>}
                 </View>
@@ -150,11 +155,6 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
                 <View style={styles.marginDefault}>
                     {errors.color && <Text style={styles.error}>{errors.color}</Text>}
                 </View>
-                <FormInput
-                    value={fields.race || ''}
-                    placeholder='Raza'
-                    onChangeText={(value) => setFieldValue('race', value)}
-                />
                 <ListItemsText
                     items={SIZE_PET}
                     item={sizePet}
@@ -166,6 +166,16 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
                 />
                 <View style={styles.marginDefault}>
                     {errors.size && <Text style={styles.error}>{errors.size}</Text>}
+                </View>
+                <View style={styles.containerSelect}>
+                    <Select
+                        title='Esterilizado/a'
+                        selected={sterilized}
+                        onChangeSelect={() => {
+                            setSterilized(!sterilized);
+                            setFieldValue('sterilized', !sterilized);
+                        }}
+                    />
                 </View>
                 <DropdownMultiple
                     onSelectItems={(values) => {
@@ -184,11 +194,6 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
                     }
                     setItems={(list) => {}}
                     placeholder='Condiciones'
-                />
-                <Select
-                    title='Esterilizado/a'
-                    selected={sterilized}
-                    onChangeSelect={() => setSterilized(!sterilized)}
                 />
             </ScrollView>
             <View style={styles.bottom}>
@@ -222,5 +227,8 @@ const styles = StyleSheet.create({
         marginTop: -12,
         marginHorizontal: size.XXL,
         borderRadius: 4,
+    },
+    containerSelect: {
+        marginVertical: size.XL,
     },
 });

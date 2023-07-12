@@ -35,6 +35,7 @@ const AddPetScreen = ({ navigation, route }: Props) => {
                             race: data.race ? String(data.race) : 'Otro',
                             size: String(data.size),
                             conditions: data.conditions ? data.conditions : [],
+                            sterilized: data.sterilized === undefined ? 'false' : data.sterilized,
                         };
                         createPet(pet_).then((res) => navigation.navigate('DashboardScreen'));
                     }}

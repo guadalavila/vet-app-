@@ -54,7 +54,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                 //@ts-ignore
                 onPressRight={() => bottomSheetRef.current && bottomSheetRef.current.show()}
             />
-            <View style={{ marginVertical: size.XXL }}>
+            <View style={styles.marginInfo}>
                 <CustomText style={styles.name}>{pet.name}</CustomText>
                 {pet.race && <CustomText style={styles.race}>Raza: {pet.race} </CustomText>}
             </View>
@@ -79,15 +79,18 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                     }
                 />
             </View>
+
             <View style={[GlobalStyles.rowAround]}>
+                <CardValue title='Esterilizado' value={pet.sterilized ? 'Si' : 'No'} icon='bandage-outline' />
                 <CardCustom
                     title='Color'
                     value={pet.color}
                     childExtra={<ItemColor size={22} color={getCodeColor(pet.color)} />}
                 />
                 <CardValue title='Tamaño' value={getPetSize(pet.size)} icon='trending-up-outline' />
-                <CardValue title='Chip' value={pet.chip === '' ? 'Sin chip' : pet.chip} icon='qr-code-outline' />
+                {/* <CardValue title='Chip' value={pet.chip === '' ? 'Sin chip' : pet.chip} icon='qr-code-outline' /> */}
             </View>
+
             <View style={[GlobalStyles.rowAround]} />
             <Separator color='transparent' />
             {pet.conditions && pet.conditions.length > 0 && (
@@ -172,5 +175,8 @@ const styles = StyleSheet.create({
     },
     containerContent: {
         marginVertical: size.M,
+    },
+    marginInfo: {
+        marginVertical: size.XXL,
     },
 });
