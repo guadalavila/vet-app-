@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Condition, NewCondition } from '../../models/Condition';
 import conditionsServices from '../../services/ConditionsServices';
+import { ConditionsContext } from '../../contexts/ConditionsContext';
 
 const useConditions = () => {
     const [loading, setLoading] = useState(false);
     const [conditions, setConditions] = useState<Condition[] | []>([]);
     const [saving, setSaving] = useState(false);
+    const { setConditionsApp } = useContext(ConditionsContext);
 
     useEffect(() => {
         getConditions();
@@ -16,6 +18,7 @@ const useConditions = () => {
         try {
             conditionsServices.getConditions().then((res) => {
                 setConditions(res);
+                setConditionsApp(res);
                 setLoading(false);
             });
         } catch (error) {

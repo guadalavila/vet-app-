@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import dashboardServices from '../../services/DashboardServices';
 import { Categorie } from '../../models/Categorie';
 import { CATEGORIES_DASHBOARD } from '../utils/constants';
+import conditionsServices from '../../services/ConditionsServices';
+import { ConditionsContext } from '../../contexts/ConditionsContext';
 
 const useDashboard = () => {
     const [categories, setCategories] = useState<Categorie[] | []>([]);
+    const { setConditionsApp } = useContext(ConditionsContext);
     const [errorDashboard, setErrorDashboard] = useState({
         error: false,
         message: '',
@@ -14,6 +17,7 @@ const useDashboard = () => {
 
     useEffect(() => {
         getInitialData();
+        getConditionsPet();
     }, []);
 
     const getInitialData = () => {
@@ -35,6 +39,16 @@ const useDashboard = () => {
                 message: 'No se pudo obtener datos iniciales.',
             });
             setIsLoading(false);
+        }
+    };
+
+    const getConditionsPet = () => {
+        try {
+            conditionsServices.getConditions().then((res) => {
+                setConditionsApp(res);
+            });
+        } catch (error) {
+            setConditionsApp([]);
         }
     };
 

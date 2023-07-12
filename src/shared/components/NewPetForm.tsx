@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, FlatList } from 'react-native';
 import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
@@ -19,6 +19,7 @@ import ItemClient from './ItemClient';
 import { Client } from '../../models/Client';
 import Loading from './Loading';
 import DropdownMultiple from './DropdownMultiple';
+import { ConditionsContext } from '../../contexts/ConditionsContext';
 
 interface INewPetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;
@@ -28,6 +29,7 @@ interface INewPetFormProps {
 const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NetPet', onSubmit);
     const { searchClientsByDNI, searching, result } = useSearchClients();
+    const { conditionsApp } = useContext(ConditionsContext);
     const [type, setType] = useState<PetType>({
         ...TYPE_PET[TYPE_PET.length - 1],
     });
@@ -173,7 +175,13 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
                         );
                     }}
                     zIndex={1000}
-                    items={CONDITIONS}
+                    items={
+                        conditionsApp.length > 0
+                            ? conditionsApp.map((x) => {
+                                  return { ...x, value: x.name, label: x.name };
+                              })
+                            : CONDITIONS
+                    }
                     setItems={(list) => {}}
                     placeholder='Condiciones'
                 />
