@@ -16,22 +16,28 @@ import Card from '../../shared/components/Card';
 import CustomText from '../../shared/components/CustomText';
 import petsServices from '../../services/PetsService';
 import Button from '../../shared/components/Button';
+import Loading from '../../shared/components/Loading';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientDetailScreen'> {}
 
 const ClientDetailScreen = ({ navigation, route }: Props) => {
     const client = route.params.client;
     const [pets, setPets] = useState<Pet[] | []>([]);
+    const [loading, setLoading] = useState(false);
 
     const getCodeName = () => client.name.charAt(0).concat(client.lastName.charAt(0)).toUpperCase();
 
     useEffect(() => {
         if (client.dni) {
             try {
+                setLoading(true);
                 petsServices.getPetsByClient(client.dni).then((res) => {
                     setPets(res);
+                    setLoading(false);
                 });
-            } catch (error) {}
+            } catch (error) {
+                setLoading(false);
+            }
         }
     }, []);
 
@@ -60,6 +66,7 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
                     <CustomText style={styles.phone}>{client.phone}</CustomText>
                 </TouchableOpacity>
             </Card>
+            {loading && <Loading />}
             {pets?.length > 0 && (
                 <>
                     <Title text={'Mascotas (' + pets.length + ')'} />
