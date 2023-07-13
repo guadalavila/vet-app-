@@ -233,7 +233,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
                 />
             </ScrollView>
             <View style={styles.bottom}>
-                <Button title={isUpdate ? 'Actualizar Mascota' : 'Agregar Mascota'} onPress={handleSubmit} />
+                <Button title={'Guardar'} onPress={handleSubmit} />
             </View>
         </View>
     );

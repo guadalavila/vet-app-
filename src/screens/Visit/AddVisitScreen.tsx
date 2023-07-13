@@ -41,7 +41,6 @@ const AddVisitScreen = ({ route, navigation }: Props) => {
                         }
                     }}
                     initData={currentVisit}
-                    buttonText={!isUpdate ? 'Agregar Visita' : 'Actualizar Visita'}
                 />
             )}
         </Container>

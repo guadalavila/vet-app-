@@ -44,7 +44,6 @@ const AddClientScreen = ({ navigation, route }: Props) => {
                         }
                     }}
                     initData={{ ...currentClient }}
-                    buttonText={isUpdate ? 'Actualizar Cliente' : 'Agregar Cliente'}
                 />
             )}
         </Container>

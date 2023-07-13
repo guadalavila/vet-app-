@@ -26,7 +26,7 @@ const DashboardScreen = ({ navigation }: Props) => {
     if (isLoading || refreshing) {
         return (
             <Container>
-                <Header title='Vet App' />
+                <Header title='Pawsome' />
                 <View style={GlobalStyles.flex1}>
                     <SkeletonDashboard />
                 </View>
@@ -36,7 +36,7 @@ const DashboardScreen = ({ navigation }: Props) => {
 
     return (
         <Container>
-            <Header title='VetTrack' />
+            <Header title='Pawsome' />
             <View style={styles.containerWelcome}>
                 <CustomText style={[styles.welcomeText]}>Hola {userData?.user.name.split(' ')[0]}!</CustomText>
             </View>

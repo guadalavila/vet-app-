@@ -11,10 +11,9 @@ import { size } from '../utils/size';
 interface INewClientFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
     initData?: { [fieldName: string]: string | boolean | Date };
-    buttonText?: string;
 }
 
-const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData, buttonText = 'Agregar Cliente' }) => {
+const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NewClient', onSubmit);
 
     useEffect(() => {
@@ -95,7 +94,7 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData, butt
                 />
             </ScrollView>
             <View style={styles.bottom}>
-                <Button title={buttonText} onPress={handleSubmit} />
+                <Button title={'Guardar'} onPress={handleSubmit} />
             </View>
         </View>
     );

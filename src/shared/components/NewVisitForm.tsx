@@ -14,10 +14,9 @@ import { Visit } from '../../models/Visit';
 interface INewVisitFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
     initData?: Visit;
-    buttonText?: string;
 }
 
-const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData, buttonText = 'Agregar Visita' }) => {
+const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NewVisit', onSubmit);
 
     useEffect(() => {
@@ -95,7 +94,7 @@ const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData, button
                 />
             </ScrollView>
             <View style={styles.bottom}>
-                <Button title={buttonText} onPress={handleSubmit} />
+                <Button title={'Guardar'} onPress={handleSubmit} />
             </View>
         </View>
     );
