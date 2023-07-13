@@ -10,13 +10,13 @@ interface IFormInputProps {
     value: string;
     placeholder: string;
     helperText?: string;
-    onlyNumber?: boolean;
     isTextArea?: boolean;
     required?: boolean;
     width?: string;
     onChangeText: (value: string) => void;
     secureTextEntry?: boolean;
     keyboardType?: KeyboardType;
+    editable?: boolean;
 }
 
 const FormInput: React.FC<IFormInputProps> = ({
@@ -25,11 +25,11 @@ const FormInput: React.FC<IFormInputProps> = ({
     onChangeText,
     helperText,
     width,
-    onlyNumber = false,
     isTextArea = false,
     required = false,
     secureTextEntry = false,
     keyboardType,
+    editable = true,
 }) => {
     const { themeApp } = useContext(ThemeContext);
     return (
@@ -41,7 +41,7 @@ const FormInput: React.FC<IFormInputProps> = ({
             <TextInput
                 secureTextEntry={secureTextEntry}
                 focusable
-                editable
+                editable={editable}
                 autoCorrect={false}
                 keyboardType={keyboardType}
                 multiline={isTextArea}

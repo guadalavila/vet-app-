@@ -43,7 +43,13 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
 
     return (
         <Container>
-            <Header title={''} buttonBack />
+            <Header
+                title={''}
+                buttonBack
+                buttonRight
+                onPressRight={() => navigation.replace('AddClientScreen', { isUpdate: true, client: client })}
+                iconRight='pencil-outline'
+            />
             <Card>
                 <View style={styles.containerAvatar}>
                     <Text style={styles.textAvatar}>{getCodeName()}</Text>

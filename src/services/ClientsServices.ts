@@ -91,6 +91,19 @@ class ClientsServices {
                 });
         });
     }
+
+    updateClient(client: any): Promise<Client> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .patch<ClientDetailResponse>(API_PATHS.CLIENT.concat(client._id), client)
+                .then((res) => {
+                    resolve(res.data.data.client);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
 }
 const clientServices = new ClientsServices();
 export default clientServices;

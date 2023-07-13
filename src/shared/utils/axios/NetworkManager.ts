@@ -90,6 +90,30 @@ class NetworkManager {
         });
     }
 
+    patch<T>(url: string, data: any, config = {}): Promise<AxiosResponse<T>> {
+        return new Promise<AxiosResponse<T>>(async (resolve, reject) => {
+            try {
+                const configTkn = await this.getTokenAndCookies();
+                instance
+                    .patch(url, data, { ...config, ...configTkn })
+                    .then((response) => {
+                        resolve(response);
+                    })
+                    .catch((error) => {
+                        if (error.response?.status === 401) {
+                            reject('Authorization Failed');
+                        } else {
+                            reject(error.response?.data.message);
+                        }
+                        // reject('Ocurrió un error. Por favor, intentá nuevamente más tarde.');
+                    });
+            } catch (e) {
+                reject(e);
+            }
+        });
+    }
+
+
     delete<T>(url: string, config: {}): Promise<AxiosResponse<T>> {
         return new Promise<AxiosResponse<T>>(async (resolve, reject) => {
             try {

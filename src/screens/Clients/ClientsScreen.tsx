@@ -86,7 +86,7 @@ const ClientsScreen = ({ navigation }: Props) => {
                     )}
                 </View>
             )}
-            <Fab onPress={() => navigation.navigate('AddClientScreen')} />
+            <Fab onPress={() => navigation.navigate('AddClientScreen', { isUpdate: false })} />
         </Container>
     );
 };

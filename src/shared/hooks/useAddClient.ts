@@ -19,6 +19,21 @@ const useAddClient = () => {
         });
     };
 
-    return { createClient, loading };
+    const updateClient = (client: any) => {
+        return new Promise<Client>((resolve, reject) => {
+            try {
+                setLoading(true);
+                clientServices.updateClient(client).then((res) => {
+                    resolve(res);
+                    setLoading(false);
+                });
+            } catch (error) {
+                reject(error);
+                setLoading(false);
+            }
+        });
+    };
+
+    return { createClient, loading, updateClient };
 };
 export default useAddClient;

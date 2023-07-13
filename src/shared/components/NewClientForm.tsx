@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
@@ -10,10 +10,29 @@ import { size } from '../utils/size';
 
 interface INewClientFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
+    initData?: { [fieldName: string]: string | boolean | Date };
+    buttonText?: string;
 }
 
-const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit }) => {
+const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData, buttonText = 'Agregar Cliente' }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NewClient', onSubmit);
+
+    useEffect(() => {
+        setInitialData();
+    }, []);
+
+    const setInitialData = () => {
+        if (initData) {
+            const { name, lastName, dni, email, phone, adress, comment } = initData;
+            setFieldValue('name', name);
+            setFieldValue('lastName', lastName);
+            setFieldValue('dni', dni);
+            setFieldValue('email', email);
+            setFieldValue('phone', phone);
+            setFieldValue('adress', adress);
+            setFieldValue('comment', comment);
+        }
+    };
 
     return (
         <View style={GlobalStyles.flex1}>
@@ -38,6 +57,7 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit }) => {
                 </View>
                 <FormInput
                     required
+                    editable={initData?.dni ? false : true}
                     value={fields.dni || ''}
                     placeholder='DNI'
                     keyboardType='number-pad'
@@ -75,7 +95,7 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit }) => {
                 />
             </ScrollView>
             <View style={styles.bottom}>
-                <Button title='Agregar Cliente' onPress={handleSubmit} />
+                <Button title={buttonText} onPress={handleSubmit} />
             </View>
         </View>
     );

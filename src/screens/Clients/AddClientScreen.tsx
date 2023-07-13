@@ -11,30 +11,41 @@ import { NewClient } from '../../models/Client';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddClientScreen'> {}
 
-const AddClientScreen = ({ navigation }: Props) => {
-    const { loading, createClient } = useAddClient();
+const AddClientScreen = ({ navigation, route }: Props) => {
+    const { loading, createClient, updateClient } = useAddClient();
+    const currentClient = route.params.client ?? undefined;
+    const isUpdate = route.params.isUpdate;
+    //TODO no se puede modificar el dni de una persona (por ahora)
     return (
         <Container>
-            <Header title='Nuevo Cliente' buttonBack />
+            <Header title={isUpdate ? 'Actualizar Cliente' : 'Nuevo Cliente '} buttonBack />
             {loading ? (
                 <Loading />
             ) : (
                 <NewClientForm
                     onSubmit={(data) => {
-                        const newClient: NewClient = {
-                            name: String(data.name),
-                            lastName: String(data.lastName),
-                            dni: String(data.dni),
-                            email: data.email ? String(data.email) : '',
-                            phone: String(data.phone),
-                            adress: data.adress ? String(data.adress) : '',
-                            comment: data.comment ? String(data.comment) : '',
-                        };
-
-                        createClient(newClient).then((res) =>
-                            navigation.replace('ClientDetailScreen', { client: res }),
-                        );
+                        if (!isUpdate) {
+                            const newClient: NewClient = {
+                                name: String(data.name),
+                                lastName: String(data.lastName),
+                                dni: String(data.dni),
+                                email: data.email ? String(data.email) : '',
+                                phone: String(data.phone),
+                                adress: data.adress ? String(data.adress) : '',
+                                comment: data.comment ? String(data.comment) : '',
+                            };
+                            createClient(newClient).then((res) =>
+                                navigation.replace('ClientDetailScreen', { client: res }),
+                            );
+                        } else {
+                            const updClient = { ...currentClient, ...data };
+                            updateClient(updClient).then((res) =>
+                                navigation.replace('ClientDetailScreen', { client: res }),
+                            );
+                        }
                     }}
+                    initData={{ ...currentClient }}
+                    buttonText={isUpdate ? 'Actualizar Cliente' : 'Agregar Cliente'}
                 />
             )}
         </Container>
