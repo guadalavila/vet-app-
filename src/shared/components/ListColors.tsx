@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
         marginVertical: size.XXL,
     },
     containerColor: {
-        borderRadius: 34,
-        width: 34,
-        height: 34,
+        borderRadius: 38,
+        width: 38,
+        height: 38,
         marginHorizontal: size.L,
         marginBottom: size.XXL,
         borderWidth: 1,

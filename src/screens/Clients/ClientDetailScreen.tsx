@@ -9,7 +9,6 @@ import { size } from '../../shared/utils/size';
 import { typography } from '../../shared/utils/typography';
 import { GlobalStyles } from '../../shared/utils/styles';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ItemPet from '../../shared/components/ItemPet';
 import Title from '../../shared/components/Title';
 import { Pet } from '../../models/Pet';
 import Card from '../../shared/components/Card';
@@ -17,6 +16,7 @@ import CustomText from '../../shared/components/CustomText';
 import petsServices from '../../services/PetsService';
 import Button from '../../shared/components/Button';
 import Loading from '../../shared/components/Loading';
+import ItemPetList from '../../shared/components/ItemPetList';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientDetailScreen'> {}
 
@@ -72,10 +72,10 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
                     <Title text={'Mascotas (' + pets.length + ')'} />
                     <View style={styles.containerPets}>
                         <FlatList
-                            horizontal
+                            style={styles.flatListStyle}
                             data={pets}
                             renderItem={({ item }) => (
-                                <ItemPet
+                                <ItemPetList
                                     pet={item}
                                     onPress={() => navigation.navigate('PetDetailScreen', { pet: item })}
                                 />
@@ -142,12 +142,14 @@ const styles = StyleSheet.create({
     },
     containerPets: {
         marginHorizontal: size.XXL,
-        alignContent: 'center',
-        alignSelf: 'center',
+        flex: 1,
     },
     button: {
         position: 'absolute',
         bottom: 10,
         width: '100%',
+    },
+    flatListStyle: {
+        marginBottom: size.XXL,
     },
 });

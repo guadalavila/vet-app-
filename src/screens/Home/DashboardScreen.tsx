@@ -36,7 +36,7 @@ const DashboardScreen = ({ navigation }: Props) => {
 
     return (
         <Container>
-            <Header title='Vet App' />
+            <Header title='VetTrack' />
             <View style={styles.containerWelcome}>
                 <CustomText style={[styles.welcomeText]}>Hola {userData?.user.name.split(' ')[0]}!</CustomText>
             </View>
