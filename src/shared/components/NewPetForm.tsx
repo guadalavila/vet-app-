@@ -60,7 +60,6 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
     }, [client]);
 
     const setInitData = () => {
-        console.log({ initData });
         if (initData) {
             setFieldValue('name', initData.name);
             setFieldValue('age', String(initData.age));
