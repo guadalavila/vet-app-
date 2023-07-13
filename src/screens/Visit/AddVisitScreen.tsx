@@ -37,7 +37,7 @@ const AddVisitScreen = ({ route, navigation }: Props) => {
                                 weight: Number(data.weight),
                                 treatment: data.treatment ? String(data.treatment) : '',
                             };
-                            createVisit(newVisit).then(() => navigation.goBack());
+                            createVisit(newVisit).then(() => navigation.replace('VisitsScreen', { id: newVisit.pet }));
                         }
                     }}
                     initData={currentVisit}
