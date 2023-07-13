@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { RootStackLoginParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Container from '../../shared/components/Container';
@@ -53,5 +52,3 @@ const AddClientScreen = ({ navigation, route }: Props) => {
 };
 
 export default AddClientScreen;
-
-const styles = StyleSheet.create({});

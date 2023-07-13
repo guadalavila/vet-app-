@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { COLOR_PET } from '../utils/constants';
+import { COLOR_PET, ColorType } from '../utils/constants';
 import { size } from '../utils/size';
 import { colors } from '../utils/colors';
 import CustomText from './CustomText';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface IListColorsProps {
-    colorPet: any;
-    setColorPet: (item: any) => void;
+    colorPet: ColorType;
+    setColorPet: (item: ColorType) => void;
 }
 
 const ListColors = ({ setColorPet, colorPet }: IListColorsProps) => {

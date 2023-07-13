@@ -56,6 +56,19 @@ class PetsServices {
                 });
         });
     }
+
+    updatePet(pet: Pet): Promise<Pet> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .patch<NewPetResponse>(`${API_PATHS.PETS}/${pet._id}`, pet)
+                .then((res) => {
+                    resolve(res.data.data.pet);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
 }
 const petsServices = new PetsServices();
 export default petsServices;

@@ -57,7 +57,7 @@ const FormInput: React.FC<IFormInputProps> = ({
                     },
                 ]}
                 value={value}
-                placeholder={placeholder}
+                // placeholder={placeholder}
                 onChangeText={onChangeText}
             />
             {helperText && (
@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: size.XL,
         paddingVertical: size.XXL,
         marginVertical: size.XL,
+        fontWeight: '600',
         // backgroundColor: 'red',
     },
     textArea: {

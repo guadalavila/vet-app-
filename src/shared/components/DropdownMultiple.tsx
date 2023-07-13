@@ -1,4 +1,4 @@
-import React, { Dispatch, useContext, useState } from 'react';
+import React, { Dispatch, useContext, useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { ItemType } from 'react-native-dropdown-picker';
@@ -16,15 +16,34 @@ interface IDropdownProps {
 
     required?: boolean;
     zIndex?: number;
+    initValue?: string[];
 }
 
-const DropdownMultiple = ({ placeholder, items, setItems, onSelectItems, required, zIndex }: IDropdownProps) => {
+const DropdownMultiple = ({
+    placeholder,
+    items,
+    setItems,
+    onSelectItems,
+    required,
+    zIndex,
+    initValue = [],
+}: IDropdownProps) => {
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
+    const [value, setValue] = useState(initValue);
     const { theme } = useContext(ThemeContext);
+
+    useEffect(() => {
+        if (initValue.length > 0) setValue(initValue);
+    }, []);
+
     return (
         <DropDownPicker
+            searchable
+            searchPlaceholder='Buscar...'
+            searchTextInputStyle={{ marginVertical: size.L, paddingVertical: size.XXL }}
+            addCustomItem
             multiple
+            closeOnBackPressed
             mode='BADGE'
             listMode='MODAL'
             onSelectItem={(items_) => onSelectItems(items_)}
