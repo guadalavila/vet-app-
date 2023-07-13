@@ -7,4 +7,5 @@ export const size = {
     L: 8,
     XL: 10,
     XXL: 14,
+    XXXL: 18,
 };

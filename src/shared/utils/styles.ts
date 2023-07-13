@@ -42,4 +42,7 @@ export const GlobalStyles = StyleSheet.create({
     bold: {
         fontWeight: 'bold',
     },
+    textCenter: {
+        textAlign: 'center',
+    },
 });
