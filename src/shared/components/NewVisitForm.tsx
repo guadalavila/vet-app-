@@ -53,7 +53,7 @@ const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit }) => {
                     isTextArea
                     required
                     value={fields.anamnestic || ''}
-                    placeholder='Anamnésicos'
+                    placeholder='Anamnesis'
                     onChangeText={(value) => setFieldValue('anamnestic', value)}
                 />
                 <View style={styles.marginDefault}>
