@@ -13,9 +13,10 @@ import Separator from './Separator';
 interface IItemVisitProps {
     visit: Visit;
     open?: boolean;
+    editVisit: () => void;
 }
 
-const ItemVisit = ({ visit, open = false }: IItemVisitProps) => {
+const ItemVisit = ({ visit, open = false, editVisit }: IItemVisitProps) => {
     const [isOpen, setIsOpen] = useState(open);
     return (
         <View>
@@ -46,6 +47,9 @@ const ItemVisit = ({ visit, open = false }: IItemVisitProps) => {
                             valueExtra='ºC'
                             icon='thermometer-outline'
                         />
+                        <TouchableOpacity activeOpacity={0.7} style={styles.buttonEdit} onPress={editVisit}>
+                            <CustomText style={GlobalStyles.textCenter}>Editar</CustomText>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.containerDetail}>
                         <CustomText style={styles.title}>Anamnésicos:</CustomText>
@@ -93,5 +97,14 @@ const styles = StyleSheet.create({
     },
     detail: {
         fontWeight: '600',
+    },
+    buttonEdit: {
+        borderColor: colors.light.primary,
+        borderWidth: 1,
+        borderRadius: 10,
+        justifyContent: 'center',
+        width: '20%',
+        padding: size.M,
+        alignSelf: 'center',
     },
 });
