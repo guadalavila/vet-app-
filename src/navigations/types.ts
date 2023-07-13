@@ -1,5 +1,6 @@
 import { Client } from '../models/Client';
 import { Pet } from '../models/Pet';
+import { Visit } from '../models/Visit';
 
 export type RootStackLogoutParamList = {
     LoginScreen: undefined,
@@ -13,8 +14,8 @@ export type RootStackLoginParamList = {
     PetDetailScreen: { pet: Pet },
     SettingScreen: undefined,
     VisitsScreen: { id: string },
-    AddVisitScreen: { client: string, pet: string },
-    AddPetScreen: { client: Client | undefined },
+    AddVisitScreen: { client: string, pet: string, visit?: Visit },
+    AddPetScreen: { client: Client | undefined, isUpdate: boolean, pet?: Pet },
     AddClientScreen: { isUpdate: boolean, client?: Client },
     VisitsListScreen: undefined,
     ConditionsScreen: undefined,

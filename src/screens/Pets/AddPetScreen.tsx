@@ -12,35 +12,46 @@ import Loading from '../../shared/components/Loading';
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddPetScreen'> {}
 
 const AddPetScreen = ({ navigation, route }: Props) => {
-    const { createPet, loading } = useAddPet();
+    const { createPet, loading, updatePet } = useAddPet();
     const client_ = route.params.client;
+    const isUpdate = route.params.isUpdate;
+    const pet = route.params.pet;
 
     return (
         <Container>
-            <Header title='Nueva Mascota' buttonBack />
+            <Header title={isUpdate ? 'Actualizar Mascota' : 'Nueva Mascota'} buttonBack />
             {loading ? (
                 <Loading />
             ) : (
                 <NewPetForm
                     client={client_}
                     onSubmit={(data) => {
-                        const pet_: NewPet = {
-                            owner: String(data.dni),
-                            name: String(data.name),
-                            age: data.age ? Number(data.age) : 0,
-                            chip: data.chip ? String(data.chip) : '',
-                            gender: String(data.gender),
-                            type: String(data.type),
-                            color: String(data.color),
-                            race: data.race ? String(data.race) : 'Otro',
-                            size: String(data.size),
-                            conditions: data.conditions ? data.conditions : [],
-                            sterilized: data.sterilized === undefined ? 'false' : data.sterilized,
-                        };
-                        createPet(pet_).then((res) => {
-                            navigation.replace('PetDetailScreen', { pet: res });
-                        });
+                        if (!isUpdate) {
+                            const pet_: NewPet = {
+                                owner: String(data.dni),
+                                name: String(data.name),
+                                age: data.age ? Number(data.age) : 0,
+                                chip: data.chip ? String(data.chip) : '',
+                                gender: String(data.gender),
+                                type: String(data.type),
+                                color: String(data.color),
+                                race: data.race ? String(data.race) : 'Otro',
+                                size: String(data.size),
+                                conditions: data.conditions ? data.conditions : [],
+                                sterilized: data.sterilized === undefined ? 'false' : data.sterilized,
+                            };
+                            createPet(pet_).then((res) => {
+                                navigation.replace('PetDetailScreen', { pet: res });
+                            });
+                        } else {
+                            const updPet = { ...pet, ...data };
+                            updatePet(updPet).then((res) => {
+                                navigation.replace('PetDetailScreen', { pet: res });
+                            });
+                        }
                     }}
+                    isUpdate={isUpdate}
+                    initData={pet}
                 />
             )}
         </Container>

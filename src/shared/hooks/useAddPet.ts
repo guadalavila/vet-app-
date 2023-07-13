@@ -19,6 +19,20 @@ const useAddPet = () => {
         });
     };
 
-    return { createPet, loading };
+    const updatePet = (pet: any) => {
+        return new Promise<Pet>((resolve, reject) => {
+            try {
+                setLoading(true);
+                petsServices.updatePet(pet).then((res) => {
+                    resolve(res);
+                    setLoading(false);
+                });
+            } catch (error) {
+                setLoading(false);
+            }
+        });
+    };
+
+    return { createPet, loading, updatePet };
 };
 export default useAddPet;

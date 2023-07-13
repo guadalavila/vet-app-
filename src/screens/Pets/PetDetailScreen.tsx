@@ -44,6 +44,12 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
         return conditionsApp.find((x) => name === x.name)?.colorCode ?? getRandomColor();
     };
 
+    const updatePet = () => {
+        //@ts-ignore
+        bottomSheetRef.current.close();
+        navigation.replace('AddPetScreen', { client: undefined, isUpdate: true, pet: pet });
+    };
+
     return (
         <Container>
             <Header
@@ -138,7 +144,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                             navigation.navigate('VisitsScreen', { id: pet._id });
                         }}
                     />
-                    <Option label='Editar Mascota' icon='pencil' onPress={() => {}} />
+                    <Option label='Editar Mascota' icon='pencil' onPress={updatePet} />
                     <Option label='Ver Detalle propietario' icon='people' onPress={getDetailOwner} />
                     <Option label='Ver Calendario de vacunas' icon='calendar' onPress={() => {}} />
                     <Option label='Compartir' icon='share' onPress={() => {}} />

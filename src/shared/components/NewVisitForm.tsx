@@ -9,22 +9,38 @@ import { GlobalStyles } from '../utils/styles';
 import { colors } from '../utils/colors';
 import { typography } from '../utils/typography';
 import { size } from '../utils/size';
+import { Visit } from '../../models/Visit';
 
 interface INewVisitFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
+    initData?: Visit;
+    buttonText?: string;
 }
 
-const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit }) => {
+const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData, buttonText = 'Agregar Visita' }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NewVisit', onSubmit);
 
     useEffect(() => {
+        setInitialData();
         setFieldValue('date', new Date());
     }, []);
+
+    const setInitialData = () => {
+        if (initData) {
+            const { anamnestic, diagnosis, hospitalization, temperature, treatment, weight } = initData;
+            setFieldValue('anamnestic', anamnestic);
+            setFieldValue('diagnosis', diagnosis);
+            setFieldValue('hospitalization', hospitalization);
+            setFieldValue('weight', String(weight));
+            setFieldValue('temperature', String(temperature));
+            setFieldValue('treatment', treatment);
+        }
+    };
 
     return (
         <View style={GlobalStyles.flex1}>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
-                <ItemDate onChangeValue={(value) => setFieldValue('date', value)} />
+                {!initData?.createdAt && <ItemDate onChangeValue={(value) => setFieldValue('date', value)} />}
                 <View style={GlobalStyles.row}>
                     <FormInput
                         width={'43%'}
@@ -79,7 +95,7 @@ const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit }) => {
                 />
             </ScrollView>
             <View style={styles.bottom}>
-                <Button title='Agregar Visita' onPress={handleSubmit} />
+                <Button title={buttonText} onPress={handleSubmit} />
             </View>
         </View>
     );

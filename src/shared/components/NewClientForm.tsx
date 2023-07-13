@@ -18,10 +18,10 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData, butt
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NewClient', onSubmit);
 
     useEffect(() => {
-        setInitialData();
+        setInitData();
     }, []);
 
-    const setInitialData = () => {
+    const setInitData = () => {
         if (initData) {
             const { name, lastName, dni, email, phone, adress, comment } = initData;
             setFieldValue('name', name);

@@ -4,7 +4,7 @@ import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
 import Button from './Button';
 import { colors } from '../utils/colors';
-import { CONDITIONS, GENDER, PetType, SIZE_PET, TYPE_PET } from '../utils/constants';
+import { COLOR_PET, CONDITIONS, ColorType, GENDER, PetType, SIZE_PET, TYPE_PET } from '../utils/constants';
 import Select from './Select';
 import { GlobalStyles } from '../utils/styles';
 import ListColors from './ListColors';
@@ -20,13 +20,16 @@ import { Client } from '../../models/Client';
 import Loading from './Loading';
 import DropdownMultiple from './DropdownMultiple';
 import { ConditionsContext } from '../../contexts/ConditionsContext';
+import { Pet } from '../../models/Pet';
 
 interface INewPetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;
     client: Client | undefined;
+    isUpdate: boolean;
+    initData?: Pet;
 }
 
-const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
+const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, initData }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NetPet', onSubmit);
     const { searchClientsByDNI, searching, result } = useSearchClients();
     const { conditionsApp } = useContext(ConditionsContext);
@@ -34,7 +37,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
         ...TYPE_PET[TYPE_PET.length - 1],
     });
     const [sterilized, setSterilized] = useState(false);
-    const [colorPet, setColorPet] = useState('');
+    const [colorPet, setColorPet] = useState<ColorType>(COLOR_PET[COLOR_PET.length - 1]);
     const [sizePet, setSizePet] = useState<ItemList>({
         label: '',
         value: '',
@@ -49,52 +52,83 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
     const [selectDNI, setSelectDNI] = useState(false);
 
     useEffect(() => {
-        if (client) {
-            setFieldValue('dni', client.dni);
-        }
+        setInitData();
+    }, []);
+
+    useEffect(() => {
+        if (client) setFieldValue('dni', client.dni);
     }, [client]);
 
+    const setInitData = () => {
+        console.log({ initData });
+        if (initData) {
+            setFieldValue('name', initData.name);
+            setFieldValue('age', String(initData.age));
+            setFieldValue('chip', initData.chip);
+            setFieldValue('race', initData.race);
+
+            setColorPet(COLOR_PET.find((x) => x.label === initData.color) ?? COLOR_PET[COLOR_PET.length - 1]);
+            setFieldValue('color', initData.color);
+
+            setFieldValue('gender', initData.gender);
+            setGenderPet(GENDER.find((x) => x.value === initData.gender) ?? GENDER[0]);
+
+            setFieldValue('size', initData.size);
+            setSizePet(SIZE_PET.find((x) => x.value === initData.size) ?? SIZE_PET[0]);
+
+            setFieldValue('sterilized', initData.sterilized);
+            setSterilized(initData.sterilized);
+
+            setFieldValue('type', initData.type);
+            setType(TYPE_PET.find((x) => x.value === initData.type) ?? TYPE_PET[TYPE_PET.length - 1]);
+        }
+    };
     return (
         <View style={GlobalStyles.flex1}>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
-                <SearchBar
-                    keyboardType='number-pad'
-                    editable={client?.dni ? false : true}
-                    fullWidth
-                    placeholder='DNI responsable'
-                    value={dniOwner}
-                    onChangeValue={(value) => {
-                        setDniOwner(value);
-                        if (Number(value) && value.length > 3) {
-                            searchClientsByDNI(value);
-                        } else {
-                            setSelectDNI(false);
-                        }
-                    }}
-                    clicked
-                    setCLicked={() => {}}
-                />
-                {/* <View style={styles.marginDefault}>{errors.dni && <Text style={styles.error}>{errors.dni}</Text>}</View> */}
-                <View style={styles.containerListClients}>
-                    {searching && <Loading />}
-                    {dniOwner.length > 3 && result && result.length > 0 && !selectDNI && (
-                        <FlatList
-                            showsVerticalScrollIndicator={false}
-                            data={result}
-                            renderItem={({ item }) => (
-                                <ItemClient
-                                    client={item}
-                                    onPress={() => {
-                                        setDniOwner(item.name.concat(' ').concat(item.lastName));
-                                        setFieldValue('dni', item.dni);
-                                        setSelectDNI(true);
-                                    }}
+                {!isUpdate && (
+                    <>
+                        <SearchBar
+                            keyboardType='number-pad'
+                            editable={client?.dni ? false : true}
+                            fullWidth
+                            placeholder='DNI responsable'
+                            value={dniOwner}
+                            onChangeValue={(value) => {
+                                setDniOwner(value);
+                                if (Number(value) && value.length > 3) {
+                                    searchClientsByDNI(value);
+                                } else {
+                                    setSelectDNI(false);
+                                }
+                            }}
+                            clicked
+                            setCLicked={() => {}}
+                        />
+                        <View style={styles.containerListClients}>
+                            {searching && <Loading />}
+                            {dniOwner.length > 3 && result && result.length > 0 && !selectDNI && (
+                                <FlatList
+                                    showsVerticalScrollIndicator={false}
+                                    data={result}
+                                    renderItem={({ item }) => (
+                                        <ItemClient
+                                            client={item}
+                                            onPress={() => {
+                                                setDniOwner(item.name.concat(' ').concat(item.lastName));
+                                                setFieldValue('dni', item.dni);
+                                                setSelectDNI(true);
+                                            }}
+                                        />
+                                    )}
+                                    keyExtractor={(item) => item._id}
                                 />
                             )}
-                            keyExtractor={(item) => item._id}
-                        />
-                    )}
-                </View>
+                        </View>
+                    </>
+                )}
+                {/* <View style={styles.marginDefault}>{errors.dni && <Text style={styles.error}>{errors.dni}</Text>}</View> */}
+
                 <FormInput
                     required
                     value={fields.name || ''}
@@ -196,10 +230,11 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client }) => {
                     }
                     setItems={(list) => {}}
                     placeholder='Patologías preexistentes'
+                    initValue={initData?.conditions}
                 />
             </ScrollView>
             <View style={styles.bottom}>
-                <Button title='Agregar Mascota' onPress={handleSubmit} />
+                <Button title={isUpdate ? 'Actualizar Mascota' : 'Agregar Mascota'} onPress={handleSubmit} />
             </View>
         </View>
     );

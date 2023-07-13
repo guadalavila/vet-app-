@@ -11,7 +11,7 @@ import NoData from '../../shared/components/NoData';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'VisitsScreen'> {}
 
-const VisitsScreen = ({ route }: Props) => {
+const VisitsScreen = ({ route, navigation }: Props) => {
     const { visits, isLoading } = useVisits(route.params.id);
 
     if (isLoading) {
@@ -29,7 +29,19 @@ const VisitsScreen = ({ route }: Props) => {
             {visits.length > 0 ? (
                 <FlatList
                     data={visits}
-                    renderItem={({ item, index }) => <ItemVisit open={index === 0} visit={item} />}
+                    renderItem={({ item, index }) => (
+                        <ItemVisit
+                            open={index === 0}
+                            visit={item}
+                            editVisit={() => {
+                                navigation.replace('AddVisitScreen', {
+                                    client: item.client,
+                                    pet: item.pet,
+                                    visit: item,
+                                });
+                            }}
+                        />
+                    )}
                     keyExtractor={(item) => item._id}
                 />
             ) : (
