@@ -15,7 +15,7 @@ import ModalInput from '../../shared/components/ModalInput';
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ConditionsScreen'> {}
 
 const ConditionsScreen = ({}: Props) => {
-    const { loading, conditions, refreshData, saving, addCondition } = useConditions();
+    const { loading, refreshData, saving, addCondition, conditionsApp } = useConditions();
     const [showModalInput, setShowModalInput] = useState(false);
 
     const onRefresh = useCallback(() => {
@@ -41,7 +41,7 @@ const ConditionsScreen = ({}: Props) => {
                 <Loading />
             ) : (
                 <FlatList
-                    data={conditions}
+                    data={conditionsApp}
                     renderItem={({ item }) => (
                         <View style={styles.conditionItem}>
                             <View style={[styles.color, { backgroundColor: item.colorCode }]} />

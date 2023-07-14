@@ -15,10 +15,10 @@ import NoData from '../../shared/components/NoData';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetsScreen'> {}
 
-const PetsScreen = ({ navigation }: Props) => {
+const PetsScreen = ({ navigation, route }: Props) => {
     const {
         isLoading,
-        dataPets: { pets, count, total },
+        dataPets: { pets },
         getMorePets,
         refreshPets,
         refreshing,
@@ -29,9 +29,14 @@ const PetsScreen = ({ navigation }: Props) => {
 
     useEffect(() => {
         navigation.addListener('focus', () => {
-            console.log('se debe refrescar');
+            console.log({ route });
         });
     }, [navigation]);
+
+    // const handleSubmit = useCallback(() => {
+    //     console.log('se debe refrescar');
+    //     console.log({ route });
+    // }, [navigation]); //
 
     useEffect(() => {
         if (textSearch.length >= 3) {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import visitsServices from '../../services/VisitsServices';
-import { NewVisit } from '../../models/Visit';
+import { NewVisit, Visit } from '../../models/Visit';
 
 const useAddVisit = () => {
     const [loading, setLoading] = useState(false);
@@ -19,6 +19,20 @@ const useAddVisit = () => {
         });
     };
 
-    return { createVisit, loading };
+    const updateVisit = (visit: any) => {
+        return new Promise<Visit>((resolve, reject) => {
+            try {
+                setLoading(true);
+                visitsServices.updateVisit(visit).then((res) => {
+                    resolve(res);
+                    setLoading(false);
+                });
+            } catch (error) {
+                setLoading(false);
+            }
+        });
+    };
+
+    return { createVisit, loading, updateVisit };
 };
 export default useAddVisit;

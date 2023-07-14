@@ -41,7 +41,7 @@ export default ListColors;
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal: size.XXL,
+        marginHorizontal: size.S,
         justifyContent: 'flex-start',
         flexDirection: 'row',
         flexWrap: 'wrap',

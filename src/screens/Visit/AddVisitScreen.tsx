@@ -12,7 +12,7 @@ import Loading from '../../shared/components/Loading';
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddVisitScreen'> {}
 
 const AddVisitScreen = ({ route, navigation }: Props) => {
-    const { loading, createVisit } = useAddVisit();
+    const { loading, createVisit, updateVisit } = useAddVisit();
     const isUpdate = route.params.visit ? true : false;
     const currentVisit = route.params.visit ?? undefined;
 
@@ -38,6 +38,11 @@ const AddVisitScreen = ({ route, navigation }: Props) => {
                                 treatment: data.treatment ? String(data.treatment) : '',
                             };
                             createVisit(newVisit).then(() => navigation.replace('VisitsScreen', { id: newVisit.pet }));
+                        } else {
+                            const updVisit = { ...currentVisit, ...data, date: currentVisit?.date };
+                            updateVisit(updVisit).then((res) => {
+                                navigation.replace('VisitsScreen', { id: res.pet });
+                            });
                         }
                     }}
                     initData={currentVisit}

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Condition, NewCondition } from '../../models/Condition';
 import conditionsServices from '../../services/ConditionsServices';
 import { ConditionsContext } from '../../contexts/ConditionsContext';
@@ -7,11 +7,7 @@ const useConditions = () => {
     const [loading, setLoading] = useState(false);
     const [conditions, setConditions] = useState<Condition[] | []>([]);
     const [saving, setSaving] = useState(false);
-    const { setConditionsApp } = useContext(ConditionsContext);
-
-    useEffect(() => {
-        getConditions();
-    }, []);
+    const { conditionsApp, setConditionsApp } = useContext(ConditionsContext);
 
     const getConditions = () => {
         setLoading(true);
@@ -45,7 +41,7 @@ const useConditions = () => {
         getConditions();
     };
 
-    return { conditions, loading, refreshData, addCondition, saving };
+    return { conditions, loading, refreshData, addCondition, saving, conditionsApp };
 };
 
 export default useConditions;

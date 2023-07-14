@@ -1,4 +1,4 @@
-import { NewVisit, NewVisitResponse, Visit, VisitResponse } from '../models/Visit';
+import { NewVisit, NewVisitResponse, Visit, VisitDetailResponse, VisitResponse } from '../models/Visit';
 import { API_PATHS } from '../shared/utils/apiPaths';
 import networkManager from '../shared/utils/axios/NetworkManager';
 
@@ -24,6 +24,19 @@ class VisitsServices {
                 .post<NewVisitResponse>(API_PATHS.VISITS, visit)
                 .then((res) => {
                     resolve(res.data.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
+    updateVisit(visit: any): Promise<Visit> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .patch<VisitDetailResponse>(`${API_PATHS.VISITS}/${visit._id}`, visit)
+                .then((res) => {
+                    resolve(res.data.data.visit);
                 })
                 .catch((error) => {
                     reject(error);

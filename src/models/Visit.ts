@@ -23,6 +23,12 @@ export type NewVisitResponse = {
     data: Visit,
 };
 
+export type VisitDetailResponse = {
+    data: {
+        visit: Visit,
+    },
+};
+
 export type NewVisit = {
     anamnestic: string,
     client: string,
