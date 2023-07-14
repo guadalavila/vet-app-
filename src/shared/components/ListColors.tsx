@@ -14,7 +14,7 @@ interface IListColorsProps {
 const ListColors = ({ setColorPet, colorPet }: IListColorsProps) => {
     return (
         <View>
-            <CustomText style={styles.label}>Seleccione color</CustomText>
+            <CustomText style={styles.label}>Color</CustomText>
             <View style={styles.container}>
                 {COLOR_PET.map((item, index) => (
                     <TouchableOpacity
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontWeight: 'bold',
-        marginBottom: size.L,
+        marginBottom: size.XS,
         marginHorizontal: size.XXL,
     },
     icon: {

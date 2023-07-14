@@ -111,12 +111,12 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             )}
             <View style={styles.button}>
                 <Button
-                    onPress={() => navigation.navigate('VisitsScreen', { id: pet._id })}
-                    title='Historial Clínico'
-                />
-                <Button
                     onPress={() => navigation.navigate('AddVisitScreen', { client: pet.owner, pet: pet._id })}
                     title='Nueva Visita'
+                />
+                <Button
+                    onPress={() => navigation.navigate('VisitsScreen', { id: pet._id })}
+                    title='Historial Clínico'
                 />
                 {/* <Button
                     style={styles.buttonDelete}

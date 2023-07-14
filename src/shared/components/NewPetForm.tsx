@@ -160,7 +160,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
                         setFieldValue('gender', item.value);
                         setGenderPet(item);
                     }}
-                    placeholder='Seleccione sexo'
+                    placeholder='Sexo'
                 />
                 <View style={styles.marginDefault}>
                     {errors.gender && <Text style={styles.error}>{errors.gender}</Text>}
@@ -197,7 +197,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
                         setSizePet(item);
                         setFieldValue('size', item.value);
                     }}
-                    placeholder='Seleccione porte'
+                    placeholder='Porte'
                 />
                 <View style={styles.marginDefault}>
                     {errors.size && <Text style={styles.error}>{errors.size}</Text>}

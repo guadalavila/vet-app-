@@ -17,7 +17,7 @@ const ListTypePet = ({ selected, setSelected }: IListTypePetProps) => {
     return (
         <View>
             <CustomText style={styles.label}>
-                Seleccione Especie
+                Especie
                 {selected.value !== 'unknown' && <CustomText>: {selected.label}</CustomText>}
             </CustomText>
             <View style={styles.container}>
