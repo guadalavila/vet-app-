@@ -9,9 +9,12 @@ import SettingScreen from '../Settings/SettingScreen';
 
 const Tab = createBottomTabNavigator<BottomTabStackParamList>();
 
-const BottomTabScreen = () => {
+const BottomTabScreen = ({ route }: any) => {
     return (
-        <Tab.Navigator screenOptions={{ headerShown: false }} tabBar={(props) => <CustomTabBar {...props} />}>
+        <Tab.Navigator
+            initialRouteName={route.params?.initialRouteName ?? 'DashboardScreen'}
+            screenOptions={{ headerShown: false }}
+            tabBar={(props) => <CustomTabBar {...props} />}>
             <Tab.Screen name={'DashboardScreen'} component={DashboardScreen} options={{ tabBarLabel: 'Home' }} />
             <Tab.Screen name={'ClientsScreen'} component={ClientsScreen} options={{ tabBarLabel: 'Clientes' }} />
             <Tab.Screen name={'PetsScreen'} component={PetsScreen} options={{ tabBarLabel: 'Mascotas' }} />

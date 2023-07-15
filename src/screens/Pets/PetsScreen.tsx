@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
 import Container from '../../shared/components/Container';
 import Header from '../../shared/components/Header';
@@ -15,7 +15,7 @@ import NoData from '../../shared/components/NoData';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetsScreen'> {}
 
-const PetsScreen = ({ navigation, route }: Props) => {
+const PetsScreen = ({ navigation }: Props) => {
     const {
         isLoading,
         dataPets: { pets },
@@ -26,17 +26,6 @@ const PetsScreen = ({ navigation, route }: Props) => {
     const [textSearch, setTextSearch] = useState('');
     const [clicked, setClicked] = useState(false);
     const { result, searchPets, searching, setSearching, emptyResult } = useSearchPets();
-
-    useEffect(() => {
-        navigation.addListener('focus', () => {
-            console.log({ route });
-        });
-    }, [navigation]);
-
-    // const handleSubmit = useCallback(() => {
-    //     console.log('se debe refrescar');
-    //     console.log({ route });
-    // }, [navigation]); //
 
     useEffect(() => {
         if (textSearch.length >= 3) {

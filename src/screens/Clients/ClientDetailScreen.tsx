@@ -22,6 +22,7 @@ interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientD
 
 const ClientDetailScreen = ({ navigation, route }: Props) => {
     const client = route.params.client;
+    const refresh = route.params.refresh;
     const [pets, setPets] = useState<Pet[] | []>([]);
     const [loading, setLoading] = useState(false);
 
@@ -48,6 +49,13 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
                 buttonBack
                 buttonRight
                 onPressRight={() => navigation.replace('AddClientScreen', { isUpdate: true, client: client })}
+                onPressLeft={() => {
+                    if (refresh) {
+                        navigation.replace('BottomTabScreen', { initialRouteName: 'ClientsScreen' });
+                    } else {
+                        navigation.goBack();
+                    }
+                }}
                 iconRight='pencil-outline'
             />
             <Card>

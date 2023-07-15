@@ -9,8 +9,8 @@ export type RootStackLogoutParamList = {
 export type RootStackLoginParamList = {
     DashboardScreen: undefined,
     ClientsScreen: undefined,
-    ClientDetailScreen: { client: Client },
-    PetsScreen: { refresh?: boolean },
+    ClientDetailScreen: { client: Client, refresh?: boolean },
+    PetsScreen: undefined,
     PetDetailScreen: { pet: Pet, refresh?: boolean },
     SettingScreen: undefined,
     VisitsScreen: { id: string },
@@ -19,7 +19,7 @@ export type RootStackLoginParamList = {
     AddClientScreen: { isUpdate: boolean, client?: Client },
     VisitsListScreen: undefined,
     ConditionsScreen: undefined,
-    BottomTabScreen: undefined,
+    BottomTabScreen: { initialRouteName?: string },
 };
 
 export type BottomTabStackParamList = {

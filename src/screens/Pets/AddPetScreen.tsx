@@ -41,12 +41,12 @@ const AddPetScreen = ({ navigation, route }: Props) => {
                                 sterilized: data.sterilized === undefined ? 'false' : data.sterilized,
                             };
                             createPet(pet_).then((res) => {
-                                navigation.replace('PetDetailScreen', { pet: res });
+                                navigation.replace('PetDetailScreen', { pet: res, refresh: true });
                             });
                         } else {
                             const updPet = { ...pet, ...data };
                             updatePet(updPet).then((res) => {
-                                navigation.replace('PetDetailScreen', { pet: res });
+                                navigation.replace('PetDetailScreen', { pet: res, refresh: true });
                             });
                         }
                     }}

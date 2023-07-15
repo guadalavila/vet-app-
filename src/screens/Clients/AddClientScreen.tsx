@@ -34,12 +34,12 @@ const AddClientScreen = ({ navigation, route }: Props) => {
                                 comment: data.comment ? String(data.comment) : '',
                             };
                             createClient(newClient).then((res) =>
-                                navigation.replace('ClientDetailScreen', { client: res }),
+                                navigation.replace('ClientDetailScreen', { client: res, refresh: true }),
                             );
                         } else {
                             const updClient = { ...currentClient, ...data };
                             updateClient(updClient).then((res) =>
-                                navigation.replace('ClientDetailScreen', { client: res }),
+                                navigation.replace('ClientDetailScreen', { client: res, refresh: true }),
                             );
                         }
                     }}

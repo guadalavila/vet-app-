@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RootStackLoginParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -27,6 +27,7 @@ interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetDeta
 
 const PetDetailScreen = ({ route, navigation }: Props) => {
     const pet = route.params.pet;
+    const refresh = route.params.refresh;
     const bottomSheetRef = useRef();
     const { conditionsApp } = useContext(ConditionsContext);
 
@@ -57,6 +58,13 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                 buttonBack
                 buttonRight
                 iconRight='ellipsis-vertical'
+                onPressLeft={() => {
+                    if (refresh) {
+                        navigation.replace('BottomTabScreen', { initialRouteName: 'PetsScreen' });
+                    } else {
+                        navigation.goBack();
+                    }
+                }}
                 //@ts-ignore
                 onPressRight={() => bottomSheetRef.current && bottomSheetRef.current.show()}
             />
