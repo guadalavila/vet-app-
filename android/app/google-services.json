@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "643514638724",
+    "project_id": "vet-app-7d4df",
+    "storage_bucket": "vet-app-7d4df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643514638724:android:ad20269590dd81c865fdd1",
+        "android_client_info": {
+          "package_name": "com.guadalav.vetapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643514638724-i2kqqi47unb1tudiad4iui95s8bl7ba8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHLnr7CkgNXYEYAsDHgaYXGjLkOkf3EBA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643514638724-i2kqqi47unb1tudiad4iui95s8bl7ba8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "643514638724-b61925ipsm28fg3udvuj3icaqtjuj53n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.guadalav.vetapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
