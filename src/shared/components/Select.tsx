@@ -15,7 +15,7 @@ const Select = ({ title, selected, onChangeSelect }: ISelectProps) => {
         <View style={styles.container}>
             <CustomText style={[styles.title]}>{title}</CustomText>
             <Switch
-                style={{ transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }] }}
+                style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
                 trackColor={{ false: '#767577', true: colors.light.success }}
                 thumbColor={true ? colors.light.white : colors.light.grey}
                 ios_backgroundColor={colors.light.grey}

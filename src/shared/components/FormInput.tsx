@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TextInput, StyleSheet, View, KeyboardType } from 'react-native';
+import { TextInput, StyleSheet, View, KeyboardType, Platform } from 'react-native';
 import { size } from '../utils/size';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import CustomText from './CustomText';
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: size.L,
         paddingHorizontal: size.XL,
-        paddingVertical: size.XXL,
+        paddingVertical: Platform.OS === 'ios' ? size.XXL : size.L,
         marginVertical: size.XL,
         fontWeight: '600',
         // backgroundColor: 'red',

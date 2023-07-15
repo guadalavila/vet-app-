@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, SafeAreaView, Platform } from 'react-native';
 import { colors } from '../utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { getIconByRoute } from '../utils/routes';
@@ -60,10 +60,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: '80%',
         borderRadius: 30,
-        marginTop: size.XL,
+        marginTop: Platform.OS === 'ios' ? size.XL : size.XXS,
     },
     icon: {
-        paddingVertical: size.L,
+        paddingVertical: Platform.OS === 'ios' ? size.L : size.XXL,
         alignItems: 'center',
     },
 });

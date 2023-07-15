@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginVertical: size.S,
         paddingHorizontal: size.L,
-        paddingVertical: size.XXL,
+        paddingVertical: Platform.OS === 'ios' ? size.XXL : size.L,
         fontSize: typography.size.S,
         marginHorizontal: size.XXL,
         fontWeight: '600',
