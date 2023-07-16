@@ -82,7 +82,7 @@ export const CATEGORIES_DASHBOARD = [
     },
     {
         id: 3,
-        name: 'Visitas',
+        name: 'Últimas Visitas',
         page: 'VisitsListScreen',
         icon: 'document-outline',
         height: 200,

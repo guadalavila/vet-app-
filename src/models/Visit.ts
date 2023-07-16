@@ -1,3 +1,5 @@
+import { Pet } from './Pet';
+
 export type VisitResponse = {
     data: {
         visits: Visit[],
@@ -39,4 +41,9 @@ export type NewVisit = {
     temperature: number,
     treatment: string,
     weight: number,
+};
+
+export type LastVisits = {
+    visit: Visit,
+    pet: Pet,
 };

@@ -1,4 +1,4 @@
-import { NewVisit, NewVisitResponse, Visit, VisitDetailResponse, VisitResponse } from '../models/Visit';
+import { LastVisits, NewVisit, NewVisitResponse, Visit, VisitDetailResponse, VisitResponse } from '../models/Visit';
 import { API_PATHS } from '../shared/utils/apiPaths';
 import networkManager from '../shared/utils/axios/NetworkManager';
 
@@ -37,6 +37,19 @@ class VisitsServices {
                 .patch<VisitDetailResponse>(`${API_PATHS.VISITS}/${visit._id}`, visit)
                 .then((res) => {
                     resolve(res.data.data.visit);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
+    getLastVisit(): Promise<LastVisits[]> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<LastVisits[]>(API_PATHS.LAST_VISIT)
+                .then((res) => {
+                    resolve(res.data);
                 })
                 .catch((error) => {
                     reject(error);
