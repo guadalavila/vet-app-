@@ -1,7 +1,7 @@
 const size = {
     XXXS: 4,
     XXS: 8,
-    XS: 12,
+    XS: 14,
     S: 16,
     M: 20,
     L: 30,

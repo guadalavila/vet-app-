@@ -114,13 +114,13 @@ class NetworkManager {
     }
 
 
-    delete<T>(url: string, config: {}): Promise<AxiosResponse<T>> {
+    delete<T>(url: string, config?: {}): Promise<AxiosResponse<T>> {
         return new Promise<AxiosResponse<T>>(async (resolve, reject) => {
             try {
                 // const extraData = { Accept: 'application/json, text/plain, */*' };
                 const configTkn = await this.getTokenAndCookies();
-                axios
-                    .delete(`${Config.API_URL}${url}`, configTkn)
+                instance
+                    .delete(url, configTkn)
                     .then((response) => {
                         resolve(response);
                     })

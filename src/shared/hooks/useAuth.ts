@@ -8,18 +8,18 @@ import { STORAGE_KEYS } from '../utils/storage/keys';
 import { resetUserProperties, setUserProperties } from '../utils/firebase/analytics';
 
 const useAuth = () => {
-    const { setIsAuth, setUser, setIsLoading, isLoading, setUserData } = useContext(AuthContext);
+    const { setIsAuth, setUser, setIsLoading, isLoading, setUserData, currentUser, userData } = useContext(AuthContext);
     const { setToast } = useContext(ToastContext);
 
     const restoreUser = async () => {
         setIsLoading(true);
         const user = await getData(STORAGE_KEYS.USER);
-        const userData = await getData(STORAGE_KEYS.USER_DATA);
-        if (user && userData) {
-            setUserProperties({ ...userData.user });
+        const userData_ = await getData(STORAGE_KEYS.USER_DATA);
+        if (user && userData_) {
+            setUserProperties({ ...userData_.user });
             setIsAuth(true);
             setUser(user);
-            setUserData(userData);
+            setUserData(userData_);
             setIsLoading(false);
         } else {
             setIsLoading(false);
@@ -57,6 +57,6 @@ const useAuth = () => {
         setIsAuth(false);
     };
 
-    return { loginWithEmailAndPass, isLoading, logout, restoreUser };
+    return { loginWithEmailAndPass, isLoading, logout, restoreUser, currentUser, userData };
 };
 export default useAuth;

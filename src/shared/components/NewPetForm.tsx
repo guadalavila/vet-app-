@@ -231,6 +231,12 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
                     placeholder='Patologías preexistentes'
                     initValue={initData?.conditions}
                 />
+                <FormInput
+                    isTextArea
+                    value={fields.notes || ''}
+                    placeholder='Notas y observaciones'
+                    onChangeText={(value) => setFieldValue('notes', value)}
+                />
             </ScrollView>
             <View style={styles.bottom}>
                 <Button title={'Guardar'} onPress={handleSubmit} />

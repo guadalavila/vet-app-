@@ -69,6 +69,19 @@ class PetsServices {
                 });
         });
     }
+
+    deletePet(id: string): Promise<void> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .delete(`${API_PATHS.PETS}/${id}}`)
+                .then(() => {
+                    resolve();
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
+    }
 }
 const petsServices = new PetsServices();
 export default petsServices;

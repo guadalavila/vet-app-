@@ -17,7 +17,7 @@ interface IUseFormReturn {
 }
 
 const useForm = (
-    form: 'NetPet' | 'NewClient' | 'NewVisit' | 'Login',
+    form: 'NetPet' | 'NewClient' | 'NewVisit' | 'Login' | 'NewSurgeryForm',
     onSubmit: (fields: IFormFields) => void,
 ): IUseFormReturn => {
     const [fields, setFields] = useState<IFormFields>({});

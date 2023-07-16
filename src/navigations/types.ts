@@ -20,6 +20,10 @@ export type RootStackLoginParamList = {
     VisitsListScreen: undefined,
     ConditionsScreen: undefined,
     BottomTabScreen: { initialRouteName?: string },
+    SurgeryRegistryScreen: undefined,
+    AddSurgeriesScreen: undefined,
+    VaccinesRegistryScreen: undefined,
+    AddVaccineScreen: undefined,
 };
 
 export type BottomTabStackParamList = {

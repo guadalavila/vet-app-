@@ -1,27 +1,21 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RootStackLoginParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Container from '../../shared/components/Container';
 import CustomText from '../../shared/components/CustomText';
 import Header from '../../shared/components/Header';
-import { getPetGender, getPetSize, getPetType, getRandomColor } from '../../shared/utils/helpers';
 import { typography } from '../../shared/utils/typography';
 import Button from '../../shared/components/Button';
 import Separator from '../../shared/components/Separator';
-import { GlobalStyles } from '../../shared/utils/styles';
 import { size } from '../../shared/utils/size';
-import CardValue from '../../shared/components/CardValue';
-import Badge from '../../shared/components/Badge';
-import Title from '../../shared/components/Title';
 import BottomSheet from '../../shared/components/BottomSheet';
 import Option from '../../shared/components/Option';
 import clientServices from '../../services/ClientsServices';
-import CardCustom from '../../shared/components/CardCustom';
-import ItemColor from '../../shared/components/ItemColor';
-import { getCodeColor } from '../../shared/utils/constants';
-import Icon from '../../shared/components/Icon';
-import { ConditionsContext } from '../../contexts/ConditionsContext';
+import ModalCustom from '../../shared/components/ModalCustom';
+import useDelete from '../../shared/hooks/useDelete';
+import PetDetail from '../../shared/components/PetDetail';
+import ConditionsList from '../../shared/components/ConditionsList';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetDetailScreen'> {}
 
@@ -29,26 +23,59 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
     const pet = route.params.pet;
     const refresh = route.params.refresh;
     const bottomSheetRef = useRef();
-    const { conditionsApp } = useContext(ConditionsContext);
+    const [showModal, setShowModal] = useState(false);
+    const { deletePet } = useDelete();
 
     const getDetailOwner = () => {
         try {
             clientServices.searchOneClient(pet.owner).then((res) => {
                 navigation.navigate('ClientDetailScreen', { client: res });
             });
-            //@ts-ignore
-            bottomSheetRef.current.close();
+            closeBottomSheet();
         } catch (error) {}
     };
 
-    const getConditionColorCode = (name: string) => {
-        return conditionsApp.find((x) => name === x.name)?.colorCode ?? getRandomColor();
+    const onPressLeftBtn = () => {
+        if (refresh) {
+            navigation.replace('BottomTabScreen', { initialRouteName: 'PetsScreen' });
+        } else {
+            navigation.goBack();
+        }
     };
 
+    //@ts-ignore
+    const closeBottomSheet = () => bottomSheetRef.current && bottomSheetRef.current.close();
+
     const updatePet = () => {
-        //@ts-ignore
-        bottomSheetRef.current.close();
+        closeBottomSheet();
         navigation.replace('AddPetScreen', { client: undefined, isUpdate: true, pet: pet });
+    };
+
+    const addVisit = () => {
+        closeBottomSheet();
+        navigation.navigate('AddVisitScreen', { client: pet.owner, pet: pet._id });
+    };
+
+    const showVisits = () => {
+        closeBottomSheet();
+        navigation.navigate('VisitsScreen', { id: pet._id });
+    };
+
+    const showSurgeryRegistry = () => {
+        closeBottomSheet();
+        navigation.navigate('SurgeryRegistryScreen');
+    };
+
+    const showVaccinesRegistry = () => {
+        closeBottomSheet();
+        navigation.navigate('VaccinesRegistryScreen');
+    };
+
+    const handleDeletePet = () => {
+        closeBottomSheet();
+        setTimeout(() => {
+            setShowModal(true);
+        }, 500);
     };
 
     return (
@@ -58,13 +85,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                 buttonBack
                 buttonRight
                 iconRight='ellipsis-vertical'
-                onPressLeft={() => {
-                    if (refresh) {
-                        navigation.replace('BottomTabScreen', { initialRouteName: 'PetsScreen' });
-                    } else {
-                        navigation.goBack();
-                    }
-                }}
+                onPressLeft={onPressLeftBtn}
                 //@ts-ignore
                 onPressRight={() => bottomSheetRef.current && bottomSheetRef.current.show()}
             />
@@ -73,89 +94,31 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                 {pet.race && <CustomText style={styles.race}>Raza: {pet.race} </CustomText>}
             </View>
             <View />
-            <View style={[GlobalStyles.rowAround]}>
-                <CardValue
-                    title='Edad'
-                    value={String(pet.age)}
-                    valueExtra={pet.age === 1 ? ' año' : ' años'}
-                    icon='calendar-outline'
-                />
-                <CardValue title='Tipo' value={getPetType(pet.type)} icon='paw-outline' />
-                <CardCustom
-                    title='Sexo'
-                    value={getPetGender(pet.gender)}
-                    childExtra={
-                        <Icon
-                            type='MaterialCommunityIcons'
-                            name={pet.gender === 'male' ? 'gender-male' : 'gender-female'}
-                            color='white'
-                        />
-                    }
-                />
-            </View>
-
-            <View style={[GlobalStyles.rowAround]}>
-                <CardValue title='¿Está Castrado?' value={pet.sterilized ? 'Si' : 'No'} icon='bandage-outline' />
-                <CardCustom
-                    title='Color'
-                    value={pet.color}
-                    childExtra={<ItemColor size={22} color={getCodeColor(pet.color)} />}
-                />
-                <CardValue title='Tamaño' value={getPetSize(pet.size)} icon='trending-up-outline' />
-                {/* <CardValue title='Chip' value={pet.chip === '' ? 'Sin chip' : pet.chip} icon='qr-code-outline' /> */}
-            </View>
-
-            <View style={[GlobalStyles.rowAround]} />
+            <PetDetail pet={pet} />
             <Separator color='transparent' />
-            {pet.conditions && pet.conditions.length > 0 && (
-                <>
-                    <Title text='Patología/s preexistentes:' />
-                    <View style={styles.containerConditions}>
-                        {pet.conditions.map((item) => (
-                            <Badge key={item} label={item} color={getConditionColorCode(item)} />
-                        ))}
-                    </View>
-                </>
-            )}
+            {pet.conditions && pet.conditions.length > 0 && <ConditionsList conditions={pet.conditions} />}
             <View style={styles.button}>
-                <Button
-                    onPress={() => navigation.navigate('AddVisitScreen', { client: pet.owner, pet: pet._id })}
-                    title='Nueva Visita'
-                />
-                <Button
-                    onPress={() => navigation.navigate('VisitsScreen', { id: pet._id })}
-                    title='Historial Clínico'
-                />
-                {/* <Button
-                    style={styles.buttonDelete}
-                    onPress={() => console.log('open modal')}
-                    title='Eliminar mascota'
-                /> */}
+                <Button title='Nueva Visita' onPress={addVisit} />
+                <Button title='Historial Clínico' onPress={showVisits} />
             </View>
-            <BottomSheet refBottomSheet={bottomSheetRef} height={350}>
+            <ModalCustom
+                title='¿Seguro que querés eliminar la mascota?'
+                visible={showModal}
+                message='Al eliminarla, se eliminaran todas las visitas asociadas.'
+                confirmButton={'Aceptar'}
+                cancelButton='Cancelar'
+                onConfirmPressed={() => deletePet(pet._id)}
+                onCancelPressed={() => setShowModal(false)}
+            />
+            <BottomSheet refBottomSheet={bottomSheetRef} height={390}>
                 <View style={styles.containerContent}>
-                    <Option
-                        label='Agregar Visita'
-                        icon='add'
-                        onPress={() => {
-                            //@ts-ignore
-                            bottomSheetRef.current.close();
-                            navigation.navigate('AddVisitScreen', { client: pet.owner, pet: pet._id });
-                        }}
-                    />
-                    <Option
-                        label='Ver Historial Clínico'
-                        icon='document'
-                        onPress={() => {
-                            //@ts-ignore
-                            bottomSheetRef.current.close();
-                            navigation.navigate('VisitsScreen', { id: pet._id });
-                        }}
-                    />
                     <Option label='Editar Mascota' icon='pencil' onPress={updatePet} />
+                    <Option label='Agregar Visita' icon='add' onPress={addVisit} />
+                    <Option label='Ver Historial Clínico' icon='document' onPress={showVisits} />
+                    <Option label='Registro de cirugías' icon='document-text' onPress={showSurgeryRegistry} />
+                    <Option label='Registro de vacunas' icon='document-text' onPress={showVaccinesRegistry} />
                     <Option label='Ver Detalle propietario' icon='people' onPress={getDetailOwner} />
-                    <Option label='Ver Calendario de vacunas' icon='calendar' onPress={() => {}} />
-                    <Option label='Compartir' icon='share' onPress={() => {}} />
+                    <Option label='Eliminar Mascota' icon='trash' onPress={handleDeletePet} />
                 </View>
             </BottomSheet>
         </Container>
@@ -180,15 +143,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 10,
         width: '100%',
-    },
-    // buttonDelete: {
-    //     backgroundColor: colors.light.error,
-    // },
-    containerConditions: {
-        justifyContent: 'flex-start',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        paddingHorizontal: size.L,
     },
     containerContent: {
         marginVertical: size.M,

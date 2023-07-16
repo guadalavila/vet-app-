@@ -8,11 +8,20 @@ import ItemVisit from '../../shared/components/ItemVisit';
 import useVisits from '../../shared/hooks/useVisits';
 import Skeleton from '../../shared/components/Skeleton';
 import NoData from '../../shared/components/NoData';
+import { Visit } from '../../models/Visit';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'VisitsScreen'> {}
 
 const VisitsScreen = ({ route, navigation }: Props) => {
     const { visits, isLoading } = useVisits(route.params.id);
+
+    const editVisit = (visit: Visit) => {
+        navigation.replace('AddVisitScreen', {
+            client: visit.client,
+            pet: visit.pet,
+            visit: visit,
+        });
+    };
 
     if (isLoading) {
         return (
@@ -30,17 +39,7 @@ const VisitsScreen = ({ route, navigation }: Props) => {
                 <FlatList
                     data={visits}
                     renderItem={({ item, index }) => (
-                        <ItemVisit
-                            open={index === 0}
-                            visit={item}
-                            editVisit={() => {
-                                navigation.replace('AddVisitScreen', {
-                                    client: item.client,
-                                    pet: item.pet,
-                                    visit: item,
-                                });
-                            }}
-                        />
+                        <ItemVisit open={index === 0} visit={item} editVisit={() => editVisit(item)} />
                     )}
                     keyExtractor={(item) => item._id}
                 />

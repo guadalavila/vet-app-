@@ -83,9 +83,11 @@ const styles = StyleSheet.create({
     title: {
         paddingVertical: size.L,
         fontSize: typography.size.M,
+        textAlign: 'center',
+        marginBottom: size.L,
     },
     message: {
-        fontSize: typography.size.M,
+        fontSize: typography.size.XS,
         paddingBottom: size.L,
     },
     containerButtons: {
