@@ -12,9 +12,10 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 
 interface IItemDateProps {
     onChangeValue: (value: Date) => void;
+    placeholder?: string;
 }
 
-const ItemDate = ({ onChangeValue }: IItemDateProps) => {
+const ItemDate = ({ onChangeValue, placeholder = 'Fecha' }: IItemDateProps) => {
     const { theme } = useContext(ThemeContext);
     const [date, setDate] = useState(new Date());
     const [showCalendar, setShowCalendar] = useState(false);
@@ -40,7 +41,7 @@ const ItemDate = ({ onChangeValue }: IItemDateProps) => {
     return (
         <>
             <View style={styles.container}>
-                <CustomText style={styles.label}>Fecha</CustomText>
+                <CustomText style={styles.label}>{placeholder}</CustomText>
                 <View style={GlobalStyles.rowBetween}>
                     <View style={GlobalStyles.row}>
                         <CardDate
