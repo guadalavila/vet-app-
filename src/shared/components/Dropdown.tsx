@@ -12,7 +12,7 @@ interface IDropdownProps {
     placeholder: string;
     items: ItemType<any>[];
     setItems: Dispatch<SetStateCallback<any[]>>;
-    onSelectItem: (value: string) => void;
+    onSelectItem: (value: any) => void;
     required?: boolean;
     zIndex?: number;
     width?: string;
@@ -34,7 +34,7 @@ const Dropdown = ({
     const { theme, themeApp } = useContext(ThemeContext);
     return (
         <DropDownPicker
-            onSelectItem={(item) => onSelectItem(item.value)}
+            onSelectItem={(item) => onSelectItem(item)}
             listMode='SCROLLVIEW'
             zIndex={zIndex}
             listItemContainerStyle={[styles.listItemContainer, { backgroundColor: themeApp.colors.input }]}

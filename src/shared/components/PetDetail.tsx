@@ -3,10 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Pet } from '../../models/Pet';
 import { GlobalStyles } from '../utils/styles';
 import CardValue from './CardValue';
-import { getPetGender, getPetSize, getPetType } from '../utils/helpers';
+import { getCodeColor, getPetGender, getPetSize, getPetType } from '../utils/helpers';
 import CardCustom from './CardCustom';
 import ItemColor from './ItemColor';
-import { getCodeColor } from '../utils/constants';
 import Icon from '../../shared/components/Icon';
 
 interface IPetDetailProps {

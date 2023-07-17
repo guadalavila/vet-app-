@@ -1,3 +1,6 @@
+import { colors } from './colors';
+import { COLOR_PET } from './constants';
+
 const mapPetType = () => {
     const mapGender = new Map();
     mapGender.set('birds', 'Aves');
@@ -12,9 +15,7 @@ const mapPetType = () => {
     return mapGender;
 };
 
-export const getPetType = (type: string) => {
-    return mapPetType().get(type);
-};
+export const getPetType = (type: string) => mapPetType().get(type);
 
 const mapPetSize = () => {
     const mapSize = new Map();
@@ -62,4 +63,8 @@ export function getConditionColor(condition: string): string {
 
 export const getRandomColor = () => {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+};
+
+export const getCodeColor = (name: string) => {
+    return COLOR_PET.find((x) => x.value === name)?.code || colors.light.greyDark;
 };
