@@ -17,7 +17,7 @@ interface IUseFormReturn {
 }
 
 const useForm = (
-    form: 'NetPet' | 'NewClient' | 'NewVisit' | 'Login' | 'NewSurgeryForm' | 'NewVaccineForm',
+    form: 'NetPet' | 'NewClient' | 'NewVisit' | 'Login' | 'NewSurgeryForm' | 'NewVaccineForm' | 'SignUp',
     onSubmit: (fields: IFormFields) => void,
 ): IUseFormReturn => {
     const [fields, setFields] = useState<IFormFields>({});
@@ -41,6 +41,8 @@ const useForm = (
             validateNewClient();
         } else if (form === 'NewVisit') {
             validateNewVisit();
+        } else if (form === 'SignUp') {
+            validateSignUp();
         }
         // setErrors(formErrors);
 
@@ -107,6 +109,37 @@ const useForm = (
         } else if (!fields.password) {
             setErrors({
                 password: 'Debes ingresar la contraseña',
+            });
+        } else {
+            setErrors({});
+            onSubmit(fields);
+        }
+    };
+
+    const validateSignUp = () => {
+        if (!fields.name) {
+            setErrors({
+                name: 'Debes ingresar tu nombre',
+            });
+        } else if (!fields.lastName) {
+            setErrors({
+                lastName: 'Debes ingresar tu apellido',
+            });
+        } else if (!fields.email) {
+            setErrors({
+                email: 'Debes ingresar tu email',
+            });
+        } else if (fields.email && !validateEmail(String(fields.email))) {
+            setErrors({
+                email: 'El formato del email no es válido',
+            });
+        } else if (!fields.password) {
+            setErrors({
+                password: 'Debes ingresar la contraseña',
+            });
+        } else if (fields.password && fields.password.length < 6) {
+            setErrors({
+                password: 'La contraseña debe tener como mínimo 6 caracteres',
             });
         } else {
             setErrors({});

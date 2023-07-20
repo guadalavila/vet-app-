@@ -19,6 +19,7 @@ import SurgeryRegistryScreen from '../screens/Pets/SurgeryRegistryScreen';
 import AddSurgeriesScreen from '../screens/Pets/AddSurgeriesScreen';
 import VaccinesRegistryScreen from '../screens/Pets/VaccinesRegistryScreen';
 import AddVaccineScreen from '../screens/Pets/AddVaccineScreen';
+import SignUpScreen from '../screens/Login/SignUpScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
@@ -27,6 +28,7 @@ export function StackNavigatorLogOut() {
     return (
         <StackLoggedOut.Navigator screenOptions={{ headerShown: false }}>
             <StackLoggedOut.Screen name={'LoginScreen'} component={LoginScreen} />
+            <StackLoggedOut.Screen name={'SignUpScreen'} component={SignUpScreen} />
         </StackLoggedOut.Navigator>
     );
 }
