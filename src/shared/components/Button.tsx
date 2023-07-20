@@ -8,15 +8,14 @@ import { typography } from '../utils/typography';
 interface IButtonProps {
     title: string;
     onPress: () => void;
-    diabled?: boolean;
     style?: StyleProp<ViewStyle> | undefined;
+    outlined?: boolean;
 }
 
-const Button = ({ title, onPress, style = {}, diabled }: IButtonProps) => {
+const Button = ({ title, onPress, style = {}, outlined = false }: IButtonProps) => {
     return (
         <TouchableOpacity
-            disabled={diabled}
-            style={[styles.button, style, { backgroundColor: !diabled ? colors.light.primary : colors.light.greyDark }]}
+            style={[!outlined ? styles.button : styles.outlined, style]}
             activeOpacity={0.7}
             onPress={onPress}>
             <CustomText style={[styles.text]}>{title}</CustomText>
@@ -35,6 +34,13 @@ const styles = StyleSheet.create({
         marginVertical: size.XL,
         backgroundColor: colors.light.primary,
     },
+    outlined: {
+        marginHorizontal: size.XXL,
+        paddingHorizontal: size.XL,
+        paddingVertical: size.XXL,
+        marginVertical: size.XL,
+    },
+
     text: {
         fontWeight: '700',
         fontSize: typography.size.S,
