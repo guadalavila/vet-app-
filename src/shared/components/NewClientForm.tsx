@@ -24,13 +24,13 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData }) =>
         if (Object.entries(Object(initData)).length > 0) {
             //@ts-ignore
             const { name, lastName, dni, email, phone, address, comment } = initData;
-            setFieldValue('name', name);
-            setFieldValue('lastName', lastName);
-            setFieldValue('dni', dni);
-            setFieldValue('email', email);
-            setFieldValue('phone', phone);
-            setFieldValue('address', address);
-            setFieldValue('comment', comment);
+            name && setFieldValue('name', name);
+            lastName && setFieldValue('lastName', lastName);
+            dni && setFieldValue('dni', dni);
+            email && setFieldValue('email', email);
+            phone && setFieldValue('phone', phone);
+            address && setFieldValue('address', address);
+            comment && setFieldValue('comment', comment);
         }
     };
 

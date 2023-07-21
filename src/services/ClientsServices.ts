@@ -108,9 +108,9 @@ class ClientsServices {
     updateClient(client: any): Promise<Client> {
         return new Promise((resolve, reject) => {
             networkManager
-                .patch<ClientDetailResponse>(API_PATHS.CLIENT.concat(client._id), client)
+                .patch<Client>(API_PATHS.CLIENTS, client)
                 .then((res) => {
-                    resolve(res.data.data.client);
+                    resolve(res.data);
                 })
                 .catch((error) => {
                     reject(error);
