@@ -11,6 +11,7 @@ import { size } from '../../shared/utils/size';
 import Loading from '../../shared/components/Loading';
 import ModalInput from '../../shared/components/ModalInput';
 import usePathologies from '../../shared/hooks/usePathologies';
+import NoData from '../../shared/components/NoData';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PathologiesScreen'> {}
 
@@ -40,17 +41,23 @@ const PathologiesScreen = ({}: Props) => {
             {loading ? (
                 <Loading />
             ) : (
-                <FlatList
-                    data={pathologies}
-                    renderItem={({ item }) => (
-                        <View style={styles.conditionItem}>
-                            <View style={[styles.color, { backgroundColor: item.colorCode }]} />
-                            <CustomText style={styles.textItem}>{item.name}</CustomText>
-                        </View>
+                <>
+                    {pathologies.length > 0 ? (
+                        <FlatList
+                            data={pathologies}
+                            renderItem={({ item }) => (
+                                <View style={styles.conditionItem}>
+                                    <View style={[styles.color, { backgroundColor: item.colorCode }]} />
+                                    <CustomText style={styles.textItem}>{item.name}</CustomText>
+                                </View>
+                            )}
+                            keyExtractor={(item) => item._id}
+                            refreshControl={<RefreshControl refreshing={loading} onRefresh={onRefresh} />}
+                        />
+                    ) : (
+                        <NoData title='Todavía no agregaste una patología' showIcon />
                     )}
-                    keyExtractor={(item) => item._id}
-                    refreshControl={<RefreshControl refreshing={loading} onRefresh={onRefresh} />}
-                />
+                </>
             )}
             <Fab onPress={() => setShowModalInput(true)} bottom={60} />
             <ModalInput
