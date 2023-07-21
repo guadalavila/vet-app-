@@ -1,16 +1,16 @@
-import { Dashboard, DashboardResponse } from '../models/Dashboard';
+import { ItemDashboard } from '../models/Dashboard';
 import { API_PATHS } from '../shared/utils/apiPaths';
 import networkManager from '../shared/utils/axios/NetworkManager';
 
 class DashboardServices {
     constructor() {}
 
-    getInitialData(): Promise<Dashboard> {
+    getInitialData(): Promise<ItemDashboard[]> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<DashboardResponse>(API_PATHS.DASHBOARD)
+                .get<ItemDashboard[]>(API_PATHS.DASHBOARD)
                 .then((res) => {
-                    resolve(res.data.data);
+                    resolve(res.data);
                 })
                 .catch((error) => {
                     reject(error);

@@ -1,12 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import dashboardServices from '../../services/DashboardServices';
-import { Categorie } from '../../models/Categorie';
-import { CATEGORIES_DASHBOARD } from '../utils/constants';
 import conditionsServices from '../../services/ConditionsServices';
 import { ConditionsContext } from '../../contexts/ConditionsContext';
+import { ItemDashboard } from '../../models/Dashboard';
 
 const useDashboard = () => {
-    const [categories, setCategories] = useState<Categorie[] | []>([]);
+    const [categories, setCategories] = useState<ItemDashboard[] | []>([]);
     const { setConditionsApp } = useContext(ConditionsContext);
     const [errorDashboard, setErrorDashboard] = useState({
         error: false,
@@ -23,14 +22,7 @@ const useDashboard = () => {
     const getInitialData = () => {
         try {
             dashboardServices.getInitialData().then((res) => {
-                setCategories([
-                    { ...CATEGORIES_DASHBOARD[0], data: res.clients },
-                    { ...CATEGORIES_DASHBOARD[1], data: res.pets },
-                    {
-                        ...CATEGORIES_DASHBOARD[2],
-                        data: res.visits,
-                    },
-                ]);
+                setCategories(res);
                 setIsLoading(false);
             });
         } catch (error) {
@@ -56,14 +48,7 @@ const useDashboard = () => {
         setRefreshing(true);
         try {
             dashboardServices.getInitialData().then((res) => {
-                setCategories([
-                    { ...CATEGORIES_DASHBOARD[0], data: res.clients },
-                    { ...CATEGORIES_DASHBOARD[1], data: res.pets },
-                    {
-                        ...CATEGORIES_DASHBOARD[2],
-                        data: res.visits,
-                    },
-                ]);
+                setCategories(res);
                 setRefreshing(false);
             });
         } catch (error) {

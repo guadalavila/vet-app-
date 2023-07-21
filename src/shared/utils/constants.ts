@@ -1,11 +1,4 @@
-import { Categorie } from '../../models/Categorie';
 import { ItemList } from '../../models/ItemList';
-
-export const CATEGORIES: Categorie[] = [
-    { id: 1, name: 'Clientes', page: 'ClientsScreen', icon: 'people-outline', data: 23 },
-    { id: 2, name: 'Mascotas', page: 'PetsScreen', icon: 'paw-outline', data: 23 },
-    { id: 3, name: 'Visitas', page: 'PetsScreen', icon: 'document-outline', data: 3 },
-];
 
 export const GENDER: ItemList[] = [
     { label: 'Macho', value: 'male', code: '', icon: { name: 'gender-male', type: 'MaterialCommunityIcons' } },
@@ -64,26 +57,4 @@ export const CONDITIONS = [
     { label: 'Diabetico', value: 'Diabetico' },
     { label: 'Obeso', value: 'Obeso' },
     { label: 'Renal', value: 'Renal' },
-];
-
-export const CATEGORIES_DASHBOARD = [
-    {
-        id: 1,
-        name: 'Clientes',
-        page: 'ClientsScreen',
-        icon: 'people-outline',
-    },
-    {
-        id: 2,
-        name: 'Mascotas',
-        page: 'PetsScreen',
-        icon: 'paw-outline',
-    },
-    {
-        id: 3,
-        name: 'Últimas Visitas',
-        page: 'VisitsListScreen',
-        icon: 'document-outline',
-        height: 200,
-    },
 ];

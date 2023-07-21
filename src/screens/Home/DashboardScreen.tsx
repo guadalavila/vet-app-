@@ -47,7 +47,7 @@ const DashboardScreen = ({ navigation }: Props) => {
                 data={categories}
                 renderItem={({ item }) => (
                     <ItemCategory
-                        data={item.data}
+                        data={item.count}
                         icon={item.icon}
                         height={item.height}
                         title={item.name}
