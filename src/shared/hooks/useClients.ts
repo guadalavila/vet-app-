@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ClientData } from '../../models/Client';
+import { Client, ClientData } from '../../models/Client';
 import clientServices from '../../services/ClientsServices';
+import useAuth from './useAuth';
 
 const useClients = () => {
     const [dataClients, setDataClients] = useState<ClientData>({
@@ -10,19 +11,25 @@ const useClients = () => {
     });
     const [isLoading, setIsLoading] = useState(false);
     const [page, setPage] = useState(0);
+    const { user } = useAuth();
+    const [clients, setClients] = useState<Client[]>([]);
 
     useEffect(() => {
-        getListClients();
+        getClientsByVetId();
     }, []);
 
-    const getListClients = () => {
+    const getClientsByVetId = () => {
         setPage(page + 1);
         setIsLoading(true);
         try {
-            clientServices.getClients(page).then((res) => {
-                setDataClients({ ...res });
+            if (user?.vetId?._id) {
+                clientServices.getClientsByVetId(page, user.vetId._id).then((res) => {
+                    setClients(res);
+                    setIsLoading(false);
+                });
+            } else {
                 setIsLoading(false);
-            });
+            }
         } catch (error) {
             setIsLoading(false);
         }
@@ -50,7 +57,7 @@ const useClients = () => {
         // }
         // }
     };
-    return { dataClients, isLoading, getMoreClients };
+    return { dataClients, isLoading, getMoreClients, clients };
 };
 
 export default useClients;

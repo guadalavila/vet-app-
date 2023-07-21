@@ -6,6 +6,7 @@ export const API_PATHS = {
     PETS: 'pets',
     PET: 'pet',
     CLIENTS: 'clients',
+    CLIENTS_BY_VET: '/clients/by-vet/',
     CLIENT: 'clients/',
     SEARCH_CLIENTS: 'clients/search/',
     SEARCH_ONE_CLIENT: 'clients/search/one/',

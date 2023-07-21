@@ -164,14 +164,6 @@ const useForm = (
             setErrors({
                 dni: 'El DNI debe ser un valor numérico',
             });
-        } else if (!fields.phone) {
-            setErrors({
-                phone: 'Debes ingresar el teléfono',
-            });
-        } else if (fields.phone && !Number(fields.phone)) {
-            setErrors({
-                phone: 'El teléfono debe ser un valor numérico',
-            });
         } else {
             setErrors({});
             onSubmit(fields);

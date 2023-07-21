@@ -27,6 +27,19 @@ class ClientsServices {
         });
     }
 
+    getClientsByVetId(page: number, vetId: string): Promise<Client[]> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<Client[]>(`${API_PATHS.CLIENTS_BY_VET}${vetId}?page=${page}&limit=20}`)
+                .then((res) => {
+                    resolve(res.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
     getClient(id: string): Promise<Client> {
         return new Promise((resolve, reject) => {
             networkManager
@@ -66,12 +79,12 @@ class ClientsServices {
         });
     }
 
-    addClient(client: NewClient): Promise<Client> {
+    addClient(client: any): Promise<Client> {
         return new Promise((resolve, reject) => {
             networkManager
-                .post<ClientDetailResponse>(API_PATHS.CLIENTS, client)
+                .post<Client>(API_PATHS.CLIENTS, client)
                 .then((res) => {
-                    resolve(res.data.data.client);
+                    resolve(res.data);
                 })
                 .catch((error) => {
                     reject(error);

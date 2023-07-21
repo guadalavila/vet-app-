@@ -27,8 +27,8 @@ const ClientDetail = ({ client }: IClientDetailProps) => {
             {client.email && client.email.length > 0 && (
                 <CustomText style={styles.emailText}> {client.email}</CustomText>
             )}
-            {client.adress && client.adress.length > 0 && (
-                <CustomText style={styles.emailText}> {client.adress}</CustomText>
+            {client.address && client.address.length > 0 && (
+                <CustomText style={styles.emailText}> {client.address}</CustomText>
             )}
             <TouchableOpacity
                 style={[GlobalStyles.row, styles.containerPhone]}

@@ -21,14 +21,15 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData }) =>
     }, []);
 
     const setInitData = () => {
-        if (initData) {
-            const { name, lastName, dni, email, phone, adress, comment } = initData;
+        if (Object.entries(Object(initData)).length > 0) {
+            //@ts-ignore
+            const { name, lastName, dni, email, phone, address, comment } = initData;
             setFieldValue('name', name);
             setFieldValue('lastName', lastName);
             setFieldValue('dni', dni);
             setFieldValue('email', email);
             setFieldValue('phone', phone);
-            setFieldValue('adress', adress);
+            setFieldValue('address', address);
             setFieldValue('comment', comment);
         }
     };
@@ -71,7 +72,6 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData }) =>
                     onChangeText={(value) => setFieldValue('email', value)}
                 />
                 <FormInput
-                    required
                     value={fields.phone || '+54'}
                     placeholder='Teléfono'
                     keyboardType='number-pad'
@@ -82,9 +82,9 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData }) =>
                     {errors.phone && <Text style={styles.error}>{errors.phone}</Text>}
                 </View>
                 <FormInput
-                    value={fields.adress || ''}
+                    value={fields.address || ''}
                     placeholder='Dirección'
-                    onChangeText={(value) => setFieldValue('adress', value)}
+                    onChangeText={(value) => setFieldValue('address', value)}
                 />
                 <FormInput
                     isTextArea

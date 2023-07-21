@@ -16,11 +16,7 @@ import NoData from '../../shared/components/NoData';
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientsScreen'> {}
 
 const ClientsScreen = ({ navigation }: Props) => {
-    const {
-        dataClients: { clients },
-        isLoading,
-        getMoreClients,
-    } = useClients();
+    const { clients, isLoading, getMoreClients } = useClients();
     const [textSearch, setTextSearch] = useState('');
     const [clicked, setClicked] = useState(false);
     const { result, searchClients, searching, setSearching, emptyResult } = useSearchClients();

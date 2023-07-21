@@ -5,7 +5,7 @@ import clientServices from '../../services/ClientsServices';
 const useAddClient = () => {
     const [loading, setLoading] = useState(false);
 
-    const createClient = (client: NewClient) => {
+    const createClient = (client: any) => {
         return new Promise<Client>((resolve, reject) => {
             try {
                 setLoading(true);
@@ -15,6 +15,7 @@ const useAddClient = () => {
                 });
             } catch (error) {
                 setLoading(false);
+                reject(error);
             }
         });
     };

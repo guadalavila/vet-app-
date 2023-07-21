@@ -13,26 +13,28 @@ export type ClientDetail = {
 };
 
 export type Client = {
-    adress: string,
-    comment: string,
-    dni: string,
-    email: string,
-    lastName: string,
-    name: string,
-    phone: string,
     _id: string,
+    vetId: string,
+    dni: string,
+    name: string,
+    lastName: string,
+    email?: string,
+    phone?: string,
+    address?: string,
+    comment?: string,
     createdAt: string,
     updatedAt: string,
 };
 
 export type NewClient = {
-    adress: string,
-    comment: string,
+    vetId: string,
     dni: string,
-    email: string,
-    lastName: string,
     name: string,
-    phone: string,
+    lastName: string,
+    email?: string,
+    address?: string,
+    comment?: string,
+    phone?: string,
 };
 
 export type NewClientResponse = {
