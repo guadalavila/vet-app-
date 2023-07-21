@@ -6,6 +6,7 @@ import ClientsScreen from '../Clients/ClientsScreen';
 import CustomTabBar from '../../shared/components/CustomTabBar';
 import PetsScreen from '../Pets/PetsScreen';
 import SettingScreen from '../Settings/SettingScreen';
+import withVet from '../../shared/hoc/withVet';
 
 const Tab = createBottomTabNavigator<BottomTabStackParamList>();
 
@@ -23,4 +24,4 @@ const BottomTabScreen = ({ route }: any) => {
     );
 };
 
-export default BottomTabScreen;
+export default withVet(BottomTabScreen);

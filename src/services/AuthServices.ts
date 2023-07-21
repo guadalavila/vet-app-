@@ -1,4 +1,4 @@
-import { NewUser, UserResponse } from '../models/User';
+import { NewUser, User, UserResponse } from '../models/User';
 import { API_PATHS } from '../shared/utils/apiPaths';
 import networkManager from '../shared/utils/axios/NetworkManager';
 
@@ -22,6 +22,19 @@ class AuthServices {
         return new Promise((resolve, reject) => {
             networkManager
                 .postNoAuth<UserResponse>(API_PATHS.SIGN_UP, user)
+                .then((res) => {
+                    resolve(res.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
+    getMe(id: string): Promise<User> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<User>(`${API_PATHS.GET_ME}/${id}`)
                 .then((res) => {
                     resolve(res.data);
                 })

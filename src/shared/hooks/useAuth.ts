@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import authServices from '../../services/AuthServices';
 import { ToastContext } from '../../contexts/ToastContext';
-import { getData, removeMultiple, setMultiData } from '../utils/storage/asyncStorage';
+import { getData, removeMultiple, setData, setMultiData } from '../utils/storage/asyncStorage';
 import { STORAGE_KEYS } from '../utils/storage/keys';
 import { resetUserProperties, setUserProperties } from '../utils/firebase/analytics';
 import { NewUser, UserResponse } from '../../models/User';
@@ -48,6 +48,21 @@ const useAuth = () => {
         }
     };
 
+    const getMe = () => {
+        try {
+            if (user) {
+                setIsLoading(true);
+                authServices.getMe(user._id).then(async (user_) => {
+                    await setData(STORAGE_KEYS.USER, user_);
+                    setUser(user_);
+                    setIsLoading(false);
+                });
+            }
+        } catch (error) {
+            setIsLoading(false);
+        }
+    };
+
     const logout = async () => {
         await removeMultiple([STORAGE_KEYS.TOKEN, STORAGE_KEYS.USER]);
         resetUserProperties();
@@ -66,6 +81,6 @@ const useAuth = () => {
         setIsLoading(false);
     };
 
-    return { loginWithEmailAndPass, isLoading, logout, restoreUser, user, signUp };
+    return { loginWithEmailAndPass, isLoading, logout, restoreUser, user, signUp, getMe };
 };
 export default useAuth;

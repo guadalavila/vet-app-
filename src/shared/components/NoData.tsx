@@ -9,15 +9,24 @@ import { size } from '../utils/size';
 
 interface INoDataProps {
     title: string;
+    subtitle?: string;
+    showIcon?: boolean;
 }
 
-const NoData = ({ title }: INoDataProps) => {
+const NoData = ({ title, subtitle, showIcon = true }: INoDataProps) => {
     return (
         <View style={GlobalStyles.flexCenter}>
             <CustomText style={styles.title}>{title}</CustomText>
-            <View style={styles.icon}>
-                <Icon name='document-text' size={80} color={colors.light.greyDark} />
-            </View>
+            {subtitle && (
+                <View style={styles.containerSubtitle}>
+                    <CustomText style={styles.subtitle}>{subtitle}</CustomText>
+                </View>
+            )}
+            {showIcon && (
+                <View style={styles.icon}>
+                    <Icon name='document-text' size={80} color={colors.light.greyDark} />
+                </View>
+            )}
         </View>
     );
 };
@@ -33,8 +42,20 @@ const styles = StyleSheet.create({
         color: colors.light.greyDark,
         textAlign: 'center',
     },
+    subtitle: {
+        fontSize: typography.size.S,
+        fontWeight: '500',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        color: colors.light.greyDark,
+        textAlign: 'center',
+        marginVertical: size.XXXL,
+    },
     icon: {
         alignSelf: 'center',
         marginTop: size.XXL,
+    },
+    containerSubtitle: {
+        marginVertical: size.XL,
     },
 });

@@ -1,4 +1,5 @@
 import { Role } from './Role';
+import { Veterinary } from './Veterinary';
 
 export type NewUser = {
     name: string,
@@ -15,7 +16,7 @@ export type User = {
     lastName: string,
     email: string,
     role: Role,
-    vetId?: string,
+    vetId?: string | Veterinary,
     createdAt: string,
 };
 
