@@ -13,13 +13,13 @@ import AddVisitScreen from '../screens/Visit/AddVisitScreen';
 import AddPetScreen from '../screens/Pets/AddPetScreen';
 import AddClientScreen from '../screens/Clients/AddClientScreen';
 import VisitsListScreen from '../screens/Visit/VisitsListScreen';
-import ConditionsScreen from '../screens/Conditions/ConditionsScreen';
 import BottomTabScreen from '../screens/BottomTab/BottomTabScreen';
 import SurgeryRegistryScreen from '../screens/Pets/SurgeryRegistryScreen';
 import AddSurgeriesScreen from '../screens/Pets/AddSurgeriesScreen';
 import VaccinesRegistryScreen from '../screens/Pets/VaccinesRegistryScreen';
 import AddVaccineScreen from '../screens/Pets/AddVaccineScreen';
 import SignUpScreen from '../screens/Login/SignUpScreen';
+import PathologiesScreen from '../screens/Pathologies/PathologiesScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
@@ -48,7 +48,7 @@ export function StackNavigatorLogIn() {
             <StackLoggedIn.Screen name={'AddPetScreen'} component={AddPetScreen} />
             <StackLoggedIn.Screen name={'AddClientScreen'} component={AddClientScreen} />
             <StackLoggedIn.Screen name={'VisitsListScreen'} component={VisitsListScreen} />
-            <StackLoggedIn.Screen name={'ConditionsScreen'} component={ConditionsScreen} />
+            <StackLoggedIn.Screen name={'PathologiesScreen'} component={PathologiesScreen} />
             <StackLoggedIn.Screen name={'SurgeryRegistryScreen'} component={SurgeryRegistryScreen} />
             <StackLoggedIn.Screen name={'AddSurgeriesScreen'} component={AddSurgeriesScreen} />
             <StackLoggedIn.Screen name={'VaccinesRegistryScreen'} component={VaccinesRegistryScreen} />

@@ -8,22 +8,22 @@ import Fab from '../../shared/components/Fab';
 import CustomText from '../../shared/components/CustomText';
 import { colors } from '../../shared/utils/colors';
 import { size } from '../../shared/utils/size';
-import useConditions from '../../shared/hooks/useConditions';
 import Loading from '../../shared/components/Loading';
 import ModalInput from '../../shared/components/ModalInput';
+import usePathologies from '../../shared/hooks/usePathologies';
 
-interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ConditionsScreen'> {}
+interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PathologiesScreen'> {}
 
-const ConditionsScreen = ({}: Props) => {
-    const { loading, refreshData, saving, addCondition, conditionsApp } = useConditions();
+const PathologiesScreen = ({}: Props) => {
+    const { loading, refreshData, saving, addPathology, pathologies } = usePathologies();
     const [showModalInput, setShowModalInput] = useState(false);
 
     const onRefresh = useCallback(() => {
         refreshData();
     }, []);
 
-    const handleAddCondition = (name: string) => {
-        addCondition({ name, description: '' }).then(() => {
+    const handleAddPathology = (name: string) => {
+        addPathology(name, '').then(() => {
             setShowModalInput(false);
             refreshData();
         });
@@ -41,7 +41,7 @@ const ConditionsScreen = ({}: Props) => {
                 <Loading />
             ) : (
                 <FlatList
-                    data={conditionsApp}
+                    data={pathologies}
                     renderItem={({ item }) => (
                         <View style={styles.conditionItem}>
                             <View style={[styles.color, { backgroundColor: item.colorCode }]} />
@@ -59,14 +59,14 @@ const ConditionsScreen = ({}: Props) => {
                 title={'Agregar Patología'}
                 confirmButton={'Aceptar'}
                 cancelButton={'Cancelar'}
-                onConfirmPressed={(value) => handleAddCondition(value)}
+                onConfirmPressed={(value) => handleAddPathology(value)}
                 onCancelPressed={() => setShowModalInput(false)}
             />
         </Container>
     );
 };
 
-export default ConditionsScreen;
+export default PathologiesScreen;
 
 const styles = StyleSheet.create({
     containerInformation: {

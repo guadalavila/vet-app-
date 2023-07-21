@@ -19,8 +19,8 @@ import ItemClient from './ItemClient';
 import { Client } from '../../models/Client';
 import Loading from './Loading';
 import DropdownMultiple from './DropdownMultiple';
-import { ConditionsContext } from '../../contexts/ConditionsContext';
 import { Pet } from '../../models/Pet';
+import { PathologiesContext } from '../../contexts/PathologiesContext';
 
 interface INewPetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;
@@ -32,7 +32,7 @@ interface INewPetFormProps {
 const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, initData }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NetPet', onSubmit);
     const { searchClientsByDNI, searching, result } = useSearchClients();
-    const { conditionsApp } = useContext(ConditionsContext);
+    const { pathologies } = useContext(PathologiesContext);
     const [type, setType] = useState<PetType>({
         ...TYPE_PET[TYPE_PET.length - 1],
     });
@@ -221,8 +221,8 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
                     }}
                     zIndex={1000}
                     items={
-                        conditionsApp.length > 0
-                            ? conditionsApp.map((x) => {
+                        pathologies.length > 0
+                            ? pathologies.map((x) => {
                                   return { ...x, value: x.name, label: x.name };
                               })
                             : CONDITIONS

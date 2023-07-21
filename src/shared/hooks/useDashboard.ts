@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 import dashboardServices from '../../services/DashboardServices';
-import conditionsServices from '../../services/ConditionsServices';
-import { ConditionsContext } from '../../contexts/ConditionsContext';
 import { ItemDashboard } from '../../models/Dashboard';
+import pathologiesServices from '../../services/PathologiesServices';
+import useAuth from './useAuth';
+import { PathologiesContext } from '../../contexts/PathologiesContext';
 
 const useDashboard = () => {
+    const { user } = useAuth();
     const [categories, setCategories] = useState<ItemDashboard[] | []>([]);
-    const { setConditionsApp } = useContext(ConditionsContext);
+    const { setPathologies } = useContext(PathologiesContext);
     const [errorDashboard, setErrorDashboard] = useState({
         error: false,
         message: '',
@@ -16,7 +18,7 @@ const useDashboard = () => {
 
     useEffect(() => {
         getInitialData();
-        getConditionsPet();
+        getPathologiesPet();
     }, []);
 
     const getInitialData = () => {
@@ -34,13 +36,15 @@ const useDashboard = () => {
         }
     };
 
-    const getConditionsPet = () => {
+    const getPathologiesPet = () => {
         try {
-            conditionsServices.getConditions().then((res) => {
-                setConditionsApp(res);
-            });
+            if (user?.vetId?._id) {
+                pathologiesServices.getPathologies(user.vetId._id).then((res) => {
+                    setPathologies(res);
+                });
+            }
         } catch (error) {
-            setConditionsApp([]);
+            setPathologies([]);
         }
     };
 

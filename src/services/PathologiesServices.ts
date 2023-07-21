@@ -1,8 +1,9 @@
 import { Condition, ConditionsDataResponse, NewCondition, NewConditionResponse } from '../models/Condition';
+import { NewPathology, Pathology } from '../models/Pathology';
 import { API_PATHS } from '../shared/utils/apiPaths';
 import networkManager from '../shared/utils/axios/NetworkManager';
 
-class ConditionsServices {
+class PathologiesServices {
     constructor() {}
 
     getConditions(): Promise<Condition[]> {
@@ -14,6 +15,33 @@ class ConditionsServices {
                 })
                 .catch((error) => {
                     console.log(error);
+                    reject(error);
+                });
+        });
+    }
+
+    getPathologies(vetId: string): Promise<Pathology[]> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<Pathology[]>(`${API_PATHS.PATHOLOGIES}/${vetId}`)
+                .then((res) => {
+                    resolve(res.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    reject(error);
+                });
+        });
+    }
+
+    addPathology(pathology: NewPathology): Promise<Pathology> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .post<Pathology>(API_PATHS.PATHOLOGIES, pathology)
+                .then((res) => {
+                    resolve(res.data);
+                })
+                .catch((error) => {
                     reject(error);
                 });
         });
@@ -32,5 +60,5 @@ class ConditionsServices {
         });
     }
 }
-const conditionsServices = new ConditionsServices();
-export default conditionsServices;
+const pathologiesServices = new PathologiesServices();
+export default pathologiesServices;

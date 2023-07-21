@@ -16,7 +16,7 @@ export type User = {
     lastName: string,
     email: string,
     role: Role,
-    vetId?: string | Veterinary,
+    vetId?: Veterinary,
     createdAt: string,
 };
 

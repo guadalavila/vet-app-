@@ -3,16 +3,16 @@ import { ThemeContextProvider } from './contexts/ThemeContext';
 import { AuthContextProvider } from './contexts/AuthContext';
 import NavigatorApp from './shared/components/NavigatorApp';
 import { ToastContextProvider } from './contexts/ToastContext';
-import { ConditionsContextProvider } from './contexts/ConditionsContext';
+import { PathologiesContextProvider } from './contexts/PathologiesContext';
 
 const App = () => {
     return (
         <ThemeContextProvider>
             <AuthContextProvider>
                 <ToastContextProvider>
-                    <ConditionsContextProvider>
+                    <PathologiesContextProvider>
                         <NavigatorApp />
-                    </ConditionsContextProvider>
+                    </PathologiesContextProvider>
                 </ToastContextProvider>
             </AuthContextProvider>
         </ThemeContextProvider>

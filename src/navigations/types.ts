@@ -19,7 +19,7 @@ export type RootStackLoginParamList = {
     AddPetScreen: { client: Client | undefined, isUpdate: boolean, pet?: Pet },
     AddClientScreen: { isUpdate: boolean, client?: Client },
     VisitsListScreen: undefined,
-    ConditionsScreen: undefined,
+    PathologiesScreen: undefined,
     BottomTabScreen: { initialRouteName?: string },
     SurgeryRegistryScreen: undefined,
     AddSurgeriesScreen: undefined,
