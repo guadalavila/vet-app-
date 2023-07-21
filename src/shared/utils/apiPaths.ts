@@ -1,4 +1,5 @@
 export const API_PATHS = {
+    SIGN_UP: 'auth/signup',
     LOGIN: 'auth/login',
     DASHBOARD: 'dashboard',
     PETS: 'pets',

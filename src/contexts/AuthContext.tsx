@@ -1,25 +1,26 @@
 import React, { ReactNode, useState } from 'react';
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { UserData } from '../models/UserData';
+import { User } from '../models/User';
 
 export const AuthContext = React.createContext<{
     isAuth: boolean,
     setIsAuth: React.Dispatch<boolean>,
-    setUser: React.Dispatch<FirebaseAuthTypes.UserCredential>,
-    currentUser: FirebaseAuthTypes.UserCredential | undefined,
     isLoading: boolean,
     setIsLoading: React.Dispatch<boolean>,
-    userData: UserData | undefined,
-    setUserData: React.Dispatch<UserData>,
+    user: User | undefined,
+    setUser: React.Dispatch<User>,
+    token: string | undefined,
+    setToken: React.Dispatch<string>,
+    logOut: React.Dispatch<void>,
 }>({
     isAuth: false,
     setIsAuth: () => {},
-    setUser: () => {},
-    currentUser: undefined,
     isLoading: false,
     setIsLoading: () => {},
-    userData: undefined,
-    setUserData: () => {},
+    user: undefined,
+    setUser: () => {},
+    token: undefined,
+    setToken: () => {},
+    logOut: () => {},
 });
 
 interface AuthContextProviderProps {
@@ -29,12 +30,8 @@ interface AuthContextProviderProps {
 export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ children }) => {
     const [isAuth, setIsAuth] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [currentUser, setCurrentUser] = useState<FirebaseAuthTypes.UserCredential | undefined>(undefined);
-    const [userData, setUserData] = useState<UserData | undefined>(undefined);
-
-    const setUserApp = (user: FirebaseAuthTypes.UserCredential) => {
-        setCurrentUser(user);
-    };
+    const [user, setUser] = useState<User | undefined>(undefined);
+    const [token, setToken] = useState<string | undefined>(undefined);
 
     const setAuth = (value: boolean) => {
         setIsAuth(value);
@@ -44,21 +41,28 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ childr
         setIsLoading(value);
     };
 
-    const setUser = (user: UserData) => {
-        setUserData(user);
+    const setUserApp = (user_: User) => {
+        setUser(user_);
+    };
+
+    const logout = () => {
+        setIsAuth(false);
+        setUser(undefined);
+        setToken(undefined);
     };
 
     return (
         <AuthContext.Provider
             value={{
                 isAuth: isAuth,
-                setUser: setUserApp,
-                currentUser: currentUser,
                 setIsAuth: setAuth,
                 isLoading: isLoading,
                 setIsLoading: setLoading,
-                userData: userData,
-                setUserData: setUser,
+                user: user,
+                setUser: setUserApp,
+                token: token,
+                setToken: setToken,
+                logOut: logout,
             }}>
             {children}
         </AuthContext.Provider>

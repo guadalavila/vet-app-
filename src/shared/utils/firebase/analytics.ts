@@ -1,5 +1,6 @@
 import analytics from '@react-native-firebase/analytics';
-import { User } from '../../../models/UserData';
+import { User } from '../../../models/User';
+import { Role } from '../../../models/Role';
 
 export const logScreenView = async (currentRouteName: string) => {
     if (currentRouteName) {
@@ -32,6 +33,8 @@ export const resetUserProperties = async () => {
         _id: '',
         email: '',
         name: '',
-        role: 'user',
+        lastName: '',
+        role: Role.User,
+        createdAt: '',
     });
 };

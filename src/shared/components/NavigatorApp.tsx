@@ -10,7 +10,6 @@ import { logScreenView } from '../utils/firebase/analytics';
 const NavigatorApp = () => {
     const { isAuth } = useContext(AuthContext);
     const navigationRef = useNavigationContainerRef();
-
     const { restoreUser } = useAuth();
     const {
         resetToast,

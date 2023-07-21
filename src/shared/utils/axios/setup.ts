@@ -22,7 +22,7 @@ export const setup = () => {
         async function (error) {
             if (error) {
                 if (error.response && error.response?.status === 401) {
-                    await removeMultiple([STORAGE_KEYS.TOKEN, STORAGE_KEYS.USER, STORAGE_KEYS.USER_DATA]);
+                    await removeMultiple([STORAGE_KEYS.TOKEN, STORAGE_KEYS.USER]);
                     //TODO desloguearlo dispatch(setLogout());
                 }
                 return Promise.reject(error);
