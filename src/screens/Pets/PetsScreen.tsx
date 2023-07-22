@@ -16,13 +16,7 @@ import NoData from '../../shared/components/NoData';
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetsScreen'> {}
 
 const PetsScreen = ({ navigation }: Props) => {
-    const {
-        isLoading,
-        dataPets: { pets },
-        getMorePets,
-        refreshPets,
-        refreshing,
-    } = usePets();
+    const { isLoading, pets, getMorePets, refreshPets, refreshing } = usePets();
     const [textSearch, setTextSearch] = useState('');
     const [clicked, setClicked] = useState(false);
     const { result, searchPets, searching, setSearching, emptyResult } = useSearchPets();

@@ -31,6 +31,19 @@ class PetsServices {
         });
     }
 
+    getPetsByVetId(vetId: string, page: number): Promise<Pet[]> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<Pet[]>(`${API_PATHS.PETS}/${vetId}?page=${page.toString()}&limit=50}`)
+                .then((res) => {
+                    resolve(res.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
     searchPets(text: string): Promise<Pet[]> {
         return new Promise((resolve, reject) => {
             networkManager
