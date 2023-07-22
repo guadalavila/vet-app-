@@ -23,6 +23,9 @@ const ItemPetList = ({ pet, onPress }: IItemPetListProps) => {
             <View>
                 <CustomText style={[styles.nameAndLastName]}>{pet.name}</CustomText>
                 <CustomText style={[styles.dni]}>{getSpeciePet(pet.specie)}</CustomText>
+                <CustomText style={[styles.createdBy]}>
+                    Atendió: {pet.createdBy.name} {pet.createdBy.lastName}
+                </CustomText>
             </View>
         </TouchableOpacity>
     );
@@ -54,4 +57,5 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    createdBy: {},
 });

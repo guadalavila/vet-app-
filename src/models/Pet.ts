@@ -2,6 +2,7 @@ import { Client } from './Client';
 import { GenderPet } from './GenderPet';
 import { Pathology } from './Pathology';
 import { SpeciePet } from './SpeciePet';
+import { UserVet } from './User';
 
 export type PetResponse = {
     data: PetData,
@@ -29,6 +30,7 @@ export type Pet = {
     notes?: string,
     createdAt: string,
     updatedAt: string,
+    createdBy: UserVet,
 };
 
 export type NewPet = {

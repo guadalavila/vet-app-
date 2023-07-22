@@ -24,3 +24,10 @@ export type UserResponse = {
     user: User,
     token: string,
 };
+
+export type UserVet = {
+    _id: string,
+    name: string,
+    lastName: string,
+    email: string,
+};
