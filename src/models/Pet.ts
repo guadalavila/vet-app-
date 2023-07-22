@@ -1,3 +1,8 @@
+import { Client } from './Client';
+import { GenderPet } from './GenderPet';
+import { Pathology } from './Pathology';
+import { SpeciePet } from './SpeciePet';
+
 export type PetResponse = {
     data: PetData,
 };
@@ -9,35 +14,37 @@ export type PetData = {
 };
 
 export type Pet = {
-    conditions: string[],
     _id: string,
-    owner: string,
+    client: Client,
     name: string,
-    chip: string,
-    type: string,
-    race: string,
-    gender: string,
-    color: string,
+    chip?: string,
+    gender: GenderPet,
+    specie: SpeciePet,
+    breed?: string,
+    color?: string,
     size: string,
-    age: number,
-    imageURL: string,
+    age?: number,
     sterilized: boolean,
-    createdAt?: string,
-    updatedAt?: string,
+    pathologies?: Pathology[],
+    notes?: string,
+    createdAt: string,
+    updatedAt: string,
 };
 
 export type NewPet = {
-    owner: string,
+    createdBy: string,
+    vetId: string,
+    client: Client,
     name: string,
-    chip: string,
-    type: string,
-    race: string,
-    gender: string,
-    color: string,
+    chip?: string,
+    specie: SpeciePet,
+    breed?: string,
+    gender: GenderPet,
+    color?: string,
     size: string,
-    age: number,
+    age?: number,
     sterilized: boolean,
-    conditions: string[],
+    pathologies?: Pathology[],
 };
 
 export type NewPetResponse = {

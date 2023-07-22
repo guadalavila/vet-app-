@@ -7,7 +7,7 @@ import { GlobalStyles } from '../utils/styles';
 import { colors } from '../utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { LastVisits } from '../../models/Visit';
-import { getPetType } from '../utils/helpers';
+import { getSpeciePet } from '../utils/helpers';
 
 interface IItemLastVisitProps {
     lastVisit: LastVisits;
@@ -22,7 +22,7 @@ const ItemLastVisit = ({ onPress, lastVisit: { visit, pet } }: IItemLastVisitPro
             </View>
             <View>
                 <CustomText style={[styles.name]}>{pet.name}</CustomText>
-                <CustomText style={[styles.type]}>{getPetType(pet.type)}</CustomText>
+                <CustomText style={[styles.type]}>{getSpeciePet(pet.specie)}</CustomText>
                 <CustomText>
                     {new Date(visit.date).toLocaleString('en-GB', {
                         hour12: false,

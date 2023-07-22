@@ -8,6 +8,7 @@ import NewPetForm from '../../shared/components/NewPetForm';
 import useAddPet from '../../shared/hooks/useAddPet';
 import { NewPet } from '../../models/Pet';
 import Loading from '../../shared/components/Loading';
+import useAuth from '../../shared/hooks/useAuth';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddPetScreen'> {}
 
@@ -16,6 +17,7 @@ const AddPetScreen = ({ navigation, route }: Props) => {
     const client_ = route.params.client;
     const isUpdate = route.params.isUpdate;
     const pet = route.params.pet;
+    const { user } = useAuth();
 
     return (
         <Container>
@@ -27,20 +29,18 @@ const AddPetScreen = ({ navigation, route }: Props) => {
                     client={client_}
                     onSubmit={(data) => {
                         if (!isUpdate) {
-                            const pet_: NewPet = {
-                                owner: String(data.dni),
+                            const newPet: NewPet = {
+                                createdBy: user?._id ? user._id : '',
+                                vetId: user?.vetId ? user.vetId._id : '',
+                                client: data.client,
                                 name: String(data.name),
-                                age: data.age ? Number(data.age) : 0,
-                                chip: data.chip ? String(data.chip) : '',
-                                gender: String(data.gender),
-                                type: String(data.type),
-                                color: String(data.color),
-                                race: data.race ? String(data.race) : 'Otro',
+                                specie: data.specie,
+                                gender: data.gender,
                                 size: String(data.size),
-                                conditions: data.conditions ? data.conditions : [],
                                 sterilized: data.sterilized === undefined ? 'false' : data.sterilized,
+                                ...data,
                             };
-                            createPet(pet_).then((res) => {
+                            createPet(newPet).then((res) => {
                                 navigation.replace('PetDetailScreen', { pet: res, refresh: true });
                             });
                         } else {

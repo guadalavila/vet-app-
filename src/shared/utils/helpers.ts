@@ -1,21 +1,23 @@
 import { colors } from './colors';
 import { COLOR_PET } from './constants';
 
-const mapPetType = () => {
+const mapPetSpecie = () => {
     const mapGender = new Map();
-    mapGender.set('birds', 'Aves');
     mapGender.set('canine', 'Canino');
-    mapGender.set('equine', 'Equino');
     mapGender.set('feline', 'Felino');
+    mapGender.set('equine', 'Equino');
+    mapGender.set('bird', 'Aves');
+    mapGender.set('rabbit', 'Conejo');
+    mapGender.set('porcine', 'Porcino');
     mapGender.set('ferret', 'Huron');
     mapGender.set('insect', 'Insecto');
     mapGender.set('rodent', 'Roedor');
-    mapGender.set('unknown', 'Desconocido');
+    mapGender.set('other', 'Otro');
     mapGender.set('', '');
     return mapGender;
 };
 
-export const getPetType = (type: string) => mapPetType().get(type);
+export const getSpeciePet = (specie: string) => mapPetSpecie().get(specie);
 
 const mapPetSize = () => {
     const mapSize = new Map();

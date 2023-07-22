@@ -56,30 +56,33 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
     }, []);
 
     useEffect(() => {
-        if (client) setFieldValue('dni', client.dni);
+        if (client) setFieldValue('client', client);
     }, [client]);
 
     const setInitData = () => {
-        if (initData) {
-            setFieldValue('name', initData.name);
-            setFieldValue('age', String(initData.age));
-            setFieldValue('chip', initData.chip);
-            setFieldValue('race', initData.race);
+        if (Object.entries(Object(initData)).length > 0) {
+            //@ts-ignore
+            const { client, name, chip, specie, breed, gender, color, size, age, sterilized, pathologies } = initData;
 
-            setColorPet(COLOR_PET.find((x) => x.label === initData.color) ?? COLOR_PET[COLOR_PET.length - 1]);
-            setFieldValue('color', initData.color);
+            name && setFieldValue('name', name);
+            chip && setFieldValue('chip', chip);
+            age && setFieldValue('age', String(age));
+            breed && setFieldValue('breed', breed);
 
-            setFieldValue('gender', initData.gender);
-            setGenderPet(GENDER.find((x) => x.value === initData.gender) ?? GENDER[0]);
+            color && setColorPet(COLOR_PET.find((x) => x.label === color) ?? COLOR_PET[COLOR_PET.length - 1]);
+            color && setFieldValue('color', color);
 
-            setFieldValue('size', initData.size);
-            setSizePet(SIZE_PET.find((x) => x.value === initData.size) ?? SIZE_PET[0]);
+            gender && setFieldValue('gender', gender);
+            gender && setGenderPet(GENDER.find((x) => x.value === gender) ?? GENDER[0]);
 
-            setFieldValue('sterilized', initData.sterilized);
-            setSterilized(initData.sterilized);
+            size && setFieldValue('size', size);
+            size && setSizePet(SIZE_PET.find((x) => x.value === size) ?? SIZE_PET[0]);
 
-            setFieldValue('type', initData.type);
-            setType(TYPE_PET.find((x) => x.value === initData.type) ?? TYPE_PET[TYPE_PET.length - 1]);
+            sterilized && setFieldValue('sterilized', sterilized);
+            sterilized && setSterilized(sterilized);
+
+            specie && setFieldValue('specie', specie);
+            specie && setType(TYPE_PET.find((x) => x.value === specie) ?? TYPE_PET[TYPE_PET.length - 1]);
         }
     };
     return (
@@ -169,17 +172,17 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
                     selected={type}
                     setSelected={(item) => {
                         setType(item);
-                        setFieldValue('type', item.value);
+                        setFieldValue('specie', item.value);
                     }}
                 />
-                <FormInput
-                    value={fields.race || ''}
-                    placeholder='Raza'
-                    onChangeText={(value) => setFieldValue('race', value)}
-                />
                 <View style={styles.marginDefault}>
-                    {errors.type && <Text style={styles.error}>{errors.type}</Text>}
+                    {errors.specie && <Text style={styles.error}>{errors.specie}</Text>}
                 </View>
+                <FormInput
+                    value={fields.breed || ''}
+                    placeholder='Raza'
+                    onChangeText={(value) => setFieldValue('breed', value)}
+                />
                 <ListColors
                     colorPet={colorPet}
                     setColorPet={(item) => {
@@ -214,10 +217,8 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
                 </View>
                 <DropdownMultiple
                     onSelectItems={(values) => {
-                        setFieldValue(
-                            'conditions',
-                            values.map((x) => x.value),
-                        );
+                        console.log(values);
+                        setFieldValue('pathologies', values);
                     }}
                     zIndex={1000}
                     items={
@@ -229,7 +230,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
                     }
                     setItems={(list) => {}}
                     placeholder='Patologías preexistentes'
-                    initValue={initData?.conditions}
+                    initValue={initData?.pathologies}
                 />
                 <FormInput
                     isTextArea

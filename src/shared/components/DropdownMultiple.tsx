@@ -5,6 +5,7 @@ import { ItemType } from 'react-native-dropdown-picker';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { size } from '../utils/size';
 import { colors } from '../utils/colors';
+import { Pathology } from '../../models/Pathology';
 
 type SetStateCallback<S> = (prevState: S) => S;
 
@@ -16,7 +17,7 @@ interface IDropdownProps {
 
     required?: boolean;
     zIndex?: number;
-    initValue?: string[];
+    initValue?: Pathology[];
 }
 
 const DropdownMultiple = ({

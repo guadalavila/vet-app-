@@ -47,11 +47,12 @@ class PetsServices {
     addPet(pet: NewPet): Promise<Pet> {
         return new Promise((resolve, reject) => {
             networkManager
-                .post<NewPetResponse>(API_PATHS.PETS, pet)
+                .post<Pet>(API_PATHS.PETS, pet)
                 .then((res) => {
-                    resolve(res.data.data.pet);
+                    resolve(res.data);
                 })
                 .catch((error) => {
+                    console.log(error);
                     reject(error);
                 });
         });

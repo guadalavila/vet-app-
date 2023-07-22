@@ -7,7 +7,7 @@ import { size } from '../utils/size';
 import { typography } from '../utils/typography';
 import { colors } from '../utils/colors';
 import { GlobalStyles } from '../utils/styles';
-import { getPetType } from '../utils/helpers';
+import { getSpeciePet } from '../utils/helpers';
 
 interface IItemPetListProps {
     pet: Pet;
@@ -22,7 +22,7 @@ const ItemPetList = ({ pet, onPress }: IItemPetListProps) => {
             </View>
             <View>
                 <CustomText style={[styles.nameAndLastName]}>{pet.name}</CustomText>
-                <CustomText style={[styles.dni]}>{getPetType(pet.type)}</CustomText>
+                <CustomText style={[styles.dni]}>{getSpeciePet(pet.specie)}</CustomText>
             </View>
         </TouchableOpacity>
     );

@@ -28,7 +28,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
 
     const getDetailOwner = () => {
         try {
-            clientServices.searchOneClient(pet.owner).then((res) => {
+            clientServices.searchOneClient(pet.client.dni).then((res) => {
                 navigation.navigate('ClientDetailScreen', { client: res });
             });
             closeBottomSheet();
@@ -53,7 +53,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
 
     const addVisit = () => {
         closeBottomSheet();
-        navigation.navigate('AddVisitScreen', { client: pet.owner, pet: pet._id });
+        navigation.navigate('AddVisitScreen', { client: pet.client.dni, pet: pet._id });
     };
 
     const showVisits = () => {
@@ -91,12 +91,14 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             />
             <View style={styles.marginInfo}>
                 <CustomText style={styles.name}>{pet.name}</CustomText>
-                {pet.race && <CustomText style={styles.race}>Raza: {pet.race} </CustomText>}
+                {pet.breed && <CustomText style={styles.race}>Raza: {pet.breed} </CustomText>}
             </View>
             <View />
             <PetDetail pet={pet} />
             <Separator color='transparent' />
-            {pet.conditions && pet.conditions.length > 0 && <ConditionsList conditions={pet.conditions} />}
+            {pet.pathologies && pet.pathologies.length > 0 && (
+                <ConditionsList conditions={pet.pathologies.map((x) => x.name)} />
+            )}
             <View style={styles.button}>
                 <Button title='Nueva Visita' onPress={addVisit} />
                 <Button title='Historial Clínico' onPress={showVisits} />

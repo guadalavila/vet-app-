@@ -15,6 +15,7 @@ const useAddPet = () => {
                 });
             } catch (error) {
                 setLoading(false);
+                reject(error);
             }
         });
     };

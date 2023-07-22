@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Pet } from '../../models/Pet';
 import { GlobalStyles } from '../utils/styles';
 import CardValue from './CardValue';
-import { getCodeColor, getPetGender, getPetSize, getPetType } from '../utils/helpers';
+import { getCodeColor, getPetGender, getPetSize, getSpeciePet } from '../utils/helpers';
 import CardCustom from './CardCustom';
 import ItemColor from './ItemColor';
 import Icon from '../../shared/components/Icon';
@@ -22,7 +22,7 @@ const PetDetail = ({ pet }: IPetDetailProps) => {
                     valueExtra={pet.age === 1 ? ' año' : ' años'}
                     icon='calendar-outline'
                 />
-                <CardValue title='Tipo' value={getPetType(pet.type)} icon='paw-outline' />
+                <CardValue title='Tipo' value={getSpeciePet(pet.specie)} icon='paw-outline' />
                 <CardCustom
                     title='Sexo'
                     value={getPetGender(pet.gender)}
@@ -37,11 +37,13 @@ const PetDetail = ({ pet }: IPetDetailProps) => {
             </View>
             <View style={[GlobalStyles.rowAround]}>
                 <CardValue title='¿Está Castrado?' value={pet.sterilized ? 'Si' : 'No'} icon='bandage-outline' />
-                <CardCustom
-                    title='Color'
-                    value={pet.color}
-                    childExtra={<ItemColor size={22} color={getCodeColor(pet.color)} />}
-                />
+                {pet.color && (
+                    <CardCustom
+                        title='Color'
+                        value={pet.color}
+                        childExtra={<ItemColor size={22} color={getCodeColor(pet.color)} />}
+                    />
+                )}
                 <CardValue title='Tamaño' value={getPetSize(pet.size)} icon='trending-up-outline' />
                 {/* <CardValue title='Chip' value={pet.chip === '' ? 'Sin chip' : pet.chip} icon='qr-code-outline' /> */}
             </View>

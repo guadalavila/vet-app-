@@ -67,10 +67,6 @@ const useForm = (
             setErrors({
                 name: 'Debes ingresar el nombre',
             });
-        } else if (!fields.age) {
-            setErrors({
-                age: 'Debes ingresar edad',
-            });
         } else if (fields.age && !Number(fields.age)) {
             setErrors({
                 age: 'La edad debe ser un valor numérico',
@@ -79,9 +75,9 @@ const useForm = (
             setErrors({
                 gender: 'Debes seleccionar un sexo',
             });
-        } else if (!fields.type) {
+        } else if (!fields.specie) {
             setErrors({
-                type: 'Debes seleccionar una especie',
+                specie: 'Debes seleccionar una especie',
             });
         } else if (!fields.color) {
             setErrors({
