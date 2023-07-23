@@ -23,10 +23,12 @@ const useDashboard = () => {
 
     const getInitialData = () => {
         try {
-            dashboardServices.getInitialData().then((res) => {
-                setCategories(res);
-                setIsLoading(false);
-            });
+            if (user?.vetId) {
+                dashboardServices.getDashboard(user.vetId._id).then((res) => {
+                    setCategories(res);
+                    setIsLoading(false);
+                });
+            }
         } catch (error) {
             setErrorDashboard({
                 error: true,

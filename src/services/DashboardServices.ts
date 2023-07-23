@@ -17,6 +17,19 @@ class DashboardServices {
                 });
         });
     }
+
+    getDashboard(vetId: string): Promise<ItemDashboard[]> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<ItemDashboard[]>(`${API_PATHS.DASHBOARD}/by-vet/${vetId}`)
+                .then((res) => {
+                    resolve(res.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
 }
 const dashboardServices = new DashboardServices();
 export default dashboardServices;
