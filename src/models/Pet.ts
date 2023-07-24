@@ -30,7 +30,7 @@ export type Pet = {
     notes?: string,
     createdAt: string,
     updatedAt: string,
-    createdBy: UserVet,
+    createdBy: UserVet | string,
 };
 
 export type NewPet = {
