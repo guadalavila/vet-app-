@@ -13,7 +13,6 @@ interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddClie
 const AddClientScreen = ({ navigation, route }: Props) => {
     const { loading, createClient, updateClient } = useAddClient();
     const currentClient = route.params.client;
-    console.log(currentClient);
     const isUpdate = route.params.isUpdate;
     const { user } = useAuth();
     //TODO no se puede modificar el dni de una persona (por ahora)

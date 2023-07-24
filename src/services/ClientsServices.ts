@@ -43,9 +43,9 @@ class ClientsServices {
     getClient(id: string): Promise<Client> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<ClientDetail>(API_PATHS.CLIENT.concat(id))
+                .get<Client>(API_PATHS.CLIENT.concat(id))
                 .then((res) => {
-                    resolve(res.data.data);
+                    resolve(res.data);
                 })
                 .catch((error) => {
                     reject(error);

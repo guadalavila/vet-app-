@@ -16,7 +16,7 @@ export type PetData = {
 
 export type Pet = {
     _id: string,
-    client: Client,
+    client: string | Client,
     name: string,
     chip?: string,
     gender: GenderPet,

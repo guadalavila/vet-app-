@@ -20,16 +20,14 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        if (client.dni) {
-            try {
-                setLoading(true);
-                petsServices.getPetsByClient(client.dni).then((res) => {
-                    setPets(res);
-                    setLoading(false);
-                });
-            } catch (error) {
+        try {
+            setLoading(true);
+            petsServices.getPetsByClient(client._id).then((res) => {
+                setPets(res);
                 setLoading(false);
-            }
+            });
+        } catch (error) {
+            setLoading(false);
         }
     }, []);
 

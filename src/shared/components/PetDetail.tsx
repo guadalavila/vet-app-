@@ -16,12 +16,16 @@ const PetDetail = ({ pet }: IPetDetailProps) => {
     return (
         <View>
             <View style={[GlobalStyles.rowAround]}>
-                <CardValue
-                    title='Edad'
-                    value={String(pet.age)}
-                    valueExtra={pet.age === 1 ? ' año' : ' años'}
-                    icon='calendar-outline'
-                />
+                {pet.age ? (
+                    <CardValue
+                        title='Edad'
+                        value={String(pet.age)}
+                        valueExtra={pet.age === 1 ? ' año' : ' años'}
+                        icon='calendar-outline'
+                    />
+                ) : (
+                    <CardValue title='Edad' value={'-'} icon='calendar-outline' />
+                )}
                 <CardValue title='Tipo' value={getSpeciePet(pet.specie)} icon='paw-outline' />
                 <CardCustom
                     title='Sexo'

@@ -28,10 +28,12 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
 
     const getDetailOwner = () => {
         try {
-            clientServices.searchOneClient(pet.client.dni).then((res) => {
-                navigation.navigate('ClientDetailScreen', { client: res });
-            });
-            closeBottomSheet();
+            if (typeof pet.client === 'string') {
+                clientServices.getClient(pet.client).then((res) => {
+                    navigation.navigate('ClientDetailScreen', { client: res });
+                });
+                closeBottomSheet();
+            }
         } catch (error) {}
     };
 
@@ -53,7 +55,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
 
     const addVisit = () => {
         closeBottomSheet();
-        navigation.navigate('AddVisitScreen', { client: pet.client.dni, pet: pet._id });
+        // navigation.navigate('AddVisitScreen', { client: pet.client.dni, pet: pet._id });
     };
 
     const showVisits = () => {
