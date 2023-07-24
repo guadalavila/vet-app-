@@ -28,12 +28,10 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
 
     const getDetailOwner = () => {
         try {
-            if (typeof pet.client === 'string') {
-                clientServices.getClient(pet.client).then((res) => {
-                    navigation.navigate('ClientDetailScreen', { client: res });
-                });
-                closeBottomSheet();
-            }
+            clientServices.getClient(typeof pet.client === 'string' ? pet.client : pet.client._id).then((res) => {
+                navigation.navigate('ClientDetailScreen', { client: res });
+            });
+            closeBottomSheet();
         } catch (error) {}
     };
 

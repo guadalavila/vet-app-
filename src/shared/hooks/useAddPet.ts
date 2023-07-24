@@ -20,7 +20,7 @@ const useAddPet = () => {
         });
     };
 
-    const updatePet = (pet: any) => {
+    const updatePet = (pet: Pet) => {
         return new Promise<Pet>((resolve, reject) => {
             try {
                 setLoading(true);
@@ -30,6 +30,7 @@ const useAddPet = () => {
                 });
             } catch (error) {
                 setLoading(false);
+                reject(error);
             }
         });
     };

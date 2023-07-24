@@ -3,7 +3,7 @@ import { ItemList } from '../../models/ItemList';
 export const GENDER: ItemList[] = [
     { label: 'Macho', value: 'male', code: '', icon: { name: 'gender-male', type: 'MaterialCommunityIcons' } },
     { label: 'Hembra', value: 'female', code: '', icon: { name: 'gender-female', type: 'MaterialCommunityIcons' } },
-    { label: 'Otro', value: 'other', code: '' },
+    { label: 'Otro', value: 'other', code: '', icon: { name: 'gender-male-female', type: 'MaterialCommunityIcons' } },
 ];
 
 export type PetType = {

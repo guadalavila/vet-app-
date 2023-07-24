@@ -6,7 +6,7 @@ import Container from '../../shared/components/Container';
 import Header from '../../shared/components/Header';
 import NewPetForm from '../../shared/components/NewPetForm';
 import useAddPet from '../../shared/hooks/useAddPet';
-import { NewPet } from '../../models/Pet';
+import { NewPet, Pet } from '../../models/Pet';
 import Loading from '../../shared/components/Loading';
 import useAuth from '../../shared/hooks/useAuth';
 
@@ -44,14 +44,19 @@ const AddPetScreen = ({ navigation, route }: Props) => {
                                 navigation.replace('PetDetailScreen', { pet: res, refresh: true });
                             });
                         } else {
-                            const updPet = { ...pet, ...data };
-                            updatePet(updPet).then((res) => {
-                                navigation.replace('PetDetailScreen', { pet: res, refresh: true });
-                            });
+                            if (pet) {
+                                const createdBy =
+                                    typeof pet?.createdBy === 'string' ? pet.createdBy : pet?.createdBy._id;
+                                const client = typeof pet?.client === 'string' ? pet.client : pet?.client._id;
+                                const updPet: Pet = { ...pet, ...data, createdBy: createdBy, client: client };
+                                updatePet(updPet).then((res) => {
+                                    navigation.replace('PetDetailScreen', { pet: res, refresh: true });
+                                });
+                            }
                         }
                     }}
-                    isUpdate={isUpdate}
                     initData={pet}
+                    onCancel={() => navigation.goBack()}
                 />
             )}
         </Container>

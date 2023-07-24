@@ -74,9 +74,9 @@ class PetsServices {
     updatePet(pet: Pet): Promise<Pet> {
         return new Promise((resolve, reject) => {
             networkManager
-                .patch<NewPetResponse>(`${API_PATHS.PETS}/${pet._id}`, pet)
+                .patch<Pet>(API_PATHS.PETS, pet)
                 .then((res) => {
-                    resolve(res.data.data.pet);
+                    resolve(res.data);
                 })
                 .catch((error) => {
                     reject(error);

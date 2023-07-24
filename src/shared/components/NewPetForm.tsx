@@ -25,12 +25,13 @@ import { PathologiesContext } from '../../contexts/PathologiesContext';
 interface INewPetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;
     client: Client | undefined;
-    isUpdate: boolean;
     initData?: Pet;
+    onCancel: () => void;
 }
 
-const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, initData }) => {
+const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, onCancel }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NetPet', onSubmit);
+    const [isUpdate, setIsUpdate] = useState(false);
     const { searchClientsByDNI, searching, result } = useSearchClients();
     const { pathologies } = useContext(PathologiesContext);
     const [type, setType] = useState<PetType>({
@@ -61,12 +62,13 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
 
     const setInitData = () => {
         if (Object.entries(Object(initData)).length > 0) {
+            setIsUpdate(true);
             //@ts-ignore
             const { client, name, chip, specie, breed, gender, color, size, age, sterilized, pathologies } = initData;
 
             name && setFieldValue('name', name);
-            chip && setFieldValue('chip', chip);
             age && setFieldValue('age', String(age));
+            chip && setFieldValue('chip', chip);
             breed && setFieldValue('breed', breed);
 
             color && setColorPet(COLOR_PET.find((x) => x.label === color) ?? COLOR_PET[COLOR_PET.length - 1]);
@@ -241,6 +243,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
             </ScrollView>
             <View style={styles.bottom}>
                 <Button title={'Guardar'} onPress={handleSubmit} />
+                <Button secondary title={'Cancelar'} onPress={onCancel} />
             </View>
         </View>
     );
@@ -250,7 +253,7 @@ export default NewPetForm;
 
 const styles = StyleSheet.create({
     contentContainer: {
-        paddingBottom: 100,
+        paddingBottom: 140,
     },
     error: {
         color: colors.light.error,
