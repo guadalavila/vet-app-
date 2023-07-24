@@ -30,13 +30,15 @@ const ClientDetail = ({ client }: IClientDetailProps) => {
             {client.address && client.address.length > 0 && (
                 <CustomText style={styles.emailText}> {client.address}</CustomText>
             )}
-            <TouchableOpacity
-                style={[GlobalStyles.row, styles.containerPhone]}
-                activeOpacity={0.7}
-                onPress={() => Linking.openURL(`https://api.whatsapp.com/send?phone=${client.phone}}`)}>
-                <Icon name='logo-whatsapp' size={24} color={colors.light.whatsapp} />
-                <CustomText style={styles.phone}>{client.phone}</CustomText>
-            </TouchableOpacity>
+            {client.phone && (
+                <TouchableOpacity
+                    style={[GlobalStyles.row, styles.containerPhone]}
+                    activeOpacity={0.7}
+                    onPress={() => Linking.openURL(`https://api.whatsapp.com/send?phone=${client.phone}}`)}>
+                    <Icon name='logo-whatsapp' size={24} color={colors.light.whatsapp} />
+                    <CustomText style={styles.phone}>{client.phone}</CustomText>
+                </TouchableOpacity>
+            )}
         </Card>
     );
 };

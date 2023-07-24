@@ -52,16 +52,25 @@ const PetsScreen = ({ navigation }: Props) => {
                 setCLicked={setClicked}
             />
             {!searching ? (
-                <FlatList
-                    data={pets}
-                    renderItem={({ item }) => (
-                        <ItemPetList pet={item} onPress={() => navigation.navigate('PetDetailScreen', { pet: item })} />
+                <>
+                    {pets.length > 0 ? (
+                        <FlatList
+                            data={pets}
+                            renderItem={({ item }) => (
+                                <ItemPetList
+                                    pet={item}
+                                    onPress={() => navigation.navigate('PetDetailScreen', { pet: item })}
+                                />
+                            )}
+                            keyExtractor={(item) => item._id}
+                            onEndReached={() => getMorePets()}
+                            onEndReachedThreshold={0.2}
+                            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+                        />
+                    ) : (
+                        <NoData title='Todavía no tenes mascotas agregadas' icon='paw-outline' />
                     )}
-                    keyExtractor={(item) => item._id}
-                    onEndReached={() => getMorePets()}
-                    onEndReachedThreshold={0.2}
-                    refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-                />
+                </>
             ) : (
                 <View>
                     {result?.length > 0 ? (

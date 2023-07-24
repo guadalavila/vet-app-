@@ -11,9 +11,10 @@ interface INoDataProps {
     title: string;
     subtitle?: string;
     showIcon?: boolean;
+    icon?: string;
 }
 
-const NoData = ({ title, subtitle, showIcon = true }: INoDataProps) => {
+const NoData = ({ title, subtitle, showIcon = true, icon = 'document-text' }: INoDataProps) => {
     return (
         <View style={GlobalStyles.flexCenter}>
             <CustomText style={styles.title}>{title}</CustomText>
@@ -24,7 +25,7 @@ const NoData = ({ title, subtitle, showIcon = true }: INoDataProps) => {
             )}
             {showIcon && (
                 <View style={styles.icon}>
-                    <Icon name='document-text' size={80} color={colors.light.greyDark} />
+                    <Icon name={icon} size={80} color={colors.light.greyDark} />
                 </View>
             )}
         </View>
@@ -41,6 +42,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         color: colors.light.greyDark,
         textAlign: 'center',
+        marginHorizontal: size.XL,
     },
     subtitle: {
         fontSize: typography.size.S,
