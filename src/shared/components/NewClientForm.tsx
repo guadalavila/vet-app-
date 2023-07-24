@@ -11,9 +11,10 @@ import { size } from '../utils/size';
 interface INewClientFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
     initData?: { [fieldName: string]: string | boolean | Date };
+    onCancel: () => void;
 }
 
-const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData }) => {
+const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData, onCancel }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NewClient', onSubmit);
 
     useEffect(() => {
@@ -57,7 +58,6 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData }) =>
                 </View>
                 <FormInput
                     required
-                    editable={initData?.dni ? false : true}
                     value={fields.dni || ''}
                     placeholder='DNI'
                     keyboardType='number-pad'
@@ -95,6 +95,7 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData }) =>
             </ScrollView>
             <View style={styles.bottom}>
                 <Button title={'Guardar'} onPress={handleSubmit} />
+                <Button secondary title={'Cancelar'} onPress={onCancel} />
             </View>
         </View>
     );
@@ -104,7 +105,7 @@ export default NewClientForm;
 
 const styles = StyleSheet.create({
     contentContainer: {
-        paddingBottom: 100,
+        paddingBottom: 140,
     },
     error: {
         color: colors.light.error,

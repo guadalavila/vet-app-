@@ -10,12 +10,13 @@ interface IButtonProps {
     onPress: () => void;
     style?: StyleProp<ViewStyle> | undefined;
     outlined?: boolean;
+    secondary?: boolean;
 }
 
-const Button = ({ title, onPress, style = {}, outlined = false }: IButtonProps) => {
+const Button = ({ title, onPress, style = {}, outlined = false, secondary = false }: IButtonProps) => {
     return (
         <TouchableOpacity
-            style={[!outlined ? styles.button : styles.outlined, style]}
+            style={[!outlined ? styles.button : styles.outlined, secondary && styles.secondary, style]}
             activeOpacity={0.7}
             onPress={onPress}>
             <CustomText style={[styles.text]}>{title}</CustomText>
@@ -33,6 +34,14 @@ const styles = StyleSheet.create({
         paddingVertical: size.XXL,
         marginVertical: size.XL,
         backgroundColor: colors.light.primary,
+    },
+    secondary: {
+        borderRadius: 10,
+        marginHorizontal: size.XXL,
+        paddingHorizontal: size.XL,
+        paddingVertical: size.XXL,
+        marginVertical: size.XL,
+        backgroundColor: colors.light.greyDark,
     },
     outlined: {
         marginHorizontal: size.XXL,

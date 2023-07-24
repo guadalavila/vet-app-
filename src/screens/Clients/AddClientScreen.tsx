@@ -15,7 +15,7 @@ const AddClientScreen = ({ navigation, route }: Props) => {
     const currentClient = route.params.client;
     const isUpdate = route.params.isUpdate;
     const { user } = useAuth();
-    //TODO no se puede modificar el dni de una persona (por ahora)
+
     return (
         <Container>
             <Header title={isUpdate ? 'Actualizar Cliente' : 'Nuevo Cliente '} buttonBack />
@@ -40,6 +40,7 @@ const AddClientScreen = ({ navigation, route }: Props) => {
                         }
                     }}
                     initData={{ ...currentClient }}
+                    onCancel={() => navigation.goBack()}
                 />
             )}
         </Container>

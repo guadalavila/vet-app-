@@ -23,9 +23,9 @@ const ItemPetList = ({ pet, onPress }: IItemPetListProps) => {
             <View>
                 <CustomText style={[styles.nameAndLastName]}>{pet.name}</CustomText>
                 <CustomText style={[styles.dni]}>{getSpeciePet(pet.specie)}</CustomText>
-                {typeof pet.createdBy !== 'string' && (
+                {typeof pet.client !== 'string' && (
                     <CustomText style={[styles.createdBy]}>
-                        Atendió: {pet.createdBy.name} {pet.createdBy.lastName}
+                        Responsable: {pet.client.name} {pet.client.lastName}
                     </CustomText>
                 )}
             </View>

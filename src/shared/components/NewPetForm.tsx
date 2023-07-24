@@ -56,7 +56,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, isUpdate, in
     }, []);
 
     useEffect(() => {
-        if (client) setFieldValue('client', client);
+        if (client) setFieldValue('client', client._id);
     }, [client]);
 
     const setInitData = () => {
