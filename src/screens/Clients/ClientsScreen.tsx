@@ -19,13 +19,13 @@ const ClientsScreen = ({ navigation }: Props) => {
     const { clients, isLoading, getMoreClients } = useClients();
     const [textSearch, setTextSearch] = useState('');
     const [clicked, setClicked] = useState(false);
-    const { result, searchClients, searching, setSearching, emptyResult } = useSearchClients();
+    const { result, searchClientsByDNI, activeSearching, setActiveSearching, emptyResult } = useSearchClients();
 
     useEffect(() => {
         if (textSearch.length >= 3) {
-            searchClients(textSearch);
+            searchClientsByDNI(textSearch);
         }
-        if (textSearch.length === 0) setSearching(false);
+        if (textSearch.length === 0) setActiveSearching(false);
     }, [textSearch]);
 
     if (isLoading) {
@@ -47,9 +47,9 @@ const ClientsScreen = ({ navigation }: Props) => {
                 onChangeValue={setTextSearch}
                 clicked={clicked}
                 setCLicked={setClicked}
-                onCancelSearch={() => setSearching(false)}
+                onCancelSearch={() => setActiveSearching(false)}
             />
-            {!searching ? (
+            {!activeSearching ? (
                 <FlatList
                     data={clients}
                     renderItem={({ item }) => (

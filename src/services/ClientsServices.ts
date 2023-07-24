@@ -53,12 +53,12 @@ class ClientsServices {
         });
     }
 
-    searchClients(text: string): Promise<Client[]> {
+    searchClients(vetId: string, dni: string): Promise<Client[]> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<ClientSearchResponse>(API_PATHS.SEARCH_CLIENTS.concat(text))
+                .get<Client[]>(`${API_PATHS.CLIENTS_BY_VET}${vetId}${API_PATHS.SEARCH}${dni}`)
                 .then((res) => {
-                    resolve(res.data.data.clients);
+                    resolve(res.data);
                 })
                 .catch((error) => {
                     reject(error);

@@ -120,7 +120,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, on
                                             client={item}
                                             onPress={() => {
                                                 setDniOwner(item.name.concat(' ').concat(item.lastName));
-                                                setFieldValue('dni', item.dni);
+                                                setFieldValue('client', item._id);
                                                 setSelectDNI(true);
                                             }}
                                         />
@@ -131,8 +131,9 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, on
                         </View>
                     </>
                 )}
-                {/* <View style={styles.marginDefault}>{errors.dni && <Text style={styles.error}>{errors.dni}</Text>}</View> */}
-
+                <View style={styles.marginDefault}>
+                    {errors.client && <Text style={styles.error}>{errors.client}</Text>}
+                </View>
                 <FormInput
                     required
                     value={fields.name || ''}
@@ -219,7 +220,6 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, on
                 </View>
                 <DropdownMultiple
                     onSelectItems={(values) => {
-                        console.log(values);
                         setFieldValue('pathologies', values);
                     }}
                     zIndex={1000}

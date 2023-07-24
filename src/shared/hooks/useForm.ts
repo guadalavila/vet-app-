@@ -54,16 +54,11 @@ const useForm = (
     };
 
     const validateNewPet = () => {
-        // if (!fields.dni) {
-        //     setErrors({
-        //         dni: 'Debes ingresar el DNI',
-        //     });
-        // } else if (fields.dni && !Number(fields.dni)) {
-        //     setErrors({
-        //         dni: 'El DNI debe ser un valor numérico',
-        //     });
-        // } else
-        if (!fields.name) {
+        if (!fields.client) {
+            setErrors({
+                client: 'Debes seleccionar un cliente',
+            });
+        } else if (!fields.name) {
             setErrors({
                 name: 'Debes ingresar el nombre',
             });

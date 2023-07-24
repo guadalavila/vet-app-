@@ -1,37 +1,29 @@
 import { useState } from 'react';
 import clientServices from '../../services/ClientsServices';
 import { Client } from '../../models/Client';
+import useAuth from './useAuth';
 
 const useSearchClients = () => {
     const [result, setResult] = useState<Client[] | []>([]);
-
-    const [searching, setSearching] = useState(false);
+    const { user } = useAuth();
     const [emptyResult, setEmptyResult] = useState(false);
-
-    const searchClients = (search: string) => {
-        setSearching(true);
-        setEmptyResult(false);
-        try {
-            clientServices.searchClients(search).then((res) => {
-                setResult(res);
-                if (res.length === 0) setEmptyResult(true);
-            });
-        } catch (error) {}
-    };
+    const [activeSearching, setActiveSearching] = useState(false);
 
     const searchClientsByDNI = (dni: string) => {
-        setSearching(true);
+        setActiveSearching(true);
         setEmptyResult(false);
         try {
-            clientServices.getClientsByDNI(dni).then((res) => {
+            const vetId = user?.vetId ? user?.vetId?._id : '';
+            clientServices.searchClients(vetId, dni).then((res) => {
                 setResult(res);
-                setSearching(false);
                 if (res.length === 0) setEmptyResult(true);
             });
-        } catch (error) {}
+        } catch (error) {
+            setActiveSearching(false);
+        }
     };
 
-    return { result, searchClients, searching, setSearching, emptyResult, searchClientsByDNI };
+    return { result, activeSearching, setActiveSearching, emptyResult, searchClientsByDNI };
 };
 
 export default useSearchClients;
