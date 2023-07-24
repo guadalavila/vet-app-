@@ -21,9 +21,9 @@ class PetsServices {
     getPetsByClient(dni: string): Promise<Pet[]> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<SearchPetsResponse>(`${API_PATHS.PETS_BY_CLIENT}${dni}`)
+                .get<Pet[]>(`${API_PATHS.PETS_BY_CLIENT}${dni}`)
                 .then((res) => {
-                    resolve(res.data.data.pets);
+                    resolve(res.data);
                 })
                 .catch((error) => {
                     reject(error);
@@ -34,7 +34,7 @@ class PetsServices {
     getPetsByVetId(vetId: string, page: number): Promise<Pet[]> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<Pet[]>(`${API_PATHS.PETS}/${vetId}?page=${page.toString()}&limit=50}`)
+                .get<Pet[]>(`${API_PATHS.PETS_BY_VET}${vetId}?page=${page.toString()}&limit=50}`)
                 .then((res) => {
                     resolve(res.data);
                 })

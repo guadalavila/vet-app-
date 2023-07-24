@@ -4,6 +4,8 @@ export const API_PATHS = {
     GET_ME: 'auth/get-me',
     DASHBOARD: 'dashboard',
     PETS: 'pets',
+    PETS_BY_VET: 'pets/by-vet/',
+    PETS_BY_CLIENT: 'pets/by-client/',
     PET: 'pet',
     CLIENTS: 'clients',
     CLIENTS_BY_VET: '/clients/by-vet/',
@@ -14,7 +16,6 @@ export const API_PATHS = {
     VISIT_PET: 'visits/pet/',
     LAST_VISIT: 'visits/last/',
     SEARCH_PETS: 'pets/search/',
-    PETS_BY_CLIENT: 'pets/client/',
     CONDITIONS: 'conditions',
     PATHOLOGIES: 'pathologies',
 };

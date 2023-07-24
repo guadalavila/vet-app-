@@ -5,7 +5,7 @@ import Container from '../../shared/components/Container';
 import { RootStackLoginParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Pet } from '../../models/Pet';
-import petsServices from '../../services/PetsService';
+import petsServices from '../../services/PetsServices';
 import Button from '../../shared/components/Button';
 import Loading from '../../shared/components/Loading';
 import ClientDetail from '../../shared/components/ClientDetail';
