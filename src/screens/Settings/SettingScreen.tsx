@@ -20,10 +20,10 @@ const SettingScreen = ({ navigation }: Props) => {
     return (
         <Container>
             <Header title='Configuración' />
-            <Separator />
-            <Select title={'Modo Oscuro'} selected={theme === 'dark'} onChangeSelect={setTheme} />
-            {/* <Item label='Cambiar contraseña' onPress={() => {}} /> */}
+            <Separator color='transparent' />
+            <Item label='Tu perfil' onPress={() => navigation.navigate('ProfileScreen')} />
             <Item label='Patologías preexistentes' onPress={() => navigation.navigate('PathologiesScreen')} />
+            <Select title={'Modo Oscuro'} selected={theme === 'dark'} onChangeSelect={setTheme} />
             <Item label='Cerrar Sesión' onPress={() => setShowModal(true)} />
 
             <ModalCustom

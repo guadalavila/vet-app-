@@ -20,6 +20,7 @@ import VaccinesRegistryScreen from '../screens/Pets/VaccinesRegistryScreen';
 import AddVaccineScreen from '../screens/Pets/AddVaccineScreen';
 import SignUpScreen from '../screens/Login/SignUpScreen';
 import PathologiesScreen from '../screens/Pathologies/PathologiesScreen';
+import ProfileScreen from '../screens/Settings/ProfileScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
@@ -53,6 +54,7 @@ export function StackNavigatorLogIn() {
             <StackLoggedIn.Screen name={'AddSurgeriesScreen'} component={AddSurgeriesScreen} />
             <StackLoggedIn.Screen name={'VaccinesRegistryScreen'} component={VaccinesRegistryScreen} />
             <StackLoggedIn.Screen name={'AddVaccineScreen'} component={AddVaccineScreen} />
+            <StackLoggedIn.Screen name={'ProfileScreen'} component={ProfileScreen} />
         </StackLoggedIn.Navigator>
     );
 }

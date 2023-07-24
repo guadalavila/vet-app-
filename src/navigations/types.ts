@@ -25,6 +25,7 @@ export type RootStackLoginParamList = {
     AddSurgeriesScreen: undefined,
     VaccinesRegistryScreen: undefined,
     AddVaccineScreen: undefined,
+    ProfileScreen: undefined,
 };
 
 export type BottomTabStackParamList = {
