@@ -3,6 +3,7 @@ import { StyleSheet, Switch, View } from 'react-native';
 import { typography } from '../utils/typography';
 import CustomText from './CustomText';
 import { colors } from '../utils/colors';
+import { size } from '../utils/size';
 
 interface ISelectProps {
     title: string;
@@ -32,7 +33,13 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginHorizontal: typography.size.S,
+        marginHorizontal: size.XXL,
+        marginVertical: size.XL,
+        paddingBottom: size.M,
+        paddingTop: size.S,
+        borderBottomColor: colors.light.primary,
+        borderBottomWidth: 1,
+        borderRadius: 2,
     },
     title: {
         fontSize: typography.size.S,
