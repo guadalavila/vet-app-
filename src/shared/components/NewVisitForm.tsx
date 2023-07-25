@@ -14,9 +14,10 @@ import { Visit } from '../../models/Visit';
 interface INewVisitFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
     initData?: Visit;
+    onCancel: () => void;
 }
 
-const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData }) => {
+const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData, onCancel }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NewVisit', onSubmit);
 
     useEffect(() => {
@@ -25,14 +26,15 @@ const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData }) => {
     }, []);
 
     const setInitialData = () => {
-        if (initData) {
+        if (Object.entries(Object(initData)).length > 0) {
+            //@ts-ignore
             const { anamnestic, diagnosis, hospitalization, temperature, treatment, weight } = initData;
             setFieldValue('anamnestic', anamnestic);
-            setFieldValue('diagnosis', diagnosis);
-            setFieldValue('hospitalization', hospitalization);
+            diagnosis && setFieldValue('diagnosis', diagnosis);
+            hospitalization && setFieldValue('hospitalization', hospitalization);
             setFieldValue('weight', String(weight));
             setFieldValue('temperature', String(temperature));
-            setFieldValue('treatment', treatment);
+            treatment && setFieldValue('treatment', treatment);
         }
     };
 
@@ -95,6 +97,7 @@ const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData }) => {
             </ScrollView>
             <View style={styles.bottom}>
                 <Button title={'Guardar'} onPress={handleSubmit} />
+                <Button secondary title={'Cancelar'} onPress={onCancel} />
             </View>
         </View>
     );
@@ -115,7 +118,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     contentContainer: {
-        paddingBottom: 100,
+        paddingBottom: 140,
     },
     marginDefault: {
         marginHorizontal: size.XXL,

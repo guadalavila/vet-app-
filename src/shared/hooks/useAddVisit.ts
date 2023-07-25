@@ -19,7 +19,7 @@ const useAddVisit = () => {
         });
     };
 
-    const updateVisit = (visit: any) => {
+    const updateVisit = (visit: Visit) => {
         return new Promise<Visit>((resolve, reject) => {
             try {
                 setLoading(true);

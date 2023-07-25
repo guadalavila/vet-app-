@@ -6,8 +6,9 @@ import Container from '../../shared/components/Container';
 import Header from '../../shared/components/Header';
 import NewVisitForm from '../../shared/components/NewVisitForm';
 import useAddVisit from '../../shared/hooks/useAddVisit';
-import { NewVisit } from '../../models/Visit';
+import { NewVisit, Visit } from '../../models/Visit';
 import Loading from '../../shared/components/Loading';
+import useAuth from '../../shared/hooks/useAuth';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddVisitScreen'> {}
 
@@ -15,6 +16,7 @@ const AddVisitScreen = ({ route, navigation }: Props) => {
     const { loading, createVisit, updateVisit } = useAddVisit();
     const isUpdate = route.params.visit ? true : false;
     const currentVisit = route.params.visit ?? undefined;
+    const { user } = useAuth();
 
     return (
         <Container>
@@ -28,24 +30,34 @@ const AddVisitScreen = ({ route, navigation }: Props) => {
                             const newVisit: NewVisit = {
                                 //@ts-ignore
                                 date: data.date,
-                                anamnestic: String(data.anamnestic),
-                                diagnosis: data.diagnosis ? String(data.diagnosis) : '',
-                                hospitalization: data.hospitalization ? String(data.hospitalization) : '',
-                                client: route.params.client,
+                                createdBy: user?._id ? user._id : '',
+                                vetId: user?.vetId ? user.vetId._id : '',
                                 pet: route.params.pet,
+                                anamnestic: String(data.anamnestic),
                                 temperature: Number(data.temperature),
                                 weight: Number(data.weight),
-                                treatment: data.treatment ? String(data.treatment) : '',
+                                ...data,
                             };
                             createVisit(newVisit).then(() => navigation.replace('VisitsScreen', { id: newVisit.pet }));
                         } else {
-                            const updVisit = { ...currentVisit, ...data, date: currentVisit?.date };
+                            const createdBy =
+                                typeof currentVisit?.createdBy === 'string'
+                                    ? currentVisit.createdBy
+                                    : currentVisit?.createdBy._id;
+                            const updVisit: Visit = {
+                                ...currentVisit,
+                                ...data,
+                                createdBy: String(createdBy),
+                                //@ts-ignore
+                                date: currentVisit?.date,
+                            };
                             updateVisit(updVisit).then((res) => {
                                 navigation.replace('VisitsScreen', { id: res.pet });
                             });
                         }
                     }}
                     initData={currentVisit}
+                    onCancel={() => navigation.goBack()}
                 />
             )}
         </Container>

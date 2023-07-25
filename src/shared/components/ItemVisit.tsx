@@ -55,14 +55,26 @@ const ItemVisit = ({ visit, open = false, editVisit }: IItemVisitProps) => {
                         <CustomText style={styles.title}>Anamnésicos:</CustomText>
                         <CustomText style={styles.detail}>{visit.anamnestic}</CustomText>
                         <Separator color='transparent' />
-                        <CustomText style={styles.title}>Diagnóstico Diferencia:</CustomText>
-                        <CustomText style={styles.detail}>{visit.diagnosis}</CustomText>
+                        {visit.diagnosis && (
+                            <>
+                                <CustomText style={styles.title}>Diagnóstico Diferencia:</CustomText>
+                                <CustomText style={styles.detail}>{visit.diagnosis}</CustomText>
+                            </>
+                        )}
                         <Separator color='transparent' />
-                        <CustomText style={styles.title}>Tratamiento:</CustomText>
-                        <CustomText style={styles.detail}>{visit.treatment}</CustomText>
+                        {visit.treatment && (
+                            <>
+                                <CustomText style={styles.title}>Tratamiento:</CustomText>
+                                <CustomText style={styles.detail}>{visit.treatment}</CustomText>
+                            </>
+                        )}
                         <Separator color='transparent' />
-                        <CustomText style={styles.title}>Hospitalización:</CustomText>
-                        <CustomText style={styles.detail}>{visit.hospitalization}</CustomText>
+                        {visit.hospitalization && (
+                            <>
+                                <CustomText style={styles.title}>Hospitalización:</CustomText>
+                                <CustomText style={styles.detail}>{visit.hospitalization}</CustomText>
+                            </>
+                        )}
                     </View>
                 </View>
             )}

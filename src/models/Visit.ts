@@ -1,49 +1,52 @@
 import { Pet } from './Pet';
+import { UserVet } from './User';
 
 export type VisitResponse = {
     data: {
-        visits: Visit[],
-    },
+        visits: Visit[];
+    };
+};
+
+export type NewVisit = {
+    createdBy: string;
+    vetId: string;
+    date: string | Date;
+    pet: string;
+    weight: number;
+    temperature: number;
+    anamnestic: string;
+    diagnosis?: string;
+    treatment?: string;
+    hospitalization?: string;
 };
 
 export type Visit = {
-    anamnestic: string,
-    client: string,
-    createdAt: string,
-    date: string | Date,
-    diagnosis: string,
-    hospitalization: string,
-    pet: string,
-    temperature: number,
-    treatment: string,
-    updatedAt: string,
-    weight: number,
-    _id: string,
+    _id: string;
+    createdBy: UserVet | string;
+    vetId: string;
+    date: string | Date;
+    pet: string;
+    weight: number;
+    temperature: number;
+    anamnestic: string;
+    diagnosis?: string;
+    treatment?: string;
+    hospitalization?: string;
+    createdAt: string;
+    updatedAt: string;
 };
 
 export type NewVisitResponse = {
-    data: Visit,
+    data: Visit;
 };
 
 export type VisitDetailResponse = {
     data: {
-        visit: Visit,
-    },
-};
-
-export type NewVisit = {
-    anamnestic: string,
-    client: string,
-    date: string | Date,
-    diagnosis: string,
-    hospitalization: string,
-    pet: string,
-    temperature: number,
-    treatment: string,
-    weight: number,
+        visit: Visit;
+    };
 };
 
 export type LastVisits = {
-    visit: Visit,
-    pet: Pet,
+    visit: Visit;
+    pet: Pet;
 };

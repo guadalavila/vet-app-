@@ -13,7 +13,7 @@ export const API_PATHS = {
     SEARCH_CLIENTS: 'clients/search/',
     SEARCH_ONE_CLIENT: 'clients/search/one/',
     VISITS: 'visits',
-    VISIT_PET: 'visits/pet/',
+    VISIT_BY_PET: 'visits/by-pet/',
     LAST_VISIT: 'visits/last/',
     SEARCH_PETS: 'pets/search/',
     CONDITIONS: 'conditions',

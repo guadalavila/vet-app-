@@ -5,12 +5,12 @@ import networkManager from '../shared/utils/axios/NetworkManager';
 class VisitsServices {
     constructor() {}
 
-    getVisitsPet(idPet: string): Promise<Visit[]> {
+    getVisitsPet(petId: string): Promise<Visit[]> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<VisitResponse>(API_PATHS.VISIT_PET.concat(idPet))
+                .get<Visit[]>(API_PATHS.VISIT_BY_PET.concat(petId))
                 .then((res) => {
-                    resolve(res.data.data.visits);
+                    resolve(res.data);
                 })
                 .catch((error) => {
                     reject(error);
@@ -21,9 +21,9 @@ class VisitsServices {
     addVisit(visit: NewVisit): Promise<Visit> {
         return new Promise((resolve, reject) => {
             networkManager
-                .post<NewVisitResponse>(API_PATHS.VISITS, visit)
+                .post<Visit>(API_PATHS.VISITS, visit)
                 .then((res) => {
-                    resolve(res.data.data);
+                    resolve(res.data);
                 })
                 .catch((error) => {
                     reject(error);
@@ -31,14 +31,15 @@ class VisitsServices {
         });
     }
 
-    updateVisit(visit: any): Promise<Visit> {
+    updateVisit(visit: Visit): Promise<Visit> {
         return new Promise((resolve, reject) => {
             networkManager
-                .patch<VisitDetailResponse>(`${API_PATHS.VISITS}/${visit._id}`, visit)
+                .patch<Visit>(API_PATHS.VISITS, visit)
                 .then((res) => {
-                    resolve(res.data.data.visit);
+                    resolve(res.data);
                 })
                 .catch((error) => {
+                    console.log(error);
                     reject(error);
                 });
         });
