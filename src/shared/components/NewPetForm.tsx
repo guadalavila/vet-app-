@@ -32,7 +32,7 @@ interface INewPetFormProps {
 const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, onCancel }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NetPet', onSubmit);
     const [isUpdate, setIsUpdate] = useState(false);
-    const { searchClientsByDNI, searching, result } = useSearchClients();
+    const { searchClientsByDNI, activeSearching, result } = useSearchClients();
     const { pathologies } = useContext(PathologiesContext);
     const [type, setType] = useState<PetType>({
         ...TYPE_PET[TYPE_PET.length - 1],
@@ -110,7 +110,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, on
                             setCLicked={() => {}}
                         />
                         <View style={styles.containerListClients}>
-                            {searching && <Loading />}
+                            {activeSearching && <Loading />}
                             {dniOwner.length > 3 && result && result.length > 0 && !selectDNI && (
                                 <FlatList
                                     showsVerticalScrollIndicator={false}
