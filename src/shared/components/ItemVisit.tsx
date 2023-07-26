@@ -52,29 +52,31 @@ const ItemVisit = ({ visit, open = false, editVisit }: IItemVisitProps) => {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.containerDetail}>
-                        <CustomText style={styles.title}>Anamnésicos:</CustomText>
-                        <CustomText style={styles.detail}>{visit.anamnestic}</CustomText>
+                        <View style={GlobalStyles.row}>
+                            <CustomText style={styles.title}>Anamnésicos</CustomText>
+                            <CustomText style={styles.detail}>{visit.anamnestic}</CustomText>
+                        </View>
                         <Separator color='transparent' />
-                        {visit.diagnosis && (
-                            <>
-                                <CustomText style={styles.title}>Diagnóstico Diferencia:</CustomText>
-                                <CustomText style={styles.detail}>{visit.diagnosis}</CustomText>
-                            </>
-                        )}
+                        <View style={GlobalStyles.row}>
+                            <CustomText style={styles.title}>Diagnóstico Diferencial</CustomText>
+                            <CustomText style={styles.detail}>
+                                {visit.diagnosis ? visit.diagnosis : 'No especificado'}
+                            </CustomText>
+                        </View>
                         <Separator color='transparent' />
-                        {visit.treatment && (
-                            <>
-                                <CustomText style={styles.title}>Tratamiento:</CustomText>
-                                <CustomText style={styles.detail}>{visit.treatment}</CustomText>
-                            </>
-                        )}
+                        <View style={GlobalStyles.row}>
+                            <CustomText style={styles.title}>Tratamiento</CustomText>
+                            <CustomText style={styles.detail}>
+                                {visit.treatment ? visit.treatment : 'No especificado'}
+                            </CustomText>
+                        </View>
                         <Separator color='transparent' />
-                        {visit.hospitalization && (
-                            <>
-                                <CustomText style={styles.title}>Hospitalización:</CustomText>
-                                <CustomText style={styles.detail}>{visit.hospitalization}</CustomText>
-                            </>
-                        )}
+                        <View style={GlobalStyles.row}>
+                            <CustomText style={styles.title}>Hospitalización</CustomText>
+                            <CustomText style={styles.detail}>
+                                {visit.hospitalization ? visit.hospitalization : 'No especificado'}
+                            </CustomText>
+                        </View>
                     </View>
                 </View>
             )}
@@ -95,6 +97,7 @@ const styles = StyleSheet.create({
     containerDetail: {
         marginHorizontal: size.XL,
         paddingVertical: size.M,
+        marginVertical: size.L,
     },
     date: {
         fontSize: typography.size.M,
@@ -104,11 +107,12 @@ const styles = StyleSheet.create({
     title: {
         fontWeight: 'bold',
         fontSize: typography.size.S,
-        textDecorationLine: 'underline',
         marginBottom: size.M,
+        width: '38%',
     },
     detail: {
         fontWeight: '600',
+        alignSelf: 'center',
     },
     buttonEdit: {
         borderColor: colors.light.primary,
