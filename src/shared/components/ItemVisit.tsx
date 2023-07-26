@@ -77,6 +77,15 @@ const ItemVisit = ({ visit, open = false, editVisit }: IItemVisitProps) => {
                                 {visit.hospitalization ? visit.hospitalization : 'No especificado'}
                             </CustomText>
                         </View>
+                        <Separator color='transparent' />
+                        <View style={GlobalStyles.row}>
+                            <CustomText style={styles.title}>Atendido por</CustomText>
+                            {typeof visit.createdBy !== 'string' && (
+                                <CustomText style={styles.detail}>
+                                    {visit.createdBy.name} {visit.createdBy.lastName}
+                                </CustomText>
+                            )}
+                        </View>
                     </View>
                 </View>
             )}
