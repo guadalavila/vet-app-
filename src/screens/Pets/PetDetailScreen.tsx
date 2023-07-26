@@ -74,7 +74,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
         navigation.navigate('VaccinesRegistryScreen');
     };
 
-    const handleDeletePet = () => {
+    const handleSharePet = () => {
         closeBottomSheet();
         setTimeout(() => {
             setShowModal(true);
@@ -117,13 +117,13 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             />
             <BottomSheet refBottomSheet={bottomSheetRef} height={400}>
                 <View style={styles.containerContent}>
-                    <Option label='Editar Mascota' icon='pencil' onPress={updatePet} />
-                    <Option label='Agregar Visita' icon='add' onPress={addVisit} />
-                    <Option label='Ver Historial Clínico' icon='document' onPress={showVisits} />
-                    <Option label='Registro de cirugías' icon='document-text' onPress={showSurgeryRegistry} />
-                    <Option label='Registro de vacunas' icon='document-text' onPress={showVaccinesRegistry} />
-                    <Option label='Ver Detalle propietario' icon='people' onPress={getDetailOwner} />
-                    <Option label='Eliminar Mascota' icon='trash' onPress={handleDeletePet} />
+                    <Option label='Editar Mascota' icon='pencil-outline' onPress={updatePet} />
+                    <Option label='Agregar Visita' icon='add-outline' onPress={addVisit} />
+                    <Option label='Ver Historial Clínico' icon='document-outline' onPress={showVisits} />
+                    <Option label='Registro de cirugías' icon='document-text-outline' onPress={showSurgeryRegistry} />
+                    <Option label='Registro de vacunas' icon='document-text-outline' onPress={showVaccinesRegistry} />
+                    <Option label='Ver Detalle propietario' icon='people-outline' onPress={getDetailOwner} />
+                    <Option label='Compartir' icon='share-outline' onPress={handleSharePet} />
                 </View>
             </BottomSheet>
         </Container>
