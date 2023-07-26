@@ -6,25 +6,25 @@ import CustomText from './CustomText';
 import { GlobalStyles } from '../utils/styles';
 import { colors } from '../utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { LastVisits } from '../../models/Visit';
+import { LastVisit } from '../../models/Visit';
 import { getSpeciePet } from '../utils/helpers';
 
 interface IItemLastVisitProps {
-    lastVisit: LastVisits;
+    lastVisit: LastVisit;
     onPress: () => void;
 }
 
-const ItemLastVisit = ({ onPress, lastVisit: { visit, pet } }: IItemLastVisitProps) => {
+const ItemLastVisit = ({ onPress, lastVisit }: IItemLastVisitProps) => {
     return (
         <TouchableOpacity style={[styles.container, GlobalStyles.row]} activeOpacity={0.7} onPress={onPress}>
             <View style={styles.containerIcon}>
                 <Icon name='paw-outline' size={30} color={colors.light.white} />
             </View>
             <View>
-                <CustomText style={[styles.name]}>{pet.name}</CustomText>
-                <CustomText style={[styles.type]}>{getSpeciePet(pet.specie)}</CustomText>
+                <CustomText style={[styles.name]}>{lastVisit.pet.name}</CustomText>
+                <CustomText style={[styles.type]}>{getSpeciePet(lastVisit.pet.specie)}</CustomText>
                 <CustomText>
-                    {new Date(visit.date).toLocaleString('en-GB', {
+                    {new Date(lastVisit.date).toLocaleString('en-GB', {
                         hour12: false,
                     })}
                 </CustomText>

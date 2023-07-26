@@ -1,4 +1,4 @@
-import { LastVisits, NewVisit, NewVisitResponse, Visit, VisitDetailResponse, VisitResponse } from '../models/Visit';
+import { LastVisit, NewVisit, Visit } from '../models/Visit';
 import { API_PATHS } from '../shared/utils/apiPaths';
 import networkManager from '../shared/utils/axios/NetworkManager';
 
@@ -45,10 +45,10 @@ class VisitsServices {
         });
     }
 
-    getLastVisit(): Promise<LastVisits[]> {
+    getLastVisit(vetId: string): Promise<LastVisit[]> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<LastVisits[]>(API_PATHS.LAST_VISIT)
+                .get<LastVisit[]>(API_PATHS.LAST_VISIT_BY_VET.concat(vetId))
                 .then((res) => {
                     resolve(res.data);
                 })

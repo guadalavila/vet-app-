@@ -46,7 +46,18 @@ export type VisitDetailResponse = {
     };
 };
 
-export type LastVisits = {
-    visit: Visit;
+export type LastVisit = {
+    _id: string;
+    createdBy: UserVet | string;
+    vetId: string;
+    date: string | Date;
     pet: Pet;
+    weight: number;
+    temperature: number;
+    anamnestic: string;
+    diagnosis?: string;
+    treatment?: string;
+    hospitalization?: string;
+    createdAt: string;
+    updatedAt: string;
 };

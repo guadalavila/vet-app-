@@ -29,7 +29,7 @@ const VisitsListScreen = ({ navigation }: Props) => {
             {lastVisits.length > 0 ? (
                 <FlatList
                     data={lastVisits}
-                    keyExtractor={(item) => item.visit._id}
+                    keyExtractor={(item) => item._id}
                     renderItem={({ item }) => (
                         <ItemLastVisit
                             onPress={() => navigation.navigate('VisitsScreen', { id: item.pet._id })}
