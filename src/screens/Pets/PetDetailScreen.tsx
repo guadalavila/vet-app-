@@ -115,7 +115,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                 onConfirmPressed={() => deletePet(pet._id)}
                 onCancelPressed={() => setShowModal(false)}
             />
-            <BottomSheet refBottomSheet={bottomSheetRef} height={390}>
+            <BottomSheet refBottomSheet={bottomSheetRef} height={400}>
                 <View style={styles.containerContent}>
                     <Option label='Editar Mascota' icon='pencil' onPress={updatePet} />
                     <Option label='Agregar Visita' icon='add' onPress={addVisit} />

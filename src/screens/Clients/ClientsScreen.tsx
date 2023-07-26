@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
 import Container from '../../shared/components/Container';
 import Header from '../../shared/components/Header';
 import { RootStackLoginParamList } from '../../navigations/types';
@@ -16,7 +16,7 @@ import NoData from '../../shared/components/NoData';
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientsScreen'> {}
 
 const ClientsScreen = ({ navigation }: Props) => {
-    const { clients, isLoading, getMoreClients } = useClients();
+    const { clients, isLoading, refreshClients, refreshing } = useClients();
     const [textSearch, setTextSearch] = useState('');
     const [clicked, setClicked] = useState(false);
     const { result, searchClientsByDNI, activeSearching, setActiveSearching, emptyResult } = useSearchClients();
@@ -28,7 +28,11 @@ const ClientsScreen = ({ navigation }: Props) => {
         if (textSearch.length === 0) setActiveSearching(false);
     }, [textSearch]);
 
-    if (isLoading) {
+    const onRefresh = useCallback(() => {
+        refreshClients();
+    }, []);
+
+    if (isLoading || refreshing) {
         return (
             <Container>
                 <Header title='Clientes' />
@@ -59,7 +63,8 @@ const ClientsScreen = ({ navigation }: Props) => {
                         />
                     )}
                     keyExtractor={(item) => item._id}
-                    onEndReached={() => getMoreClients()}
+                    refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+                    // onEndReached={() => getMoreClients()}
                     onEndReachedThreshold={0.2}
                 />
             ) : (

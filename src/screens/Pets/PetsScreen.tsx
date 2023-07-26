@@ -63,7 +63,7 @@ const PetsScreen = ({ navigation }: Props) => {
                                 />
                             )}
                             keyExtractor={(item) => item._id}
-                            onEndReached={() => getMorePets()}
+                            // onEndReached={() => getMorePets()}
                             onEndReachedThreshold={0.2}
                             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
                         />

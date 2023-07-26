@@ -13,6 +13,7 @@ const useClients = () => {
     const [page, setPage] = useState(0);
     const { user } = useAuth();
     const [clients, setClients] = useState<Client[]>([]);
+    const [refreshing, setRefreshing] = useState(false);
 
     useEffect(() => {
         getClientsByVetId();
@@ -32,6 +33,19 @@ const useClients = () => {
             }
         } catch (error) {
             setIsLoading(false);
+        }
+    };
+
+    const refreshClients = () => {
+        setRefreshing(true);
+        try {
+            const vetId = user?.vetId ? user.vetId._id : '';
+            clientServices.getClientsByVetId(1, vetId).then((res) => {
+                setClients(res);
+                setRefreshing(false);
+            });
+        } catch (error) {
+            setRefreshing(false);
         }
     };
 
@@ -57,7 +71,7 @@ const useClients = () => {
         // }
         // }
     };
-    return { dataClients, isLoading, getMoreClients, clients };
+    return { dataClients, isLoading, getMoreClients, clients, refreshClients, refreshing };
 };
 
 export default useClients;

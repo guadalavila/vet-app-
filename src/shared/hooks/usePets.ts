@@ -51,14 +51,15 @@ const usePets = () => {
 
     const refreshPets = () => {
         setRefreshing(true);
-        // try {
-        //     petsServices.getPets(0).then((res) => {
-        //         setDataPets(res);
-        //         setRefreshing(false);
-        //     });
-        // } catch (error) {
-        //     setRefreshing(false);
-        // }
+        try {
+            const vetId = user?.vetId ? user.vetId._id : '';
+            petsServices.getPetsByVetId(vetId, 1).then((res) => {
+                setPets(res);
+                setRefreshing(false);
+            });
+        } catch (error) {
+            setRefreshing(false);
+        }
     };
 
     return { pets, isLoading, getListPets, getMorePets, refreshPets, refreshing };
