@@ -100,6 +100,7 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((error) => {
+                        console.log(error);
                         if (error.response?.status === 401) {
                             reject('Authorization Failed');
                         } else {
@@ -112,7 +113,6 @@ class NetworkManager {
             }
         });
     }
-
 
     delete<T>(url: string, config?: {}): Promise<AxiosResponse<T>> {
         return new Promise<AxiosResponse<T>>(async (resolve, reject) => {

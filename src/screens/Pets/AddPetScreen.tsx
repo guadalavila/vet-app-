@@ -49,9 +49,10 @@ const AddPetScreen = ({ navigation, route }: Props) => {
                                     typeof pet?.createdBy === 'string' ? pet.createdBy : pet?.createdBy._id;
                                 const client = typeof pet?.client === 'string' ? pet.client : pet?.client._id;
                                 const updPet: Pet = { ...pet, ...data, createdBy: createdBy, client: client };
-                                updatePet(updPet).then((res) => {
-                                    navigation.replace('PetDetailScreen', { pet: res, refresh: true });
-                                });
+                                console.log(updPet)
+                                // updatePet(updPet).then((res) => {
+                                //     navigation.replace('PetDetailScreen', { pet: res, refresh: true });
+                                // });
                             }
                         }
                     }}

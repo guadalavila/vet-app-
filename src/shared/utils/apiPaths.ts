@@ -15,6 +15,7 @@ export const API_PATHS = {
     VISITS: 'visits',
     VISIT_BY_PET: 'visits/by-pet/',
     LAST_VISIT: 'visits/last/',
+    LAST_VISIT_BY_VET: 'visits/by-vet/',
     SEARCH_PETS: 'pets/search/',
     CONDITIONS: 'conditions',
     PATHOLOGIES: 'pathologies',
