@@ -96,6 +96,19 @@ class PetsServices {
                 });
         });
     }
+
+    getDetailPet(petId: string): Promise<Pet> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<Pet>(API_PATHS.ONE_PET.concat(petId))
+                .then((res) => {
+                    resolve(res.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
 }
 const petsServices = new PetsServices();
 export default petsServices;

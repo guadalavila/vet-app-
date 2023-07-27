@@ -44,7 +44,7 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
     };
 
     const goToPet = (pet: Pet) => {
-        navigation.navigate('PetDetailScreen', { pet: pet });
+        navigation.navigate('PetDetailScreen', { pet: pet, getDetail: true });
     };
 
     return (

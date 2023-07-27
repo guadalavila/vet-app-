@@ -59,7 +59,9 @@ const PetsScreen = ({ navigation }: Props) => {
                             renderItem={({ item }) => (
                                 <ItemPetList
                                     pet={item}
-                                    onPress={() => navigation.navigate('PetDetailScreen', { pet: item })}
+                                    onPress={() =>
+                                        navigation.navigate('PetDetailScreen', { pet: item, getDetail: true })
+                                    }
                                 />
                             )}
                             keyExtractor={(item) => item._id}
@@ -79,7 +81,9 @@ const PetsScreen = ({ navigation }: Props) => {
                             renderItem={({ item }) => (
                                 <ItemPetList
                                     pet={item}
-                                    onPress={() => navigation.navigate('PetDetailScreen', { pet: item })}
+                                    onPress={() =>
+                                        navigation.navigate('PetDetailScreen', { pet: item, getDetail: true })
+                                    }
                                 />
                             )}
                             keyExtractor={(item) => item._id}

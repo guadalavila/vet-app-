@@ -16,12 +16,15 @@ import ModalCustom from '../../shared/components/ModalCustom';
 import useDelete from '../../shared/hooks/useDelete';
 import PetDetail from '../../shared/components/PetDetail';
 import ConditionsList from '../../shared/components/ConditionsList';
+import useGetOnePet from '../../shared/hooks/useGetOnePet';
+import Loading from '../../shared/components/Loading';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetDetailScreen'> {}
 
 const PetDetailScreen = ({ route, navigation }: Props) => {
     const pet = route.params.pet;
     const refresh = route.params.refresh;
+    const { loading, detailPet } = useGetOnePet(pet._id, route.params.getDetail);
     const bottomSheetRef = useRef();
     const [showModal, setShowModal] = useState(false);
     const { deletePet } = useDelete();
@@ -48,7 +51,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
 
     const updatePet = () => {
         closeBottomSheet();
-        navigation.replace('AddPetScreen', { client: undefined, isUpdate: true, pet: pet });
+        navigation.replace('AddPetScreen', { client: undefined, isUpdate: true, pet: { ...pet, ...detailPet } });
     };
 
     const addVisit = () => {
@@ -81,6 +84,14 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
         }, 500);
     };
 
+    if (loading) {
+        return (
+            <Container>
+                <Loading />
+            </Container>
+        );
+    }
+
     return (
         <Container>
             <Header
@@ -99,8 +110,20 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             <View />
             <PetDetail pet={pet} />
             <Separator color='transparent' />
-            {pet.pathologies && pet.pathologies.length > 0 && (
-                <ConditionsList conditions={pet.pathologies.map((x) => x.name)} />
+            {route.params.getDetail ? (
+                <>
+                    {detailPet && detailPet.pathologies && detailPet.pathologies.length > 0 && (
+                        <ConditionsList
+                            conditions={detailPet.pathologies.map((x) => (typeof x === 'string' ? x : x.name))}
+                        />
+                    )}
+                </>
+            ) : (
+                <>
+                    {pet && pet.pathologies && pet.pathologies.length > 0 && (
+                        <ConditionsList conditions={pet.pathologies.map((x) => (typeof x === 'string' ? x : x.name))} />
+                    )}
+                </>
             )}
             <View style={styles.button}>
                 <Button title='Nueva Visita' onPress={addVisit} />

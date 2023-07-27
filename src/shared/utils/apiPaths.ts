@@ -4,6 +4,7 @@ export const API_PATHS = {
     GET_ME: 'auth/get-me',
     DASHBOARD: 'dashboard',
     PETS: 'pets',
+    ONE_PET: 'pets/one/',
     PETS_BY_VET: 'pets/by-vet/',
     PETS_BY_CLIENT: 'pets/by-client/',
     PET: 'pet',
