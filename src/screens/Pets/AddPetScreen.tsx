@@ -41,7 +41,7 @@ const AddPetScreen = ({ navigation, route }: Props) => {
                                 ...data,
                             };
                             createPet(newPet).then((res) => {
-                                navigation.replace('PetDetailScreen', { pet: res, refresh: true });
+                                navigation.replace('PetDetailScreen', { pet: res, getDetail: false, refresh: true });
                             });
                         } else {
                             if (pet) {
@@ -49,10 +49,13 @@ const AddPetScreen = ({ navigation, route }: Props) => {
                                     typeof pet?.createdBy === 'string' ? pet.createdBy : pet?.createdBy._id;
                                 const client = typeof pet?.client === 'string' ? pet.client : pet?.client._id;
                                 const updPet: Pet = { ...pet, ...data, createdBy: createdBy, client: client };
-                                console.log(updPet)
-                                // updatePet(updPet).then((res) => {
-                                //     navigation.replace('PetDetailScreen', { pet: res, refresh: true });
-                                // });
+                                updatePet(updPet).then((res) => {
+                                    navigation.replace('PetDetailScreen', {
+                                        pet: res,
+                                        getDetail: false,
+                                        refresh: true,
+                                    });
+                                });
                             }
                         }
                     }}

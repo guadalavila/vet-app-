@@ -1,4 +1,4 @@
-import React, { Dispatch, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { ItemType } from 'react-native-dropdown-picker';
@@ -7,14 +7,10 @@ import { size } from '../utils/size';
 import { colors } from '../utils/colors';
 import { Pathology } from '../../models/Pathology';
 
-type SetStateCallback<S> = (prevState: S) => S;
-
 interface IDropdownProps {
     placeholder: string;
-    items: ItemType<any>[];
-    setItems: Dispatch<SetStateCallback<any[]>>;
-    onSelectItems: (values: any[]) => void;
-
+    initialItems: ItemType<any>[];
+    onChangeValues: (data: any[]) => void;
     required?: boolean;
     zIndex?: number;
     initValue?: Pathology[];
@@ -22,20 +18,33 @@ interface IDropdownProps {
 
 const DropdownMultiple = ({
     placeholder,
-    items,
-    setItems,
-    onSelectItems,
+    initialItems,
     required,
     zIndex,
     initValue = [],
+    onChangeValues,
 }: IDropdownProps) => {
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(initValue);
+    const [value, setValue] = useState<string[] | null>(null);
+    const [items, setItems] = useState(initialItems);
     const { theme } = useContext(ThemeContext);
+    const [valueSelected, setValueSelected] = useState<string[]>([]);
 
     useEffect(() => {
-        if (initValue.length > 0) setValue(initValue);
+        if (initValue.length > 0) setValue(initValue.map((value) => value.name));
     }, []);
+
+    useEffect(() => {
+        if (value) {
+            value.forEach((x) => {
+                setValueSelected([]);
+                const item = initialItems.find((item) => item.label === x);
+                //@ts-ignore
+                if (item) valueSelected.push(item._id);
+            });
+            onChangeValues && onChangeValues(valueSelected);
+        }
+    }, [value]);
 
     return (
         <DropDownPicker
@@ -47,9 +56,6 @@ const DropdownMultiple = ({
             closeOnBackPressed
             mode='BADGE'
             listMode='MODAL'
-            onSelectItem={(items_) => onSelectItems(items_)}
-            // showBadgeDot
-            // badgeDotColors={['red', 'blue', 'orange']}
             scrollViewProps={{
                 nestedScrollEnabled: true,
             }}

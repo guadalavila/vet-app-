@@ -21,6 +21,7 @@ import Loading from './Loading';
 import DropdownMultiple from './DropdownMultiple';
 import { Pet } from '../../models/Pet';
 import { PathologiesContext } from '../../contexts/PathologiesContext';
+import { Pathology } from '../../models/Pathology';
 
 interface INewPetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;
@@ -57,7 +58,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, on
     }, []);
 
     useEffect(() => {
-        if (client) setFieldValue('client', client._id);
+        if (client && Object.entries(Object(initData)).length === 0) setFieldValue('client', client?._id);
     }, [client]);
 
     const setInitData = () => {
@@ -65,7 +66,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, on
             setIsUpdate(true);
             //@ts-ignore
             const { client, name, chip, specie, breed, gender, color, size, age, sterilized, pathologies } = initData;
-
+            setFieldValue('client', client);
             name && setFieldValue('name', name);
             age && setFieldValue('age', String(age));
             chip && setFieldValue('chip', chip);
@@ -110,7 +111,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, on
                             setCLicked={() => {}}
                         />
                         <View style={styles.containerListClients}>
-                            {activeSearching && <Loading />}
+                            {/* {activeSearching && <Loading />} */}
                             {dniOwner.length > 3 && result && result.length > 0 && !selectDNI && (
                                 <FlatList
                                     showsVerticalScrollIndicator={false}
@@ -218,22 +219,19 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, on
                         }}
                     />
                 </View>
-                <DropdownMultiple
-                    onSelectItems={(values) => {
-                        setFieldValue('pathologies', values);
-                    }}
-                    zIndex={1000}
-                    items={
-                        pathologies.length > 0
-                            ? pathologies.map((x) => {
-                                  return { ...x, value: x.name, label: x.name };
-                              })
-                            : CONDITIONS
-                    }
-                    setItems={(list) => {}}
-                    placeholder='Patologías preexistentes'
-                    initValue={initData?.pathologies}
-                />
+                {pathologies.length > 0 && (
+                    <DropdownMultiple
+                        zIndex={1000}
+                        initialItems={pathologies.map((x) => {
+                            return { ...x, value: x.name, label: x.name };
+                        })}
+                        placeholder='Patologías preexistentes'
+                        initValue={initData?.pathologies as Pathology[]}
+                        onChangeValues={(data) => {
+                            setFieldValue('pathologies', data);
+                        }}
+                    />
+                )}
                 <FormInput
                     isTextArea
                     value={fields.notes || ''}
