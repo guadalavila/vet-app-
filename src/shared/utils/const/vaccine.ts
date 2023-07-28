@@ -5,7 +5,7 @@ export type VaccineType = {
 export const VACCINES_PET: VaccineType[] = [
     { label: 'Parvovirus', value: 'parvovirus' },
     { label: 'Moquillo', value: 'moquillo' },
-    { label: 'Puppy DP', value: 'puppy DP' },
+    { label: 'Puppy DP', value: 'puppyDP' },
     { label: 'DAL / DHL', value: 'dal/dhl' },
     { label: 'Tétanos', value: 'tétanos' },
     { label: 'Cuádruple', value: 'cuádruple' },
@@ -19,5 +19,5 @@ export const VACCINES_PET: VaccineType[] = [
     { label: 'Traqueobronquitis', value: 'traqueobronquitis' },
     { label: 'Triple felina', value: 'triplefelina' },
     { label: 'Leucemia felina', value: 'leucemiafelina' },
-    { label: 'Otras', value: 'otras' },
+    { label: 'Otra', value: 'otra' },
 ];

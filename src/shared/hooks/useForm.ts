@@ -43,6 +43,9 @@ const useForm = (
             validateNewVisit();
         } else if (form === 'SignUp') {
             validateSignUp();
+        } else if (form === 'NewVaccineForm') {
+            console.log('sd');
+            validateNewVaccine();
         }
         // setErrors(formErrors);
 
@@ -192,6 +195,24 @@ const useForm = (
         }
     };
 
+    const validateNewVaccine = () => {
+        if (!fields.date) {
+            setErrors({
+                date: 'Debes ingresar la fecha',
+            });
+        } else if (!fields.type) {
+            setErrors({
+                type: 'Debes seleccionar el tipo de vacuna',
+            });
+        } else if (!fields.name) {
+            setErrors({
+                name: 'Debes ingresar el nombre',
+            });
+        } else {
+            setErrors({});
+            onSubmit(fields);
+        }
+    };
     return {
         fields,
         errors,

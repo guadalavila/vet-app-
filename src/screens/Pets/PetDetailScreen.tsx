@@ -74,7 +74,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
 
     const showVaccinesRegistry = () => {
         closeBottomSheet();
-        navigation.navigate('VaccinesRegistryScreen');
+        navigation.navigate('VaccinesRegistryScreen', { petId: pet._id });
     };
 
     const handleSharePet = () => {

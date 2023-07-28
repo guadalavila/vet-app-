@@ -3,61 +3,61 @@ import { UserVet } from './User';
 
 export type VisitResponse = {
     data: {
-        visits: Visit[];
-    };
+        visits: Visit[],
+    },
 };
 
 export type NewVisit = {
-    createdBy: string;
-    vetId: string;
-    date: string | Date;
-    pet: string;
-    weight: number;
-    temperature: number;
-    anamnestic: string;
-    diagnosis?: string;
-    treatment?: string;
-    hospitalization?: string;
+    createdBy: string,
+    vetId: string,
+    date: string | Date,
+    pet: string,
+    weight: number,
+    temperature: number,
+    anamnestic: string,
+    diagnosis?: string,
+    treatment?: string,
+    hospitalization?: string,
 };
 
 export type Visit = {
-    _id: string;
-    createdBy: UserVet | string;
-    vetId: string;
-    date: string | Date;
-    pet: string;
-    weight: number;
-    temperature: number;
-    anamnestic: string;
-    diagnosis?: string;
-    treatment?: string;
-    hospitalization?: string;
-    createdAt: string;
-    updatedAt: string;
+    _id: string,
+    createdBy: UserVet | string,
+    vetId: string,
+    date: string | Date,
+    pet: string,
+    weight: number,
+    temperature: number,
+    anamnestic: string,
+    diagnosis?: string,
+    treatment?: string,
+    hospitalization?: string,
+    createdAt: string,
+    updatedAt: string,
 };
 
 export type NewVisitResponse = {
-    data: Visit;
+    data: Visit,
 };
 
 export type VisitDetailResponse = {
     data: {
-        visit: Visit;
-    };
+        visit: Visit,
+    },
 };
 
 export type LastVisit = {
-    _id: string;
-    createdBy: UserVet | string;
-    vetId: string;
-    date: string | Date;
-    pet: Pet;
-    weight: number;
-    temperature: number;
-    anamnestic: string;
-    diagnosis?: string;
-    treatment?: string;
-    hospitalization?: string;
-    createdAt: string;
-    updatedAt: string;
+    _id: string,
+    createdBy: UserVet | string,
+    vetId: string,
+    date: string | Date,
+    pet: Pet,
+    weight: number,
+    temperature: number,
+    anamnestic: string,
+    diagnosis?: string,
+    treatment?: string,
+    hospitalization?: string,
+    createdAt: string,
+    updatedAt: string,
 };

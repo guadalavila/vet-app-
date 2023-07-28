@@ -20,4 +20,5 @@ export const API_PATHS = {
     CONDITIONS: 'conditions',
     PATHOLOGIES: 'pathologies',
     SEARCH: '/search/',
+    VACCINE: 'vaccine',
 };

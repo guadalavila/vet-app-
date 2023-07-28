@@ -9,12 +9,13 @@ import Fab from '../../shared/components/Fab';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'VaccinesRegistryScreen'> {}
 
-const VaccinesRegistryScreen = ({ navigation }: Props) => {
+const VaccinesRegistryScreen = ({ navigation, route }: Props) => {
+    const { petId } = route.params;
     return (
         <Container>
             <Header buttonBack title='Registro de vacunas' />
             <NoData title='No se registraron vacunas' />
-            <Fab bottom={60} onPress={() => navigation.navigate('AddVaccineScreen')} />
+            <Fab bottom={60} onPress={() => navigation.navigate('AddVaccineScreen', { petId: petId })} />
         </Container>
     );
 };

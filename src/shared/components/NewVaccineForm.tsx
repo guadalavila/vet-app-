@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { GlobalStyles } from '../utils/styles';
 import useForm from '../hooks/useForm';
 import FormInput from './FormInput';
@@ -7,7 +7,10 @@ import ItemDate from './ItemDate';
 import Button from './Button';
 import Dropdown from './Dropdown';
 import Separator from './Separator';
-import { VACCINES_PET, VaccineType } from '../utils/const/vaccine';
+import { VACCINES_PET } from '../utils/const/vaccine';
+import { size } from '../utils/size';
+import { colors } from '../utils/colors';
+import { typography } from '../utils/typography';
 
 interface INewVaccineFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;
@@ -15,8 +18,10 @@ interface INewVaccineFormProps {
 
 const NewVaccineForm = ({ onSubmit }: INewVaccineFormProps) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NewVaccineForm', onSubmit);
-    const [typeVaccine, setTypeVaccine] = useState<VaccineType | undefined>(undefined);
 
+    useEffect(() => {
+        setFieldValue('date', new Date());
+    }, []);
     return (
         <View style={GlobalStyles.flex1}>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
@@ -29,17 +34,22 @@ const NewVaccineForm = ({ onSubmit }: INewVaccineFormProps) => {
                     placeholder='Tipo de vacuna'
                     items={VACCINES_PET}
                     onSelectItem={(select) => {
-                        setTypeVaccine(select);
-                        setFieldValue('type', select.type);
+                        setFieldValue('type', select.value);
                     }}
                     setItems={() => {}}
                 />
+                <View style={styles.marginDefault}>
+                    {errors.type && <Text style={styles.error}>{errors.type}</Text>}
+                </View>
                 <FormInput
                     required
                     value={fields.name || ''}
                     placeholder='Nombre de la vacuna'
                     onChangeText={(value) => setFieldValue('name', value)}
                 />
+                <View style={styles.marginDefault}>
+                    {errors.name && <Text style={styles.error}>{errors.name}</Text>}
+                </View>
                 <FormInput
                     value={fields.lotNumber || ''}
                     placeholder='Marca y N° de lote'
@@ -71,5 +81,13 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         width: '100%',
+    },
+    marginDefault: {
+        marginHorizontal: size.XXL,
+    },
+    error: {
+        color: colors.light.error,
+        fontSize: typography.size.S,
+        marginBottom: size.L,
     },
 });
