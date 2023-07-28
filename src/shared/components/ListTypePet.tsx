@@ -35,7 +35,7 @@ const ListTypePet = ({ selected, setSelected }: IListTypePetProps) => {
                                     backgroundColor:
                                         selected.value === item.value
                                             ? themeApp.colors.primaryLight
-                                            : themeApp.colors.white,
+                                            : themeApp.colors.backgroundContainer,
                                 },
                                 styles.containerColor,
                                 selected.value === item.value ? styles.containerSelected : {},
@@ -63,19 +63,18 @@ const styles = StyleSheet.create({
     },
     containerColor: {
         // backgroundColor: colors.light.input,
-        marginHorizontal: size.S,
+        marginHorizontal: size.M,
         marginVertical: size.M,
         borderRadius: 20,
-        padding: size.L,
+        padding: size.M,
     },
     image: {
-        width: 42,
-        height: 42,
+        width: 30,
+        height: 30,
         alignSelf: 'center',
     },
     containerSelected: {
-        borderWidth: 3.5,
+        borderWidth: 1.5,
         borderColor: colors.light.primary,
-        // backgroundColor: colors.light.primary,
     },
 });

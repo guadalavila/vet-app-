@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { size } from '../utils/size';
 import { colors } from '../utils/colors';
 import CustomText from './CustomText';
 import { ItemList } from '../../models/ItemList';
 import Icon from './Icon';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 interface IListItemsTextProps {
     placeholder: string;
@@ -14,6 +15,8 @@ interface IListItemsTextProps {
 }
 
 const ListItemsText = ({ placeholder, items, item, setItem }: IListItemsTextProps) => {
+    const { themeApp } = useContext(ThemeContext);
+
     return (
         <View>
             <CustomText style={styles.label}>{placeholder}</CustomText>
@@ -30,7 +33,7 @@ const ListItemsText = ({ placeholder, items, item, setItem }: IListItemsTextProp
                         <CustomText
                             style={[
                                 styles.itemText,
-                                { color: item.label === item_.label ? 'white' : colors.light.greyDark },
+                                { color: item.label === item_.label ? 'white' : themeApp.colors.text },
                             ]}>
                             {item_.label}
                             {item_.icon && (

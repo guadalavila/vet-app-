@@ -39,7 +39,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, on
         ...TYPE_PET[TYPE_PET.length - 1],
     });
     const [sterilized, setSterilized] = useState(false);
-    const [colorPet, setColorPet] = useState<ColorType>(COLOR_PET[COLOR_PET.length - 1]);
+    const [colorPet, setColorPet] = useState<ColorType>();
     const [sizePet, setSizePet] = useState<ItemList>({
         label: '',
         value: '',
@@ -241,7 +241,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, on
             </ScrollView>
             <View style={styles.bottom}>
                 <Button title={'Guardar'} onPress={handleSubmit} />
-                <Button secondary title={'Cancelar'} onPress={onCancel} />
+                {isUpdate && <Button secondary title={'Cancelar'} onPress={onCancel} />}
             </View>
         </View>
     );

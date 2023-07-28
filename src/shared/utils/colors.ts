@@ -8,6 +8,7 @@ const common = {
     quaternary: '#FDE2F3',
     white: '#FFFFFF',
     black: '#2F2F2F',
+    blackSecondary: '#11100F',
     error: '#E74C3C',
     grey: '#EEEEEE',
     greySecondary: '#f5f5f5',
@@ -38,7 +39,8 @@ const light = {
     textInput: '#515151',
     bottomSheet: '#F1f1f1',
     card: '#D6D6D6',
-    backgroundInput: '#f6f8fe',
+    backgroundInput: '#ECEDF0',
+    backgroundContainer: '#DEDEDE',
 };
 
 const dark = {
@@ -55,6 +57,7 @@ const dark = {
     bottomSheet: '#71717C',
     card: '#D6D6D6',
     backgroundInput: '#414141',
+    backgroundContainer: '#B0B0B0',
 };
 
 export const colors = { light, dark };

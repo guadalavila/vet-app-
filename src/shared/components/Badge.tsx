@@ -26,5 +26,6 @@ const styles = StyleSheet.create({
     },
     label: {
         fontWeight: '600',
+        color: colors.light.blackSecondary,
     },
 });

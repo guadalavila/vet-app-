@@ -7,14 +7,14 @@ import CustomText from './CustomText';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface IListColorsProps {
-    colorPet: ColorType;
+    colorPet?: ColorType;
     setColorPet: (item: ColorType) => void;
 }
 
 const ListColors = ({ setColorPet, colorPet }: IListColorsProps) => {
     return (
         <View>
-            <CustomText style={styles.label}>Color</CustomText>
+            <CustomText style={styles.label}>Color: {colorPet?.label}</CustomText>
             <View style={styles.container}>
                 {COLOR_PET.map((item, index) => (
                     <TouchableOpacity
