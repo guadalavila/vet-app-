@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Vaccine } from '../../models/Vaccine';
 import CustomText from './CustomText';
@@ -7,6 +7,7 @@ import { typography } from '../utils/typography';
 import { colors } from '../utils/colors';
 import { GlobalStyles } from '../utils/styles';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 interface IItemVaccineProps {
     vaccine: Vaccine;
@@ -14,6 +15,7 @@ interface IItemVaccineProps {
 }
 
 const ItemVaccine = ({ vaccine, onPress }: IItemVaccineProps) => {
+    const { theme } = useContext(ThemeContext);
     return (
         <View style={[styles.container, GlobalStyles.row]}>
             <View style={styles.containerIcon}>
@@ -31,7 +33,7 @@ const ItemVaccine = ({ vaccine, onPress }: IItemVaccineProps) => {
                 {vaccine.details && <CustomText style={[styles.type]}>Detalle: {vaccine.details}</CustomText>}
             </View>
             <TouchableOpacity style={styles.containerButton} activeOpacity={0.7} onPress={onPress}>
-                <Icon size={25} name='pencil' color={colors.light.white} />
+                <Icon size={25} name='pencil' color={theme === 'dark' ? colors.light.white : colors.light.primary} />
             </TouchableOpacity>
         </View>
     );
