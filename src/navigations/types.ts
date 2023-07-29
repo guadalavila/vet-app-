@@ -15,7 +15,7 @@ export type RootStackLoginParamList = {
     PetDetailScreen: { pet: Pet, getDetail: boolean, refresh?: boolean },
     SettingScreen: undefined,
     VisitsScreen: { id: string },
-    AddVisitScreen: { client: string, pet: string, visit?: Visit },
+    AddVisitScreen: { pet: string, visit?: Visit },
     AddPetScreen: { client: Client | undefined, isUpdate: boolean, pet?: Pet },
     AddClientScreen: { isUpdate: boolean, client?: Client },
     VisitsListScreen: undefined,

@@ -57,7 +57,6 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
     const addVisit = () => {
         closeBottomSheet();
         navigation.navigate('AddVisitScreen', {
-            client: typeof pet.client === 'string' ? pet.client : pet.client._id,
             pet: pet._id,
         });
     };

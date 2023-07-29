@@ -17,7 +17,6 @@ const VisitsScreen = ({ route, navigation }: Props) => {
 
     const editVisit = (visit: Visit) => {
         navigation.replace('AddVisitScreen', {
-            client: visit.client,
             pet: visit.pet,
             visit: visit,
         });
