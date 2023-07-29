@@ -1,5 +1,6 @@
 import { Client } from '../models/Client';
 import { Pet } from '../models/Pet';
+import { Vaccine } from '../models/Vaccine';
 import { Visit } from '../models/Visit';
 
 export type RootStackLogoutParamList = {
@@ -24,7 +25,7 @@ export type RootStackLoginParamList = {
     SurgeryRegistryScreen: undefined,
     AddSurgeriesScreen: undefined,
     VaccinesRegistryScreen: { petId: string },
-    AddVaccineScreen: { petId: string },
+    AddVaccineScreen: { petId: string, vaccine?: Vaccine },
     ProfileScreen: undefined,
 };
 

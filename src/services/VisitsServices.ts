@@ -39,7 +39,6 @@ class VisitsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    console.log(error);
                     reject(error);
                 });
         });

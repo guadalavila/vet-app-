@@ -38,6 +38,7 @@ const usePathologies = () => {
                     setSaving(false);
                 });
             } catch (error) {
+                console.log(error);
                 reject(error);
                 setSaving(false);
             }

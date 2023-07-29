@@ -18,6 +18,19 @@ class VaccineServices {
         });
     }
 
+    updateVaccine(vaccine: Vaccine): Promise<Vaccine> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .patch<Vaccine>(API_PATHS.VACCINE, vaccine)
+                .then((res) => {
+                    resolve(res.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
     getVaccinesByPet(petId: string): Promise<Vaccine[]> {
         return new Promise((resolve, reject) => {
             networkManager

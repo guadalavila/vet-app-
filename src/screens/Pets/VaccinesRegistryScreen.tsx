@@ -33,6 +33,10 @@ const VaccinesRegistryScreen = ({ navigation, route }: Props) => {
         }
     };
 
+    const handleEdit = (vaccine: Vaccine) => {
+        navigation.replace('AddVaccineScreen', { petId: petId, vaccine: vaccine });
+    };
+
     if (loading) {
         return (
             <Container>
@@ -48,7 +52,7 @@ const VaccinesRegistryScreen = ({ navigation, route }: Props) => {
                 <FlatList
                     data={vaccines}
                     keyExtractor={(item) => item._id}
-                    renderItem={({ item }) => <ItemVaccine vaccine={item} />}
+                    renderItem={({ item }) => <ItemVaccine vaccine={item} onPress={() => handleEdit(item)} />}
                 />
             ) : (
                 <NoData title='No se registraron vacunas' />

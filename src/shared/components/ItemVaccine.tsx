@@ -1,31 +1,38 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Vaccine } from '../../models/Vaccine';
 import CustomText from './CustomText';
 import { size } from '../utils/size';
 import { typography } from '../utils/typography';
 import { colors } from '../utils/colors';
 import { GlobalStyles } from '../utils/styles';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface IItemVaccineProps {
     vaccine: Vaccine;
+    onPress: () => void;
 }
 
-const ItemVaccine = ({ vaccine }: IItemVaccineProps) => {
+const ItemVaccine = ({ vaccine, onPress }: IItemVaccineProps) => {
     return (
         <View style={[styles.container, GlobalStyles.row]}>
             <View style={styles.containerIcon}>
                 <Image style={styles.icon} source={require('../../../assets/icon/vaccine.png')} />
             </View>
-            <View>
+            <View style={styles.containerInfo}>
                 <CustomText style={[styles.name]}>
                     {new Date(vaccine.date).toLocaleString('en-GB', {
                         hour12: false,
                     })}
                 </CustomText>
                 <CustomText style={[styles.name]}>{vaccine.name}</CustomText>
-                <CustomText style={[styles.type]}>{vaccine.type}</CustomText>
+                <CustomText style={[styles.type]}>Tipo: {vaccine.type}</CustomText>
+                {vaccine.brand && <CustomText style={[styles.type]}>Marca: {vaccine.brand}</CustomText>}
+                {vaccine.details && <CustomText style={[styles.type]}>Detalle: {vaccine.details}</CustomText>}
             </View>
+            <TouchableOpacity style={styles.containerButton} activeOpacity={0.7} onPress={onPress}>
+                <Icon size={25} name='pencil' color={colors.light.white} />
+            </TouchableOpacity>
         </View>
     );
 };
@@ -39,12 +46,17 @@ const styles = StyleSheet.create({
         borderBottomColor: colors.light.secondary,
         borderBottomWidth: 1,
     },
+    containerInfo: {
+        width: '78%',
+        paddingRight: size.S,
+    },
     name: {
         fontSize: typography.size.S,
         fontWeight: '600',
+        marginVertical: size.S,
     },
     type: {
-        marginVertical: size.M,
+        marginVertical: size.S,
     },
     containerIcon: {
         backgroundColor: colors.light.primary,
@@ -59,5 +71,8 @@ const styles = StyleSheet.create({
     icon: {
         width: 27,
         height: 27,
+    },
+    containerButton: {
+        alignSelf: 'center',
     },
 });

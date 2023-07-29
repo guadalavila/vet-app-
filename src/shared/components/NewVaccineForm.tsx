@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { GlobalStyles } from '../utils/styles';
 import useForm from '../hooks/useForm';
@@ -11,28 +11,47 @@ import { VACCINES_PET } from '../utils/const/vaccine';
 import { size } from '../utils/size';
 import { colors } from '../utils/colors';
 import { typography } from '../utils/typography';
+import { Vaccine } from '../../models/Vaccine';
 
 interface INewVaccineFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;
+    initData?: Vaccine;
 }
 
-const NewVaccineForm = ({ onSubmit }: INewVaccineFormProps) => {
+const NewVaccineForm = ({ onSubmit, initData }: INewVaccineFormProps) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NewVaccineForm', onSubmit);
 
     useEffect(() => {
         setFieldValue('date', new Date());
+        setInitialData();
     }, []);
+
+    const setInitialData = () => {
+        if (Object.entries(Object(initData)).length > 0) {
+            //@ts-ignore
+            const { name, type, brand, details } = initData;
+            setFieldValue('name', name);
+            setFieldValue('type', type);
+
+            brand && setFieldValue('brand', brand);
+            details && setFieldValue('details', details);
+        }
+    };
+
     return (
         <View style={GlobalStyles.flex1}>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
-                <ItemDate
-                    placeholder='Fecha de administración'
-                    onChangeValue={(value) => setFieldValue('date', value)}
-                />
+                {!initData?.createdAt && (
+                    <ItemDate
+                        placeholder='Fecha de administración'
+                        onChangeValue={(value) => setFieldValue('date', value)}
+                    />
+                )}
                 <Separator color='transparent' />
                 <Dropdown
                     placeholder='Tipo de vacuna'
                     items={VACCINES_PET}
+                    initValue={initData?.type}
                     onSelectItem={(select) => {
                         setFieldValue('type', select.value);
                     }}

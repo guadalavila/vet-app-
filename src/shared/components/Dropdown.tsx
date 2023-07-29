@@ -17,6 +17,7 @@ interface IDropdownProps {
     zIndex?: number;
     width?: string;
     isOpen?: boolean;
+    initValue?: string;
 }
 
 const Dropdown = ({
@@ -28,9 +29,10 @@ const Dropdown = ({
     zIndex,
     width = '92%',
     isOpen = false,
+    initValue,
 }: IDropdownProps) => {
     const [open, setOpen] = useState(isOpen);
-    const [value, setValue] = useState(null);
+    const [value, setValue] = useState(initValue);
     const { theme, themeApp } = useContext(ThemeContext);
     return (
         <DropDownPicker
