@@ -1,12 +1,12 @@
 export type Report = {
-    gender: {
-        serie: number[];
-        serieColor: string[];
-        serieText: string[];
-    };
-    specie: {
-        serie: number[];
-        serieColor: string[];
-        serieText: string[];
-    };
+    gender: ReportData;
+    specie: ReportData;
+    vaccines: number;
+    visits: number;
+};
+
+type ReportData = {
+    serie: number[];
+    serieColor: string[];
+    serieText: string[];
 };
