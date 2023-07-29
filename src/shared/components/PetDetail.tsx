@@ -26,7 +26,7 @@ const PetDetail = ({ pet }: IPetDetailProps) => {
                 ) : (
                     <CardValue title='Edad' value={'-'} icon='calendar-outline' />
                 )}
-                <CardValue title='Tipo' value={getSpeciePet(pet.specie)} icon='paw-outline' />
+                <CardValue title='Especie' value={getSpeciePet(pet.specie)} icon='paw-outline' />
                 <CardCustom
                     title='Sexo'
                     value={getPetGender(pet.gender)}

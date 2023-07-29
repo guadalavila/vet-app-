@@ -24,6 +24,7 @@ const SettingScreen = ({ navigation }: Props) => {
             <Item label='Tu perfil' onPress={() => navigation.navigate('ProfileScreen')} />
             <Item label='Patologías preexistentes' onPress={() => navigation.navigate('PathologiesScreen')} />
             <Select title={'Modo Oscuro'} selected={theme === 'dark'} onChangeSelect={setTheme} />
+            <Item label='Reportes' onPress={() => navigation.navigate('ReportsScreen')} />
             <Item label='Cerrar Sesión' onPress={() => setShowModal(true)} />
 
             <ModalCustom
