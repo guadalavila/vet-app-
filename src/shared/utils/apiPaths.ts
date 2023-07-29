@@ -22,4 +22,5 @@ export const API_PATHS = {
     SEARCH: '/search/',
     VACCINE: 'vaccine',
     VACCINE_BY_PET: 'vaccine/by-pet/',
+    REPORT_BY_VET: 'report/by-vet/'
 };

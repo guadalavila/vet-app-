@@ -19,7 +19,7 @@ const Container = ({ children }: IContainerProps) => {
             <View
                 style={[
                     styles.container,
-                    { backgroundColor: colors.background, paddingTop: top, paddingBottom: bottom + 50 },
+                    { backgroundColor: colors.background, paddingTop: top, paddingBottom: bottom },
                 ]}>
                 {children}
             </View>
