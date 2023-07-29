@@ -9,20 +9,34 @@ import { typography } from '../utils/typography';
 interface IItemCategoryProps {
     title: string;
     data: number;
-    icon: string;
+    icon?: string;
     onPress: () => void;
     height?: number;
+    backgroundColor?: string;
 }
 
-const ItemCategory = ({ title, onPress, icon, data, height = 250 }: IItemCategoryProps) => {
+const ItemCategory = ({
+    title,
+    onPress,
+    icon,
+    data,
+    height = 250,
+    backgroundColor = colors.light.primary,
+}: IItemCategoryProps) => {
     return (
         <TouchableOpacity
-            style={[GlobalStyles.shadowCard, styles.container, { height: height }]}
+            style={[
+                GlobalStyles.shadowCard,
+                styles.container,
+                { height: height, backgroundColor: backgroundColor, borderColor: backgroundColor },
+            ]}
             activeOpacity={0.7}
             onPress={onPress}>
-            <View style={[GlobalStyles.selfCenter, styles.containerIcon]}>
-                <Icon name={icon} size={38} color={colors.light.primary} />
-            </View>
+            {icon && (
+                <View style={[GlobalStyles.selfCenter, styles.containerIcon]}>
+                    <Icon name={icon} size={38} color={colors.light.primary} />
+                </View>
+            )}
             <Text style={[styles.count]}>{data}</Text>
             <Text style={[styles.category]}>{title}</Text>
         </TouchableOpacity>
@@ -34,7 +48,6 @@ export default ItemCategory;
 const styles = StyleSheet.create({
     container: {
         borderWidth: 2,
-        borderColor: colors.light.primary,
         borderRadius: 10,
         margin: size.XS,
         marginHorizontal: size.M,
@@ -42,7 +55,6 @@ const styles = StyleSheet.create({
         paddingTop: size.XXL,
         padding: size.S,
         flex: 1,
-        backgroundColor: colors.light.primary,
         justifyContent: 'space-around',
     },
     category: {
