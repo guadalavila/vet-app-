@@ -6,6 +6,7 @@ import { Visit } from '../models/Visit';
 export type RootStackLogoutParamList = {
     LoginScreen: undefined,
     SignUpScreen: undefined,
+    TutorialAppScreen: undefined,
 };
 
 export type RootStackLoginParamList = {

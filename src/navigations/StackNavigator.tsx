@@ -22,6 +22,7 @@ import SignUpScreen from '../screens/Login/SignUpScreen';
 import PathologiesScreen from '../screens/Pathologies/PathologiesScreen';
 import ProfileScreen from '../screens/Settings/ProfileScreen';
 import ReportsScreen from '../screens/Report/ReportsScreen';
+import TutorialAppScreen from '../screens/Tutorial/TutorialAppScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
@@ -31,6 +32,7 @@ export function StackNavigatorLogOut() {
         <StackLoggedOut.Navigator screenOptions={{ headerShown: false }}>
             <StackLoggedOut.Screen name={'LoginScreen'} component={LoginScreen} />
             <StackLoggedOut.Screen name={'SignUpScreen'} component={SignUpScreen} />
+            <StackLoggedOut.Screen name={'TutorialAppScreen'} component={TutorialAppScreen} />
         </StackLoggedOut.Navigator>
     );
 }
