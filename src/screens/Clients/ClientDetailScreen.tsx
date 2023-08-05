@@ -10,6 +10,7 @@ import Button from '../../shared/components/Button';
 import Loading from '../../shared/components/Loading';
 import ClientDetail from '../../shared/components/ClientDetail';
 import ListPets from '../../shared/components/ListPets';
+import useError from '../../shared/hooks/useError';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientDetailScreen'> {}
 
@@ -18,6 +19,7 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
     const refresh = route.params.refresh;
     const [pets, setPets] = useState<Pet[] | []>([]);
     const [loading, setLoading] = useState(false);
+    const { setErrorApp } = useError();
 
     useEffect(() => {
         try {
@@ -27,6 +29,11 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
                 setLoading(false);
             });
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener mascotas: Ocurrio un error',
+                type: 'error',
+            });
             setLoading(false);
         }
     }, []);

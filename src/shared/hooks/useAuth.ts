@@ -1,15 +1,15 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import authServices from '../../services/AuthServices';
-import { ToastContext } from '../../contexts/ToastContext';
 import { getData, removeMultiple, setData, setMultiData } from '../utils/storage/asyncStorage';
 import { STORAGE_KEYS } from '../utils/storage/keys';
 import { resetUserProperties, setUserProperties } from '../utils/firebase/analytics';
 import { NewUser, UserResponse } from '../../models/User';
+import useError from './useError';
 
 const useAuth = () => {
     const { setIsAuth, setUser, setIsLoading, isLoading, user, setToken, logOut } = useContext(AuthContext);
-    const { setToast } = useContext(ToastContext);
+    const { setErrorApp } = useError();
 
     const restoreUser = async () => {
         setIsLoading(true);
@@ -29,6 +29,12 @@ const useAuth = () => {
                 setUserResponse(res);
             });
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Registro: Ocurrio un error',
+                type: 'error',
+            });
+            //add crashlytics
             setIsLoading(false);
         }
     };
@@ -39,9 +45,10 @@ const useAuth = () => {
             const data = await authServices.login(email, password);
             setUserResponse(data);
         } catch (error) {
-            setToast({
+            const msg = typeof error === 'string' ? error : 'Login: Algunos datos no son correctos';
+            setErrorApp({
                 isError: true,
-                message: 'Algunos datos no son correctos',
+                message: msg,
                 type: 'error',
             });
             setIsLoading(false);
@@ -59,6 +66,11 @@ const useAuth = () => {
                 });
             }
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'GetMe',
+                type: 'error',
+            });
             setIsLoading(false);
         }
     };

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import petsServices from '../../services/PetsServices';
+import useError from './useError';
 
 const useDelete = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const { setErrorApp } = useError();
 
     const deletePet = (idPet: string) => {
         try {
@@ -20,6 +22,11 @@ const useDelete = () => {
                     });
             });
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Eliminar Mascota: Ocurrio un error',
+                type: 'error',
+            });
             setIsLoading(false);
         }
     };

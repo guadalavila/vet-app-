@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Client, ClientData } from '../../models/Client';
 import clientServices from '../../services/ClientsServices';
 import useAuth from './useAuth';
+import useError from './useError';
 
 const useClients = () => {
     const [dataClients, setDataClients] = useState<ClientData>({
@@ -14,6 +15,7 @@ const useClients = () => {
     const { user } = useAuth();
     const [clients, setClients] = useState<Client[]>([]);
     const [refreshing, setRefreshing] = useState(false);
+    const { setErrorApp } = useError();
 
     useEffect(() => {
         getClientsByVetId();
@@ -32,6 +34,11 @@ const useClients = () => {
                 setIsLoading(false);
             }
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener Clientes: Ocurrio un error',
+                type: 'error',
+            });
             setIsLoading(false);
         }
     };
@@ -45,6 +52,11 @@ const useClients = () => {
                 setRefreshing(false);
             });
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener Clientes: Ocurrio un error',
+                type: 'error',
+            });
             setRefreshing(false);
         }
     };

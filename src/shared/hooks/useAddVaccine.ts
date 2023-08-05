@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import vaccineServices from '../../services/VaccineServices';
 import { NewVaccine, Vaccine } from '../../models/Vaccine';
+import useError from './useError';
 
 const useAddVaccine = () => {
     const [loading, setLoading] = useState(false);
+    const { setErrorApp } = useError();
 
     const createVaccine = (vaccine: NewVaccine) => {
         return new Promise((resolve, reject) => {
@@ -14,6 +16,11 @@ const useAddVaccine = () => {
                     setLoading(false);
                 });
             } catch (error) {
+                setErrorApp({
+                    isError: true,
+                    message: 'Crear Vacuna: Ocurrio un error',
+                    type: 'error',
+                });
                 setLoading(false);
                 reject(error);
             }
@@ -29,6 +36,11 @@ const useAddVaccine = () => {
                     setLoading(false);
                 });
             } catch (error) {
+                setErrorApp({
+                    isError: true,
+                    message: 'Actualizar Vacuna: Ocurrio un error',
+                    type: 'error',
+                });
                 setLoading(false);
                 reject(error);
             }

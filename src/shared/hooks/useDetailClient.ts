@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Client } from '../../models/Client';
 import clientServices from '../../services/ClientsServices';
+import useError from './useError';
 
 const useDetailClient = (id: string) => {
     const [client, setClient] = useState<Client>();
     const [isLoading, setIsLoading] = useState(false);
+    const { setErrorApp } = useError();
 
     useEffect(() => {
         getDetailClient();
@@ -18,6 +20,11 @@ const useDetailClient = (id: string) => {
                 setIsLoading(false);
             });
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener detalle Cliente: Ocurrio un error',
+                type: 'error',
+            });
             setIsLoading(false);
         }
     };

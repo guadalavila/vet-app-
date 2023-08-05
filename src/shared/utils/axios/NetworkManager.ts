@@ -14,6 +14,9 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((error) => {
+                        if (error.message.includes('Network Error')){
+                            reject('Error de conexión');
+                        }
                         reject(error.response?.data.message);
                     });
             } catch (e) {
@@ -32,6 +35,9 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((error) => {
+                        if (error.message.includes('Network Error')){
+                            reject('Error de conexión');
+                        }
                         if (error.response?.status === 401) {
                             reject('Authorization Failed');
                         } else {
@@ -55,6 +61,9 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((error) => {
+                        if (error.message.includes('Network Error')){
+                            reject('Error de conexión');
+                        }
                         if (error.response?.status === 401) {
                             reject('Authorization Failed');
                         } else {
@@ -77,6 +86,9 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((error) => {
+                        if (error.message.includes('Network Error')){
+                            reject('Error de conexión');
+                        }
                         if (error.response?.status === 401) {
                             reject('Authorization Failed');
                         } else {
@@ -101,6 +113,9 @@ class NetworkManager {
                     })
                     .catch((error) => {
                         console.log(error);
+                        if (error.message.includes('Network Error')){
+                            reject('Error de conexión');
+                        }
                         if (error.response?.status === 401) {
                             reject('Authorization Failed');
                         } else {
@@ -125,6 +140,9 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((err) => {
+                        if (err.message.includes('Network Error')){
+                            reject('Error de conexión');
+                        }
                         if (err.response?.status === 401) {
                             reject('Authorization Failed');
                         } else {

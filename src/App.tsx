@@ -2,18 +2,18 @@ import React from 'react';
 import { ThemeContextProvider } from './contexts/ThemeContext';
 import { AuthContextProvider } from './contexts/AuthContext';
 import NavigatorApp from './shared/components/NavigatorApp';
-import { ToastContextProvider } from './contexts/ToastContext';
 import { PathologiesContextProvider } from './contexts/PathologiesContext';
+import { ErrorContextProvider } from './contexts/ErrorContext';
 
 const App = () => {
     return (
         <ThemeContextProvider>
             <AuthContextProvider>
-                <ToastContextProvider>
+                <ErrorContextProvider>
                     <PathologiesContextProvider>
                         <NavigatorApp />
                     </PathologiesContextProvider>
-                </ToastContextProvider>
+                </ErrorContextProvider>
             </AuthContextProvider>
         </ThemeContextProvider>
     );

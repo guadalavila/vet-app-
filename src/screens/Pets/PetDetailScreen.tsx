@@ -18,6 +18,7 @@ import PetDetail from '../../shared/components/PetDetail';
 import ConditionsList from '../../shared/components/ConditionsList';
 import useGetOnePet from '../../shared/hooks/useGetOnePet';
 import Loading from '../../shared/components/Loading';
+import useError from '../../shared/hooks/useError';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetDetailScreen'> {}
 
@@ -28,6 +29,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
     const bottomSheetRef = useRef();
     const [showModal, setShowModal] = useState(false);
     const { deletePet } = useDelete();
+    const { setErrorApp } = useError();
 
     const getDetailOwner = () => {
         try {
@@ -35,7 +37,13 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                 navigation.navigate('ClientDetailScreen', { client: res });
             });
             closeBottomSheet();
-        } catch (error) {}
+        } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener detalle clientes: Ocurrio un error',
+                type: 'error',
+            });
+        }
     };
 
     const onPressLeftBtn = () => {

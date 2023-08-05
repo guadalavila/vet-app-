@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import visitsServices from '../../services/VisitsServices';
 import { NewVisit, Visit } from '../../models/Visit';
+import useError from './useError';
 
 const useAddVisit = () => {
     const [loading, setLoading] = useState(false);
+    const { setErrorApp } = useError();
 
     const createVisit = (visit: NewVisit) => {
         return new Promise((resolve, reject) => {
@@ -14,6 +16,11 @@ const useAddVisit = () => {
                     setLoading(false);
                 });
             } catch (error) {
+                setErrorApp({
+                    isError: true,
+                    message: 'Crear Visita: Ocurrio un error',
+                    type: 'error',
+                });
                 setLoading(false);
             }
         });
@@ -28,6 +35,11 @@ const useAddVisit = () => {
                     setLoading(false);
                 });
             } catch (error) {
+                setErrorApp({
+                    isError: true,
+                    message: 'Actualizar Visita: Ocurrio un error',
+                    type: 'error',
+                });
                 setLoading(false);
             }
         });

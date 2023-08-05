@@ -10,6 +10,7 @@ import vaccineServices from '../../services/VaccineServices';
 import { Vaccine } from '../../models/Vaccine';
 import Loading from '../../shared/components/Loading';
 import ItemVaccine from '../../shared/components/ItemVaccine';
+import useError from '../../shared/hooks/useError';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'VaccinesRegistryScreen'> {}
 
@@ -17,6 +18,7 @@ const VaccinesRegistryScreen = ({ navigation, route }: Props) => {
     const [loading, setLoading] = useState(true);
     const [vaccines, setVaccines] = useState<Vaccine[]>([]);
     const { petId } = route.params;
+    const { setErrorApp } = useError();
 
     useEffect(() => {
         getVaccines();
@@ -29,6 +31,11 @@ const VaccinesRegistryScreen = ({ navigation, route }: Props) => {
                 setLoading(false);
             });
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener vacunas: Ocurrio un error',
+                type: 'error',
+            });
             setLoading(false);
         }
     };

@@ -11,16 +11,17 @@ interface IToastProps {
     text: string;
     position?: 'bottom' | 'top';
     callback?: () => void;
+    timeOut?: number;
 }
 
-const Toast = ({ type, text, position = 'top', callback }: IToastProps) => {
+const Toast = ({ type, text, position = 'top', callback, timeOut = 3500 }: IToastProps) => {
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsVisible(false);
             callback && callback();
-        }, 3500);
+        }, timeOut);
         return () => clearTimeout(timer);
     }, []);
 

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import petsServices from '../../services/PetsServices';
 import { Pet } from '../../models/Pet';
+import useError from './useError';
 
 const useGetOnePet = (id: string, getDetail: boolean) => {
     const [loading, setLoading] = useState(true);
     const [detailPet, setDetailPet] = useState<Pet>();
+    const { setErrorApp } = useError();
 
     useEffect(() => {
         getDetailPet();
@@ -21,6 +23,11 @@ const useGetOnePet = (id: string, getDetail: boolean) => {
                 setLoading(false);
             }
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener detalle Mascota: Ocurrio un error',
+                type: 'error',
+            });
             setLoading(false);
         }
     };

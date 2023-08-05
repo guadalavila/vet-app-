@@ -4,9 +4,11 @@ import { ItemDashboard } from '../../models/Dashboard';
 import pathologiesServices from '../../services/PathologiesServices';
 import useAuth from './useAuth';
 import { PathologiesContext } from '../../contexts/PathologiesContext';
+import useError from './useError';
 
 const useDashboard = () => {
     const { user } = useAuth();
+    const { setErrorApp } = useError();
     const [categories, setCategories] = useState<ItemDashboard[] | []>([]);
     const { setPathologies } = useContext(PathologiesContext);
     const [errorDashboard, setErrorDashboard] = useState({
@@ -34,6 +36,11 @@ const useDashboard = () => {
                 error: true,
                 message: 'No se pudo obtener datos iniciales.',
             });
+            setErrorApp({
+                isError: true,
+                message: 'Obtener Dashboard: Ocurrio un error',
+                type: 'error',
+            });
             setIsLoading(false);
         }
     };
@@ -46,6 +53,12 @@ const useDashboard = () => {
                 });
             }
         } catch (error) {
+            //TODO review
+            setErrorApp({
+                isError: true,
+                message: 'Obtener Patologias: Ocurrio un error',
+                type: 'error',
+            });
             setPathologies([]);
         }
     };
@@ -61,6 +74,11 @@ const useDashboard = () => {
             setErrorDashboard({
                 error: true,
                 message: 'No se pudo obtener datos iniciales.',
+            });
+            setErrorApp({
+                isError: true,
+                message: 'Obtener Dashboard: Ocurrio un error',
+                type: 'error',
             });
             setRefreshing(false);
         }

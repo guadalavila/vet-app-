@@ -12,7 +12,7 @@ class AuthServices {
                 .then((res) => {
                     resolve(res.data);
                 })
-                .catch((error) => {
+                .catch((error: string) => {
                     reject(error);
                 });
         });

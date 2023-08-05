@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import reportServices from '../../services/ReportServices';
 import useAuth from './useAuth';
 import { Report } from '../../models/Report';
+import useError from './useError';
 
 const useGetReport = () => {
     const { user } = useAuth();
     const [loading, setLoading] = useState(true);
     const [report, setReport] = useState<Report>();
+    const { setErrorApp } = useError();
 
     useEffect(() => {
         getReport();
@@ -22,6 +24,11 @@ const useGetReport = () => {
                 });
             }
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener Reporte: Ocurrio un error',
+                type: 'error',
+            });
             setLoading(false);
         }
     };

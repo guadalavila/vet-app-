@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import visitsServices from '../../services/VisitsServices';
 import { Visit } from '../../models/Visit';
+import useError from './useError';
 
 const useVisits = (id: string) => {
     const [visits, setVisits] = useState<Visit[] | []>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const { setErrorApp } = useError();
 
     useEffect(() => {
         getVisitsPet();
@@ -18,6 +20,11 @@ const useVisits = (id: string) => {
                 setIsLoading(false);
             });
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener visitas: Ocurrio un error',
+                type: 'error',
+            });
             setIsLoading(false);
         }
     };

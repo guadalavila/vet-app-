@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import petsServices from '../../services/PetsServices';
 import { Pet, PetData } from '../../models/Pet';
 import useAuth from './useAuth';
+import useError from './useError';
 
 const usePets = () => {
     const [pets, setPets] = useState<Pet[]>([]);
@@ -9,6 +10,7 @@ const usePets = () => {
     const [page, setPage] = useState(0);
     const [refreshing, setRefreshing] = useState(false);
     const { user } = useAuth();
+    const { setErrorApp } = useError();
 
     useEffect(() => {
         getListPets();
@@ -25,6 +27,11 @@ const usePets = () => {
                 });
             }
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener masctoas: Ocurrio un error',
+                type: 'error',
+            });
             setIsLoading(false);
         }
     };
@@ -58,6 +65,11 @@ const usePets = () => {
                 setRefreshing(false);
             });
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener mascotas: Ocurrio un error',
+                type: 'error',
+            });
             setRefreshing(false);
         }
     };

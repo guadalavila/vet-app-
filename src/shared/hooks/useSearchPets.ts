@@ -2,12 +2,14 @@ import { useState } from 'react';
 import petsServices from '../../services/PetsServices';
 import { Pet } from '../../models/Pet';
 import useAuth from './useAuth';
+import useError from './useError';
 
 const useSearchPets = () => {
     const [result, setResult] = useState<Pet[] | []>([]);
     const [searching, setSearching] = useState(false);
     const [emptyResult, setEmptyResult] = useState(false);
     const { user } = useAuth();
+    const { setErrorApp } = useError();
 
     const searchPets = (search: string) => {
         setSearching(true);
@@ -18,7 +20,13 @@ const useSearchPets = () => {
                 setResult(res);
                 if (res.length === 0) setEmptyResult(true);
             });
-        } catch (error) {}
+        } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Buscar Mascotas: Ocurrio un error',
+                type: 'error',
+            });
+        }
     };
 
     return { result, searchPets, searching, setSearching, emptyResult };

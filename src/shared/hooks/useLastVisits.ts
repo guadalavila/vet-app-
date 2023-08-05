@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { LastVisit } from '../../models/Visit';
 import visitsServices from '../../services/VisitsServices';
 import useAuth from './useAuth';
+import useError from './useError';
 
 const useLastVisit = () => {
     const [lastVisits, setLastVisits] = useState<LastVisit[]>([]);
     const [loading, setLoading] = useState(false);
     const { user } = useAuth();
+    const { setErrorApp } = useError();
 
     useEffect(() => {
         setLoading(true);
@@ -17,6 +19,11 @@ const useLastVisit = () => {
                 setLoading(false);
             });
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener últimas visitas: Ocurrio un error',
+                type: 'error',
+            });
             setLoading(false);
         }
     }, []);

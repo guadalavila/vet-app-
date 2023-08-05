@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { NewPet, Pet } from '../../models/Pet';
 import petsServices from '../../services/PetsServices';
+import useError from './useError';
 
 const useAddPet = () => {
     const [loading, setLoading] = useState(false);
+    const { setErrorApp } = useError();
 
     const createPet = (pet: NewPet) => {
         return new Promise<Pet>((resolve, reject) => {
@@ -14,6 +16,11 @@ const useAddPet = () => {
                     setLoading(false);
                 });
             } catch (error) {
+                setErrorApp({
+                    isError: true,
+                    message: 'Crear Mascota: Ocurrio un error',
+                    type: 'error',
+                });
                 setLoading(false);
                 reject(error);
             }
@@ -30,6 +37,11 @@ const useAddPet = () => {
                 });
             } catch (error) {
                 setLoading(false);
+                setErrorApp({
+                    isError: true,
+                    message: 'Actualizar Mascota: Ocurrio un error',
+                    type: 'error',
+                });
                 reject(error);
             }
         });

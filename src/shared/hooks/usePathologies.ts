@@ -3,12 +3,14 @@ import { PathologiesContext } from '../../contexts/PathologiesContext';
 import pathologiesServices from '../../services/PathologiesServices';
 import useAuth from './useAuth';
 import { NewPathology } from '../../models/Pathology';
+import useError from './useError';
 
 const usePathologies = () => {
     const [loading, setLoading] = useState(false);
     const [saving, setSaving] = useState(false);
     const { pathologies, setPathologies } = useContext(PathologiesContext);
     const { user } = useAuth();
+    const { setErrorApp } = useError();
 
     const getPathologies = () => {
         setLoading(true);
@@ -20,6 +22,11 @@ const usePathologies = () => {
                 });
             }
         } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener Patologias: Ocurrio un error',
+                type: 'error',
+            });
             setLoading(false);
         }
     };
@@ -38,7 +45,11 @@ const usePathologies = () => {
                     setSaving(false);
                 });
             } catch (error) {
-                console.log(error);
+                setErrorApp({
+                    isError: true,
+                    message: 'Crear Patologia: Ocurrio un error',
+                    type: 'error',
+                });
                 reject(error);
                 setSaving(false);
             }
