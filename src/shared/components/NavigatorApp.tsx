@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
 import { StackNavigatorLogIn, StackNavigatorLogOut } from '../../navigations/StackNavigator';
 import { AuthContext } from '../../contexts/AuthContext';

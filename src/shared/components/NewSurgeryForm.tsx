@@ -1,17 +1,29 @@
-import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { GlobalStyles } from '../utils/styles';
 import useForm from '../hooks/useForm';
 import FormInput from './FormInput';
 import ItemDate from './ItemDate';
 import Button from './Button';
+import { Surgery } from '../../models/Surgery';
 
 interface INewSurgeryFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;
+    initData?: Surgery;
 }
 
-const NewSurgeryForm = ({ onSubmit }: INewSurgeryFormProps) => {
+const NewSurgeryForm = ({ onSubmit, initData }: INewSurgeryFormProps) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NewSurgeryForm', onSubmit);
+
+    useEffect(() => {
+        setFieldValue('date', new Date());
+        setInitialData();
+    }, []);
+
+    const setInitialData = () => {
+        if (Object.entries(Object(initData)).length > 0) {
+        }
+    };
 
     return (
         <View style={GlobalStyles.flex1}>
@@ -28,7 +40,7 @@ const NewSurgeryForm = ({ onSubmit }: INewSurgeryFormProps) => {
                     isTextArea
                     value={fields.name || ''}
                     placeholder='Medicamentos utilizados'
-                    onChangeText={(value) => setFieldValue('medicine', value)}
+                    onChangeText={(value) => setFieldValue('medicines', value)}
                 />
                 <FormInput
                     isTextArea

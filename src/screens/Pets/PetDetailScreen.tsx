@@ -76,7 +76,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
 
     const showSurgeryRegistry = () => {
         closeBottomSheet();
-        navigation.navigate('SurgeryRegistryScreen');
+        navigation.navigate('SurgeryRegistryScreen', { petId: pet._id });
     };
 
     const showVaccinesRegistry = () => {
