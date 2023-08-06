@@ -17,16 +17,24 @@ interface IItemVetProps {
 
 const ItemUser = ({ user, onPress }: IItemVetProps) => {
     const { theme } = useContext(ThemeContext);
-
     return (
         <View style={[styles.container, GlobalStyles.row]}>
             <View style={styles.containerIcon}>
                 <Icon name='person-outline' size={30} color={colors.light.white} />
             </View>
             <View style={styles.containerInfo}>
-                <CustomText style={styles.text}>
-                    {user.name} {user.lastName}
-                </CustomText>
+                <View style={GlobalStyles.row}>
+                    <CustomText style={styles.text}>
+                        {user.name} {user.lastName}
+                    </CustomText>
+                    <View style={styles.status}>
+                        <Icon
+                            name={user.vetId ? 'checkmark-outline' : 'warning-outline'}
+                            size={22}
+                            color={user.vetId ? colors.light.success : colors.light.error}
+                        />
+                    </View>
+                </View>
                 {typeof user.vetId === 'object' && <CustomText style={styles.vet}>{user.vetId.name}</CustomText>}
                 <CustomText style={styles.subtitle}>{user.email}</CustomText>
                 <CustomText style={styles.subtitle}>{user.role}</CustomText>
@@ -75,5 +83,8 @@ const styles = StyleSheet.create({
     containerInfo: {
         width: '78%',
         paddingRight: size.S,
+    },
+    status: {
+        marginHorizontal: size.XXL,
     },
 });
