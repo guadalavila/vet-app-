@@ -7,6 +7,7 @@ const useUsers = () => {
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState<User[]>();
     const { setErrorApp } = useError();
+    const [refreshing, setRefreshing] = useState(false);
 
     useEffect(() => {
         getUsers();
@@ -28,7 +29,24 @@ const useUsers = () => {
         }
     };
 
-    return { loading, users };
+    const refreshUsers = () => {
+        setRefreshing(true);
+        try {
+            usersServices.getUsers().then((res) => {
+                setUsers(res);
+                setRefreshing(false);
+            });
+        } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener Usuarios: Ocurrio un error',
+                type: 'error',
+            });
+            setRefreshing(false);
+        }
+    };
+
+    return { loading, users, refreshUsers, refreshing };
 };
 
 export default useUsers;

@@ -1,9 +1,8 @@
-import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import React, { useCallback } from 'react';
+import { FlatList, StyleSheet, View, RefreshControl } from 'react-native';
 import Container from '../../shared/components/Container';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AdminTabStackParamList } from '../../navigations/types';
-
 import Header from '../../shared/components/Header';
 import ItemUser from '../../shared/adm/components/ItemUser';
 import Loading from '../../shared/components/Loading';
@@ -12,10 +11,14 @@ import Title from '../../shared/components/Title';
 
 interface Props extends NativeStackScreenProps<AdminTabStackParamList, 'UsersScreen'> {}
 
-const UsersScreen = () => {
-    const { loading, users } = useUsers();
+const UsersScreen = ({}: Props) => {
+    const { loading, users, refreshing, refreshUsers } = useUsers();
 
-    if (loading) {
+    const onRefresh = useCallback(() => {
+        refreshUsers();
+    }, []);
+
+    if (loading || refreshing) {
         return (
             <Container>
                 <Header title='Usuarios' />
@@ -26,11 +29,12 @@ const UsersScreen = () => {
     return (
         <Container>
             <Header title='Usuarios' />
-            <Title text='Total: ' />
+            <Title text={'Total: ' + users?.length + ' usuarios'} />
             <FlatList
                 data={users}
                 renderItem={({ item }) => <ItemUser user={item} onPress={() => {}} />}
                 keyExtractor={(item) => item._id}
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
             <View style={styles.bottom} />
         </Container>

@@ -19,7 +19,7 @@ const ItemVet = ({ vet, onPress }: IItemVetProps) => {
     return (
         <TouchableOpacity style={[styles.container, GlobalStyles.row]} activeOpacity={0.7} onPress={onPress}>
             <View style={styles.containerIcon}>
-                <Icon name='home' size={30} color={colors.light.white} />
+                <Icon name='home-outline' size={30} color={colors.light.white} />
             </View>
             <View>
                 <CustomText style={styles.text}>{vet.name}</CustomText>

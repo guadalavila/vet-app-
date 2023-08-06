@@ -11,7 +11,7 @@ export const getIconByRoute = (route: string) => {
         case 'AdministrationScreen':
             return 'construct-outline';
         case 'VetsScreen':
-            return 'construct-outline';
+            return 'home-outline';
         case 'UsersScreen':
             return 'people-outline';
     }

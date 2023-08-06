@@ -7,6 +7,7 @@ const useVets = () => {
     const [loading, setLoading] = useState(true);
     const [vets, setVets] = useState<Veterinary[]>();
     const { setErrorApp } = useError();
+    const [refreshing, setRefreshing] = useState(false);
 
     useEffect(() => {
         getVets();
@@ -28,7 +29,24 @@ const useVets = () => {
         }
     };
 
-    return { loading, vets };
+    const refreshVets = () => {
+        setRefreshing(true);
+        try {
+            vetsServices.getVets().then((res) => {
+                setVets(res);
+                setRefreshing(false);
+            });
+        } catch (error) {
+            setErrorApp({
+                isError: true,
+                message: 'Obtener Veterinarias: Ocurrio un error',
+                type: 'error',
+            });
+            setRefreshing(false);
+        }
+    };
+
+    return { loading, vets, refreshVets, refreshing };
 };
 
 export default useVets;
