@@ -2,8 +2,8 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabAdminStackParamList } from '../../navigations/types';
 import CustomTabBar from '../../shared/components/CustomTabBar';
-import VetsScreen from '../Administration/VetsScreen';
-import UsersScreen from '../Administration/UsersScreen';
+import VetsScreen from '../Administration/Vets/VetsScreen';
+import UsersScreen from '../Administration/Users/UsersScreen';
 import AdministrationScreen from '../Administration/AdministrationScreen';
 
 const Tab = createBottomTabNavigator<BottomTabAdminStackParamList>();

@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Veterinary } from '../../../models/Veterinary';
 import vetsServices from '../../../services/VetsServices';
 import useError from '../../hooks/useError';
+import { VetsContext } from '../../../contexts/VetsContext';
 
 const useVets = () => {
     const [loading, setLoading] = useState(true);
     const [vets, setVets] = useState<Veterinary[]>();
     const { setErrorApp } = useError();
     const [refreshing, setRefreshing] = useState(false);
+    const { setVetsApp } = useContext(VetsContext);
 
     useEffect(() => {
         getVets();
@@ -17,6 +19,7 @@ const useVets = () => {
         try {
             vetsServices.getVets().then((res) => {
                 setVets(res);
+                setVetsApp(res);
                 setLoading(false);
             });
         } catch (error) {

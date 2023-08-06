@@ -17,6 +17,18 @@ class UsersServices {
                 });
         });
     }
+    updateUser(user: User): Promise<User> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .patch<User>(API_PATHS.USER_UPDATE, user)
+                .then((res) => {
+                    resolve(res.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
 }
 
 const usersServices = new UsersServices();

@@ -25,6 +25,8 @@ import ReportsScreen from '../screens/Report/ReportsScreen';
 import OnBoardingScreen from '../screens/OnBoarding/OnBoardingScreen';
 import AdministrationScreen from '../screens/Administration/AdministrationScreen';
 import BottomTabAdminScreen from '../screens/BottomTab/BottomTabAdminScreen';
+import AddUserScreen from '../screens/Administration/Users/AddUserScreen';
+import AddVetScreen from '../screens/Administration/Vets/AddVetScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
@@ -73,6 +75,8 @@ export function StackNavigatorAdmin() {
             <StackAdmin.Screen name={'BottomTabAdminScreen'} component={BottomTabAdminScreen} />
             <StackAdmin.Screen name={'AdministrationScreen'} component={AdministrationScreen} />
             <StackAdmin.Screen name={'ProfileScreen'} component={ProfileScreen} />
+            <StackAdmin.Screen name={'AddUserScreen'} component={AddUserScreen} />
+            <StackAdmin.Screen name={'AddVetScreen'} component={AddVetScreen} />
         </StackAdmin.Navigator>
     );
 }

@@ -20,11 +20,13 @@ const SignUpScreen = ({}: Props) => {
                 <Loading />
             ) : (
                 <SignUpForm
-                    onSubmit={({ name, lastName, email, password }) => {
+                    onSubmit={({ name, lastName, email, password, dni, phone }) => {
                         const newUser: NewUser = {
                             name: String(name),
                             lastName: String(lastName),
+                            dni: String(dni),
                             email: String(email),
+                            phone: phone ? String(phone) : '',
                             password: String(password),
                             role: Role.User,
                         };

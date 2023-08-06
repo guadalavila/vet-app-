@@ -13,7 +13,6 @@ interface ISignUpFormProps {
 }
 const SignUpForm = ({ onSubmit }: ISignUpFormProps) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('SignUp', onSubmit);
-
     return (
         <View style={GlobalStyles.flex1}>
             <View style={styles.containerInputs}>
@@ -37,6 +36,15 @@ const SignUpForm = ({ onSubmit }: ISignUpFormProps) => {
                 </View>
                 <FormInput
                     required
+                    value={fields.dni || ''}
+                    placeholder='DNI'
+                    keyboardType='number-pad'
+                    helperText='Solo números'
+                    onChangeText={(value) => setFieldValue('dni', value)}
+                />
+                <View style={styles.marginDefault}>{errors.dni && <Text style={styles.error}>{errors.dni}</Text>}</View>
+                <FormInput
+                    required
                     value={fields.email || ''}
                     placeholder='Email'
                     keyboardType='email-address'
@@ -54,6 +62,16 @@ const SignUpForm = ({ onSubmit }: ISignUpFormProps) => {
                 />
                 <View style={styles.marginDefault}>
                     {errors.password && <Text style={styles.error}>{errors.password}</Text>}
+                </View>
+                <FormInput
+                    value={fields.phone || '+54'}
+                    placeholder='Teléfono'
+                    keyboardType='number-pad'
+                    helperText='Código de área sin 0'
+                    onChangeText={(value) => setFieldValue('phone', value)}
+                />
+                <View style={styles.marginDefault}>
+                    {errors.phone && <Text style={styles.error}>{errors.phone}</Text>}
                 </View>
             </View>
             <View style={[GlobalStyles.flexCenter, styles.containerButton]}>

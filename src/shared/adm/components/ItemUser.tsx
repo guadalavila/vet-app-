@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { StyleSheet } from 'react-native';
 import CustomText from '../../components/CustomText';
@@ -8,6 +8,7 @@ import { typography } from '../../utils/typography';
 import { User } from '../../../models/User';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { GlobalStyles } from '../../utils/styles';
+import { ThemeContext } from '../../../contexts/ThemeContext';
 
 interface IItemVetProps {
     user: User;
@@ -15,12 +16,14 @@ interface IItemVetProps {
 }
 
 const ItemUser = ({ user, onPress }: IItemVetProps) => {
+    const { theme } = useContext(ThemeContext);
+
     return (
-        <TouchableOpacity style={[styles.container, GlobalStyles.row]} activeOpacity={0.7} onPress={onPress}>
+        <View style={[styles.container, GlobalStyles.row]}>
             <View style={styles.containerIcon}>
                 <Icon name='person-outline' size={30} color={colors.light.white} />
             </View>
-            <View>
+            <View style={styles.containerInfo}>
                 <CustomText style={styles.text}>
                     {user.name} {user.lastName}
                 </CustomText>
@@ -28,7 +31,10 @@ const ItemUser = ({ user, onPress }: IItemVetProps) => {
                 <CustomText style={styles.subtitle}>{user.email}</CustomText>
                 <CustomText style={styles.subtitle}>{user.role}</CustomText>
             </View>
-        </TouchableOpacity>
+            <TouchableOpacity style={styles.containerButton} activeOpacity={0.7} onPress={onPress}>
+                <Icon size={25} name='pencil' color={theme === 'dark' ? colors.light.white : colors.light.primary} />
+            </TouchableOpacity>
+        </View>
     );
 };
 
@@ -62,5 +68,12 @@ const styles = StyleSheet.create({
     vet: {
         fontWeight: 'bold',
         marginVertical: size.S,
+    },
+    containerButton: {
+        alignSelf: 'center',
+    },
+    containerInfo: {
+        width: '78%',
+        paddingRight: size.S,
     },
 });

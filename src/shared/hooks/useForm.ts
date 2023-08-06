@@ -17,7 +17,7 @@ interface IUseFormReturn {
 }
 
 const useForm = (
-    form: 'NetPet' | 'NewClient' | 'NewVisit' | 'Login' | 'NewSurgeryForm' | 'NewVaccineForm' | 'SignUp',
+    form: 'NetPet' | 'NewClient' | 'NewVisit' | 'Login' | 'NewSurgeryForm' | 'NewVaccineForm' | 'SignUp' | 'NewUser',
     onSubmit: (fields: IFormFields) => void,
 ): IUseFormReturn => {
     const [fields, setFields] = useState<IFormFields>({});
@@ -44,8 +44,9 @@ const useForm = (
         } else if (form === 'SignUp') {
             validateSignUp();
         } else if (form === 'NewVaccineForm') {
-            console.log('sd');
             validateNewVaccine();
+        } else if (form === 'NewUser') {
+            validateNewUser();
         }
         // setErrors(formErrors);
 
@@ -119,6 +120,14 @@ const useForm = (
             setErrors({
                 lastName: 'Debes ingresar tu apellido',
             });
+        } else if (!fields.dni) {
+            setErrors({
+                dni: 'Debes ingresar el DNI',
+            });
+        } else if (fields.dni && !Number(fields.dni)) {
+            setErrors({
+                dni: 'El DNI debe ser un valor numérico',
+            });
         } else if (!fields.email) {
             setErrors({
                 email: 'Debes ingresar tu email',
@@ -134,6 +143,10 @@ const useForm = (
         } else if (fields.password && fields.password.length < 6) {
             setErrors({
                 password: 'La contraseña debe tener como mínimo 6 caracteres',
+            });
+        } else if (fields.phone && !Number(fields.phone)) {
+            setErrors({
+                phone: 'El teléfono debe ser un valor numérico',
             });
         } else {
             setErrors({});
@@ -213,6 +226,42 @@ const useForm = (
             onSubmit(fields);
         }
     };
+
+    const validateNewUser = () => {
+        if (!fields.name) {
+            setErrors({
+                name: 'Debes ingresar el nombre',
+            });
+        } else if (!fields.lastName) {
+            setErrors({
+                lastName: 'Debes ingresar un apellido',
+            });
+        } else if (!fields.dni) {
+            setErrors({
+                dni: 'Debes ingresar el DNI',
+            });
+        } else if (fields.dni && !Number(fields.dni)) {
+            setErrors({
+                dni: 'El DNI debe ser un valor numérico',
+            });
+        } else if (!fields.email) {
+            setErrors({
+                email: 'Debes ingresar el email',
+            });
+        } else if (fields.email && !validateEmail(String(fields.email))) {
+            setErrors({
+                email: 'El formato del email no es válido',
+            });
+        } else if (!fields.vetId) {
+            setErrors({
+                vetId: 'Debes seleccionar una veterinaria',
+            });
+        } else {
+            setErrors({});
+            onSubmit(fields);
+        }
+    };
+
     return {
         fields,
         errors,

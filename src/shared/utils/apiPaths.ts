@@ -27,4 +27,5 @@ export const API_PATHS = {
     SURGERIES_BY_PET: 'surgery/by-pet/',
     VETERINARY: 'vets',
     USERS: 'users',
+    USER_UPDATE: 'users/update',
 };

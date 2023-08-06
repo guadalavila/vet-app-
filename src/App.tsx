@@ -4,6 +4,7 @@ import { AuthContextProvider } from './contexts/AuthContext';
 import NavigatorApp from './shared/components/NavigatorApp';
 import { PathologiesContextProvider } from './contexts/PathologiesContext';
 import { ErrorContextProvider } from './contexts/ErrorContext';
+import { VetsContextProvider } from './contexts/VetsContext';
 
 const App = () => {
     return (
@@ -11,7 +12,9 @@ const App = () => {
             <AuthContextProvider>
                 <ErrorContextProvider>
                     <PathologiesContextProvider>
-                        <NavigatorApp />
+                        <VetsContextProvider>
+                            <NavigatorApp />
+                        </VetsContextProvider>
                     </PathologiesContextProvider>
                 </ErrorContextProvider>
             </AuthContextProvider>
