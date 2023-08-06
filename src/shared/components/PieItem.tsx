@@ -11,9 +11,9 @@ const widthAndHeight = screenWidth * 0.6;
 interface IPieItem {
     title: string;
     data: {
-        serie: number[];
-        colors: string[];
-        texts: string[];
+        serie: number[],
+        colors: string[],
+        texts: string[],
     };
 }
 
@@ -28,13 +28,7 @@ const PieItem = ({ title, data: { serie, colors, texts } }: IPieItem) => {
                 {serie.map((item, index) => (
                     <>
                         <View style={GlobalStyles.row} key={index}>
-                            <View
-                                style={{
-                                    marginRight: size.XL,
-                                    width: 20,
-                                    height: 20,
-                                    backgroundColor: colors[index],
-                                }}></View>
+                            <View style={[styles.containerText, { backgroundColor: colors[index] }]} />
                             <CustomText>
                                 {serie[index]} {texts[index]}
                             </CustomText>
@@ -52,5 +46,10 @@ const styles = StyleSheet.create({
     container: {
         alignSelf: 'center',
         marginVertical: size.XL,
+    },
+    containerText: {
+        marginRight: size.XL,
+        width: 20,
+        height: 20,
     },
 });

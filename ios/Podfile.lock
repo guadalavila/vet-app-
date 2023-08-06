@@ -426,6 +426,37 @@ PODS:
     - Firebase/Auth (= 10.11.0)
     - React-Core
     - RNFBApp
+  - RNGestureHandler (2.12.1):
+    - React-Core
+  - RNReanimated (3.4.2):
+    - DoubleConversion
+    - FBLazyVector
+    - FBReactNativeSpec
+    - glog
+    - hermes-engine
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React-callinvoker
+    - React-Core
+    - React-Core/DevSupport
+    - React-Core/RCTWebSocket
+    - React-CoreModules
+    - React-cxxreact
+    - React-hermes
+    - React-jsi
+    - React-jsiexecutor
+    - React-jsinspector
+    - React-RCTActionSheet
+    - React-RCTAnimation
+    - React-RCTBlob
+    - React-RCTImage
+    - React-RCTLinking
+    - React-RCTNetwork
+    - React-RCTSettings
+    - React-RCTText
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNScreens (3.20.0):
     - React-Core
     - React-RCTImage
@@ -480,6 +511,8 @@ DEPENDENCIES:
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
@@ -587,6 +620,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
     :path: "../node_modules/@react-native-firebase/auth"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
+  RNReanimated:
+    :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNSVG:
@@ -653,6 +690,8 @@ SPEC CHECKSUMS:
   RNFBAnalytics: 35f22357baa84d5067abec85885f665aadd405d1
   RNFBApp: 81a9593ff681b448d1847f5d5493906310cdebe3
   RNFBAuth: c8b87ea4884da624f47be73d930f7797914dbd9c
+  RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
+  RNReanimated: aa8bda648be0174b2b83246ab9cd2644b46ca3c1
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   RNSVG: 80584470ff1ffc7994923ea135a3e5ad825546b9
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8

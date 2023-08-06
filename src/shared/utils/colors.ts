@@ -41,6 +41,7 @@ const light = {
     card: '#D6D6D6',
     backgroundInput: '#ECEDF0',
     backgroundContainer: '#DEDEDE',
+    blue: '#092E9C',
 };
 
 const dark = {
@@ -58,6 +59,7 @@ const dark = {
     card: '#D6D6D6',
     backgroundInput: '#414141',
     backgroundContainer: '#B0B0B0',
+    blue: '#2D5CE8',
 };
 
 export const colors = { light, dark };

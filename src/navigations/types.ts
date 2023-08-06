@@ -30,6 +30,7 @@ export type RootStackLoginParamList = {
     AddVaccineScreen: { petId: string, vaccine?: Vaccine },
     ProfileScreen: undefined,
     ReportsScreen: undefined,
+    OnBoardingScreen: undefined,
 };
 
 export type BottomTabStackParamList = {

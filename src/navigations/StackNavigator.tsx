@@ -59,6 +59,7 @@ export function StackNavigatorLogIn() {
             <StackLoggedIn.Screen name={'AddVaccineScreen'} component={AddVaccineScreen} />
             <StackLoggedIn.Screen name={'ProfileScreen'} component={ProfileScreen} />
             <StackLoggedIn.Screen name={'ReportsScreen'} component={ReportsScreen} />
+            <StackLoggedOut.Screen name={'OnBoardingScreen'} component={OnBoardingScreen} />
         </StackLoggedIn.Navigator>
     );
 }
