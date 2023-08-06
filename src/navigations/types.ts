@@ -51,4 +51,5 @@ export type AdminTabStackParamList = {
     AdministrationScreen: undefined,
     VetsScreen: undefined,
     UsersScreen: undefined,
+    ProfileScreen: undefined,
 };

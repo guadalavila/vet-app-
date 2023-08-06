@@ -72,6 +72,7 @@ export function StackNavigatorAdmin() {
         <StackAdmin.Navigator screenOptions={{ headerShown: false }} initialRouteName='BottomTabAdminScreen'>
             <StackAdmin.Screen name={'BottomTabAdminScreen'} component={BottomTabAdminScreen} />
             <StackAdmin.Screen name={'AdministrationScreen'} component={AdministrationScreen} />
+            <StackAdmin.Screen name={'ProfileScreen'} component={ProfileScreen} />
         </StackAdmin.Navigator>
     );
 }

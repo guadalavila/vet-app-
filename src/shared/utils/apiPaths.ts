@@ -25,4 +25,6 @@ export const API_PATHS = {
     REPORT_BY_VET: 'report/by-vet/',
     SURGERY: 'surgery',
     SURGERIES_BY_PET: 'surgery/by-pet/',
+    VETERINARY: 'vets',
+    USERS: 'users',
 };
