@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { RootStackLoginParamList } from '../../navigations/types';
+import { AdminTabStackParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Container from '../../shared/components/Container';
 
-interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AdministrationScreen'> {}
+interface Props extends NativeStackScreenProps<AdminTabStackParamList, 'AdministrationScreen'> {}
 
 const AdministrationScreen = () => {
     return (

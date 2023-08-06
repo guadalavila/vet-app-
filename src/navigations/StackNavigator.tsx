@@ -24,6 +24,7 @@ import ProfileScreen from '../screens/Settings/ProfileScreen';
 import ReportsScreen from '../screens/Report/ReportsScreen';
 import OnBoardingScreen from '../screens/OnBoarding/OnBoardingScreen';
 import AdministrationScreen from '../screens/Administration/AdministrationScreen';
+import BottomTabAdminScreen from '../screens/BottomTab/BottomTabAdminScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
@@ -68,7 +69,8 @@ export function StackNavigatorLogIn() {
 
 export function StackNavigatorAdmin() {
     return (
-        <StackAdmin.Navigator screenOptions={{ headerShown: false }} initialRouteName='AdministrationScreen'>
+        <StackAdmin.Navigator screenOptions={{ headerShown: false }} initialRouteName='BottomTabAdminScreen'>
+            <StackAdmin.Screen name={'BottomTabAdminScreen'} component={BottomTabAdminScreen} />
             <StackAdmin.Screen name={'AdministrationScreen'} component={AdministrationScreen} />
         </StackAdmin.Navigator>
     );

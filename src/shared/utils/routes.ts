@@ -10,5 +10,9 @@ export const getIconByRoute = (route: string) => {
             return 'settings-outline';
         case 'AdministrationScreen':
             return 'construct-outline';
+        case 'VetsScreen':
+            return 'construct-outline';
+        case 'UsersScreen':
+            return 'people-outline';
     }
 };

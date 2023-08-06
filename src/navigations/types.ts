@@ -40,6 +40,15 @@ export type BottomTabStackParamList = {
     SettingScreen: undefined,
 };
 
-export type AdminTabStackParamList = {
+export type BottomTabAdminStackParamList = {
+    VetsScreen: undefined,
+    UsersScreen: undefined,
     AdministrationScreen: undefined,
+};
+
+export type AdminTabStackParamList = {
+    BottomTabAdminScreen: undefined,
+    AdministrationScreen: undefined,
+    VetsScreen: undefined,
+    UsersScreen: undefined,
 };
