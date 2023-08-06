@@ -30,11 +30,7 @@ const OnBoardingScreen = ({ navigation }: Props) => {
     }, []);
 
     const dismissTutorial = () => {
-        if (isStackLogin) {
-            navigation.replace('LoginScreen');
-        } else {
-            navigation.goBack();
-        }
+        isStackLogin ? navigation.replace('LoginScreen') : navigation.goBack();
     };
 
     return (

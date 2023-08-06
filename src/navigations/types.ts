@@ -39,3 +39,7 @@ export type BottomTabStackParamList = {
     PetsScreen: undefined,
     SettingScreen: undefined,
 };
+
+export type AdminTabStackParamList = {
+    AdministrationScreen: undefined,
+};

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RootStackLoginParamList, RootStackLogoutParamList } from './types';
+import { AdminTabStackParamList, RootStackLoginParamList, RootStackLogoutParamList } from './types';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '../screens/Login/LoginScreen';
 import DashboardScreen from '../screens/Home/DashboardScreen';
@@ -23,9 +23,11 @@ import PathologiesScreen from '../screens/Pathologies/PathologiesScreen';
 import ProfileScreen from '../screens/Settings/ProfileScreen';
 import ReportsScreen from '../screens/Report/ReportsScreen';
 import OnBoardingScreen from '../screens/OnBoarding/OnBoardingScreen';
+import AdministrationScreen from '../screens/Administration/AdministrationScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
+const StackAdmin = createNativeStackNavigator<AdminTabStackParamList>();
 
 export function StackNavigatorLogOut() {
     return (
@@ -59,7 +61,15 @@ export function StackNavigatorLogIn() {
             <StackLoggedIn.Screen name={'AddVaccineScreen'} component={AddVaccineScreen} />
             <StackLoggedIn.Screen name={'ProfileScreen'} component={ProfileScreen} />
             <StackLoggedIn.Screen name={'ReportsScreen'} component={ReportsScreen} />
-            <StackLoggedOut.Screen name={'OnBoardingScreen'} component={OnBoardingScreen} />
+            <StackLoggedIn.Screen name={'OnBoardingScreen'} component={OnBoardingScreen} />
         </StackLoggedIn.Navigator>
+    );
+}
+
+export function StackNavigatorAdmin() {
+    return (
+        <StackAdmin.Navigator screenOptions={{ headerShown: false }} initialRouteName='AdministrationScreen'>
+            <StackAdmin.Screen name={'AdministrationScreen'} component={AdministrationScreen} />
+        </StackAdmin.Navigator>
     );
 }
