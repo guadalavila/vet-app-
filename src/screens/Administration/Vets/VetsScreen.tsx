@@ -8,15 +8,21 @@ import ItemVet from '../../../shared/adm/components/ItemVet';
 import Loading from '../../../shared/components/Loading';
 import useVets from '../../../shared/adm/hooks/useVets';
 import Title from '../../../shared/components/Title';
+import Fab from '../../../shared/components/Fab';
+import { Veterinary } from '../../../models/Veterinary';
 
 interface Props extends NativeStackScreenProps<AdminTabStackParamList, 'VetsScreen'> {}
 
-const VetsScreen = ({}: Props) => {
+const VetsScreen = ({ navigation }: Props) => {
     const { loading, vets, refreshing, refreshVets } = useVets();
 
     const onRefresh = useCallback(() => {
         refreshVets();
     }, []);
+
+    const onPressVet = (vet: Veterinary) => {
+        navigation.navigate('AddVetScreen', { vet: vet });
+    };
 
     if (loading || refreshing) {
         return (
@@ -33,11 +39,12 @@ const VetsScreen = ({}: Props) => {
             <Title text={'Total: ' + vets?.length + ' vets'} />
             <FlatList
                 data={vets}
-                renderItem={({ item }) => <ItemVet vet={item} onPress={() => {}} />}
+                renderItem={({ item }) => <ItemVet vet={item} onPress={() => onPressVet(item)} />}
                 keyExtractor={(item) => item._id}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
             <View style={styles.bottom} />
+            <Fab onPress={() => navigation.navigate('AddVetScreen', { vet: undefined })} />
         </Container>
     );
 };

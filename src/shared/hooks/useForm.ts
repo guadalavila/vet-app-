@@ -17,7 +17,16 @@ interface IUseFormReturn {
 }
 
 const useForm = (
-    form: 'NetPet' | 'NewClient' | 'NewVisit' | 'Login' | 'NewSurgeryForm' | 'NewVaccineForm' | 'SignUp' | 'NewUser',
+    form:
+        | 'NetPet'
+        | 'NewClient'
+        | 'NewVisit'
+        | 'Login'
+        | 'NewSurgeryForm'
+        | 'NewVaccineForm'
+        | 'SignUp'
+        | 'NewUser'
+        | 'NewVet',
     onSubmit: (fields: IFormFields) => void,
 ): IUseFormReturn => {
     const [fields, setFields] = useState<IFormFields>({});
@@ -47,6 +56,8 @@ const useForm = (
             validateNewVaccine();
         } else if (form === 'NewUser') {
             validateNewUser();
+        } else if (form === 'NewVet') {
+            validateVet();
         }
         // setErrors(formErrors);
 
@@ -255,6 +266,33 @@ const useForm = (
         } else if (!fields.vetId) {
             setErrors({
                 vetId: 'Debes seleccionar una veterinaria',
+            });
+        } else {
+            setErrors({});
+            onSubmit(fields);
+        }
+    };
+
+    const validateVet = () => {
+        if (!fields.name) {
+            setErrors({
+                name: 'Debes ingresar el nombre',
+            });
+        } else if (!fields.address) {
+            setErrors({
+                address: 'Debes ingresar la dirección',
+            });
+        } else if (!fields.codePostal) {
+            setErrors({
+                codePostal: 'Debes ingresar el Código Postal',
+            });
+        } else if (fields.codePostal && !Number(fields.codePostal)) {
+            setErrors({
+                codePostal: 'El Código Postal debe ser un valor numérico',
+            });
+        } else if (!fields.city) {
+            setErrors({
+                city: 'Debes ingresar la ciudad',
             });
         } else {
             setErrors({});

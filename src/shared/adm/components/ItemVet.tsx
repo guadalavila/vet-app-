@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { StyleSheet } from 'react-native';
 import CustomText from '../../components/CustomText';
@@ -9,6 +9,7 @@ import { typography } from '../../utils/typography';
 import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { GlobalStyles } from '../../utils/styles';
+import { ThemeContext } from '../../../contexts/ThemeContext';
 
 interface IItemVetProps {
     vet: Veterinary;
@@ -16,17 +17,24 @@ interface IItemVetProps {
 }
 
 const ItemVet = ({ vet, onPress }: IItemVetProps) => {
+    const { theme } = useContext(ThemeContext);
+
     return (
-        <TouchableOpacity style={[styles.container, GlobalStyles.row]} activeOpacity={0.7} onPress={onPress}>
+        <View style={[styles.container, GlobalStyles.row]}>
             <View style={styles.containerIcon}>
                 <Icon name='home-outline' size={30} color={colors.light.white} />
             </View>
-            <View>
+            <View style={styles.containerInfo}>
                 <CustomText style={styles.text}>{vet.name}</CustomText>
                 <CustomText style={styles.subtitle}>{vet.address}</CustomText>
-                <CustomText style={styles.subtitle}>{vet.city}</CustomText>
+                <CustomText style={styles.subtitle}>
+                    {vet.city} - {vet.codePostal}
+                </CustomText>
             </View>
-        </TouchableOpacity>
+            <TouchableOpacity style={styles.containerButton} activeOpacity={0.7} onPress={onPress}>
+                <Icon size={25} name='pencil' color={theme === 'dark' ? colors.light.white : colors.light.primary} />
+            </TouchableOpacity>
+        </View>
     );
 };
 
@@ -56,5 +64,12 @@ const styles = StyleSheet.create({
         height: 40,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    containerButton: {
+        alignSelf: 'center',
+    },
+    containerInfo: {
+        width: '78%',
+        paddingRight: size.S,
     },
 });

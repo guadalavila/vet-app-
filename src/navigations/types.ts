@@ -3,6 +3,7 @@ import { Pet } from '../models/Pet';
 import { Surgery } from '../models/Surgery';
 import { User } from '../models/User';
 import { Vaccine } from '../models/Vaccine';
+import { Veterinary } from '../models/Veterinary';
 import { Visit } from '../models/Visit';
 
 export type RootStackLogoutParamList = {
@@ -54,5 +55,5 @@ export type AdminTabStackParamList = {
     UsersScreen: undefined,
     ProfileScreen: undefined,
     AddUserScreen: { user: User },
-    AddVetScreen: undefined,
+    AddVetScreen: { vet: Veterinary | undefined },
 };
