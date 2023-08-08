@@ -14,7 +14,6 @@ class PathologiesServices {
                     resolve(res.data.data.conditions);
                 })
                 .catch((error) => {
-                    console.log(error);
                     reject(error);
                 });
         });
@@ -28,7 +27,6 @@ class PathologiesServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    console.log(error);
                     reject(error);
                 });
         });

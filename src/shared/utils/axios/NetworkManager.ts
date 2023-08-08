@@ -112,7 +112,6 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((error) => {
-                        console.log(error);
                         if (error.message.includes('Network Error')){
                             reject('Error de conexión');
                         }

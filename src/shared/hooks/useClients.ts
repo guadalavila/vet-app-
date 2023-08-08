@@ -64,7 +64,6 @@ const useClients = () => {
     const getMoreClients = () => {
         //TODO
         //hay un bug cuando hay pocos items
-        console.log('getMoreClients');
         // if (page < Math.round(dataClients.total / dataClients.count)) {
         // setPage(page + 1);
         // setIsLoading(true);
