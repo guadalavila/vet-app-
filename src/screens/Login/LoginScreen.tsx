@@ -6,6 +6,7 @@ import { RootStackLogoutParamList } from '../../navigations/types';
 import useAuth from '../../shared/hooks/useAuth';
 import Loading from '../../shared/components/Loading';
 import Button from '../../shared/components/Button';
+import { Image, StyleSheet } from 'react-native';
 
 interface Props extends NativeStackScreenProps<RootStackLogoutParamList, 'LoginScreen'> {}
 
@@ -16,6 +17,7 @@ const LoginScreen = ({ navigation }: Props) => {
         <Container>
             {!isLoading ? (
                 <>
+                    <Image style={styles.image} source={require('../../../assets/images/login.png')} />
                     <LoginForm
                         onSubmit={({ email, password }) => {
                             loginWithEmailAndPass(email.trim().toLowerCase(), password.trim().toLowerCase());
@@ -31,3 +33,12 @@ const LoginScreen = ({ navigation }: Props) => {
 };
 
 export default LoginScreen;
+
+const styles = StyleSheet.create({
+    image: {
+        width: 160,
+        height: 160,
+        alignSelf: 'center',
+        marginTop: 120,
+    },
+});
