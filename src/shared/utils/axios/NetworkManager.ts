@@ -14,10 +14,15 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((error) => {
-                        if (error.message.includes('Network Error')){
+                        if (error.response) {
+                            if (error.response.data?.message){
+                                reject(error.response?.data?.message);
+                            }
+                        } else if (error.message.includes('Network Error')) {
                             reject('Error de conexión');
+                        } else {
+                            reject('Error desconocido');
                         }
-                        reject(error.response?.data.message);
                     });
             } catch (e) {
                 reject(e);
@@ -35,13 +40,14 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((error) => {
-                        if (error.message.includes('Network Error')){
-                            reject('Error de conexión');
-                        }
-                        if (error.response?.status === 401) {
-                            reject('Authorization Failed');
+                        if (error.response) {
+                            if (error.response.data?.message){
+                                reject(error.response?.data?.message);
+                            }
+                        } else if (error.message.includes('Network Error')) {
+                            reject(new Error('Error de conexión'));
                         } else {
-                            reject(error.response?.data.message);
+                            reject(new Error('Error desconocido'));
                         }
                         // reject('Ocurrió un error. Por favor, intentá nuevamente más tarde.');
                     });
@@ -61,13 +67,14 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((error) => {
-                        if (error.message.includes('Network Error')){
+                        if (error.response) {
+                            if (error.response.data?.message){
+                                reject(error.response?.data?.message);
+                            }
+                        } else if (error.message.includes('Network Error')) {
                             reject('Error de conexión');
-                        }
-                        if (error.response?.status === 401) {
-                            reject('Authorization Failed');
                         } else {
-                            reject(error.response?.data.message);
+                            reject('Error desconocido');
                         }
                     });
             } catch (e) {
@@ -86,13 +93,14 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((error) => {
-                        if (error.message.includes('Network Error')){
+                        if (error.response) {
+                            if (error.response.data?.message){
+                                reject(error.response?.data?.message);
+                            }
+                        } else if (error.message.includes('Network Error')) {
                             reject('Error de conexión');
-                        }
-                        if (error.response?.status === 401) {
-                            reject('Authorization Failed');
                         } else {
-                            reject(error.response?.data.message);
+                            reject('Error desconocido');
                         }
                         // reject('Ocurrió un error. Por favor, intentá nuevamente más tarde.');
                     });
@@ -112,13 +120,14 @@ class NetworkManager {
                         resolve(response);
                     })
                     .catch((error) => {
-                        if (error.message.includes('Network Error')){
+                        if (error.response) {
+                            if (error.response.data?.message){
+                                reject(error.response?.data?.message);
+                            }
+                        } else if (error.message.includes('Network Error')) {
                             reject('Error de conexión');
-                        }
-                        if (error.response?.status === 401) {
-                            reject('Authorization Failed');
                         } else {
-                            reject(error.response?.data.message);
+                            reject('Error de desconocido');
                         }
                         // reject('Ocurrió un error. Por favor, intentá nuevamente más tarde.');
                     });
@@ -138,14 +147,15 @@ class NetworkManager {
                     .then((response) => {
                         resolve(response);
                     })
-                    .catch((err) => {
-                        if (err.message.includes('Network Error')){
+                    .catch((error) => {
+                        if (error.response) {
+                            if (error.response.data?.message){
+                                reject(error.response?.data?.message);
+                            }
+                        } else if (error.message.includes('Network Error')) {
                             reject('Error de conexión');
-                        }
-                        if (err.response?.status === 401) {
-                            reject('Authorization Failed');
                         } else {
-                            reject(err.response?.data.message);
+                            reject('Error desconocido');
                         }
                     });
             } catch (e) {

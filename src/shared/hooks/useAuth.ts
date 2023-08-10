@@ -31,7 +31,7 @@ const useAuth = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: 'Registro: Ocurrio un error',
+                message: String(error),
                 type: 'error',
             });
             //add crashlytics
@@ -45,10 +45,9 @@ const useAuth = () => {
             const data = await authServices.login(email, password);
             setUserResponse(data);
         } catch (error) {
-            const msg = typeof error === 'string' ? error : 'Login: Algunos datos no son correctos';
             setErrorApp({
                 isError: true,
-                message: msg,
+                message: String(error),
                 type: 'error',
             });
             setIsLoading(false);
@@ -68,7 +67,7 @@ const useAuth = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: 'GetMe',
+                message: String(error),
                 type: 'error',
             });
             setIsLoading(false);

@@ -29,7 +29,7 @@ const usePets = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: 'Obtener masctoas: Ocurrio un error',
+                message: String(error) ?? 'Obtener masctoas: Ocurrio un error',
                 type: 'error',
             });
             setIsLoading(false);
@@ -67,7 +67,7 @@ const usePets = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: 'Obtener mascotas: Ocurrio un error',
+                message: String(error) ?? 'Obtener mascotas: Ocurrio un error',
                 type: 'error',
             });
             setRefreshing(false);

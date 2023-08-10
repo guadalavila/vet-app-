@@ -25,7 +25,7 @@ const useGetOnePet = (id: string, getDetail: boolean) => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: 'Obtener detalle Mascota: Ocurrio un error',
+                message: String(error) ?? 'Obtener detalle Mascota: Ocurrio un error',
                 type: 'error',
             });
             setLoading(false);

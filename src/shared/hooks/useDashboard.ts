@@ -38,7 +38,7 @@ const useDashboard = () => {
             });
             setErrorApp({
                 isError: true,
-                message: 'Obtener Dashboard: Ocurrio un error',
+                message: String(error) ?? 'Obtener Dashboard: Ocurrio un error',
                 type: 'error',
             });
             setIsLoading(false);
@@ -56,7 +56,7 @@ const useDashboard = () => {
             //TODO review
             setErrorApp({
                 isError: true,
-                message: 'Obtener Patologias: Ocurrio un error',
+                message: String(error) ?? 'Obtener Patologias: Ocurrio un error',
                 type: 'error',
             });
             setPathologies([]);
@@ -77,7 +77,7 @@ const useDashboard = () => {
             });
             setErrorApp({
                 isError: true,
-                message: 'Obtener Dashboard: Ocurrio un error',
+                message: String(error) ?? 'Obtener Dashboard: Ocurrio un error',
                 type: 'error',
             });
             setRefreshing(false);

@@ -18,7 +18,7 @@ const useAddVisit = () => {
             } catch (error) {
                 setErrorApp({
                     isError: true,
-                    message: 'Crear Visita: Ocurrio un error',
+                    message: String(error) ?? 'Crear Visita: Ocurrio un error',
                     type: 'error',
                 });
                 setLoading(false);
@@ -37,7 +37,7 @@ const useAddVisit = () => {
             } catch (error) {
                 setErrorApp({
                     isError: true,
-                    message: 'Actualizar Visita: Ocurrio un error',
+                    message: String(error) ?? 'Actualizar Visita: Ocurrio un error',
                     type: 'error',
                 });
                 setLoading(false);

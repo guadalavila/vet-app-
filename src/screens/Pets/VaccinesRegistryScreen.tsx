@@ -33,7 +33,7 @@ const VaccinesRegistryScreen = ({ navigation, route }: Props) => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: 'Obtener vacunas: Ocurrio un error',
+                message: String(error) ?? 'Obtener vacunas: Ocurrio un error',
                 type: 'error',
             });
             setLoading(false);

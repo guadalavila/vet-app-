@@ -18,7 +18,7 @@ const useAddPet = () => {
             } catch (error) {
                 setErrorApp({
                     isError: true,
-                    message: 'Crear Mascota: Ocurrio un error',
+                    message: String(error) ?? 'Crear Mascota: Ocurrio un error',
                     type: 'error',
                 });
                 setLoading(false);
@@ -39,7 +39,7 @@ const useAddPet = () => {
                 setLoading(false);
                 setErrorApp({
                     isError: true,
-                    message: 'Actualizar Mascota: Ocurrio un error',
+                    message: String(error) ?? 'Actualizar Mascota: Ocurrio un error',
                     type: 'error',
                 });
                 reject(error);

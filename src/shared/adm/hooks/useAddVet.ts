@@ -20,7 +20,7 @@ const useAddVet = () => {
                 setLoading(false);
                 setErrorApp({
                     isError: true,
-                    message: 'Agregar Veterinaria: Ocurrió un error',
+                    message: String(error) ?? 'Agregar Veterinaria: Ocurrió un error',
                     type: 'error',
                 });
             }
@@ -40,7 +40,7 @@ const useAddVet = () => {
                 setLoading(false);
                 setErrorApp({
                     isError: true,
-                    message: 'Editar Veterinaria: Ocurrió un error',
+                    message: String(error),
                     type: 'error',
                 });
             }

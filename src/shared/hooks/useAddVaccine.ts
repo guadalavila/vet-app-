@@ -18,7 +18,7 @@ const useAddVaccine = () => {
             } catch (error) {
                 setErrorApp({
                     isError: true,
-                    message: 'Crear Vacuna: Ocurrio un error',
+                    message: String(error) ?? 'Crear Vacuna: Ocurrio un error',
                     type: 'error',
                 });
                 setLoading(false);
@@ -38,7 +38,7 @@ const useAddVaccine = () => {
             } catch (error) {
                 setErrorApp({
                     isError: true,
-                    message: 'Actualizar Vacuna: Ocurrio un error',
+                    message: String(error) ?? 'Actualizar Vacuna: Ocurrio un error',
                     type: 'error',
                 });
                 setLoading(false);

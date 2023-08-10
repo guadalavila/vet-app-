@@ -36,7 +36,7 @@ const useClients = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: 'Obtener Clientes: Ocurrio un error',
+                message: String(error) ?? 'Obtener Clientes: Ocurrio un error',
                 type: 'error',
             });
             setIsLoading(false);
@@ -54,7 +54,7 @@ const useClients = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: 'Obtener Clientes: Ocurrio un error',
+                message: String(error) ?? 'Obtener Clientes: Ocurrio un error',
                 type: 'error',
             });
             setRefreshing(false);

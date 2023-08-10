@@ -18,7 +18,7 @@ const useAddClient = () => {
             } catch (error) {
                 setErrorApp({
                     isError: true,
-                    message: 'Crear Cliente: Ocurrio un error',
+                    message: String(error) ?? 'Crear Cliente: Ocurrio un error',
                     type: 'error',
                 });
                 setLoading(false);
@@ -38,7 +38,7 @@ const useAddClient = () => {
             } catch (error) {
                 setErrorApp({
                     isError: true,
-                    message: 'Actualizar Cliente: Ocurrio un error',
+                    message: String(error) ?? 'Actualizar Cliente: Ocurrio un error',
                     type: 'error',
                 });
                 reject(error);

@@ -21,7 +21,7 @@ const useUpdateUser = () => {
                 setErrorApp({
                     isError: true,
                     type: 'error',
-                    message: 'Actualizar Usuario: Ocurrió un error',
+                    message: String(error) ?? 'Actualizar Usuario: Ocurrió un error',
                 });
             }
         });

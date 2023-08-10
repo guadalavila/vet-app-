@@ -24,7 +24,7 @@ const usePathologies = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: 'Obtener Patologias: Ocurrio un error',
+                message: String(error) ?? 'Obtener Patologias: Ocurrio un error',
                 type: 'error',
             });
             setLoading(false);
@@ -47,7 +47,7 @@ const usePathologies = () => {
             } catch (error) {
                 setErrorApp({
                     isError: true,
-                    message: 'Crear Patologia: Ocurrio un error',
+                    message: String(error) ?? 'Crear Patologia: Ocurrio un error',
                     type: 'error',
                 });
                 reject(error);

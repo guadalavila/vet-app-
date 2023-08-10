@@ -22,7 +22,7 @@ const useDetailClient = (id: string) => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: 'Obtener detalle Cliente: Ocurrio un error',
+                message: String(error) ?? 'Obtener detalle Cliente: Ocurrio un error',
                 type: 'error',
             });
             setIsLoading(false);

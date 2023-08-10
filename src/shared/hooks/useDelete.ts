@@ -24,7 +24,7 @@ const useDelete = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: 'Eliminar Mascota: Ocurrio un error',
+                message: String(error) ?? 'Eliminar Mascota: Ocurrio un error',
                 type: 'error',
             });
             setIsLoading(false);
