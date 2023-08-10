@@ -5,6 +5,7 @@ import { colors } from '../utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { size } from '../utils/size';
 import { GlobalStyles } from '../utils/styles';
+import { typography } from '../utils/typography';
 
 interface IToastProps {
     type: 'success' | 'warning' | 'error' | 'default';
@@ -55,11 +56,19 @@ const Toast = ({ type, text, position = 'top', callback, timeOut = 3500 }: IToas
     return (
         <>
             {isVisible && (
-                <View style={[styles.container, customStyles, position === 'top' ? styles.top : styles.bottom]}>
-                    <View style={GlobalStyles.row}>
+                <View
+                    style={[
+                        styles.container,
+                        GlobalStyles.row,
+                        customStyles,
+                        position === 'top' ? styles.top : styles.bottom,
+                    ]}>
+                    <View>
                         <View style={[styles.containerIcon, customIcon]}>
-                            <Icon name='alert-outline' size={30} />
+                            <Icon name='alert-outline' size={22} />
                         </View>
+                    </View>
+                    <View style={styles.containerText}>
                         <CustomText style={styles.text}>{text}</CustomText>
                     </View>
                 </View>
@@ -75,10 +84,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 10,
         left: 10,
-        height: 50,
         borderRadius: 10,
-        backgroundColor: 'red',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
+        paddingVertical: size.L,
     },
     top: {
         top: 50,
@@ -87,17 +95,20 @@ const styles = StyleSheet.create({
         bottom: 30,
     },
     text: {
-        fontWeight: '600',
+        fontWeight: '500',
         textAlign: 'center',
         color: 'black',
-        alignSelf: 'center',
+        fontSize: typography.size.S,
+        marginRight: 20,
     },
     containerIcon: {
-        width: 40,
-        height: 40,
-        borderRadius: 40,
-        backgroundColor: 'red',
+        width: 30,
+        height: 30,
+        borderRadius: 30,
         padding: size.S,
-        marginHorizontal: size.XXL,
+        marginHorizontal: size.XL,
+    },
+    containerText: {
+        width: '85%',
     },
 });
