@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         marginBottom: size.L,
     },
     containerInputs: {
-        flex: 5,
+        flex: 10,
         justifyContent: 'center',
     },
     containerButton: {
