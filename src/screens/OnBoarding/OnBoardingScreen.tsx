@@ -12,6 +12,8 @@ import { useSharedValue } from 'react-native-reanimated';
 import { SliderOnBoarding } from '../../mock/onBoarding';
 import Pagination from '../../shared/components/Pagination';
 import Slide from '../../shared/components/Slide';
+import { setData } from '../../shared/utils/storage/asyncStorage';
+import { STORAGE_KEYS } from '../../shared/utils/storage/keys';
 interface Props extends NativeStackScreenProps<RootStackLogoutParamList, 'OnBoardingScreen'> {}
 
 const OnBoardingScreen = ({ navigation }: Props) => {
@@ -30,6 +32,7 @@ const OnBoardingScreen = ({ navigation }: Props) => {
     }, []);
 
     const dismissTutorial = () => {
+        setData(STORAGE_KEYS.INIT_ROUTE, 'LoginScreen');
         isStackLogin ? navigation.replace('LoginScreen') : navigation.goBack();
     };
 

@@ -44,6 +44,19 @@ class PetsServices {
         });
     }
 
+    getAllPetsByVetId(vetId: string): Promise<Pet[]> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<Pet[]>(`${API_PATHS.ALL_PETS_BY_VET}${vetId}`)
+                .then((res) => {
+                    resolve(res.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
     searchPets(vetId: string, text: string): Promise<Pet[]> {
         return new Promise((resolve, reject) => {
             networkManager

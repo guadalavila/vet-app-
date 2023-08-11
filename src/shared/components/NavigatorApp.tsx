@@ -10,7 +10,7 @@ import useError from '../hooks/useError';
 const NavigatorApp = () => {
     const { isAuth, user } = useContext(AuthContext);
     const navigationRef = useNavigationContainerRef();
-    const { restoreUser } = useAuth();
+    const { restoreUser, initRoute } = useAuth();
     const { error, removeError } = useError();
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const NavigatorApp = () => {
                         <StackNavigatorLogIn />
                     )
                 ) : (
-                    <StackNavigatorLogOut />
+                    <StackNavigatorLogOut initRoute={initRoute} />
                 )}
             </NavigationContainer>
             {error.isError && <Toast type={error.type ?? 'error'} text={error.message} callback={removeError} />}

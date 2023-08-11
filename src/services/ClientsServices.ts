@@ -40,6 +40,19 @@ class ClientsServices {
         });
     }
 
+    getAllClientsByVetId(vetId: string): Promise<Client[]> {
+        return new Promise((resolve, reject) => {
+            networkManager
+                .get<Client[]>(`${API_PATHS.ALL_CLIENTS_BY_VET}${vetId}`)
+                .then((res) => {
+                    resolve(res.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
+
     getClient(id: string): Promise<Client> {
         return new Promise((resolve, reject) => {
             networkManager

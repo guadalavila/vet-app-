@@ -11,6 +11,8 @@ export const AuthContext = React.createContext<{
     token: string | undefined,
     setToken: React.Dispatch<string>,
     logOut: React.Dispatch<void>,
+    initRoute: 'LoginScreen' | 'OnBoardingScreen',
+    setInitRoute: React.Dispatch<'LoginScreen' | 'OnBoardingScreen'>,
 }>({
     isAuth: false,
     setIsAuth: () => {},
@@ -21,6 +23,8 @@ export const AuthContext = React.createContext<{
     token: undefined,
     setToken: () => {},
     logOut: () => {},
+    initRoute: 'OnBoardingScreen',
+    setInitRoute: () => {},
 });
 
 interface AuthContextProviderProps {
@@ -32,6 +36,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ childr
     const [isLoading, setIsLoading] = useState(false);
     const [user, setUser] = useState<User | undefined>(undefined);
     const [token, setToken] = useState<string | undefined>(undefined);
+    const [initRoute, setInitRoute] = useState<'LoginScreen' | 'OnBoardingScreen'>('OnBoardingScreen');
 
     const setAuth = (value: boolean) => {
         setIsAuth(value);
@@ -63,6 +68,8 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ childr
                 token: token,
                 setToken: setToken,
                 logOut: logout,
+                initRoute: initRoute,
+                setInitRoute: setInitRoute,
             }}>
             {children}
         </AuthContext.Provider>

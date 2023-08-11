@@ -39,7 +39,13 @@ const VetsScreen = ({ navigation }: Props) => {
             <Title text={'Total: ' + vets?.length + ' vets'} />
             <FlatList
                 data={vets}
-                renderItem={({ item }) => <ItemVet vet={item} onPress={() => onPressVet(item)} />}
+                renderItem={({ item }) => (
+                    <ItemVet
+                        vet={item}
+                        onPressEdit={() => onPressVet(item)}
+                        onPress={() => navigation.navigate('VetDetailScreen', { vetId: item._id })}
+                    />
+                )}
                 keyExtractor={(item) => item._id}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />

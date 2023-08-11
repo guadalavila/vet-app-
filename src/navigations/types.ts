@@ -56,4 +56,5 @@ export type AdminTabStackParamList = {
     ProfileScreen: undefined,
     AddUserScreen: { user: User },
     AddVetScreen: { vet: Veterinary | undefined },
+    VetDetailScreen: { vetId: string },
 };

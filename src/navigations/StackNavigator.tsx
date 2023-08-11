@@ -27,14 +27,15 @@ import AdministrationScreen from '../screens/Administration/AdministrationScreen
 import BottomTabAdminScreen from '../screens/BottomTab/BottomTabAdminScreen';
 import AddUserScreen from '../screens/Administration/Users/AddUserScreen';
 import AddVetScreen from '../screens/Administration/Vets/AddVetScreen';
+import VetDetailScreen from '../screens/Administration/Vets/VetDetailScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
 const StackAdmin = createNativeStackNavigator<AdminTabStackParamList>();
 
-export function StackNavigatorLogOut() {
+export function StackNavigatorLogOut(initRoute: any) {
     return (
-        <StackLoggedOut.Navigator initialRouteName='OnBoardingScreen' screenOptions={{ headerShown: false }}>
+        <StackLoggedOut.Navigator initialRouteName={'OnBoardingScreen'} screenOptions={{ headerShown: false }}>
             <StackLoggedOut.Screen name={'LoginScreen'} component={LoginScreen} />
             <StackLoggedOut.Screen name={'SignUpScreen'} component={SignUpScreen} />
             <StackLoggedOut.Screen name={'OnBoardingScreen'} component={OnBoardingScreen} />
@@ -77,6 +78,7 @@ export function StackNavigatorAdmin() {
             <StackAdmin.Screen name={'ProfileScreen'} component={ProfileScreen} />
             <StackAdmin.Screen name={'AddUserScreen'} component={AddUserScreen} />
             <StackAdmin.Screen name={'AddVetScreen'} component={AddVetScreen} />
+            <StackAdmin.Screen name={'VetDetailScreen'} component={VetDetailScreen} />
         </StackAdmin.Navigator>
     );
 }

@@ -14,24 +14,27 @@ import { ThemeContext } from '../../../contexts/ThemeContext';
 interface IItemVetProps {
     vet: Veterinary;
     onPress: () => void;
+    onPressEdit: () => void;
 }
 
-const ItemVet = ({ vet, onPress }: IItemVetProps) => {
+const ItemVet = ({ vet, onPress, onPressEdit }: IItemVetProps) => {
     const { theme } = useContext(ThemeContext);
 
     return (
         <View style={[styles.container, GlobalStyles.row]}>
-            <View style={styles.containerIcon}>
-                <Icon name='home-outline' size={30} color={colors.light.white} />
-            </View>
-            <View style={styles.containerInfo}>
-                <CustomText style={styles.text}>{vet.name}</CustomText>
-                <CustomText style={styles.subtitle}>{vet.address}</CustomText>
-                <CustomText style={styles.subtitle}>
-                    {vet.city} - {vet.codePostal}
-                </CustomText>
-            </View>
-            <TouchableOpacity style={styles.containerButton} activeOpacity={0.7} onPress={onPress}>
+            <TouchableOpacity activeOpacity={0.7} style={[GlobalStyles.row]} onPress={onPress}>
+                <View style={styles.containerIcon}>
+                    <Icon name='home-outline' size={30} color={colors.light.white} />
+                </View>
+                <View style={styles.containerInfo}>
+                    <CustomText style={styles.text}>{vet.name}</CustomText>
+                    <CustomText style={styles.subtitle}>{vet.address}</CustomText>
+                    <CustomText style={styles.subtitle}>
+                        {vet.city} - {vet.codePostal}
+                    </CustomText>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.containerButton} activeOpacity={0.7} onPress={onPressEdit}>
                 <Icon size={25} name='pencil' color={theme === 'dark' ? colors.light.white : colors.light.primary} />
             </TouchableOpacity>
         </View>
