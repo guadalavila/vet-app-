@@ -1,6 +1,7 @@
 import { NewVeterinary, Veterinary } from '../models/Veterinary';
 import { API_PATHS } from '../shared/utils/apiPaths';
 import networkManager from '../shared/utils/axios/NetworkManager';
+import { logCrash } from '../shared/utils/firebase/crashlytics';
 
 class VetsServices {
     constructor() {}
@@ -13,6 +14,7 @@ class VetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
@@ -26,6 +28,7 @@ class VetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
@@ -39,6 +42,7 @@ class VetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });

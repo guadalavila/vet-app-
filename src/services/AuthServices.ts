@@ -1,6 +1,7 @@
 import { NewUser, User, UserResponse } from '../models/User';
 import { API_PATHS } from '../shared/utils/apiPaths';
 import networkManager from '../shared/utils/axios/NetworkManager';
+import { logCrash } from '../shared/utils/firebase/crashlytics';
 
 class AuthServices {
     constructor() {}
@@ -13,6 +14,7 @@ class AuthServices {
                     resolve(res.data);
                 })
                 .catch((error: string) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
@@ -26,6 +28,7 @@ class AuthServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
@@ -39,6 +42,7 @@ class AuthServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });

@@ -1,6 +1,7 @@
 import { Report } from '../models/Report';
 import { API_PATHS } from '../shared/utils/apiPaths';
 import networkManager from '../shared/utils/axios/NetworkManager';
+import { logCrash } from '../shared/utils/firebase/crashlytics';
 
 class ReportServices {
     constructor() {}
@@ -13,12 +14,11 @@ class ReportServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
     }
-
-
 }
 const reportServices = new ReportServices();
 export default reportServices;

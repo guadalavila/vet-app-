@@ -2,6 +2,7 @@ import { Condition, ConditionsDataResponse, NewCondition, NewConditionResponse }
 import { NewPathology, Pathology } from '../models/Pathology';
 import { API_PATHS } from '../shared/utils/apiPaths';
 import networkManager from '../shared/utils/axios/NetworkManager';
+import { logCrash } from '../shared/utils/firebase/crashlytics';
 
 class PathologiesServices {
     constructor() {}
@@ -14,6 +15,7 @@ class PathologiesServices {
                     resolve(res.data.data.conditions);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
@@ -27,6 +29,7 @@ class PathologiesServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
@@ -40,6 +43,7 @@ class PathologiesServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
@@ -53,6 +57,7 @@ class PathologiesServices {
                     resolve(res.data.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });

@@ -1,6 +1,7 @@
 import { LastVisit, NewVisit, Visit } from '../models/Visit';
 import { API_PATHS } from '../shared/utils/apiPaths';
 import networkManager from '../shared/utils/axios/NetworkManager';
+import { logCrash } from '../shared/utils/firebase/crashlytics';
 
 class VisitsServices {
     constructor() {}
@@ -13,6 +14,7 @@ class VisitsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
@@ -26,6 +28,7 @@ class VisitsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
@@ -39,6 +42,7 @@ class VisitsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
@@ -52,6 +56,7 @@ class VisitsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
+                    logCrash(error);
                     reject(error);
                 });
         });
