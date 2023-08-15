@@ -23,7 +23,11 @@ const LoginScreen = ({ navigation }: Props) => {
                             loginWithEmailAndPass(email.trim().toLowerCase(), password.trim().toLowerCase());
                         }}
                     />
-                    <Button outlined title='Registrarse' onPress={() => navigation.navigate('SignUpScreen')} />
+                    <Button
+                        outlined
+                        title='¿No tenes cuenta? Registrate'
+                        onPress={() => navigation.navigate('SignUpScreen')}
+                    />
                 </>
             ) : (
                 <Loading />

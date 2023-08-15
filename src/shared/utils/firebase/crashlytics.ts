@@ -9,3 +9,7 @@ export const logCrash = (message: string) => {
         crashlytics().recordError(new Error('Error in logCrash'));
     }
 };
+
+export const forceCrash = () => {
+    crashlytics().crash();
+};
