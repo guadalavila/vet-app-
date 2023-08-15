@@ -54,6 +54,5 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         fontSize: typography.size.S,
         textAlign: 'center',
-        color: colors.light.white,
     },
 });
