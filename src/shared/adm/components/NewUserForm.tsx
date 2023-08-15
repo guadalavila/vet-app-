@@ -34,7 +34,7 @@ const NewUserForm: React.FC<INewUserFormProps> = ({ onSubmit, user }) => {
             email && setFieldValue('email', email);
             phone && setFieldValue('phone', phone);
             role && setFieldValue('role', role);
-            setFieldValue('vetId', vetId._id);
+            vetId?._id && setFieldValue('vetId', vetId._id);
         } else {
             setFieldValue('role', 'user');
         }

@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
         color: colors.light.greyDark,
         textAlign: 'center',
         marginVertical: size.XXXL,
+        marginHorizontal: size.L,
     },
     icon: {
         alignSelf: 'center',

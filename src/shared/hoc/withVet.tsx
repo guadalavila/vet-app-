@@ -7,7 +7,7 @@ import Loading from '../components/Loading';
 
 function withVet(Component: React.FC<any>) {
     return (props: any) => {
-        const { user, isLoading, getMe } = useAuth();
+        const { user, isLoading, getMe, logout } = useAuth();
 
         if (!user?.vetId) {
             return (
@@ -17,11 +17,12 @@ function withVet(Component: React.FC<any>) {
                     ) : (
                         <NoData
                             showIcon={false}
-                            title='No tenes asociada una veterinaria'
-                            subtitle='Contacta con tu administrador para continuar'
+                            title={`${user?.name} no tenes asociada una veterinaria`}
+                            subtitle='Contacta con tu administrador para poder ingresar a la app.'
                         />
                     )}
-                    <Button title='Recargar' onPress={getMe} />
+                    <Button title='Reintentar' onPress={getMe} />
+                    <Button outlined title='Cerrar sesión' onPress={logout} />
                 </Container>
             );
         }
