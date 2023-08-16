@@ -21,7 +21,7 @@ const useLastVisit = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: String(error) ?? 'Obtener últimas visitas: Ocurrio un error',
+                message: String(error) ?? 'Obtener últimas visitas: Ocurrió un error',
                 type: 'error',
             });
             setLoading(false);

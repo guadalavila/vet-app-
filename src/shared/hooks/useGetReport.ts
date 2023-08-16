@@ -26,7 +26,7 @@ const useGetReport = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: String(error) ?? 'Obtener Reporte: Ocurrio un error',
+                message: String(error) ?? 'Obtener Reporte: Ocurrió un error',
                 type: 'error',
             });
             setLoading(false);

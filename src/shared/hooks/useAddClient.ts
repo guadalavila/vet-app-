@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Client, NewClient } from '../../models/Client';
+import { Client } from '../../models/Client';
 import clientServices from '../../services/ClientsServices';
 import useError from './useError';
 
@@ -18,7 +18,7 @@ const useAddClient = () => {
             } catch (error) {
                 setErrorApp({
                     isError: true,
-                    message: String(error) ?? 'Crear Cliente: Ocurrio un error',
+                    message: String(error) ?? 'Crear Cliente: Ocurrió un error',
                     type: 'error',
                 });
                 setLoading(false);
@@ -38,7 +38,7 @@ const useAddClient = () => {
             } catch (error) {
                 setErrorApp({
                     isError: true,
-                    message: String(error) ?? 'Actualizar Cliente: Ocurrio un error',
+                    message: String(error) ?? 'Actualizar Cliente: Ocurrió un error',
                     type: 'error',
                 });
                 reject(error);

@@ -40,7 +40,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: String(error) ?? 'Obtener detalle clientes: Ocurrio un error',
+                message: String(error) ?? 'Obtener detalle clientes: Ocurrió un error',
                 type: 'error',
             });
         }

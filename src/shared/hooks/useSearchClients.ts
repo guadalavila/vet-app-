@@ -23,7 +23,7 @@ const useSearchClients = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: String(error) ?? 'Buscar Clientes: Ocurrio un error',
+                message: String(error) ?? 'Buscar Clientes: Ocurrió un error',
                 type: 'error',
             });
             setActiveSearching(false);

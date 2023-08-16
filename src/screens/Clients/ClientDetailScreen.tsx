@@ -31,7 +31,7 @@ const ClientDetailScreen = ({ navigation, route }: Props) => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: String(error) ?? 'Obtener mascotas: Ocurrio un error',
+                message: String(error) ?? 'Obtener mascotas: Ocurrió un error',
                 type: 'error',
             });
             setLoading(false);

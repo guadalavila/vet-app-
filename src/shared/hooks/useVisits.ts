@@ -22,7 +22,7 @@ const useVisits = (id: string) => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: String(error) ?? 'Obtener visitas: Ocurrio un error',
+                message: String(error) ?? 'Obtener visitas: Ocurrió un error',
                 type: 'error',
             });
             setIsLoading(false);

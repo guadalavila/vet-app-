@@ -23,7 +23,7 @@ const useSearchPets = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: String(error) ?? 'Buscar Mascotas: Ocurrio un error',
+                message: String(error) ?? 'Buscar Mascotas: Ocurrió un error',
                 type: 'error',
             });
         }

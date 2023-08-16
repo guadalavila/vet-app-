@@ -25,7 +25,7 @@ const useVets = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: String(error) ?? 'Obetener Veterinarias: Ocurrio un error',
+                message: String(error) ?? 'Obetener Veterinarias: Ocurrió un error',
                 type: 'error',
             });
             setLoading(false);
@@ -42,7 +42,7 @@ const useVets = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: String(error) ?? 'Obtener Veterinarias: Ocurrio un error',
+                message: String(error) ?? 'Obtener Veterinarias: Ocurrió un error',
                 type: 'error',
             });
             setRefreshing(false);

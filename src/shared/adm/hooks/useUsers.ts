@@ -22,7 +22,7 @@ const useUsers = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: String(error) ?? 'Obetener Usuarios: Ocurrio un error',
+                message: String(error) ?? 'Obetener Usuarios: Ocurrió un error',
                 type: 'error',
             });
             setLoading(false);
@@ -39,7 +39,7 @@ const useUsers = () => {
         } catch (error) {
             setErrorApp({
                 isError: true,
-                message: String(error) ?? 'Obtener Usuarios: Ocurrio un error',
+                message: String(error) ?? 'Obtener Usuarios: Ocurrió un error',
                 type: 'error',
             });
             setRefreshing(false);
