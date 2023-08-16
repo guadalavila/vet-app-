@@ -1,0 +1,7 @@
+
+{
+	"preset": "react-native",
+	"setupFilesAfterEnv": ["./jest-setup-after-env.js","./__mocks__/mock-modules.js"],
+	"collectCoverage": true
+
+}

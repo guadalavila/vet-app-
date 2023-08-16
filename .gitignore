@@ -68,3 +68,7 @@ buck-out/
 .env.test
 
 /android/app/google-services.json
+
+
+#coverage
+coverage/
