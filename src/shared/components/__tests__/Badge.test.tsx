@@ -3,7 +3,10 @@ import React from 'react';
 import Badge from '../Badge';
 
 describe('Badge', () => {
-    test('should match snapshot', () => {});
+    test('should match snapshot', () => {
+        const banner = render(<Badge label='Hello world' />);
+        expect(banner).toMatchSnapshot();
+    });
 
     test('should render text correct', () => {
         render(<Badge label='Hello world' />);
