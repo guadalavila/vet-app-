@@ -25,6 +25,14 @@ describe('Fab', () => {
         expect(screen.getByTestId('icon').props.color).toBe(colors.light.grey);
     });
 
+    test('should render other icon', () => {
+        render(<Fab onPress={onPressMock} icon='people' />);
+        expect(screen.getByTestId('icon')).toBeTruthy();
+        expect(screen.getByTestId('icon').props.name).toBe('people');
+        expect(screen.getByTestId('icon').props.size).toBe(40);
+        expect(screen.getByTestId('icon').props.color).toBe(colors.light.grey);
+    });
+
     test('should call a function when press FAB', () => {
         render(<Fab onPress={onPressMock} />);
         const container = screen.getByTestId('container');
