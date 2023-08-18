@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+  testID="container"
+>
+  <ActivityIndicator
+    color="#917FB3"
+    size="large"
+    testID="loading"
+  />
+</View>
+`;
