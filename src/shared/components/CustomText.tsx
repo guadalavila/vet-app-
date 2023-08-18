@@ -6,12 +6,13 @@ interface ICustomTextProps {
     children: React.ReactNode;
     style?: StyleProp<TextStyle> | undefined;
     props?: any;
+    testID?: string | undefined;
 }
-const CustomText = ({ children, style = {}, props = {} }: ICustomTextProps) => {
+const CustomText = ({ children, style = {}, props = {}, testID }: ICustomTextProps) => {
     const { themeApp } = useContext(ThemeContext);
 
     return (
-        <TextRN {...props} style={[{ color: themeApp.colors.text }, style]}>
+        <TextRN testID={testID} {...props} style={[{ color: themeApp.colors.text }, style]}>
             {children}
         </TextRN>
     );

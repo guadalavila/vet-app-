@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should match snapshot 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#917FB3",
+      "borderRadius": 10,
+      "marginHorizontal": 14,
+      "marginVertical": 10,
+      "opacity": 1,
+      "paddingHorizontal": 10,
+      "paddingVertical": 14,
+    }
+  }
+  testID="button"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Array [
+          Object {
+            "fontSize": 16,
+            "fontWeight": "700",
+            "textAlign": "center",
+          },
+        ],
+      ]
+    }
+    testID="button-text"
+  >
+    Press me
+  </Text>
+</View>
+`;

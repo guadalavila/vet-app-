@@ -16,10 +16,13 @@ interface IButtonProps {
 const Button = ({ title, onPress, style = {}, outlined = false, secondary = false }: IButtonProps) => {
     return (
         <TouchableOpacity
+            testID='button'
             style={[!outlined ? styles.button : styles.outlined, secondary && styles.secondary, style]}
             activeOpacity={0.7}
             onPress={onPress}>
-            <CustomText style={[styles.text]}>{title}</CustomText>
+            <CustomText testID='button-text' style={[styles.text]}>
+                {title}
+            </CustomText>
         </TouchableOpacity>
     );
 };
