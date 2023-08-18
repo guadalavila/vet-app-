@@ -11,8 +11,12 @@ interface IFabProps {
 
 const Fab = ({ onPress, icon = 'add', bottom = 100 }: IFabProps) => {
     return (
-        <TouchableOpacity style={[styles.fab, { bottom: bottom }]} activeOpacity={0.7} onPress={onPress}>
-            <Icon style={styles.icon} name={icon} color={colors.light.grey} size={40} />
+        <TouchableOpacity
+            testID='container'
+            style={[styles.fab, { bottom: bottom }]}
+            activeOpacity={0.7}
+            onPress={onPress}>
+            <Icon testID='icon' style={styles.icon} name={icon} color={colors.light.grey} size={40} />
         </TouchableOpacity>
     );
 };
