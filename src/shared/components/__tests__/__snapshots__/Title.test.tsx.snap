@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Title should match snapshot 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "color": "#11100F",
+      },
+      Array [
+        Object {
+          "fontSize": 20,
+          "fontWeight": "600",
+          "marginLeft": 14,
+          "marginVertical": 14,
+        },
+      ],
+    ]
+  }
+>
+  Hello
+</Text>
+`;
