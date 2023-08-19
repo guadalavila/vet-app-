@@ -16,8 +16,8 @@ interface ISlideProps {
 
 const Slide = ({ item, index, totalSlider, onHandleDismiss, textButton }: ISlideProps) => {
     return (
-        <View>
-            <Image resizeMode='contain' style={styles.image} source={item.image} />
+        <View testID='slide'>
+            <Image testID='slide-image' resizeMode='contain' style={styles.image} source={item.image} />
             <CustomText style={styles.title}>{item.title}</CustomText>
             <CustomText style={styles.subtitle}>{item.subtitle}</CustomText>
             {index === totalSlider && (
