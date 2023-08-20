@@ -38,7 +38,7 @@ const DashboardScreen = ({ navigation }: Props) => {
         <Container>
             <Header title='Pawsome' />
             <View style={styles.containerWelcome}>
-                <CustomText style={[styles.welcomeText]}>Hola {user?.name}!</CustomText>
+                <CustomText style={[styles.welcomeText]}>¡Hola {user?.name}!</CustomText>
             </View>
             <FlatList
                 numColumns={2}

@@ -26,7 +26,7 @@ const ModalInput = ({
     loading,
     visible,
 }: ModalInputProps) => {
-    const { themeApp } = useContext(ThemeContext);
+    const { themeApp, theme } = useContext(ThemeContext);
     const [name, setName] = useState('');
     return (
         <>
@@ -80,7 +80,13 @@ const ModalInput = ({
                                     activeOpacity={0.7}
                                     style={styles.buttonContainer}>
                                     <View style={styles.buttonOutline}>
-                                        <CustomText style={[styles.textButtonSecondary]}>{cancelButton}</CustomText>
+                                        <CustomText
+                                            style={[
+                                                styles.textButtonSecondary,
+                                                theme === 'light' && { color: colors.light.greyDarkSecondary },
+                                            ]}>
+                                            {cancelButton}
+                                        </CustomText>
                                     </View>
                                 </TouchableOpacity>
                             ) : null}

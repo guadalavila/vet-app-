@@ -26,7 +26,7 @@ const ModalCustom = ({
     onCancelPressed,
     message,
 }: IModalCustomProps) => {
-    const { themeApp } = useContext(ThemeContext);
+    const { themeApp, theme } = useContext(ThemeContext);
     return (
         <Overlay
             isVisible={visible}
@@ -46,7 +46,13 @@ const ModalCustom = ({
                     {cancelButton ? (
                         <TouchableOpacity onPress={onCancelPressed} activeOpacity={0.7} style={styles.buttonContainer}>
                             <View style={styles.buttonOutline}>
-                                <CustomText style={[styles.textButtonSecondary]}>{cancelButton}</CustomText>
+                                <CustomText
+                                    style={[
+                                        styles.textButtonSecondary,
+                                        theme === 'light' && { color: colors.light.greyDarkSecondary },
+                                    ]}>
+                                    {cancelButton}
+                                </CustomText>
                             </View>
                         </TouchableOpacity>
                     ) : null}
