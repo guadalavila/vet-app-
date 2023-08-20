@@ -12,6 +12,7 @@ import CustomText from '../../shared/components/CustomText';
 import Separator from '../../shared/components/Separator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { GlobalStyles } from '../../shared/utils/styles';
+import ItemProfile from '../../shared/components/ItemProfile';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ProfileScreen'> {}
 
@@ -33,16 +34,10 @@ const ProfileScreen = ({}: Props) => {
             <View style={styles.containerAvatar}>
                 <Text style={styles.textAvatar}>{getCodeName()}</Text>
             </View>
-            <View style={styles.info}>
-                <CustomText style={styles.title}>Email</CustomText>
-                <CustomText style={styles.margin}>{user?.email}</CustomText>
-                <Separator />
-            </View>
-            <View style={styles.info}>
-                <CustomText style={styles.title}>Rol</CustomText>
-                <CustomText style={styles.margin}>{user?.role.toUpperCase()}</CustomText>
-                <Separator />
-            </View>
+            <ItemProfile title='Email' data={user?.email ?? ''} />
+            <ItemProfile title='DNI' data={user?.dni ?? ''} />
+            <ItemProfile title='Teléfono' data={user?.phone ?? ''} />
+            <ItemProfile title='Rol' data={user?.role.toUpperCase() ?? ''} />
             <TouchableOpacity style={styles.info} activeOpacity={0.7} onPress={() => setShowDetailVet(!showDetailVet)}>
                 <View style={GlobalStyles.rowBetween}>
                     <CustomText style={styles.title}>Tu veterinaria</CustomText>
@@ -102,7 +97,7 @@ const styles = StyleSheet.create({
     },
     info: {
         marginHorizontal: size.XL,
-        marginVertical: size.L,
+        marginVertical: size.M,
     },
     margin: {
         marginVertical: size.XS,
