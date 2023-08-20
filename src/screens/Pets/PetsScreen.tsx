@@ -70,7 +70,7 @@ const PetsScreen = ({ navigation }: Props) => {
                             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
                         />
                     ) : (
-                        <NoData title='Todavía no tenes mascotas agregadas' icon='paw-outline' />
+                        <NoData title='Todavía no hay mascotas agregadas' icon='paw-outline' />
                     )}
                 </>
             ) : (
