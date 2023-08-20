@@ -25,7 +25,7 @@ const NoData = ({ title, subtitle, showIcon = true, icon = 'document-text' }: IN
             )}
             {showIcon && (
                 <View style={styles.icon}>
-                    <Icon name={icon} size={80} color={colors.light.greyDark} />
+                    <Icon testID='icon' name={icon} size={80} color={colors.light.greyDark} />
                 </View>
             )}
         </View>

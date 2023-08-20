@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Option should match snapshot 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "borderBottomColor": "#A765C1",
+      "borderBottomWidth": 1,
+      "flexDirection": "row",
+      "marginHorizontal": 14,
+      "marginVertical": 6,
+      "opacity": 1,
+      "paddingVertical": 6,
+    }
+  }
+  testID="button"
+>
+  <MockedIoniconsIcons
+    color="#A3A3A3"
+    name="add"
+    size={24}
+    testID="icon"
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Object {
+          "alignSelf": "center",
+          "fontWeight": "600",
+          "marginLeft": 14,
+        },
+      ]
+    }
+  >
+    Lorem Ipsum
+  </Text>
+</View>
+`;

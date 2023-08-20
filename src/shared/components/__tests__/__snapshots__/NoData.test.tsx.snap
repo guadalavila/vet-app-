@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoData should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Object {
+          "alignSelf": "center",
+          "color": "#A3A3A3",
+          "fontSize": 30,
+          "fontWeight": "bold",
+          "justifyContent": "center",
+          "marginHorizontal": 10,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Hello
+  </Text>
+  <View
+    style={
+      Object {
+        "marginVertical": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#11100F",
+          },
+          Object {
+            "alignSelf": "center",
+            "color": "#A3A3A3",
+            "fontSize": 16,
+            "fontWeight": "500",
+            "justifyContent": "center",
+            "marginHorizontal": 8,
+            "marginVertical": 18,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      World!
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignSelf": "center",
+        "marginTop": 14,
+      }
+    }
+  >
+    <MockedIoniconsIcons
+      color="#A3A3A3"
+      name="document-text"
+      size={80}
+      testID="icon"
+    />
+  </View>
+</View>
+`;

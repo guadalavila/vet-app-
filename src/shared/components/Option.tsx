@@ -13,8 +13,8 @@ interface IOptionProps {
 
 const Option = ({ label, icon, onPress }: IOptionProps) => {
     return (
-        <TouchableOpacity activeOpacity={0.7} style={[styles.container]} onPress={onPress}>
-            <Icon name={icon} size={24} color={colors.light.greyDark} />
+        <TouchableOpacity testID='button' activeOpacity={0.7} style={[styles.container]} onPress={onPress}>
+            <Icon testID='icon' name={icon} size={24} color={colors.light.greyDark} />
             <CustomText style={styles.label}>{label}</CustomText>
         </TouchableOpacity>
     );

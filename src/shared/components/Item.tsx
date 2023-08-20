@@ -14,9 +14,13 @@ interface IItemProps {
 
 const Item: React.FC<IItemProps> = ({ label, onPress }) => {
     return (
-        <TouchableOpacity style={[styles.container, GlobalStyles.rowBetween]} activeOpacity={0.7} onPress={onPress}>
+        <TouchableOpacity
+            testID='button'
+            style={[styles.container, GlobalStyles.rowBetween]}
+            activeOpacity={0.7}
+            onPress={onPress}>
             <CustomText style={styles.title}>{label}</CustomText>
-            <Icon name='chevron-forward-outline' color={colors.light.primary} size={22} />
+            <Icon testID='icon' name='chevron-forward-outline' color={colors.light.primary} size={22} />
         </TouchableOpacity>
     );
 };
