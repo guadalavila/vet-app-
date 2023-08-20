@@ -1,5 +1,7 @@
 import crashlytics from '@react-native-firebase/crashlytics';
 import { Platform } from 'react-native';
+import VersionApp from '../../../native-modules/version-app';
+import Config from 'react-native-config';
 
 type AttributesCrash = {
     nameService: string;
@@ -14,7 +16,7 @@ export const logCrash = (message: string, nameService: string, method: 'GET' | '
         const params: AttributesCrash = {
             nameService: nameService ?? '',
             method: method,
-            appVersion: '0.0.1', //TODO change
+            appVersion: Platform.OS === 'android' ? Config.VERSION_NAME! : VersionApp.appVersion!,
             platform: Platform.OS,
         };
         crashlytics().log(message);

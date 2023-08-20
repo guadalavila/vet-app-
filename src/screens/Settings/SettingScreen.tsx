@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Container from '../../shared/components/Container';
 import { RootStackLoginParamList } from '../../navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -10,6 +10,8 @@ import Item from '../../shared/components/Item';
 import Separator from '../../shared/components/Separator';
 import useAuth from '../../shared/hooks/useAuth';
 import ModalCustom from '../../shared/components/ModalCustom';
+import CustomText from '../../shared/components/CustomText';
+import useVersionApp from '../../shared/hooks/useVersionApp';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'SettingScreen'> {}
 
@@ -17,6 +19,7 @@ const SettingScreen = ({ navigation }: Props) => {
     const { setTheme, theme } = useContext(ThemeContext);
     const { logout } = useAuth();
     const [showModal, setShowModal] = useState(false);
+    const { getVersionApp } = useVersionApp();
     return (
         <Container>
             <Header title='Configuración' />
@@ -27,7 +30,9 @@ const SettingScreen = ({ navigation }: Props) => {
             <Item label='Reportes' onPress={() => navigation.navigate('ReportsScreen')} />
             <Item label='Tutorial' onPress={() => navigation.navigate('OnBoardingScreen')} />
             <Item label='Cerrar Sesión' onPress={() => setShowModal(true)} />
-
+            <View style={styles.containerVersionApp}>
+                <CustomText style={styles.versionText}>Versión {getVersionApp()}</CustomText>
+            </View>
             <ModalCustom
                 title='¿Deseas cerrar sesión?'
                 visible={showModal}
@@ -42,4 +47,13 @@ const SettingScreen = ({ navigation }: Props) => {
 
 export default SettingScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    containerVersionApp: {
+        position: 'absolute',
+        bottom: 120,
+        alignSelf: 'center',
+    },
+    versionText: {
+        fontWeight: '600',
+    },
+});

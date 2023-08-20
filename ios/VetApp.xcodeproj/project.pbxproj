@@ -15,6 +15,7 @@
 		71D8D35A3F2AE75797260EA1 /* Pods_VetApp_VetAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7982596E2E37B1233F6B607F /* Pods_VetApp_VetAppTests.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A919D00B2A54940700D5E29B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A919D00A2A54940700D5E29B /* GoogleService-Info.plist */; };
+		A9B653212A91CB8300576487 /* RCTVersionModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B653202A91CB8300576487 /* RCTVersionModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = VetApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8206D52CFC2EF964E32F8918 /* Pods_VetApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VetApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A919D00A2A54940700D5E29B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A9B6531F2A91CA9900576487 /* RCTVersionModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTVersionModule.h; sourceTree = "<group>"; };
+		A9B653202A91CB8300576487 /* RCTVersionModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTVersionModule.m; sourceTree = "<group>"; };
 		B6B7BBDFC52CF62B9AB8C01C /* Pods-VetApp-VetAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VetApp-VetAppTests.release.xcconfig"; path = "Target Support Files/Pods-VetApp-VetAppTests/Pods-VetApp-VetAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		D2FAC5762A1EB8E90063A79C /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
 		D2FAC5772A1EB8E90063A79C /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				A9B653202A91CB8300576487 /* RCTVersionModule.m */,
+				A9B6531F2A91CA9900576487 /* RCTVersionModule.h */,
 				A919D00A2A54940700D5E29B /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* VetApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -486,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				A9B653212A91CB8300576487 /* RCTVersionModule.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
