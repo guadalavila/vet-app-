@@ -66,6 +66,8 @@ buck-out/
 
 .env
 .env.test
+.env.*
+
 
 /android/app/google-services.json
 
