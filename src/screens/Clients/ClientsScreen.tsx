@@ -54,19 +54,25 @@ const ClientsScreen = ({ navigation }: Props) => {
                 onCancelSearch={() => setActiveSearching(false)}
             />
             {!activeSearching ? (
-                <FlatList
-                    data={clients}
-                    renderItem={({ item }) => (
-                        <ItemClientList
-                            client={item}
-                            onPress={() => navigation.navigate('ClientDetailScreen', { client: item })}
+                <>
+                    {clients.length > 0 ? (
+                        <FlatList
+                            data={clients}
+                            renderItem={({ item }) => (
+                                <ItemClientList
+                                    client={item}
+                                    onPress={() => navigation.navigate('ClientDetailScreen', { client: item })}
+                                />
+                            )}
+                            keyExtractor={(item) => item._id}
+                            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+                            // onEndReached={() => getMoreClients()}
+                            onEndReachedThreshold={0.2}
                         />
+                    ) : (
+                        <NoData title='Todavía no hay clientes agregados' icon='people-outline' />
                     )}
-                    keyExtractor={(item) => item._id}
-                    refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-                    // onEndReached={() => getMoreClients()}
-                    onEndReachedThreshold={0.2}
-                />
+                </>
             ) : (
                 <View>
                     {result.length > 0 ? (
