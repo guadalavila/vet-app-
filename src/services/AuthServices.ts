@@ -14,7 +14,7 @@ class AuthServices {
                     resolve(res.data);
                 })
                 .catch((error: string) => {
-                    logCrash(error);
+                    logCrash(error, 'AuthServices => login()', 'POST');
                     reject(error);
                 });
         });
@@ -28,7 +28,7 @@ class AuthServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'AuthServices => signUp()', 'POST');
                     reject(error);
                 });
         });
@@ -42,7 +42,7 @@ class AuthServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'AuthServices => getMe()', 'GET');
                     reject(error);
                 });
         });

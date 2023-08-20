@@ -14,7 +14,7 @@ class DashboardServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'DashboardServices => getInitialData()', 'GET');
                     reject(error);
                 });
         });
@@ -28,7 +28,7 @@ class DashboardServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'DashboardServices => getDashboard()', 'GET');
                     reject(error);
                 });
         });

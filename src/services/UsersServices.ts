@@ -14,7 +14,7 @@ class UsersServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'UsersServices => getUsers()', 'GET');
                     reject(error);
                 });
         });
@@ -27,7 +27,7 @@ class UsersServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'UsersServices => updateUser()', 'PATCH');
                     reject(error);
                 });
         });

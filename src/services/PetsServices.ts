@@ -14,7 +14,7 @@ class PetsServices {
                     resolve(res.data.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'PetsServices => getPets()', 'GET');
                     reject(error);
                 });
         });
@@ -28,7 +28,7 @@ class PetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `PetsServices => getPetsByClient() with dni: ${dni}}`, 'GET');
                     reject(error);
                 });
         });
@@ -42,7 +42,7 @@ class PetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `PetsServices => getPetsByVetId() with vetId: ${vetId}}`, 'GET');
                     reject(error);
                 });
         });
@@ -56,7 +56,7 @@ class PetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `PetsServices => getAllPetsByVetId() with vetId: ${vetId}}`, 'GET');
                     reject(error);
                 });
         });
@@ -70,7 +70,7 @@ class PetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'PetsServices => searchPets()', 'GET');
                     reject(error);
                 });
         });
@@ -84,7 +84,7 @@ class PetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'PetsServices => addPet()', 'POST');
                     reject(error);
                 });
         });
@@ -98,7 +98,7 @@ class PetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'PetsServices => updatePet()', 'PATCH');
                     reject(error);
                 });
         });
@@ -112,6 +112,7 @@ class PetsServices {
                     resolve();
                 })
                 .catch((err) => {
+                    logCrash(err, `PetsServices => deletePet() with id: ${id}}`, 'DELETE');
                     reject(err);
                 });
         });
@@ -125,7 +126,7 @@ class PetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `PetsServices => getDetailPet() with petId: ${petId}}`, 'GET');
                     reject(error);
                 });
         });

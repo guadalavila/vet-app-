@@ -14,7 +14,7 @@ class VaccineServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'VaccineServices => addVaccine()', 'POST');
                     reject(error);
                 });
         });
@@ -28,7 +28,7 @@ class VaccineServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'VaccineServices => updateVaccine()', 'PATCH');
                     reject(error);
                 });
         });
@@ -42,7 +42,7 @@ class VaccineServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `VaccineServices => getVaccinesByPet() with petId: ${petId}}`, 'GET');
                     reject(error);
                 });
         });

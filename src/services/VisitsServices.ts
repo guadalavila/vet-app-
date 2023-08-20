@@ -14,7 +14,7 @@ class VisitsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `VisitsServices => getVisitsPet() with petId: ${petId}}`, 'GET');
                     reject(error);
                 });
         });
@@ -28,7 +28,7 @@ class VisitsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'VisitsServices => addVisit()', 'POST');
                     reject(error);
                 });
         });
@@ -42,7 +42,7 @@ class VisitsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'VisitsServices => updateVisit()', 'PATCH');
                     reject(error);
                 });
         });
@@ -56,7 +56,7 @@ class VisitsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'VisitsServices => getLastVisit()', 'GET');
                     reject(error);
                 });
         });

@@ -15,7 +15,7 @@ class PathologiesServices {
                     resolve(res.data.data.conditions);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'PathologiesServices => getConditions()', 'GET');
                     reject(error);
                 });
         });
@@ -29,7 +29,7 @@ class PathologiesServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `PathologiesServices => getPathologies() with vetId: ${vetId}`, 'GET');
                     reject(error);
                 });
         });
@@ -43,7 +43,7 @@ class PathologiesServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'PathologiesServices => addPathology()', 'POST');
                     reject(error);
                 });
         });
@@ -57,7 +57,7 @@ class PathologiesServices {
                     resolve(res.data.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'PathologiesServices => addCondition()', 'POST');
                     reject(error);
                 });
         });

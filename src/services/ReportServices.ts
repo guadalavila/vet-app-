@@ -14,7 +14,7 @@ class ReportServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `ReportServices => getReport() with vetId: ${vetId}}`, 'GET');
                     reject(error);
                 });
         });

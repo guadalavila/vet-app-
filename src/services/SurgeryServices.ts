@@ -14,7 +14,7 @@ class SurgeryServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'SurgeryServices => addSurgery()', 'POST');
                     reject(error);
                 });
         });
@@ -28,7 +28,7 @@ class SurgeryServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `SurgeryServices => getSurgeriesByPet() with petId: ${petId}}`, 'GET');
                     reject(error);
                 });
         });

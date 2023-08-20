@@ -23,7 +23,7 @@ class ClientsServices {
                     resolve(res.data.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'ClientsServices => getClients()', 'GET');
                     reject(error);
                 });
         });
@@ -37,7 +37,7 @@ class ClientsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `ClientsServices => getClientsByVetId() with vetId: ${vetId}}`, 'GET');
                     reject(error);
                 });
         });
@@ -51,7 +51,7 @@ class ClientsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `ClientsServices => getAllClientsByVetId() with vetId: ${vetId}`, 'GET');
                     reject(error);
                 });
         });
@@ -65,7 +65,7 @@ class ClientsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `ClientsServices => getClient() with id ${id}}`, 'GET');
                     reject(error);
                 });
         });
@@ -79,7 +79,7 @@ class ClientsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, `ClientsServices => searchClients() with vetId: ${vetId} and dni ${dni}}`, 'GET');
                     reject(error);
                 });
         });
@@ -93,6 +93,7 @@ class ClientsServices {
                     resolve(res.data.data.client);
                 })
                 .catch((error) => {
+                    logCrash(error, `ClientsServices => searchOneClient() with id ${id}}`, 'GET');
                     reject(error);
                 });
         });
@@ -106,7 +107,7 @@ class ClientsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'ClientsServices => addClient()', 'POST');
                     reject(error);
                 });
         });
@@ -120,7 +121,7 @@ class ClientsServices {
                     resolve(res.data.data.clients);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'ClientsServices => getClientsByDNI()', 'GET');
                     reject(error);
                 });
         });
@@ -134,7 +135,7 @@ class ClientsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'ClientsServices => updateClient()', 'PATCH');
                     reject(error);
                 });
         });

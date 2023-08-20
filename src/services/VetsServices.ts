@@ -14,7 +14,7 @@ class VetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'VetsServices => getVets()', 'GET');
                     reject(error);
                 });
         });
@@ -28,7 +28,7 @@ class VetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'VetsServices => addVet()', 'POST');
                     reject(error);
                 });
         });
@@ -42,7 +42,7 @@ class VetsServices {
                     resolve(res.data);
                 })
                 .catch((error) => {
-                    logCrash(error);
+                    logCrash(error, 'VetsServices => editVet()', 'PATCH');
                     reject(error);
                 });
         });
