@@ -145,7 +145,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                 onConfirmPressed={() => deletePet(pet._id)}
                 onCancelPressed={() => setShowModal(false)}
             />
-            <BottomSheet refBottomSheet={bottomSheetRef} height={400}>
+            <BottomSheet refBottomSheet={bottomSheetRef} height={380}>
                 <View style={styles.containerContent}>
                     <Option label='Editar Mascota' icon='pencil-outline' onPress={updatePet} />
                     <Option label='Agregar Visita' icon='add-outline' onPress={addVisit} />
@@ -153,7 +153,6 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                     <Option label='Registro de cirugías' icon='document-text-outline' onPress={showSurgeryRegistry} />
                     <Option label='Registro de vacunas' icon='document-text-outline' onPress={showVaccinesRegistry} />
                     <Option label='Ver Detalle propietario' icon='people-outline' onPress={getDetailOwner} />
-                    <Option label='Compartir' icon='share-outline' onPress={handleSharePet} />
                 </View>
             </BottomSheet>
         </Container>

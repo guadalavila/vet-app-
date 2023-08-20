@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TextInput } from 'react-native';
+import { Platform, StyleSheet, TextInput } from 'react-native';
 import { colors } from '../utils/colors';
 import { size } from '../utils/size';
 import { typography } from '../utils/typography';
@@ -14,6 +14,7 @@ interface IInputProps {
 const Input = ({ placeholder, value, setValue, secureText = false }: IInputProps) => {
     return (
         <TextInput
+            testID='textInput'
             placeholder={placeholder}
             style={styles.input}
             value={value}

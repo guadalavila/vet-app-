@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         marginVertical: size.M,
         paddingVertical: size.M,
         borderBottomWidth: 1,
-        borderBottomColor: colors.light.primary,
+        borderBottomColor: colors.light.greyDarkSecondary,
         flexDirection: 'row',
     },
     label: {

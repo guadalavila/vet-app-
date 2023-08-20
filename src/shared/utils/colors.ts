@@ -1,6 +1,6 @@
 const common = {
     // primary: '#FD9340',
-    primary: '#917FB3',
+    primary: '#A765C1',
     primaryLight: '#D2C6EA',
 
     // secondary: '#2A2F4F',
@@ -57,7 +57,7 @@ const dark = {
     border: '#E5BEEC',
     input: '#4C4C4C',
     textInput: '#DEDEDE',
-    bottomSheet: '#71717C',
+    bottomSheet: '#4A4A4A',
     card: '#D6D6D6',
     backgroundInput: '#414141',
     backgroundContainer: '#B0B0B0',
