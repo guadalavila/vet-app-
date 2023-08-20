@@ -55,7 +55,7 @@ const PathologiesScreen = ({}: Props) => {
                             refreshControl={<RefreshControl refreshing={loading} onRefresh={onRefresh} />}
                         />
                     ) : (
-                        <NoData title='Todavía no agregaste una patología' showIcon />
+                        <NoData title='Todavía no hay patologías agregadas' showIcon />
                     )}
                 </>
             )}
