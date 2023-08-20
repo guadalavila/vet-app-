@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { RootStackLoginParamList } from '../../navigations/types';
 import Container from '../../shared/components/Container';
 import Header from '../../shared/components/Header';
@@ -9,11 +9,15 @@ import { colors } from '../../shared/utils/colors';
 import { size } from '../../shared/utils/size';
 import { typography } from '../../shared/utils/typography';
 import CustomText from '../../shared/components/CustomText';
+import Separator from '../../shared/components/Separator';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { GlobalStyles } from '../../shared/utils/styles';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ProfileScreen'> {}
 
 const ProfileScreen = ({}: Props) => {
     const { user } = useAuth();
+    const [showDetailVet, setShowDetailVet] = useState(true);
 
     const getCodeName = () => {
         if (user) {
@@ -29,16 +33,39 @@ const ProfileScreen = ({}: Props) => {
             <View style={styles.containerAvatar}>
                 <Text style={styles.textAvatar}>{getCodeName()}</Text>
             </View>
-            <View style={styles.containerRole}>
-                <CustomText style={styles.title}>{user?.role.toUpperCase()}</CustomText>
+            <View style={styles.info}>
+                <CustomText style={styles.title}>Email</CustomText>
+                <CustomText style={styles.margin}>{user?.email}</CustomText>
+                <Separator />
             </View>
-            <CustomText style={styles.text}>{user?.email}</CustomText>
-            {user?.vetId && (
-                <View style={styles.containerUser}>
-                    <CustomText style={styles.textBold}>{user?.vetId.name}</CustomText>
-                    <CustomText style={styles.text}>{user?.vetId.address}</CustomText>
-                    <CustomText style={styles.text}>{user?.vetId.city}</CustomText>
-                    <CustomText style={styles.text}>{user?.vetId.codePostal}</CustomText>
+            <View style={styles.info}>
+                <CustomText style={styles.title}>Rol</CustomText>
+                <CustomText style={styles.margin}>{user?.role.toUpperCase()}</CustomText>
+                <Separator />
+            </View>
+            <TouchableOpacity style={styles.info} activeOpacity={0.7} onPress={() => setShowDetailVet(!showDetailVet)}>
+                <View style={GlobalStyles.rowBetween}>
+                    <CustomText style={styles.title}>Tu veterinaria</CustomText>
+                    <Icon name='chevron-forward-outline' color={colors.light.primary} size={22} />
+                </View>
+            </TouchableOpacity>
+            {showDetailVet && (
+                <View>
+                    {user?.vetId && typeof user?.vetId == 'object' && (
+                        <View style={styles.containerUser}>
+                            <View style={styles.info}>
+                                <CustomText style={styles.title}>Nombre</CustomText>
+                                <CustomText style={styles.margin}>{user?.vetId?.name}</CustomText>
+                            </View>
+                            <Separator />
+                            <View style={styles.info}>
+                                <CustomText style={styles.title}>Dirección</CustomText>
+                                <CustomText style={styles.margin}>
+                                    {user?.vetId?.address} , {user?.vetId.city}
+                                </CustomText>
+                            </View>
+                        </View>
+                    )}
                 </View>
             )}
         </Container>
@@ -65,25 +92,19 @@ const styles = StyleSheet.create({
     containerRole: {
         margin: size.XXL,
     },
-    title: {
-        fontSize: typography.size.S,
-        textAlign: 'center',
-        fontWeight: '600',
-    },
     containerUser: {
         marginHorizontal: size.XL,
-        marginVertical: size.XXL,
+        marginVertical: size.L,
     },
-    text: {
+    title: {
+        fontWeight: '500',
         fontSize: typography.size.S,
-        textAlign: 'center',
-        fontWeight: '600',
-        marginVertical: size.S,
     },
-    textBold: {
-        fontSize: typography.size.S,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        marginVertical: size.S,
+    info: {
+        marginHorizontal: size.XL,
+        marginVertical: size.L,
+    },
+    margin: {
+        marginVertical: size.XS,
     },
 });
