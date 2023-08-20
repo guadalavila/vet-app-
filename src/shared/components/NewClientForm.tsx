@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
@@ -16,6 +16,7 @@ interface INewClientFormProps {
 
 const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData, onCancel }) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('NewClient', onSubmit);
+    const [isUpdate, setIsUpdate] = useState(false);
 
     useEffect(() => {
         setInitData();
@@ -23,6 +24,7 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData, onCa
 
     const setInitData = () => {
         if (Object.entries(Object(initData)).length > 0) {
+            setIsUpdate(true);
             //@ts-ignore
             const { name, lastName, dni, email, phone, address, comment } = initData;
             name && setFieldValue('name', name);
@@ -95,7 +97,7 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData, onCa
             </ScrollView>
             <View style={styles.bottom}>
                 <Button title={'Guardar'} onPress={handleSubmit} />
-                <Button secondary title={'Cancelar'} onPress={onCancel} />
+                {isUpdate && <Button secondary title={'Cancelar'} onPress={onCancel} />}
             </View>
         </View>
     );
