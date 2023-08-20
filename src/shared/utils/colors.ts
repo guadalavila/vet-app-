@@ -13,6 +13,7 @@ const common = {
     grey: '#EEEEEE',
     greySecondary: '#f5f5f5',
     greyDark: '#A3A3A3',
+    greyDarkSecondary: '#616161',
     whatsapp: '#25d366',
     success: '#4E9F3D',
     teal: '#73B4B0',
@@ -33,7 +34,7 @@ const light = {
     secondary: '#2A2F4F',
     tertiary: '#E5BEEC',
     container: '#f5f4f6',
-    separator: '#F1f1f1',
+    separator: '#F1f1f2',
     border: '#2A2F4F',
     input: '#f2f1f6',
     textInput: '#515151',
@@ -42,6 +43,7 @@ const light = {
     backgroundInput: '#ECEDF0',
     backgroundContainer: '#DEDEDE',
     blue: '#092E9C',
+    textButton: '#F1F1F1',
 };
 
 const dark = {
@@ -60,6 +62,7 @@ const dark = {
     backgroundInput: '#414141',
     backgroundContainer: '#B0B0B0',
     blue: '#2D5CE8',
+    textButton: '#F1F1F1',
 };
 
 export const colors = { light, dark };
