@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 import CustomText from './CustomText';
 import { colors } from '../utils/colors';
 import { size } from '../utils/size';
 import { typography } from '../utils/typography';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 interface IButtonProps {
     title: string;
@@ -14,13 +15,14 @@ interface IButtonProps {
 }
 
 const Button = ({ title, onPress, style = {}, outlined = false, secondary = false }: IButtonProps) => {
+    const { themeApp } = useContext(ThemeContext);
     return (
         <TouchableOpacity
             testID='button'
             style={[!outlined ? styles.button : styles.outlined, secondary && styles.secondary, style]}
             activeOpacity={0.7}
             onPress={onPress}>
-            <CustomText testID='button-text' style={[styles.text]}>
+            <CustomText testID='button-text' style={[styles.text, { color: themeApp.colors.textButton }]}>
                 {title}
             </CustomText>
         </TouchableOpacity>
