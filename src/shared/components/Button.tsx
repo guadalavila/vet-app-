@@ -22,7 +22,7 @@ const Button = ({ title, onPress, style = {}, outlined = false, secondary = fals
             style={[!outlined ? styles.button : styles.outlined, secondary && styles.secondary, style]}
             activeOpacity={0.7}
             onPress={onPress}>
-            <CustomText testID='button-text' style={[styles.text, { color: themeApp.colors.textButton }]}>
+            <CustomText testID='button-text' style={[styles.text, !outlined && { color: themeApp.colors.textButton }]}>
                 {title}
             </CustomText>
         </TouchableOpacity>
