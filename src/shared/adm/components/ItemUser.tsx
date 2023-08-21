@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { StyleSheet } from 'react-native';
-import CustomText from '../../components/CustomText';
-import { size } from '../../utils/size';
-import { colors } from '../../utils/colors';
-import { typography } from '../../utils/typography';
-import { User } from '../../../models/User';
+import { size } from '~shared/utils/size';
+import { colors } from '~shared/utils/colors';
+import { typography } from '~shared/utils/typography';
+import { User } from '~models/User';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { GlobalStyles } from '../../utils/styles';
-import { ThemeContext } from '../../../contexts/ThemeContext';
+import { GlobalStyles } from '~shared/utils/styles';
+import { ThemeContext } from '~contexts/ThemeContext';
+import CustomText from '~shared/components/CustomText';
 
 interface IItemVetProps {
     user: User;

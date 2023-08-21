@@ -1,14 +1,14 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
-import { RootStackLoginParamList } from '../../navigations/types';
+import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Container from '../../shared/components/Container';
-import Header from '../../shared/components/Header';
-import useGetReport from '../../shared/hooks/useGetReport';
-import Loading from '../../shared/components/Loading';
-import PieItem from '../../shared/components/PieItem';
-import ItemCategory from '../../shared/components/ItemCategory';
-import { GlobalStyles } from '../../shared/utils/styles';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import useGetReport from '~shared/hooks/useGetReport';
+import Loading from '~shared/components/Loading';
+import PieItem from '~shared/components/PieItem';
+import ItemCategory from '~shared/components/ItemCategory';
+import { GlobalStyles } from '~shared/utils/styles';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ReportsScreen'> {}
 

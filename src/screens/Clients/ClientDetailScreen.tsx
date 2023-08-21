@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Header from '../../shared/components/Header';
-import Container from '../../shared/components/Container';
-import { RootStackLoginParamList } from '../../navigations/types';
+import Header from '~shared/components/Header';
+import Container from '~shared/components/Container';
+import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Pet } from '../../models/Pet';
-import petsServices from '../../services/PetsServices';
-import Button from '../../shared/components/Button';
-import Loading from '../../shared/components/Loading';
-import ClientDetail from '../../shared/components/ClientDetail';
-import ListPets from '../../shared/components/ListPets';
-import useError from '../../shared/hooks/useError';
+import { Pet } from '~models/Pet';
+import petsServices from '~services/PetsServices';
+import Button from '~shared/components/Button';
+import Loading from '~shared/components/Loading';
+import ClientDetail from '~shared/components/ClientDetail';
+import ListPets from '~shared/components/ListPets';
+import useError from '~shared/hooks/useError';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientDetailScreen'> {}
 

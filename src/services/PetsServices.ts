@@ -1,7 +1,7 @@
-import { NewPet, Pet, PetData, PetResponse } from '../models/Pet';
-import { API_PATHS } from '../shared/utils/apiPaths';
-import networkManager from '../shared/utils/axios/NetworkManager';
-import { logCrash } from '../shared/utils/firebase/crashlytics';
+import { NewPet, Pet, PetData, PetResponse } from '~models/Pet';
+import { API_PATHS } from '~shared/utils/apiPaths';
+import networkManager from '~shared/utils/axios/NetworkManager';
+import { logCrash } from '~shared/utils/firebase/crashlytics';
 
 class PetsServices {
     constructor() {}

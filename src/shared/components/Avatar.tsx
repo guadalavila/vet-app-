@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { colors } from '../utils/colors';
+import { colors } from '~shared/utils/colors';
 
 interface IAvatarProps {
     children: React.ReactNode;

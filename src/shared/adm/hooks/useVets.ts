@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { Veterinary } from '../../../models/Veterinary';
-import vetsServices from '../../../services/VetsServices';
-import useError from '../../hooks/useError';
-import { VetsContext } from '../../../contexts/VetsContext';
+import { Veterinary } from '~models/Veterinary';
+import vetsServices from '~services/VetsServices';
+import useError from '~shared/hooks/useError';
+import { VetsContext } from '~contexts/VetsContext';
 
 const useVets = () => {
     const [loading, setLoading] = useState(true);

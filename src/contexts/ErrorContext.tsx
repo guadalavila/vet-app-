@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { ErrorCustom } from '../models/ErrorCustom';
+import { ErrorCustom } from '~models/ErrorCustom';
 
 const initialState: ErrorCustom = {
     isError: false,
@@ -7,9 +7,9 @@ const initialState: ErrorCustom = {
 };
 
 export const ErrorContext = React.createContext<{
-    error: ErrorCustom,
-    setError: React.Dispatch<ErrorCustom>,
-    removeError: React.Dispatch<void>,
+    error: ErrorCustom;
+    setError: React.Dispatch<ErrorCustom>;
+    removeError: React.Dispatch<void>;
 }>({
     error: initialState,
     setError: () => {},

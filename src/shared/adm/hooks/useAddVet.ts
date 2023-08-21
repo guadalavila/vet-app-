@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { NewVeterinary, Veterinary } from '../../../models/Veterinary';
-import vetsServices from '../../../services/VetsServices';
-import useError from '../../hooks/useError';
+import { NewVeterinary, Veterinary } from '~models/Veterinary';
+import vetsServices from '~services/VetsServices';
+import useError from '~shared/hooks/useError';
 
 const useAddVet = () => {
     const [loading, setLoading] = useState(false);

@@ -1,17 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Container from '../../shared/components/Container';
-import { RootStackLoginParamList } from '../../navigations/types';
+import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Header from '../../shared/components/Header';
-import Select from '../../shared/components/Select';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import Item from '../../shared/components/Item';
-import Separator from '../../shared/components/Separator';
-import useAuth from '../../shared/hooks/useAuth';
-import ModalCustom from '../../shared/components/ModalCustom';
-import CustomText from '../../shared/components/CustomText';
-import useVersionApp from '../../shared/hooks/useVersionApp';
+import Header from '~shared/components/Header';
+import Select from '~shared/components/Select';
+import { ThemeContext } from '~contexts/ThemeContext';
+import Item from '~shared/components/Item';
+import Separator from '~shared/components/Separator';
+import useAuth from '~shared/hooks/useAuth';
+import ModalCustom from '~shared/components/ModalCustom';
+import CustomText from '~shared/components/CustomText';
+import useVersionApp from '~shared/hooks/useVersionApp';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'SettingScreen'> {}
 

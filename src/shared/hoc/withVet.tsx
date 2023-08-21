@@ -1,9 +1,9 @@
 import React from 'react';
-import useAuth from '../hooks/useAuth';
-import Container from '../components/Container';
-import NoData from '../components/NoData';
-import Button from '../components/Button';
-import Loading from '../components/Loading';
+import useAuth from '~shared/hooks/useAuth';
+import Container from '~shared/components/Container';
+import NoData from '~shared/components/NoData';
+import Button from '~shared/components/Button';
+import Loading from '~shared/components/Loading';
 
 function withVet(Component: React.FC<any>) {
     return (props: any) => {

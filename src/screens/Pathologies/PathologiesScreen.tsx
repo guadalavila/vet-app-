@@ -1,17 +1,17 @@
 import React, { useCallback, useState } from 'react';
 import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
-import { RootStackLoginParamList } from '../../navigations/types';
+import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Container from '../../shared/components/Container';
-import Header from '../../shared/components/Header';
-import Fab from '../../shared/components/Fab';
-import CustomText from '../../shared/components/CustomText';
-import { colors } from '../../shared/utils/colors';
-import { size } from '../../shared/utils/size';
-import Loading from '../../shared/components/Loading';
-import ModalInput from '../../shared/components/ModalInput';
-import usePathologies from '../../shared/hooks/usePathologies';
-import NoData from '../../shared/components/NoData';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import Fab from '~shared/components/Fab';
+import CustomText from '~shared/components/CustomText';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
+import Loading from '~shared/components/Loading';
+import ModalInput from '~shared/components/ModalInput';
+import usePathologies from '~shared/hooks/usePathologies';
+import NoData from '~shared/components/NoData';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PathologiesScreen'> {}
 

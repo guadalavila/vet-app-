@@ -1,7 +1,7 @@
 import { NewSurgery, Surgery } from '../models/Surgery';
-import { API_PATHS } from '../shared/utils/apiPaths';
-import networkManager from '../shared/utils/axios/NetworkManager';
-import { logCrash } from '../shared/utils/firebase/crashlytics';
+import { API_PATHS } from '~shared/utils/apiPaths';
+import networkManager from '~shared/utils/axios/NetworkManager';
+import { logCrash } from '~shared/utils/firebase/crashlytics';
 
 class SurgeryServices {
     constructor() {}

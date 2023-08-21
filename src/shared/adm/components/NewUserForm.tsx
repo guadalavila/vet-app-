@@ -1,15 +1,15 @@
 import React, { useContext, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { GlobalStyles } from '../../utils/styles';
-import FormInput from '../../components/FormInput';
-import Button from '../../components/Button';
-import useForm from '../../hooks/useForm';
-import { colors } from '../../utils/colors';
-import { typography } from '../../utils/typography';
-import { size } from '../../utils/size';
-import { User } from '../../../models/User';
-import { VetsContext } from '../../../contexts/VetsContext';
-import Dropdown from '../../components/Dropdown';
+import { GlobalStyles } from '~shared/utils/styles';
+import FormInput from '~shared/components/FormInput';
+import Button from '~shared/components/Button';
+import useForm from '~shared/hooks/useForm';
+import { colors } from '~shared/utils/colors';
+import { typography } from '~shared/utils/typography';
+import { size } from '~shared/utils/size';
+import { User } from '~models/User';
+import { VetsContext } from '~contexts/VetsContext';
+import Dropdown from '~shared/components/Dropdown';
 
 interface INewUserFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;

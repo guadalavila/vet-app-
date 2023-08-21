@@ -1,12 +1,12 @@
 import React from 'react';
-import { RootStackLoginParamList } from '../../navigations/types';
+import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Container from '../../shared/components/Container';
-import Header from '../../shared/components/Header';
-import NewClientForm from '../../shared/components/NewClientForm';
-import useAddClient from '../../shared/hooks/useAddClient';
-import Loading from '../../shared/components/Loading';
-import useAuth from '../../shared/hooks/useAuth';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import NewClientForm from '~shared/components/NewClientForm';
+import useAddClient from '~shared/hooks/useAddClient';
+import useAuth from '~shared/hooks/useAuth';
+import Loading from '~shared/components/Loading';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddClientScreen'> {}
 

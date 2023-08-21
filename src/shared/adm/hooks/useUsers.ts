@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import useError from '../../hooks/useError';
-import { User } from '../../../models/User';
-import usersServices from '../../../services/UsersServices';
+import useError from '~shared/hooks/useError';
+import { User } from '~models/User';
+import usersServices from '~services/UsersServices';
 
 const useUsers = () => {
     const [loading, setLoading] = useState(true);

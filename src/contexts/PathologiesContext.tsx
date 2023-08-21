@@ -1,9 +1,9 @@
 import React, { ReactNode, useState } from 'react';
-import { Pathology } from '../models/Pathology';
+import { Pathology } from '~models/Pathology';
 
 export const PathologiesContext = React.createContext<{
-    pathologies: Pathology[],
-    setPathologies: React.Dispatch<Pathology[]>,
+    pathologies: Pathology[];
+    setPathologies: React.Dispatch<Pathology[]>;
 }>({
     pathologies: [],
     setPathologies: () => {},

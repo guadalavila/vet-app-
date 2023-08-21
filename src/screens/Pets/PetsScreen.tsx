@@ -1,17 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
-import Container from '../../shared/components/Container';
-import Header from '../../shared/components/Header';
-import { RootStackLoginParamList } from '../../navigations/types';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import ItemPetList from '../../shared/components/ItemPetList';
-import usePets from '../../shared/hooks/usePets';
-import Skeleton from '../../shared/components/Skeleton';
-import Fab from '../../shared/components/Fab';
-import SearchBar from '../../shared/components/SearchBar';
-import useSearchPets from '../../shared/hooks/useSearchPets';
-import Loading from '../../shared/components/Loading';
-import NoData from '../../shared/components/NoData';
+import ItemPetList from '~shared/components/ItemPetList';
+import usePets from '~shared/hooks/usePets';
+import Skeleton from '~shared/components/Skeleton';
+import Fab from '~shared/components/Fab';
+import SearchBar from '~shared/components/SearchBar';
+import useSearchPets from '~shared/hooks/useSearchPets';
+import Loading from '~shared/components/Loading';
+import NoData from '~shared/components/NoData';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetsScreen'> {}
 

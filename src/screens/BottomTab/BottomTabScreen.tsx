@@ -1,12 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BottomTabStackParamList } from '../../navigations/types';
-import DashboardScreen from '../Home/DashboardScreen';
-import ClientsScreen from '../Clients/ClientsScreen';
-import CustomTabBar from '../../shared/components/CustomTabBar';
-import PetsScreen from '../Pets/PetsScreen';
-import SettingScreen from '../Settings/SettingScreen';
-import withVet from '../../shared/hoc/withVet';
+import { BottomTabStackParamList } from '~navigations/types';
+import DashboardScreen from '~screens/Home/DashboardScreen';
+import ClientsScreen from '~screens/Clients/ClientsScreen';
+import CustomTabBar from '~shared/components/CustomTabBar';
+import PetsScreen from '~screens/Pets/PetsScreen';
+import SettingScreen from '~screens/Settings/SettingScreen';
+import withVet from '~shared/hoc/withVet';
 
 const Tab = createBottomTabNavigator<BottomTabStackParamList>();
 

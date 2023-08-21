@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { User } from '../../../models/User';
-import usersServices from '../../../services/UsersServices';
-import useError from '../../hooks/useError';
+import { User } from '~models/User';
+import usersServices from '~services/UsersServices';
+import useError from '~shared/hooks/useError';
 
 const useUpdateUser = () => {
     const [loading, setLoading] = useState(false);

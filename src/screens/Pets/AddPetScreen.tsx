@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { RootStackLoginParamList } from '../../navigations/types';
+import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Container from '../../shared/components/Container';
-import Header from '../../shared/components/Header';
-import NewPetForm from '../../shared/components/NewPetForm';
-import useAddPet from '../../shared/hooks/useAddPet';
-import { NewPet, Pet } from '../../models/Pet';
-import Loading from '../../shared/components/Loading';
-import useAuth from '../../shared/hooks/useAuth';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import NewPetForm from '~shared/components/NewPetForm';
+import useAddPet from '~shared/hooks/useAddPet';
+import { NewPet, Pet } from '~models/Pet';
+import Loading from '~shared/components/Loading';
+import useAuth from '~shared/hooks/useAuth';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddPetScreen'> {}
 

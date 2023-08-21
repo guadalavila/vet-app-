@@ -1,7 +1,7 @@
-import { ItemDashboard } from '../models/Dashboard';
-import { API_PATHS } from '../shared/utils/apiPaths';
-import networkManager from '../shared/utils/axios/NetworkManager';
-import { logCrash } from '../shared/utils/firebase/crashlytics';
+import { ItemDashboard } from '~models/Dashboard';
+import { API_PATHS } from '~shared/utils/apiPaths';
+import networkManager from '~shared/utils/axios/NetworkManager';
+import { logCrash } from '~shared/utils/firebase/crashlytics';
 
 class DashboardServices {
     constructor() {}

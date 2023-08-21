@@ -1,8 +1,8 @@
-import { Condition, ConditionsDataResponse, NewCondition, NewConditionResponse } from '../models/Condition';
-import { NewPathology, Pathology } from '../models/Pathology';
-import { API_PATHS } from '../shared/utils/apiPaths';
-import networkManager from '../shared/utils/axios/NetworkManager';
-import { logCrash } from '../shared/utils/firebase/crashlytics';
+import { Condition, ConditionsDataResponse, NewCondition, NewConditionResponse } from '~models/Condition';
+import { NewPathology, Pathology } from '~models/Pathology';
+import { API_PATHS } from '~shared/utils/apiPaths';
+import networkManager from '~shared/utils/axios/NetworkManager';
+import { logCrash } from '~shared/utils/firebase/crashlytics';
 
 class PathologiesServices {
     constructor() {}

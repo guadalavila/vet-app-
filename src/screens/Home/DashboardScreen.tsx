@@ -1,17 +1,17 @@
 import React, { useCallback } from 'react';
 import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
-import Container from '../../shared/components/Container';
+import Container from '~shared/components/Container';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackLoginParamList } from '../../navigations/types';
-import Header from '../../shared/components/Header';
-import ItemCategory from '../../shared/components/ItemCategory';
-import { typography } from '../../shared/utils/typography';
-import { size } from '../../shared/utils/size';
-import CustomText from '../../shared/components/CustomText';
-import useDashboard from '../../shared/hooks/useDashboard';
-import SkeletonDashboard from '../../shared/components/SkeletonDashboard';
-import { GlobalStyles } from '../../shared/utils/styles';
-import useAuth from '../../shared/hooks/useAuth';
+import { RootStackLoginParamList } from '~navigations/types';
+import Header from '~shared/components/Header';
+import ItemCategory from '~shared/components/ItemCategory';
+import { typography } from '~shared/utils/typography';
+import { size } from '~shared/utils/size';
+import CustomText from '~shared/components/CustomText';
+import useDashboard from '~shared/hooks/useDashboard';
+import SkeletonDashboard from '~shared/components/SkeletonDashboard';
+import { GlobalStyles } from '~shared/utils/styles';
+import useAuth from '~shared/hooks/useAuth';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'DashboardScreen'> {}
 

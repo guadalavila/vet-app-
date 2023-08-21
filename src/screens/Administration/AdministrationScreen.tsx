@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { AdminTabStackParamList } from '../../navigations/types';
+import { AdminTabStackParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Container from '../../shared/components/Container';
-import useAuth from '../../shared/hooks/useAuth';
-import Header from '../../shared/components/Header';
-import Separator from '../../shared/components/Separator';
-import Item from '../../shared/components/Item';
-import ModalCustom from '../../shared/components/ModalCustom';
-import Select from '../../shared/components/Select';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import Container from '~shared/components/Container';
+import useAuth from '~shared/hooks/useAuth';
+import Header from '~shared/components/Header';
+import Separator from '~shared/components/Separator';
+import Item from '~shared/components/Item';
+import ModalCustom from '~shared/components/ModalCustom';
+import Select from '~shared/components/Select';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface Props extends NativeStackScreenProps<AdminTabStackParamList, 'AdministrationScreen'> {}
 

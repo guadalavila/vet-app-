@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { RootStackLoginParamList } from '../../navigations/types';
+import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Container from '../../shared/components/Container';
-import Header from '../../shared/components/Header';
-import NewVisitForm from '../../shared/components/NewVisitForm';
-import useAddVisit from '../../shared/hooks/useAddVisit';
-import { NewVisit, Visit } from '../../models/Visit';
-import Loading from '../../shared/components/Loading';
-import useAuth from '../../shared/hooks/useAuth';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import NewVisitForm from '~shared/components/NewVisitForm';
+import useAddVisit from '~shared/hooks/useAddVisit';
+import { NewVisit, Visit } from '~models/Visit';
+import Loading from '~shared/components/Loading';
+import useAuth from '~shared/hooks/useAuth';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddVisitScreen'> {}
 

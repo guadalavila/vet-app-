@@ -1,14 +1,14 @@
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { FlatList } from 'react-native';
-import { RootStackLoginParamList } from '../../navigations/types';
-import Container from '../../shared/components/Container';
-import Header from '../../shared/components/Header';
-import ItemVisit from '../../shared/components/ItemVisit';
-import useVisits from '../../shared/hooks/useVisits';
-import Skeleton from '../../shared/components/Skeleton';
-import NoData from '../../shared/components/NoData';
-import { Visit } from '../../models/Visit';
+import { RootStackLoginParamList } from '~navigations/types';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import ItemVisit from '~shared/components/ItemVisit';
+import useVisits from '~shared/hooks/useVisits';
+import Skeleton from '~shared/components/Skeleton';
+import NoData from '~shared/components/NoData';
+import { Visit } from '~models/Visit';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'VisitsScreen'> {}
 

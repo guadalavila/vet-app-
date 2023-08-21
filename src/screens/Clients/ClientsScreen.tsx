@@ -1,17 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
-import Container from '../../shared/components/Container';
-import Header from '../../shared/components/Header';
-import { RootStackLoginParamList } from '../../navigations/types';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import ItemClientList from '../../shared/components/ItemClientList';
-import useClients from '../../shared/hooks/useClients';
-import Skeleton from '../../shared/components/Skeleton';
-import Fab from '../../shared/components/Fab';
-import SearchBar from '../../shared/components/SearchBar';
-import useSearchClients from '../../shared/hooks/useSearchClients';
-import Loading from '../../shared/components/Loading';
-import NoData from '../../shared/components/NoData';
+import ItemClientList from '~shared/components/ItemClientList';
+import useClients from '~shared/hooks/useClients';
+import Fab from '~shared/components/Fab';
+import SearchBar from '~shared/components/SearchBar';
+import useSearchClients from '~shared/hooks/useSearchClients';
+import Loading from '~shared/components/Loading';
+import NoData from '~shared/components/NoData';
+import Skeleton from '~shared/components/Skeleton';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientsScreen'> {}
 

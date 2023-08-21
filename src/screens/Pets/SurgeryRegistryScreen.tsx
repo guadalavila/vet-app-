@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import { RootStackLoginParamList } from '../../navigations/types';
+import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Container from '../../shared/components/Container';
-import Header from '../../shared/components/Header';
-import NoData from '../../shared/components/NoData';
-import Fab from '../../shared/components/Fab';
-import Loading from '../../shared/components/Loading';
-import surgeryServices from '../../services/SurgeryServices';
-import { Surgery } from '../../models/Surgery';
-import CustomText from '../../shared/components/CustomText';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import NoData from '~shared/components/NoData';
+import Fab from '~shared/components/Fab';
+import Loading from '~shared/components/Loading';
+import surgeryServices from '~services/SurgeryServices';
+import { Surgery } from '~models/Surgery';
+import CustomText from '~shared/components/CustomText';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'SurgeryRegistryScreen'> {}
 

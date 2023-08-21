@@ -1,13 +1,13 @@
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackLoginParamList } from '../../navigations/types';
-import Container from '../../shared/components/Container';
-import Header from '../../shared/components/Header';
-import NewVaccineForm from '../../shared/components/NewVaccineForm';
-import useAddVaccine from '../../shared/hooks/useAddVaccine';
-import { NewVaccine, Vaccine } from '../../models/Vaccine';
-import useAuth from '../../shared/hooks/useAuth';
-import Loading from '../../shared/components/Loading';
+import { RootStackLoginParamList } from '~navigations/types';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import NewVaccineForm from '~shared/components/NewVaccineForm';
+import useAddVaccine from '~shared/hooks/useAddVaccine';
+import { NewVaccine, Vaccine } from '~models/Vaccine';
+import useAuth from '~shared/hooks/useAuth';
+import Loading from '~shared/components/Loading';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'AddVaccineScreen'> {}
 

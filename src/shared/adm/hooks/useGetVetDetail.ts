@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import petsServices from '../../../services/PetsServices';
-import { Pet } from '../../../models/Pet';
-import clientServices from '../../../services/ClientsServices';
-import { Client } from '../../../models/Client';
-import useError from '../../hooks/useError';
+import { Pet } from '~models/Pet';
+import clientServices from '~services/ClientsServices';
+import { Client } from '~models/Client';
+import useError from '~shared/hooks/useError';
+import petsServices from '~services/PetsServices';
 
 const useGetVetDetail = (vetId: string) => {
     const [loading, setLoading] = useState(true);

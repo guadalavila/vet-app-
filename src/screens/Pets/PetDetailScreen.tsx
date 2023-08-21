@@ -1,24 +1,24 @@
 import React, { useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { RootStackLoginParamList } from '../../navigations/types';
+import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Container from '../../shared/components/Container';
-import CustomText from '../../shared/components/CustomText';
-import Header from '../../shared/components/Header';
-import { typography } from '../../shared/utils/typography';
-import Button from '../../shared/components/Button';
-import Separator from '../../shared/components/Separator';
-import { size } from '../../shared/utils/size';
-import BottomSheet from '../../shared/components/BottomSheet';
-import Option from '../../shared/components/Option';
-import clientServices from '../../services/ClientsServices';
-import ModalCustom from '../../shared/components/ModalCustom';
-import useDelete from '../../shared/hooks/useDelete';
-import PetDetail from '../../shared/components/PetDetail';
-import ConditionsList from '../../shared/components/ConditionsList';
-import useGetOnePet from '../../shared/hooks/useGetOnePet';
-import Loading from '../../shared/components/Loading';
-import useError from '../../shared/hooks/useError';
+import Container from '~shared/components/Container';
+import CustomText from '~shared/components/CustomText';
+import Header from '~shared/components/Header';
+import { typography } from '~shared/utils/typography';
+import Button from '~shared/components/Button';
+import Separator from '~shared/components/Separator';
+import { size } from '~shared/utils/size';
+import BottomSheet from '~shared/components/BottomSheet';
+import Option from '~shared/components/Option';
+import clientServices from '~services/ClientsServices';
+import ModalCustom from '~shared/components/ModalCustom';
+import useDelete from '~shared/hooks/useDelete';
+import PetDetail from '~shared/components/PetDetail';
+import ConditionsList from '~shared/components/ConditionsList';
+import useGetOnePet from '~shared/hooks/useGetOnePet';
+import Loading from '~shared/components/Loading';
+import useError from '~shared/hooks/useError';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetDetailScreen'> {}
 

@@ -1,14 +1,14 @@
 import React, { useCallback } from 'react';
 import { FlatList, StyleSheet, View, RefreshControl } from 'react-native';
-import Container from '../../../shared/components/Container';
+import Container from '~shared/components/Container';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { AdminTabStackParamList } from '../../../navigations/types';
-import Header from '../../../shared/components/Header';
-import ItemUser from '../../../shared/adm/components/ItemUser';
-import Loading from '../../../shared/components/Loading';
-import useUsers from '../../../shared/adm/hooks/useUsers';
-import Title from '../../../shared/components/Title';
-import { User } from '../../../models/User';
+import { AdminTabStackParamList } from '~navigations/types';
+import Header from '~shared/components/Header';
+import ItemUser from '~shared/adm/components/ItemUser';
+import Loading from '~shared/components/Loading';
+import useUsers from '~shared/adm/hooks/useUsers';
+import Title from '~shared/components/Title';
+import { User } from '~models/User';
 
 interface Props extends NativeStackScreenProps<AdminTabStackParamList, 'UsersScreen'> {}
 

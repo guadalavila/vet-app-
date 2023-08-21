@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { GlobalStyles } from '../../utils/styles';
-import FormInput from '../../components/FormInput';
-import Button from '../../components/Button';
-import useForm from '../../hooks/useForm';
-import { colors } from '../../utils/colors';
-import { typography } from '../../utils/typography';
-import { size } from '../../utils/size';
-import { Veterinary } from '../../../models/Veterinary';
+import { GlobalStyles } from '~shared/utils/styles';
+import FormInput from '~shared/components/FormInput';
+import Button from '~shared/components/Button';
+import useForm from '~shared/hooks/useForm';
+import { colors } from '~shared/utils/colors';
+import { typography } from '~shared/utils/typography';
+import { size } from '~shared/utils/size';
+import { Veterinary } from '~models/Veterinary';
 
 interface INewVetFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;

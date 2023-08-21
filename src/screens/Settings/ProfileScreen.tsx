@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { RootStackLoginParamList } from '../../navigations/types';
-import Container from '../../shared/components/Container';
-import Header from '../../shared/components/Header';
-import useAuth from '../../shared/hooks/useAuth';
-import { colors } from '../../shared/utils/colors';
-import { size } from '../../shared/utils/size';
-import { typography } from '../../shared/utils/typography';
-import CustomText from '../../shared/components/CustomText';
-import Separator from '../../shared/components/Separator';
+import { RootStackLoginParamList } from '~navigations/types';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import useAuth from '~shared/hooks/useAuth';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
+import { typography } from '~shared/utils/typography';
+import CustomText from '~shared/components/CustomText';
+import Separator from '~shared/components/Separator';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { GlobalStyles } from '../../shared/utils/styles';
-import ItemProfile from '../../shared/components/ItemProfile';
+import { GlobalStyles } from '~shared/utils/styles';
+import ItemProfile from '~shared/components/ItemProfile';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ProfileScreen'> {}
 

@@ -1,19 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { RootStackLogoutParamList } from '../../navigations/types';
+import { RootStackLogoutParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Container from '../../shared/components/Container';
-import CustomText from '../../shared/components/CustomText';
-import { size } from '../../shared/utils/size';
-import { typography } from '../../shared/utils/typography';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import Container from '~shared/components/Container';
+import CustomText from '~shared/components/CustomText';
+import { size } from '~shared/utils/size';
+import { typography } from '~shared/utils/typography';
+import { ThemeContext } from '~contexts/ThemeContext';
 import Carousel from 'react-native-reanimated-carousel';
 import { useSharedValue } from 'react-native-reanimated';
-import { SliderOnBoarding } from '../../mock/onBoarding';
-import Pagination from '../../shared/components/Pagination';
-import Slide from '../../shared/components/Slide';
-import { setData } from '../../shared/utils/storage/asyncStorage';
-import { STORAGE_KEYS } from '../../shared/utils/storage/keys';
+import { SliderOnBoarding } from '~mock/onBoarding';
+import Pagination from '~shared/components/Pagination';
+import Slide from '~shared/components/Slide';
+import { setData } from '~shared/utils/storage/asyncStorage';
+import { STORAGE_KEYS } from '~shared/utils/storage/keys';
+import { logEvent } from '~shared/utils/firebase/analytics';
+import { EVENTS } from '~shared/utils/firebase/events';
 interface Props extends NativeStackScreenProps<RootStackLogoutParamList, 'OnBoardingScreen'> {}
 
 const OnBoardingScreen = ({ navigation }: Props) => {
@@ -31,14 +33,20 @@ const OnBoardingScreen = ({ navigation }: Props) => {
         }
     }, []);
 
-    const dismissTutorial = () => {
+    const dismissTutorial = (skip?: boolean) => {
+        logEvent(skip ? EVENTS.on_boarding_skip : EVENTS.on_boarding_start);
         setData(STORAGE_KEYS.INIT_ROUTE, 'LoginScreen');
         isStackLogin ? navigation.replace('LoginScreen') : navigation.goBack();
     };
 
     return (
         <Container>
-            <TouchableOpacity style={styles.containerButtonSkip} activeOpacity={0.7} onPress={dismissTutorial}>
+            <TouchableOpacity
+                style={styles.containerButtonSkip}
+                activeOpacity={0.7}
+                onPress={() => {
+                    dismissTutorial(true);
+                }}>
                 <CustomText style={[styles.textSkip, { color: themeApp.colors.blue }]}>Saltar</CustomText>
             </TouchableOpacity>
             <View style={styles.containerCarrousel}>

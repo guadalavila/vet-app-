@@ -1,7 +1,7 @@
-import { NewVeterinary, Veterinary } from '../models/Veterinary';
-import { API_PATHS } from '../shared/utils/apiPaths';
-import networkManager from '../shared/utils/axios/NetworkManager';
-import { logCrash } from '../shared/utils/firebase/crashlytics';
+import { NewVeterinary, Veterinary } from '~models/Veterinary';
+import { API_PATHS } from '~shared/utils/apiPaths';
+import networkManager from '~shared/utils/axios/NetworkManager';
+import { logCrash } from '~shared/utils/firebase/crashlytics';
 
 class VetsServices {
     constructor() {}
