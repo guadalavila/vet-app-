@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { size } from '../utils/size';
-import { GlobalStyles } from '../utils/styles';
+import { ThemeContext } from '~contexts/ThemeContext';
+import { size } from '~shared/utils/size';
+import { GlobalStyles } from '~shared/utils/styles';
 
 interface ICardProps {
     children: React.ReactNode;

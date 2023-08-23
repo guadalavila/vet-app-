@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { GlobalStyles } from '../utils/styles';
+import { GlobalStyles } from '~shared/utils/styles';
 import useForm from '../hooks/useForm';
 import FormInput from './FormInput';
 import ItemDate from './ItemDate';
 import Button from './Button';
 import Dropdown from './Dropdown';
 import Separator from './Separator';
-import { VACCINES_PET } from '../utils/const/vaccine';
-import { size } from '../utils/size';
-import { colors } from '../utils/colors';
-import { typography } from '../utils/typography';
-import { Vaccine } from '../../models/Vaccine';
+import { VACCINES_PET } from '~shared/utils/const/vaccine';
+import { size } from '~shared/utils/size';
+import { colors } from '~shared/utils/colors';
+import { typography } from '~shared/utils/typography';
+import { Vaccine } from '~models/Vaccine';
 
 interface INewVaccineFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;

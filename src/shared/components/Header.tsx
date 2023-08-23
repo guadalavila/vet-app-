@@ -1,10 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useContext } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { typography } from '../utils/typography';
+import { ThemeContext } from '~contexts/ThemeContext';
+import { typography } from '~shared/utils/typography';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { colors } from '../utils/colors';
+import { colors } from '~shared/utils/colors';
 import CustomText from './CustomText';
 
 interface IHeaderProps {

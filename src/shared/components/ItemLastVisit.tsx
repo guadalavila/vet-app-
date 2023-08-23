@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { typography } from '../utils/typography';
-import { size } from '../utils/size';
+import { typography } from '~shared/utils/typography';
+import { size } from '~shared/utils/size';
 import CustomText from './CustomText';
-import { GlobalStyles } from '../utils/styles';
-import { colors } from '../utils/colors';
+import { GlobalStyles } from '~shared/utils/styles';
+import { colors } from '~shared/utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { LastVisit } from '../../models/Visit';
-import { getSpeciePet } from '../utils/helpers';
+import { LastVisit } from '~models/Visit';
+import { getSpeciePet } from '~shared/utils/helpers';
 
 interface IItemLastVisitProps {
     lastVisit: LastVisit;

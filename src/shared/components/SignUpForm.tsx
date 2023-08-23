@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import useForm from '../hooks/useForm';
-import { GlobalStyles } from '../utils/styles';
+import { GlobalStyles } from '~shared/utils/styles';
 import FormInput from './FormInput';
-import { colors } from '../utils/colors';
-import { typography } from '../utils/typography';
-import { size } from '../utils/size';
+import { colors } from '~shared/utils/colors';
+import { typography } from '~shared/utils/typography';
+import { size } from '~shared/utils/size';
 import Button from './Button';
 
 interface ISignUpFormProps {

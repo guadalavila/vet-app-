@@ -2,9 +2,9 @@ import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import CustomText from './CustomText';
 import Button from './Button';
-import { typography } from '../utils/typography';
-import { size } from '../utils/size';
-import { Slider } from '../../mock/onBoarding';
+import { typography } from '~shared/utils/typography';
+import { size } from '~shared/utils/size';
+import { Slider } from '~mock/onBoarding';
 
 interface ISlideProps {
     item: Slider;

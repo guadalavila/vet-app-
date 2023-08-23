@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { typography } from '../utils/typography';
-import { size } from '../utils/size';
+import { typography } from '~shared/utils/typography';
+import { size } from '~shared/utils/size';
 import CustomText from './CustomText';
 
 interface ITitleProps {

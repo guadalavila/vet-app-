@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface IContainerProps {
     children: React.ReactNode;

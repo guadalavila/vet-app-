@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { TextInput, StyleSheet, View, KeyboardType, Platform } from 'react-native';
-import { size } from '../utils/size';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { size } from '~shared/utils/size';
+import { ThemeContext } from '~contexts/ThemeContext';
 import CustomText from './CustomText';
-import { typography } from '../utils/typography';
-import { colors } from '../utils/colors';
+import { typography } from '~shared/utils/typography';
+import { colors } from '~shared/utils/colors';
 
 interface IFormInputProps {
     value: string;

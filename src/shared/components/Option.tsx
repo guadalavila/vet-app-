@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { size } from '../utils/size';
+import { size } from '~shared/utils/size';
 import CustomText from './CustomText';
-import { colors } from '../utils/colors';
+import { colors } from '~shared/utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface IOptionProps {

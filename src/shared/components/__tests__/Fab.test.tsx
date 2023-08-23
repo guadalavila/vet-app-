@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import React from 'react';
 import Fab from '../Fab';
-import { colors } from '../../utils/colors';
+import { colors } from '~shared/utils/colors';
 
 describe('Fab', () => {
     const onPressMock = jest.fn();

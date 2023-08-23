@@ -11,7 +11,7 @@ exports[`Loading should match snapshot 1`] = `
   testID="container"
 >
   <ActivityIndicator
-    color="#917FB3"
+    color="#A765C1"
     size="large"
     testID="loading"
   />

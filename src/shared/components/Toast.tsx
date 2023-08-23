@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import CustomText from './CustomText';
-import { colors } from '../utils/colors';
+import { colors } from '~shared/utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { size } from '../utils/size';
-import { GlobalStyles } from '../utils/styles';
-import { typography } from '../utils/typography';
+import { size } from '~shared/utils/size';
+import { GlobalStyles } from '~shared/utils/styles';
+import { typography } from '~shared/utils/typography';
 
 interface IToastProps {
     type: 'success' | 'warning' | 'error' | 'default';

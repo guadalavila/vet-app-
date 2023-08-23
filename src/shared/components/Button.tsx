@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 import CustomText from './CustomText';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
-import { typography } from '../utils/typography';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { size } from '~shared/utils/size';
+import { typography } from '~shared/utils/typography';
+import { colors } from '~shared/utils/colors';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface IButtonProps {
     title: string;

@@ -5,11 +5,11 @@ import useForm from '../hooks/useForm';
 import Button from './Button';
 
 import ItemDate from './ItemDate';
-import { GlobalStyles } from '../utils/styles';
-import { colors } from '../utils/colors';
-import { typography } from '../utils/typography';
-import { size } from '../utils/size';
-import { Visit } from '../../models/Visit';
+import { GlobalStyles } from '~shared/utils/styles';
+import { colors } from '~shared/utils/colors';
+import { typography } from '~shared/utils/typography';
+import { size } from '~shared/utils/size';
+import { Visit } from '~models/Visit';
 
 interface INewVisitFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;

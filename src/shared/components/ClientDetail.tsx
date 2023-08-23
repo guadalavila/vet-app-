@@ -2,12 +2,12 @@ import React from 'react';
 import { Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Card from './Card';
 import CustomText from './CustomText';
-import { Client } from '../../models/Client';
+import { Client } from '~models/Client';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { size } from '../utils/size';
-import { typography } from '../utils/typography';
-import { colors } from '../utils/colors';
-import { GlobalStyles } from '../utils/styles';
+import { size } from '~shared/utils/size';
+import { typography } from '~shared/utils/typography';
+import { colors } from '~shared/utils/colors';
+import { GlobalStyles } from '~shared/utils/styles';
 
 interface IClientDetailProps {
     client: Client;

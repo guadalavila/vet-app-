@@ -14,7 +14,7 @@ exports[`Button should match snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#917FB3",
+      "backgroundColor": "#A765C1",
       "borderRadius": 10,
       "marginHorizontal": 14,
       "marginVertical": 10,
@@ -36,6 +36,9 @@ exports[`Button should match snapshot 1`] = `
             "fontSize": 16,
             "fontWeight": "700",
             "textAlign": "center",
+          },
+          Object {
+            "color": "#F1F1F1",
           },
         ],
       ]

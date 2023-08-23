@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Switch, View } from 'react-native';
-import { typography } from '../utils/typography';
+import { typography } from '~shared/utils/typography';
 import CustomText from './CustomText';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
 
 interface ISelectProps {
     title: string;

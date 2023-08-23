@@ -10,7 +10,7 @@ exports[`Badge should match snapshot 1`] = `
         "padding": 6,
       },
       Object {
-        "backgroundColor": "#917FB3",
+        "backgroundColor": "#A765C1",
       },
     ]
   }

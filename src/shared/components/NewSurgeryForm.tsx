@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { GlobalStyles } from '../utils/styles';
+import { GlobalStyles } from '~shared/utils/styles';
 import useForm from '../hooks/useForm';
 import FormInput from './FormInput';
 import ItemDate from './ItemDate';
 import Button from './Button';
-import { Surgery } from '../../models/Surgery';
+import { Surgery } from '~models/Surgery';
 
 interface INewSurgeryFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;

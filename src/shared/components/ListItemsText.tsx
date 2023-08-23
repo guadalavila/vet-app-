@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { size } from '../utils/size';
-import { colors } from '../utils/colors';
+import { size } from '~shared/utils/size';
+import { colors } from '~shared/utils/colors';
 import CustomText from './CustomText';
-import { ItemList } from '../../models/ItemList';
+import { ItemList } from '~models/ItemList';
 import Icon from './Icon';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface IListItemsTextProps {
     placeholder: string;

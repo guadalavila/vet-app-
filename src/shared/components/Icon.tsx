@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons';
-import { colors } from '../utils/colors';
+import { colors } from '~shared/utils/colors';
 
 interface IIconProps {
     name: string;

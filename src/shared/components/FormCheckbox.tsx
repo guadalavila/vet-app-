@@ -2,8 +2,8 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import CustomText from './CustomText';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
 
 interface IFormCheckboxProps {
     label: string;

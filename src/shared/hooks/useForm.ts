@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { validateEmail } from '../utils/validations';
+import { validateEmail } from '~shared/utils/validations';
 
 interface IFormFields {
     [fieldName: string]: any;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
-import { colors } from '../utils/colors';
-import { GlobalStyles } from '../utils/styles';
+import { colors } from '~shared/utils/colors';
+import { GlobalStyles } from '~shared/utils/styles';
 
 interface ILoadingProps {
     message?: string;

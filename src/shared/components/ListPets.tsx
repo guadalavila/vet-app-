@@ -2,8 +2,8 @@ import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import Title from './Title';
 import ItemPetList from './ItemPetList';
-import { size } from '../utils/size';
-import { Pet } from '../../models/Pet';
+import { size } from '~shared/utils/size';
+import { Pet } from '~models/Pet';
 
 interface IListPetsProps {
     pets: Pet[];

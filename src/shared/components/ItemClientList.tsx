@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
-import { Client } from '../../models/Client';
-import { typography } from '../utils/typography';
-import { GlobalStyles } from '../utils/styles';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
+import { Client } from '~models/Client';
+import { typography } from '~shared/utils/typography';
+import { GlobalStyles } from '~shared/utils/styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomText from './CustomText';
 

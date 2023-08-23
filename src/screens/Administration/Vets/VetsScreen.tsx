@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
 import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
-import Container from '../../../shared/components/Container';
+import Container from '~shared/components/Container';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { AdminTabStackParamList } from '../../../navigations/types';
-import Header from '../../../shared/components/Header';
-import ItemVet from '../../../shared/adm/components/ItemVet';
-import Loading from '../../../shared/components/Loading';
-import useVets from '../../../shared/adm/hooks/useVets';
-import Title from '../../../shared/components/Title';
-import Fab from '../../../shared/components/Fab';
-import { Veterinary } from '../../../models/Veterinary';
+import { AdminTabStackParamList } from '~navigations/types';
+import Header from '~shared/components/Header';
+import ItemVet from '~shared/adm/components/ItemVet';
+import Loading from '~shared/components/Loading';
+import useVets from '~shared/adm/hooks/useVets';
+import Title from '~shared/components/Title';
+import Fab from '~shared/components/Fab';
+import { Veterinary } from '~models/Veterinary';
 
 interface Props extends NativeStackScreenProps<AdminTabStackParamList, 'VetsScreen'> {}
 

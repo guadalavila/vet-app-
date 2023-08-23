@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Vaccine } from '../../models/Vaccine';
+import { Vaccine } from '~models/Vaccine';
 import CustomText from './CustomText';
-import { size } from '../utils/size';
-import { typography } from '../utils/typography';
-import { colors } from '../utils/colors';
-import { GlobalStyles } from '../utils/styles';
+import { size } from '~shared/utils/size';
+import { typography } from '~shared/utils/typography';
+import { colors } from '~shared/utils/colors';
+import { GlobalStyles } from '~shared/utils/styles';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface IItemVaccineProps {
     vaccine: Vaccine;

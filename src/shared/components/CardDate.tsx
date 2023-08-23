@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import CustomText from './CustomText';
-import { formatDate } from '../utils/date';
-import { size } from '../utils/size';
-import { colors } from '../utils/colors';
+import { formatDate } from '~shared/utils/date';
+import { size } from '~shared/utils/size';
+import { colors } from '~shared/utils/colors';
 
 interface ICardDateProps {
     label: string;

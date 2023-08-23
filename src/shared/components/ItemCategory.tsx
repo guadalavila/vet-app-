@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
-import { GlobalStyles } from '../utils/styles';
-import { typography } from '../utils/typography';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
+import { GlobalStyles } from '~shared/utils/styles';
+import { typography } from '~shared/utils/typography';
 
 interface IItemCategoryProps {
     title: string;

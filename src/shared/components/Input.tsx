@@ -1,8 +1,8 @@
 import React from 'react';
 import { Platform, StyleSheet, TextInput } from 'react-native';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
-import { typography } from '../utils/typography';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
+import { typography } from '~shared/utils/typography';
 
 interface IInputProps {
     placeholder: string;

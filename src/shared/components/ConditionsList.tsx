@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Title from './Title';
 import Badge from './Badge';
-import { getRandomColor } from '../utils/helpers';
-import { size } from '../utils/size';
-import { PathologiesContext } from '../../contexts/PathologiesContext';
+import { getRandomColor } from '~shared/utils/helpers';
+import { size } from '~shared/utils/size';
+import { PathologiesContext } from '~contexts/PathologiesContext';
 
 interface IConditionsListProps {
     conditions: string[];

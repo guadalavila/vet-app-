@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { AdminTabStackParamList } from '../../../navigations/types';
+import { AdminTabStackParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Container from '../../../shared/components/Container';
-import Header from '../../../shared/components/Header';
-import Loading from '../../../shared/components/Loading';
-import useGetVetDetail from '../../../shared/adm/hooks/useGetVetDetail';
+import Container from '~shared/components/Container';
+import Header from '~shared/components/Header';
+import Loading from '~shared/components/Loading';
+import useGetVetDetail from '~shared/adm/hooks/useGetVetDetail';
 
 interface Props extends NativeStackScreenProps<AdminTabStackParamList, 'VetDetailScreen'> {}
 

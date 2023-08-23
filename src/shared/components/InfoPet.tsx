@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { GlobalStyles } from '../utils/styles';
+import { GlobalStyles } from '~shared/utils/styles';
 import CustomText from './CustomText';
-import { size } from '../utils/size';
-import { typography } from '../utils/typography';
+import { size } from '~shared/utils/size';
+import { typography } from '~shared/utils/typography';
 
 interface IInfoPetProps {
     label: string;

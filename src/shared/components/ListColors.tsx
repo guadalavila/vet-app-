@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { COLOR_PET, ColorType } from '../utils/constants';
-import { size } from '../utils/size';
-import { colors } from '../utils/colors';
+import { COLOR_PET, ColorType } from '~shared/utils/constants';
+import { size } from '~shared/utils/size';
+import { colors } from '~shared/utils/colors';
 import CustomText from './CustomText';
 import Icon from 'react-native-vector-icons/Ionicons';
 

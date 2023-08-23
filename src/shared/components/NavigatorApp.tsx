@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
-import { StackNavigatorAdmin, StackNavigatorLogIn, StackNavigatorLogOut } from '../../navigations/StackNavigator';
-import { AuthContext } from '../../contexts/AuthContext';
+import { StackNavigatorAdmin, StackNavigatorLogIn, StackNavigatorLogOut } from '~navigations/StackNavigator';
+import { AuthContext } from '~contexts/AuthContext';
 import Toast from './Toast';
 import useAuth from '../hooks/useAuth';
-import { logScreenView } from '../utils/firebase/analytics';
+import { logScreenView } from '~shared/utils/firebase/analytics';
 import useError from '../hooks/useError';
 
 const NavigatorApp = () => {

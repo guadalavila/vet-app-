@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
 
 interface IFormPasswordInputProps {
     value: string;

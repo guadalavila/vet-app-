@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
-import { typography } from '../utils/typography';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
+import { typography } from '~shared/utils/typography';
 import CustomText from './CustomText';
-import { GlobalStyles } from '../utils/styles';
-import { Visit } from '../../models/Visit';
+import { GlobalStyles } from '~shared/utils/styles';
+import { Visit } from '~models/Visit';
 import CardValue from './CardValue';
 import Separator from './Separator';
 

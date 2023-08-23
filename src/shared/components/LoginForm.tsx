@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
-import { colors } from '../utils/colors';
+import { colors } from '~shared/utils/colors';
 import Button from './Button';
-import { GlobalStyles } from '../utils/styles';
-import { typography } from '../utils/typography';
-import { size } from '../utils/size';
+import { GlobalStyles } from '~shared/utils/styles';
+import { typography } from '~shared/utils/typography';
+import { size } from '~shared/utils/size';
 
 interface ILoginFormProps {
     onSubmit: (fields: { [fieldName: string]: string }) => void;

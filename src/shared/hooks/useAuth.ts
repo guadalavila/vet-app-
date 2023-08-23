@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { AuthContext } from '~contexts/AuthContext';
 import authServices from '~services/AuthServices';
-import { getData, removeMultiple, setData, setMultiData } from '../utils/storage/asyncStorage';
-import { STORAGE_KEYS } from '../utils/storage/keys';
-import { resetUserProperties, setUserProperties } from '../utils/firebase/analytics';
+import { getData, removeMultiple, setData, setMultiData } from '~shared/utils/storage/asyncStorage';
+import { STORAGE_KEYS } from '~shared/utils/storage/keys';
+import { resetUserProperties, setUserProperties } from '~shared/utils/firebase/analytics';
 import { NewUser, UserResponse } from '~models/User';
 import useError from './useError';
 

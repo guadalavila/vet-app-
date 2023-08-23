@@ -2,17 +2,17 @@ import React, { ReactNode, useState } from 'react';
 import { User } from '~models/User';
 
 export const AuthContext = React.createContext<{
-    isAuth: boolean;
-    setIsAuth: React.Dispatch<boolean>;
-    isLoading: boolean;
-    setIsLoading: React.Dispatch<boolean>;
-    user: User | undefined;
-    setUser: React.Dispatch<User>;
-    token: string | undefined;
-    setToken: React.Dispatch<string>;
-    logOut: React.Dispatch<void>;
-    initRoute: 'LoginScreen' | 'OnBoardingScreen';
-    setInitRoute: React.Dispatch<'LoginScreen' | 'OnBoardingScreen'>;
+    isAuth: boolean,
+    setIsAuth: React.Dispatch<boolean>,
+    isLoading: boolean,
+    setIsLoading: React.Dispatch<boolean>,
+    user: User | undefined,
+    setUser: React.Dispatch<User>,
+    token: string | undefined,
+    setToken: React.Dispatch<string>,
+    logOut: React.Dispatch<void>,
+    initRoute: 'LoginScreen' | 'OnBoardingScreen',
+    setInitRoute: React.Dispatch<'LoginScreen' | 'OnBoardingScreen'>,
 }>({
     isAuth: false,
     setIsAuth: () => {},

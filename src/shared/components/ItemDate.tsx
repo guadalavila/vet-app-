@@ -2,13 +2,13 @@ import React, { useContext, useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import CustomText from './CustomText';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
-import { GlobalStyles } from '../utils/styles';
-import { formatDateCalendar, getFirstDayOfMonth, getPreviousDay } from '../utils/date';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
+import { GlobalStyles } from '~shared/utils/styles';
+import { formatDateCalendar, getFirstDayOfMonth, getPreviousDay } from '~shared/utils/date';
 import CardDate from './CardDate';
 import DatePicker from 'react-native-date-picker';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface IItemDateProps {
     onChangeValue: (value: Date) => void;

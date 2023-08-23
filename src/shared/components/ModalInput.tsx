@@ -2,10 +2,10 @@ import { StyleSheet, TouchableOpacity, View, TextInput, ActivityIndicator } from
 import React, { useContext, useState } from 'react';
 import Overlay from './Overlay';
 import CustomText from './CustomText';
-import { colors } from '../utils/colors';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { size } from '../utils/size';
-import { typography } from '../utils/typography';
+import { colors } from '~shared/utils/colors';
+import { ThemeContext } from '~contexts/ThemeContext';
+import { size } from '~shared/utils/size';
+import { typography } from '~shared/utils/typography';
 
 interface ModalInputProps {
     title: string;

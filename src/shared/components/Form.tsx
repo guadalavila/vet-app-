@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import FormInput from './FormInput';
 import FormPasswordInput from './FormPasswordInput';
 import FormCheckbox from './FormCheckbox';
-import useForm from '../hooks/useForm';
 import Button from './Button';
-import { colors } from '../utils/colors';
+import { colors } from '~shared/utils/colors';
+import useForm from '~shared/hooks/useForm';
 
 interface IFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 //@ts-ignore
 import BottomSheetApp from 'react-native-gesture-bottom-sheet';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface IBottomSheetProps {
     refBottomSheet: React.MutableRefObject<undefined>;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { colors } from '../utils/colors';
+import { colors } from '~shared/utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface IFabProps {

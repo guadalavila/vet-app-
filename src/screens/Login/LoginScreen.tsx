@@ -8,7 +8,6 @@ import Loading from '~shared/components/Loading';
 import Button from '~shared/components/Button';
 import { Image, StyleSheet } from 'react-native';
 import { logEvent } from '~shared/utils/firebase/analytics';
-import { EVENTS } from '~shared/utils/firebase/events';
 
 interface Props extends NativeStackScreenProps<RootStackLogoutParamList, 'LoginScreen'> {}
 
@@ -29,7 +28,7 @@ const LoginScreen = ({ navigation }: Props) => {
                         outlined
                         title='¿No tenes cuenta? Registrate'
                         onPress={() => {
-                            logEvent(EVENTS.signUp);
+                            // logEvent(EVENTS.signUp);
                             navigation.navigate('SignUpScreen');
                         }}
                     />

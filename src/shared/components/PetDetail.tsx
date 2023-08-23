@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Pet } from '../../models/Pet';
-import { GlobalStyles } from '../utils/styles';
+import { Pet } from '~models/Pet';
+import { GlobalStyles } from '~shared/utils/styles';
 import CardValue from './CardValue';
-import { getCodeColor, getPetGender, getPetSize, getSpeciePet } from '../utils/helpers';
+import { getCodeColor, getPetGender, getPetSize, getSpeciePet } from '~shared/utils/helpers';
 import CardCustom from './CardCustom';
 import ItemColor from './ItemColor';
-import Icon from '../../shared/components/Icon';
+import Icon from './Icon';
 
 interface IPetDetailProps {
     pet: Pet;

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react-native';
 import React from 'react';
 import Slide from '../Slide';
-import { SliderOnBoarding } from '../../../mock/onBoarding';
+import { SliderOnBoarding } from '~mock/onBoarding';
 
 describe('Slide', () => {
     const onPressMock = jest.fn();

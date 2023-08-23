@@ -4,9 +4,9 @@ import { typography } from '~shared/utils/typography';
 import { ThemeType } from './types/themeType';
 
 export const ThemeContext = React.createContext<{
-    theme: 'dark' | 'light';
-    setTheme: React.Dispatch<void>;
-    themeApp: ThemeType;
+    theme: 'dark' | 'light',
+    setTheme: React.Dispatch<void>,
+    themeApp: ThemeType,
 }>({
     theme: 'dark',
     setTheme: () => {},

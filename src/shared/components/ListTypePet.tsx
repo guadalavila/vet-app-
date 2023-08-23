@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import CustomText from './CustomText';
-import { colors } from '../utils/colors';
-import { PetType, TYPE_PET } from '../utils/constants';
-import { size } from '../utils/size';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { GlobalStyles } from '../utils/styles';
+import { colors } from '~shared/utils/colors';
+import { PetType, TYPE_PET } from '~shared/utils/constants';
+import { size } from '~shared/utils/size';
+import { ThemeContext } from '~contexts/ThemeContext';
+import { GlobalStyles } from '~shared/utils/styles';
 
 interface IListTypePetProps {
     selected: PetType;

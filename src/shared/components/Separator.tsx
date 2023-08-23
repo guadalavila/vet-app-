@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { size } from '../utils/size';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { size } from '~shared/utils/size';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface ISeparatorProps {
     color?: string;

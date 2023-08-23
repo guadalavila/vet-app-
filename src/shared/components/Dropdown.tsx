@@ -2,9 +2,9 @@ import React, { Dispatch, useContext, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { ItemType } from 'react-native-dropdown-picker';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { size } from '../utils/size';
-import { colors } from '../utils/colors';
+import { ThemeContext } from '~contexts/ThemeContext';
+import { size } from '~shared/utils/size';
+import { colors } from '~shared/utils/colors';
 
 type SetStateCallback<S> = (prevState: S) => S;
 

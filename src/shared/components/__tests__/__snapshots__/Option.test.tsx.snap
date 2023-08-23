@@ -14,7 +14,7 @@ exports[`Option should match snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "borderBottomColor": "#A765C1",
+      "borderBottomColor": "#616161",
       "borderBottomWidth": 1,
       "flexDirection": "row",
       "marginHorizontal": 14,

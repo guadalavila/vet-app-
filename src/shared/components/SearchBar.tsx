@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Button, Keyboard, KeyboardType, StyleSheet, TextInput, View } from 'react-native';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { typography } from '../utils/typography';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { typography } from '~shared/utils/typography';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface ISearchBarProps {
     value: string;

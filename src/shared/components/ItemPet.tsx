@@ -1,12 +1,12 @@
 import React from 'react';
 import { Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { Pet } from '../../models/Pet';
-import { typography } from '../utils/typography';
-import { size } from '../utils/size';
+import { Pet } from '~models/Pet';
+import { typography } from '~shared/utils/typography';
+import { size } from '~shared/utils/size';
 import CustomText from './CustomText';
-import { TYPE_PET } from '../utils/constants';
-import { colors } from '../utils/colors';
-import { GlobalStyles } from '../utils/styles';
+import { TYPE_PET } from '~shared/utils/constants';
+import { colors } from '~shared/utils/colors';
+import { GlobalStyles } from '~shared/utils/styles';
 
 interface IItemPetProps {
     pet: Pet;

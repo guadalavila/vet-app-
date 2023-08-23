@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { StyleProp, StyleSheet, Text as TextRN, TextStyle } from 'react-native';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface ICustomTextProps {
     children: React.ReactNode;

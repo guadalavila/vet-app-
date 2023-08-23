@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import CustomText from './CustomText';
-import { typography } from '../utils/typography';
-import { colors } from '../utils/colors';
-import { GlobalStyles } from '../utils/styles';
+import { typography } from '~shared/utils/typography';
+import { colors } from '~shared/utils/colors';
+import { GlobalStyles } from '~shared/utils/styles';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { size } from '../utils/size';
+import { size } from '~shared/utils/size';
 
 interface INoDataProps {
     title: string;

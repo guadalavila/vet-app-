@@ -1,9 +1,9 @@
 import React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
-import { size } from '../utils/size';
+import { size } from '~shared/utils/size';
 import Title from './Title';
 import PieChart from 'react-native-pie-chart';
-import { GlobalStyles } from '../utils/styles';
+import { GlobalStyles } from '~shared/utils/styles';
 import CustomText from './CustomText';
 const screenWidth = Dimensions.get('window').width;
 const widthAndHeight = screenWidth * 0.6;

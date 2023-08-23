@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { View, TouchableOpacity, StyleSheet, SafeAreaView, Platform } from 'react-native';
-import { colors } from '../utils/colors';
+import { colors } from '~shared/utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { getIconByRoute } from '../utils/routes';
-import { size } from '../utils/size';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { getIconByRoute } from '~shared/utils/routes';
+import { size } from '~shared/utils/size';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 const CustomTabBar = ({ state, navigation, descriptors }: any) => {
     const { themeApp } = useContext(ThemeContext);

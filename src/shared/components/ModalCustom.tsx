@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Overlay from './Overlay';
 import CustomText from './CustomText';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
-import { typography } from '../utils/typography';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
+import { typography } from '~shared/utils/typography';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface IModalCustomProps {
     title: string;

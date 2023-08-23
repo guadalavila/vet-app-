@@ -1,7 +1,7 @@
 import React from 'react';
 import NoData from '../NoData';
 import { render, screen } from '@testing-library/react-native';
-import { colors } from '../../utils/colors';
+import { colors } from '~shared/utils/colors';
 
 describe('NoData', () => {
     test('should match snapshot', () => {

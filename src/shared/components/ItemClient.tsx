@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import CustomText from './CustomText';
-import { Client } from '../../models/Client';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { Client } from '~models/Client';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 interface IItemClientProps {
     client: Client;

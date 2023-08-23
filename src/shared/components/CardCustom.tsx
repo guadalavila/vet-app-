@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { colors } from '../utils/colors';
-import { size } from '../utils/size';
-import { GlobalStyles } from '../utils/styles';
+import { colors } from '~shared/utils/colors';
+import { size } from '~shared/utils/size';
+import { GlobalStyles } from '~shared/utils/styles';
 import CustomText from './CustomText';
-import { typography } from '../utils/typography';
+import { typography } from '~shared/utils/typography';
 
 interface ICardCustomProps {
     title: string;

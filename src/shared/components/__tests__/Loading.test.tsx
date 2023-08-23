@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react-native';
 import React from 'react';
 import Loading from '../Loading';
-import { colors } from '../../utils/colors';
+import { colors } from '~shared/utils/colors';
 
 describe('Loading', () => {
     test('should match snapshot', () => {

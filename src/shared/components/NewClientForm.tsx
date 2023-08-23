@@ -3,10 +3,10 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import FormInput from './FormInput';
 import useForm from '../hooks/useForm';
 import Button from './Button';
-import { colors } from '../utils/colors';
-import { GlobalStyles } from '../utils/styles';
-import { typography } from '../utils/typography';
-import { size } from '../utils/size';
+import { colors } from '~shared/utils/colors';
+import { GlobalStyles } from '~shared/utils/styles';
+import { typography } from '~shared/utils/typography';
+import { size } from '~shared/utils/size';
 
 interface INewClientFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date }) => void;
