@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
-import { PathologiesContext } from '../../contexts/PathologiesContext';
-import pathologiesServices from '../../services/PathologiesServices';
+import { PathologiesContext } from '~contexts/PathologiesContext';
+import pathologiesServices from '~services/PathologiesServices';
 import useAuth from './useAuth';
-import { NewPathology } from '../../models/Pathology';
+import { NewPathology } from '~models/Pathology';
 import useError from './useError';
 
 const usePathologies = () => {

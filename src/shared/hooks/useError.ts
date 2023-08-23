@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { ErrorContext } from '../../contexts/ErrorContext';
-import { ErrorCustom } from '../../models/ErrorCustom';
+import { ErrorContext } from '~contexts/ErrorContext';
+import { ErrorCustom } from '~models/ErrorCustom';
 
 const useError = () => {
     const { error, setError, removeError } = useContext(ErrorContext);

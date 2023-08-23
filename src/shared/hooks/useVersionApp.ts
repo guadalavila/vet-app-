@@ -1,5 +1,5 @@
 import Config from 'react-native-config';
-import VersionApp from '../../native-modules/version-app';
+import VersionApp from '~native-modules/version-app';
 import { Platform } from 'react-native';
 
 const useVersionApp = () => {

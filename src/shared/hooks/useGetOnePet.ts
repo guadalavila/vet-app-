@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import petsServices from '../../services/PetsServices';
-import { Pet } from '../../models/Pet';
+import petsServices from '~services/PetsServices';
+import { Pet } from '~models/Pet';
 import useError from './useError';
 
 const useGetOnePet = (id: string, getDetail: boolean) => {

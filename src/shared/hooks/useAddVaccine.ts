@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import vaccineServices from '../../services/VaccineServices';
-import { NewVaccine, Vaccine } from '../../models/Vaccine';
+import vaccineServices from '~services/VaccineServices';
+import { NewVaccine, Vaccine } from '~models/Vaccine';
 import useError from './useError';
 
 const useAddVaccine = () => {

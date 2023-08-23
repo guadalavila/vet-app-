@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { LastVisit } from '../../models/Visit';
-import visitsServices from '../../services/VisitsServices';
+import { LastVisit } from '~models/Visit';
+import visitsServices from '~services/VisitsServices';
 import useAuth from './useAuth';
 import useError from './useError';
 

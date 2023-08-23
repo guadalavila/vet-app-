@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { NewPet, Pet } from '../../models/Pet';
-import petsServices from '../../services/PetsServices';
+import { NewPet, Pet } from '~models/Pet';
+import petsServices from '~services/PetsServices';
 import useError from './useError';
 
 const useAddPet = () => {

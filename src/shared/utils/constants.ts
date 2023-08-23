@@ -1,4 +1,4 @@
-import { ItemList } from '../../models/ItemList';
+import { ItemList } from '~models/ItemList';
 
 export const GENDER: ItemList[] = [
     { label: 'Macho', value: 'male', code: '', icon: { name: 'gender-male', type: 'MaterialCommunityIcons' } },
@@ -7,9 +7,9 @@ export const GENDER: ItemList[] = [
 ];
 
 export type PetType = {
-    label: string;
-    value: string;
-    image: any;
+    label: string,
+    value: string,
+    image: any,
 };
 
 export const TYPE_PET: PetType[] = [
@@ -31,9 +31,9 @@ export const SIZE_PET = [
 ];
 
 export type ColorType = {
-    label: string;
-    value: string;
-    code: string;
+    label: string,
+    value: string,
+    code: string,
 };
 export const COLOR_PET: ColorType[] = [
     { label: 'Blanco', value: 'Blanco', code: '#FFFFFF' },

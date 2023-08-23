@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import visitsServices from '../../services/VisitsServices';
-import { Visit } from '../../models/Visit';
+import visitsServices from '~services/VisitsServices';
+import { Visit } from '~models/Visit';
 import useError from './useError';
 
 const useVisits = (id: string) => {

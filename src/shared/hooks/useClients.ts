@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Client, ClientData } from '../../models/Client';
-import clientServices from '../../services/ClientsServices';
-import useAuth from './useAuth';
+import { Client, ClientData } from '~models/Client';
+import clientServices from '~services/ClientsServices';
 import useError from './useError';
+import useAuth from './useAuth';
 
 const useClients = () => {
     const [dataClients, setDataClients] = useState<ClientData>({

@@ -1,7 +1,7 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { instance } from './setup';
-import { STORAGE_KEYS } from '../storage/keys';
 import { getData } from '../storage/asyncStorage';
+import { STORAGE_KEYS } from '../storage/keys';
 
 class NetworkManager {
     postNoAuth<T>(url: string, data: any, params?: AxiosRequestConfig): Promise<AxiosResponse<T>> {

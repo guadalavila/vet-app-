@@ -1,6 +1,6 @@
 import analytics from '@react-native-firebase/analytics';
-import { User } from '../../../models/User';
-import { Role } from '../../../models/Role';
+import { User } from '~models/User';
+import { Role } from '~models/Role';
 
 export const logScreenView = async (currentRouteName: string) => {
     try {

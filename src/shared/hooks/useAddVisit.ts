@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import visitsServices from '../../services/VisitsServices';
-import { NewVisit, Visit } from '../../models/Visit';
+import visitsServices from '~services/VisitsServices';
+import { NewVisit, Visit } from '~models/Visit';
 import useError from './useError';
 
 const useAddVisit = () => {

@@ -1,6 +1,6 @@
 import crashlytics from '@react-native-firebase/crashlytics';
 import { Platform } from 'react-native';
-import VersionApp from '../../../native-modules/version-app';
+import VersionApp from '~native-modules/version-app';
 import Config from 'react-native-config';
 
 type AttributesCrash = {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import clientServices from '../../services/ClientsServices';
-import { Client } from '../../models/Client';
+import clientServices from '~services/ClientsServices';
+import { Client } from '~models/Client';
 import useAuth from './useAuth';
 import useError from './useError';
 

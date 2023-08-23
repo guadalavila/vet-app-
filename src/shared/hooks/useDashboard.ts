@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import dashboardServices from '../../services/DashboardServices';
-import { ItemDashboard } from '../../models/Dashboard';
-import pathologiesServices from '../../services/PathologiesServices';
+import dashboardServices from '~services/DashboardServices';
+import { ItemDashboard } from '~models/Dashboard';
+import pathologiesServices from '~services/PathologiesServices';
 import useAuth from './useAuth';
-import { PathologiesContext } from '../../contexts/PathologiesContext';
+import { PathologiesContext } from '~contexts/PathologiesContext';
 import useError from './useError';
 
 const useDashboard = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import petsServices from '../../services/PetsServices';
-import { Pet, PetData } from '../../models/Pet';
+import petsServices from '~services/PetsServices';
+import { Pet, PetData } from '~models/Pet';
 import useAuth from './useAuth';
 import useError from './useError';
 

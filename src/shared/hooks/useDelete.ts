@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import petsServices from '../../services/PetsServices';
+import petsServices from '~services/PetsServices';
 import useError from './useError';
 
 const useDelete = () => {

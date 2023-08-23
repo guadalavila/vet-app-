@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import reportServices from '../../services/ReportServices';
+import reportServices from '~services/ReportServices';
 import useAuth from './useAuth';
-import { Report } from '../../models/Report';
+import { Report } from '~models/Report';
 import useError from './useError';
 
 const useGetReport = () => {
