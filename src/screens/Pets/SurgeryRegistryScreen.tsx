@@ -9,7 +9,7 @@ import Fab from '~shared/components/Fab';
 import Loading from '~shared/components/Loading';
 import surgeryServices from '~services/SurgeryServices';
 import { Surgery } from '~models/Surgery';
-import CustomText from '~shared/components/CustomText';
+import ItemSurgery from '~shared/components/ItemSurgery';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'SurgeryRegistryScreen'> {}
 
@@ -49,7 +49,7 @@ const SurgeryRegistryScreen = ({ navigation, route }: Props) => {
                 <FlatList
                     data={surgeries}
                     keyExtractor={(item) => item._id}
-                    renderItem={({ item }) => <CustomText>sad</CustomText>}
+                    renderItem={({ item }) => <ItemSurgery surgery={item} onPress={() => {}} />}
                 />
             ) : (
                 <NoData title='No se registraron cirugías' />
