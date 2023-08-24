@@ -1,6 +1,7 @@
 import analytics from '@react-native-firebase/analytics';
 import { User } from '~models/User';
 import { Role } from '~models/Role';
+import { EventApp } from './events';
 
 export const logScreenView = async (currentRouteName: string) => {
     try {
@@ -11,28 +12,49 @@ export const logScreenView = async (currentRouteName: string) => {
     } catch (error) {}
 };
 
-export const logEvent = async (eventName: string, propertyObject: any) => {
+export const logEvent = async ({ event, ...rest }: EventApp) => {
     try {
         await analytics()
-            .logEvent(eventName, propertyObject)
+            .logEvent(event, rest)
             .catch((err) => console.error({ err }));
     } catch (error) {}
 };
 
+// export const logEvent = async (eventName: string, propertyObject: any) => {
+//     try {
+//         await analytics()
+//             .logEvent(eventName, propertyObject)
+//             .catch((err) => console.error({ err }));
+//     } catch (error) {}
+// };
+
 export const setUserProperties = async (user: User) => {
-    console.log(user);
-    // const properties = Object.fromEntries<string>(Object.entries(user));
+    const { vetId, ...rest } = user;
+    const properties = Object.fromEntries<string>(Object.entries(rest));
+    let userProperties = { ...properties };
+    if (typeof vetId === 'object') {
+        userProperties = {
+            ...userProperties,
+            vetId: vetId._id,
+        };
+    } else {
+        userProperties = {
+            ...userProperties,
+            vetId: vetId ?? '',
+        };
+    }
     try {
-        // await analytics().setUserProperties(properties);
+        await analytics().setUserProperties(userProperties);
     } catch (error) {}
 };
 
 export const resetUserProperties = async () => {
     setUserProperties({
         _id: '',
-        email: '',
         name: '',
         lastName: '',
+        dni: '',
+        email: '',
         role: Role.User,
         createdAt: '',
     });
