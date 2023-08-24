@@ -58,6 +58,8 @@ const useForm = (
             validateNewUser();
         } else if (form === 'NewVet') {
             validateVet();
+        } else if (form === 'NewSurgeryForm') {
+            validateNewSurgery();
         }
         // setErrors(formErrors);
 
@@ -293,6 +295,17 @@ const useForm = (
         } else if (!fields.city) {
             setErrors({
                 city: 'Debes ingresar la ciudad',
+            });
+        } else {
+            setErrors({});
+            onSubmit(fields);
+        }
+    };
+
+    const validateNewSurgery = () => {
+        if (!fields.description) {
+            setErrors({
+                description: 'Debes ingresar la descripción',
             });
         } else {
             setErrors({});

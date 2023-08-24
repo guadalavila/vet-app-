@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { GlobalStyles } from '~shared/utils/styles';
 import useForm from '../hooks/useForm';
 import FormInput from './FormInput';
 import ItemDate from './ItemDate';
 import Button from './Button';
 import { Surgery } from '~models/Surgery';
+import { size } from '~shared/utils/size';
+import { colors } from '~shared/utils/colors';
+import { typography } from '~shared/utils/typography';
 
 interface INewSurgeryFormProps {
     onSubmit: (fields: { [fieldName: string]: string | boolean | Date | any }) => void;
@@ -32,13 +35,16 @@ const NewSurgeryForm = ({ onSubmit, initData }: INewSurgeryFormProps) => {
                 <FormInput
                     isTextArea
                     required
-                    value={fields.name || ''}
+                    value={fields.description || ''}
                     placeholder='Descripción del procedimiento'
                     onChangeText={(value) => setFieldValue('description', value)}
                 />
+                <View style={styles.marginDefault}>
+                    {errors.description && <Text style={styles.error}>{errors.description}</Text>}
+                </View>
                 <FormInput
                     isTextArea
-                    value={fields.name || ''}
+                    value={fields.medicines || ''}
                     placeholder='Medicamentos utilizados'
                     onChangeText={(value) => setFieldValue('medicines', value)}
                 />
@@ -67,5 +73,13 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         width: '100%',
+    },
+    marginDefault: {
+        marginHorizontal: size.XXL,
+    },
+    error: {
+        color: colors.light.error,
+        fontSize: typography.size.S,
+        marginBottom: size.L,
     },
 });
