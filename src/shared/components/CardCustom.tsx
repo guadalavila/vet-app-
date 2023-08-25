@@ -15,7 +15,7 @@ interface ICardCustomProps {
 
 const CardCustom = ({ title, value, valueExtra, childExtra }: ICardCustomProps) => {
     return (
-        <View style={styles.container}>
+        <View style={styles.container} testID='cardCustom'>
             <View style={GlobalStyles.rowBetween}>
                 <CustomText style={styles.title}>{title}</CustomText>
                 {childExtra}

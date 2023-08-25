@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardCustom should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#2A2F4F",
+      "borderRadius": 10,
+      "margin": 4,
+      "padding": 8,
+      "width": "30%",
+    }
+  }
+  testID="cardCustom"
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#11100F",
+          },
+          Object {
+            "color": "#EEEEEE",
+            "fontWeight": "600",
+          },
+        ]
+      }
+    >
+      Sexo
+    </Text>
+  </View>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "marginVertical": 4,
+          },
+        ],
+      ]
+    }
+  >
+    Macho
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#11100F",
+          },
+          Object {
+            "color": "#f5f5f5",
+            "fontSize": 16,
+          },
+        ]
+      }
+    />
+  </Text>
+</View>
+`;
