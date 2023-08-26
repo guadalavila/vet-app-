@@ -19,7 +19,7 @@ const CardValue = ({ icon, title, value, valueExtra }: ICardValueProps) => {
         <View testID='cardValue' style={styles.container}>
             <View style={GlobalStyles.rowBetween}>
                 <CustomText style={styles.title}>{title}</CustomText>
-                <Icon name={icon} size={20} color={colors.light.white} />
+                <Icon testID='icon' name={icon} size={20} color={colors.light.white} />
             </View>
             <CustomText style={[styles.value]}>
                 {value}

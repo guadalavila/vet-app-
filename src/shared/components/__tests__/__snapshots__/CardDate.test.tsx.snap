@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardDate should match snapshot 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#A765C1",
+      "borderRadius": 8,
+      "marginHorizontal": 6,
+      "marginVertical": 8,
+      "opacity": 1,
+      "paddingHorizontal": 10,
+    }
+  }
+  testID="cardDate"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Object {
+          "color": "#FFFFFF",
+          "marginBottom": 6,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Hello world!
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Object {
+          "color": "#FFFFFF",
+          "fontWeight": "bold",
+          "marginBottom": 8,
+        },
+      ]
+    }
+  >
+    26/08
+  </Text>
+</View>
+`;
