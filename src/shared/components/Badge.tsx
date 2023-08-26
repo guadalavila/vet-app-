@@ -11,7 +11,9 @@ interface IBadgeProps {
 const Badge = ({ label, color = colors.light.primary }: IBadgeProps) => {
     return (
         <View testID='container-text' style={[styles.container, { backgroundColor: color }]}>
-            <CustomText style={styles.label}>{label}</CustomText>
+            <CustomText testID={label} style={styles.label}>
+                {label}
+            </CustomText>
         </View>
     );
 };

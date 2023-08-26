@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConditionList should match snapshot 1`] = `
+Array [
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Array [
+          Object {
+            "fontSize": 20,
+            "fontWeight": "600",
+            "marginLeft": 14,
+            "marginVertical": 14,
+          },
+        ],
+      ]
+    }
+  >
+    Patología/s preexistentes:
+  </Text>,
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "justifyContent": "flex-start",
+        "paddingHorizontal": 8,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "borderRadius": 12,
+            "margin": 6,
+            "padding": 6,
+          },
+          Object {
+            "backgroundColor": "#272424",
+          },
+        ]
+      }
+      testID="container-text"
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#11100F",
+            },
+            Object {
+              "color": "#11100F",
+              "fontWeight": "600",
+            },
+          ]
+        }
+        testID="Ciego"
+      >
+        Ciego
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderRadius": 12,
+            "margin": 6,
+            "padding": 6,
+          },
+          Object {
+            "backgroundColor": "#130afb",
+          },
+        ]
+      }
+      testID="container-text"
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#11100F",
+            },
+            Object {
+              "color": "#11100F",
+              "fontWeight": "600",
+            },
+          ]
+        }
+        testID="Sordo"
+      >
+        Sordo
+      </Text>
+    </View>
+  </View>,
+]
+`;
