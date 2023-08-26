@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClientDetail should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderRadius": 16,
+        "marginHorizontal": 14,
+        "paddingHorizontal": 8,
+        "paddingVertical": 10,
+      },
+      Object {
+        "elevation": 4,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.25,
+        "shadowRadius": 3.84,
+      },
+      Object {
+        "backgroundColor": "#f5f4f6",
+      },
+    ]
+  }
+  testID="ClientCard"
+>
+  <View
+    style={
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "#A765C1",
+        "borderRadius": 100,
+        "height": 100,
+        "justifyContent": "center",
+        "marginTop": 8,
+        "width": 100,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "alignSelf": "center",
+          "color": "#FFFFFF",
+          "fontSize": 48,
+        }
+      }
+    >
+      JP
+    </Text>
+  </View>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Array [
+          Object {
+            "color": "#A765C1",
+            "fontSize": 30,
+            "fontWeight": "bold",
+            "marginVertical": 14,
+            "textAlign": "center",
+          },
+        ],
+      ]
+    }
+    testID="nameAndLastName"
+  >
+    Juan
+     
+    Pérez
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Array [
+          Object {
+            "fontSize": 20,
+            "marginVertical": 8,
+            "textAlign": "center",
+          },
+        ],
+      ]
+    }
+    testID="dni"
+  >
+    DNI 
+    12345678A
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Object {
+          "marginBottom": 10,
+          "marginHorizontal": 8,
+          "textAlign": "center",
+        },
+      ]
+    }
+    testID="email"
+  >
+    juan@example.com
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Object {
+          "marginBottom": 10,
+          "marginHorizontal": 8,
+          "textAlign": "center",
+        },
+      ]
+    }
+    testID="address"
+  >
+    Calle Falsa 123
+  </Text>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignSelf": "center",
+        "flexDirection": "row",
+        "marginVertical": 10,
+        "opacity": 1,
+      }
+    }
+    testID="phone-button"
+  >
+    <MockedIoniconsIcons
+      color="#25d366"
+      name="logo-whatsapp"
+      size={24}
+      testID="icon"
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#11100F",
+          },
+          Object {
+            "alignSelf": "center",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "marginLeft": 8,
+            "textDecorationLine": "underline",
+          },
+        ]
+      }
+      testID="phone"
+    >
+      123-456-7890
+    </Text>
+  </View>
+</View>
+`;

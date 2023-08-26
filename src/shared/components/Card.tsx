@@ -6,13 +6,16 @@ import { GlobalStyles } from '~shared/utils/styles';
 
 interface ICardProps {
     children: React.ReactNode;
+    testID?: string | undefined;
 }
 
-const Card = ({ children }: ICardProps) => {
+const Card = ({ children, testID }: ICardProps) => {
     const { themeApp } = useContext(ThemeContext);
 
     return (
-        <View style={[styles.card, GlobalStyles.shadowCard, { backgroundColor: themeApp.colors.container }]}>
+        <View
+            testID={testID}
+            style={[styles.card, GlobalStyles.shadowCard, { backgroundColor: themeApp.colors.container }]}>
             {children}
         </View>
     );

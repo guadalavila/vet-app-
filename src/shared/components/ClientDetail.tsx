@@ -16,27 +16,36 @@ interface IClientDetailProps {
 const ClientDetail = ({ client }: IClientDetailProps) => {
     const getCodeName = () => client.name.charAt(0).concat(client.lastName.charAt(0)).toUpperCase();
     return (
-        <Card>
+        <Card testID='ClientCard'>
             <View style={styles.containerAvatar}>
                 <Text style={styles.textAvatar}>{getCodeName()}</Text>
             </View>
-            <CustomText style={[styles.name]}>
+            <CustomText testID='nameAndLastName' style={[styles.name]}>
                 {client.name} {client.lastName}
             </CustomText>
-            <CustomText style={[styles.dni]}>DNI {client.dni}</CustomText>
+            <CustomText testID='dni' style={[styles.dni]}>
+                DNI {client.dni}
+            </CustomText>
             {client.email && client.email.length > 0 && (
-                <CustomText style={styles.emailText}> {client.email}</CustomText>
+                <CustomText testID='email' style={styles.emailText}>
+                    {client.email}
+                </CustomText>
             )}
             {client.address && client.address.length > 0 && (
-                <CustomText style={styles.emailText}> {client.address}</CustomText>
+                <CustomText testID='address' style={styles.emailText}>
+                    {client.address}
+                </CustomText>
             )}
             {client.phone && (
                 <TouchableOpacity
+                    testID='phone-button'
                     style={[GlobalStyles.row, styles.containerPhone]}
                     activeOpacity={0.7}
-                    onPress={() => Linking.openURL(`https://api.whatsapp.com/send?phone=${client.phone}}`)}>
-                    <Icon name='logo-whatsapp' size={24} color={colors.light.whatsapp} />
-                    <CustomText style={styles.phone}>{client.phone}</CustomText>
+                    onPress={() => Linking.openURL(`https://api.whatsapp.com/send?phone=${client.phone}`)}>
+                    <Icon testID='icon' name='logo-whatsapp' size={24} color={colors.light.whatsapp} />
+                    <CustomText testID='phone' style={styles.phone}>
+                        {client.phone}
+                    </CustomText>
                 </TouchableOpacity>
             )}
         </Card>
