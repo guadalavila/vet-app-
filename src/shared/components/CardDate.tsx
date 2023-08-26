@@ -15,6 +15,7 @@ interface ICardDateProps {
 const CardDate = ({ label, date, onSelected, isSelected }: ICardDateProps) => {
     return (
         <TouchableOpacity
+            testID='cardDate'
             onPress={onSelected}
             activeOpacity={0.7}
             style={[styles.button, isSelected ? styles.buttonSelected : styles.buttonNoSelected]}>
