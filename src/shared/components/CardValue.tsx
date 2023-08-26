@@ -16,7 +16,7 @@ interface ICardValueProps {
 
 const CardValue = ({ icon, title, value, valueExtra }: ICardValueProps) => {
     return (
-        <View style={styles.container}>
+        <View testID='cardValue' style={styles.container}>
             <View style={GlobalStyles.rowBetween}>
                 <CustomText style={styles.title}>{title}</CustomText>
                 <Icon name={icon} size={20} color={colors.light.white} />
