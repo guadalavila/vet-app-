@@ -13,9 +13,10 @@ interface ISelectProps {
 
 const Select = ({ title, selected, onChangeSelect }: ISelectProps) => {
     return (
-        <View style={styles.container}>
+        <View style={styles.container} testID='select'>
             <CustomText style={[styles.title]}>{title}</CustomText>
             <Switch
+                testID='switch'
                 style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
                 trackColor={{ false: '#767577', true: colors.light.success }}
                 thumbColor={true ? colors.light.white : colors.light.grey}
