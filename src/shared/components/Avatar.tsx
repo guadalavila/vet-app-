@@ -10,6 +10,7 @@ interface IAvatarProps {
 const Avatar = ({ children, background = colors.light.primary, size = 100 }: IAvatarProps) => {
     return (
         <View
+            testID='avatar'
             style={[styles.container, { backgroundColor: background, width: size, height: size, borderRadius: size }]}>
             {children}
         </View>
