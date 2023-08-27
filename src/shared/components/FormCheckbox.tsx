@@ -15,11 +15,11 @@ const FormCheckbox: React.FC<IFormCheckboxProps> = ({ label, value, onValueChang
     const handlePress = () => onValueChange(!value);
 
     return (
-        <TouchableOpacity activeOpacity={0.7} style={styles.container} onPress={handlePress}>
+        <TouchableOpacity testID='FormCheckbox' activeOpacity={0.7} style={styles.container} onPress={handlePress}>
             <View style={styles.checkbox}>
                 {value && (
                     <View>
-                        <Icon color={colors.light.success} name='checkmark' size={22} />
+                        <Icon testID='icon' color={colors.light.success} name='checkmark' size={22} />
                     </View>
                 )}
             </View>
