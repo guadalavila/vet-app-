@@ -15,12 +15,16 @@ interface IItemClientListProps {
 
 const ItemClientList = ({ client, onPress }: IItemClientListProps) => {
     return (
-        <TouchableOpacity style={[styles.container, GlobalStyles.row]} activeOpacity={0.7} onPress={onPress}>
+        <TouchableOpacity
+            testID='ItemClientList'
+            style={[styles.container, GlobalStyles.row]}
+            activeOpacity={0.7}
+            onPress={onPress}>
             <View style={styles.containerIcon}>
-                <Icon name='person-outline' size={30} color={colors.light.white} />
+                <Icon testID='icon' name='person-outline' size={30} color={colors.light.white} />
             </View>
             <View>
-                <CustomText style={[styles.nameAndLastName]}>
+                <CustomText testID='nameAndLastName' style={[styles.nameAndLastName]}>
                     {client.name} {client.lastName}
                 </CustomText>
                 <CustomText style={[styles.dni]}>DNI: {client.dni}</CustomText>
