@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemColor should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {},
+      Object {
+        "backgroundColor": "black",
+        "borderRadius": 33,
+        "height": 33,
+        "width": 33,
+      },
+    ]
+  }
+  testID="ItemColor"
+/>
+`;

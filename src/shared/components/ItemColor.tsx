@@ -8,7 +8,10 @@ interface IItemColorProps {
 
 const ItemColor = ({ size = 30, color }: IItemColorProps) => {
     return (
-        <View style={[styles.container, { width: size, height: size, borderRadius: size, backgroundColor: color }]} />
+        <View
+            testID='ItemColor'
+            style={[styles.container, { width: size, height: size, borderRadius: size, backgroundColor: color }]}
+        />
     );
 };
 
