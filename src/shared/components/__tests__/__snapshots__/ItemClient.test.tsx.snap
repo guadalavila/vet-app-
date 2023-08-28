@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemClient should match snapshot 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#ECEDF0",
+      "borderBottomColor": "#A765C1",
+      "borderBottomWidth": 1,
+      "opacity": 1,
+      "paddingHorizontal": 10,
+      "paddingVertical": 10,
+    }
+  }
+  testID="ItemClient"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Object {
+          "fontWeight": "bold",
+        },
+      ]
+    }
+    testID="nameAndLastName"
+  >
+    Juan
+     
+    Pérez
+  </Text>
+</View>
+`;

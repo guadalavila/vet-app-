@@ -15,10 +15,11 @@ const ItemClient = ({ client, onPress }: IItemClientProps) => {
     const { themeApp } = useContext(ThemeContext);
     return (
         <TouchableOpacity
+            testID='ItemClient'
             activeOpacity={0.7}
             style={[styles.container, { backgroundColor: themeApp.colors.backgroundInput }]}
             onPress={onPress}>
-            <CustomText style={styles.text}>
+            <CustomText style={styles.text} testID='nameAndLastName'>
                 {client.name} {client.lastName}
             </CustomText>
         </TouchableOpacity>
