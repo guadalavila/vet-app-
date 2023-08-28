@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoPet should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      },
+      Object {
+        "marginHorizontal": 14,
+        "marginVertical": 8,
+      },
+    ]
+  }
+  testID="InfoPet"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Object {
+          "fontSize": 16,
+          "fontWeight": "bold",
+        },
+      ]
+    }
+  >
+    Nombre
+    :
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Object {},
+      ]
+    }
+  >
+    Boby
+  </Text>
+</View>
+`;

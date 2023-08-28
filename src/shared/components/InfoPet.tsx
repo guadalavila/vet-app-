@@ -11,7 +11,7 @@ interface IInfoPetProps {
 }
 const InfoPet = ({ label, info }: IInfoPetProps) => {
     return (
-        <View style={[GlobalStyles.rowBetween, styles.container]}>
+        <View testID='InfoPet' style={[GlobalStyles.rowBetween, styles.container]}>
             <CustomText style={styles.label}>{label}:</CustomText>
             <CustomText>{info}</CustomText>
         </View>
