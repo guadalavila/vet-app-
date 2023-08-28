@@ -25,6 +25,7 @@ const ItemCategory = ({
 }: IItemCategoryProps) => {
     return (
         <TouchableOpacity
+            testID='ItemCategory'
             style={[
                 GlobalStyles.shadowCard,
                 styles.container,
@@ -34,7 +35,7 @@ const ItemCategory = ({
             onPress={onPress}>
             {icon && (
                 <View style={[GlobalStyles.selfCenter, styles.containerIcon]}>
-                    <Icon name={icon} size={38} color={colors.light.primary} />
+                    <Icon testID='icon' name={icon} size={38} color={colors.light.primary} />
                 </View>
             )}
             <Text style={[styles.count]}>{data}</Text>

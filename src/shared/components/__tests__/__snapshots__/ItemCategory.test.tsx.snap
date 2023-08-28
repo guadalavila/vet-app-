@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemCategory should match snapshot 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#A765C1",
+      "borderColor": "#A765C1",
+      "borderRadius": 10,
+      "borderWidth": 2,
+      "elevation": 4,
+      "flex": 1,
+      "height": 250,
+      "justifyContent": "space-around",
+      "margin": 3,
+      "marginBottom": 14,
+      "marginHorizontal": 6,
+      "opacity": 1,
+      "padding": 4,
+      "paddingTop": 14,
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 0.25,
+      "shadowRadius": 3.84,
+    }
+  }
+  testID="ItemCategory"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#2A2F4F",
+          "fontSize": 48,
+          "fontWeight": "bold",
+          "marginVertical": 10,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    100
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "fontSize": 20,
+          "fontWeight": "600",
+          "marginBottom": 10,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Mascotas
+  </Text>
+</View>
+`;
