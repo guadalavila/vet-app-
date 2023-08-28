@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemProfile should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "marginHorizontal": 10,
+      "marginVertical": 6,
+    }
+  }
+  testID="ItemProfile"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Object {
+          "fontSize": 16,
+          "fontWeight": "500",
+        },
+      ]
+    }
+  >
+    Hello
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#11100F",
+        },
+        Object {
+          "marginVertical": 3,
+        },
+      ]
+    }
+  >
+    World!
+  </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "borderWidth": 0.4,
+          "marginVertical": 6,
+        },
+        Object {
+          "borderColor": "#F1f1f2",
+        },
+      ]
+    }
+    testID="separator"
+  />
+</View>
+`;

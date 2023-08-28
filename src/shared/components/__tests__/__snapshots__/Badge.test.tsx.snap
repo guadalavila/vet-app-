@@ -28,6 +28,7 @@ exports[`Badge should match snapshot 1`] = `
         },
       ]
     }
+    testID="Hello world"
   >
     Hello world
   </Text>

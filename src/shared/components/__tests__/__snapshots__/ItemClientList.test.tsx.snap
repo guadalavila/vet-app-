@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemClientList should match snapshot 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "borderBottomColor": "#2A2F4F",
+      "borderBottomWidth": 1,
+      "flexDirection": "row",
+      "marginHorizontal": 10,
+      "opacity": 1,
+      "paddingVertical": 6,
+    }
+  }
+  testID="ItemClientList"
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "backgroundColor": "#A765C1",
+        "borderRadius": 30,
+        "height": 40,
+        "justifyContent": "center",
+        "marginRight": 14,
+        "width": 40,
+      }
+    }
+  >
+    <MockedIoniconsIcons
+      color="#FFFFFF"
+      name="person-outline"
+      size={30}
+      testID="icon"
+    />
+  </View>
+  <View>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#11100F",
+          },
+          Array [
+            Object {
+              "fontSize": 16,
+              "fontWeight": "600",
+            },
+          ],
+        ]
+      }
+      testID="nameAndLastName"
+    >
+      Juan
+       
+      Pérez
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#11100F",
+          },
+          Array [
+            Object {
+              "marginVertical": 6,
+            },
+          ],
+        ]
+      }
+    >
+      DNI: 
+      12345678A
+    </Text>
+  </View>
+</View>
+`;

@@ -54,7 +54,7 @@ exports[`CardDate should match snapshot 1`] = `
       ]
     }
   >
-    26/08
+    27/08
   </Text>
 </View>
 `;

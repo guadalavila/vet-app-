@@ -5,11 +5,12 @@ import { ThemeContext } from '~contexts/ThemeContext';
 
 interface ISeparatorProps {
     color?: string;
+    testID?: string | undefined;
 }
 
-const Separator = ({ color }: ISeparatorProps) => {
+const Separator = ({ color, testID }: ISeparatorProps) => {
     const { themeApp } = useContext(ThemeContext);
-    return <View style={[styles.separator, { borderColor: color ?? themeApp.colors.separator }]} />;
+    return <View testID={testID} style={[styles.separator, { borderColor: color ?? themeApp.colors.separator }]} />;
 };
 
 export default Separator;

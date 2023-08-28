@@ -12,10 +12,10 @@ interface IItemProfile {
 
 const ItemProfile = ({ title, data }: IItemProfile) => {
     return (
-        <View style={styles.info}>
+        <View testID='ItemProfile' style={styles.info}>
             <CustomText style={styles.title}>{title}</CustomText>
             <CustomText style={styles.margin}>{data}</CustomText>
-            <Separator />
+            <Separator testID='separator' />
         </View>
     );
 };
