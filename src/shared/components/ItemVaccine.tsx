@@ -17,9 +17,9 @@ interface IItemVaccineProps {
 const ItemVaccine = ({ vaccine, onPress }: IItemVaccineProps) => {
     const { theme } = useContext(ThemeContext);
     return (
-        <View style={[styles.container, GlobalStyles.row]}>
+        <View testID='ItemVaccine' style={[styles.container, GlobalStyles.row]}>
             <View style={styles.containerIcon}>
-                <Image style={styles.icon} source={require('../../../assets/icon/vaccine.png')} />
+                <Image testID='image' style={styles.icon} source={require('../../../assets/icon/vaccine.png')} />
             </View>
             <View style={styles.containerInfo}>
                 <CustomText style={[styles.name]}>
@@ -32,8 +32,13 @@ const ItemVaccine = ({ vaccine, onPress }: IItemVaccineProps) => {
                 {vaccine.brand && <CustomText style={[styles.type]}>Marca: {vaccine.brand}</CustomText>}
                 {vaccine.details && <CustomText style={[styles.type]}>Detalle: {vaccine.details}</CustomText>}
             </View>
-            <TouchableOpacity style={styles.containerButton} activeOpacity={0.7} onPress={onPress}>
-                <Icon size={25} name='pencil' color={theme === 'dark' ? colors.light.white : colors.light.primary} />
+            <TouchableOpacity testID='button' style={styles.containerButton} activeOpacity={0.7} onPress={onPress}>
+                <Icon
+                    testID='icon'
+                    size={25}
+                    name='pencil'
+                    color={theme === 'dark' ? colors.light.white : colors.light.primary}
+                />
             </TouchableOpacity>
         </View>
     );
