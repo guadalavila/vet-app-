@@ -22,7 +22,7 @@ const ItemVaccine = ({ vaccine, onPress }: IItemVaccineProps) => {
                 <Image testID='image' style={styles.icon} source={require('../../../assets/icon/vaccine.png')} />
             </View>
             <View style={styles.containerInfo}>
-                <CustomText style={[styles.name]}>
+                <CustomText testID='date' style={[styles.name]}>
                     {new Date(vaccine.date).toLocaleString('en-GB', {
                         hour12: false,
                     })}
