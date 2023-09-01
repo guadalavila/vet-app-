@@ -13,17 +13,21 @@ interface IListColorsProps {
 
 const ListColors = ({ setColorPet, colorPet }: IListColorsProps) => {
     return (
-        <View>
-            <CustomText style={styles.label}>Color: {colorPet?.label}</CustomText>
+        <View testID='list-colors'>
+            <CustomText testID='list-colors--label' style={styles.label}>
+                Color: {colorPet?.label}
+            </CustomText>
             <View style={styles.container}>
                 {COLOR_PET.map((item, index) => (
                     <TouchableOpacity
+                        testID={`list-colors--button-${index}`}
                         key={index}
                         activeOpacity={0.7}
                         onPress={() => setColorPet(item)}
                         style={[styles.containerColor, { backgroundColor: item.code }]}>
                         {colorPet?.label === item.label && (
                             <Icon
+                                testID='list-colors--icon'
                                 style={styles.icon}
                                 name='checkmark-outline'
                                 color={item.label !== 'Blanco' ? 'white' : 'black'}
