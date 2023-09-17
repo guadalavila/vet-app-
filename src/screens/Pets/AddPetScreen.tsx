@@ -31,7 +31,7 @@ const AddPetScreen = ({ navigation, route }: Props) => {
                         if (!isUpdate) {
                             const newPet: NewPet = {
                                 createdBy: user?._id ? user._id : '',
-                                vetId: user?.vetId ? user.vetId._id : '',
+                                vetId: typeof user?.vetId === 'object' ? user.vetId._id : user?.vetId ?? '',
                                 client: data.client,
                                 name: String(data.name),
                                 specie: data.specie,

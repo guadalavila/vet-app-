@@ -4,6 +4,8 @@ export type EventApp = {
     gesture: 'tap' | 'swipe' | 'press' | 'longPress' | 'scroll';
 };
 
+type EventLogin = 'login' | 'logout';
+
 type K =
     | 'on_boarding_slide_1'
     | 'on_boarding_slide_2'

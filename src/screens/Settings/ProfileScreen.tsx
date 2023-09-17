@@ -46,7 +46,7 @@ const ProfileScreen = ({}: Props) => {
             </TouchableOpacity>
             {showDetailVet && (
                 <View>
-                    {user?.vetId && typeof user?.vetId == 'object' && (
+                    {user?.vetId && typeof user?.vetId === 'object' && (
                         <View style={styles.containerUser}>
                             <View style={styles.info}>
                                 <CustomText style={styles.title}>Nombre</CustomText>

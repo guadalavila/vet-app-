@@ -31,7 +31,7 @@ const AddVisitScreen = ({ route, navigation }: Props) => {
                                 //@ts-ignore
                                 date: data.date,
                                 createdBy: user?._id ? user._id : '',
-                                vetId: user?.vetId ? user.vetId._id : '',
+                                vetId: typeof user?.vetId === 'object' ? user.vetId._id : user?.vetId ?? '',
                                 pet: route.params.pet,
                                 anamnestic: String(data.anamnestic),
                                 temperature: Number(data.temperature),

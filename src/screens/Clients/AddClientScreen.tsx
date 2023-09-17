@@ -26,7 +26,7 @@ const AddClientScreen = ({ navigation, route }: Props) => {
                     onSubmit={(data) => {
                         if (!isUpdate) {
                             const newClient = {
-                                vetId: user?.vetId?._id ? user.vetId._id : '',
+                                vetId: typeof user?.vetId === 'object' ? user?.vetId?._id : user?.vetId,
                                 ...data,
                             };
                             createClient(newClient).then((res) =>
