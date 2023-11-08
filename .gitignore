@@ -74,3 +74,4 @@ buck-out/
 
 #coverage
 coverage/
+doc/vet-app.MD
