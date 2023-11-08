@@ -75,7 +75,7 @@ const SignUpForm = ({ onSubmit }: ISignUpFormProps) => {
                 </View>
             </View>
             <View style={[GlobalStyles.flexCenter, styles.containerButton]}>
-                <Button title='Ingresar' onPress={handleSubmit} />
+                <Button title='Registrarse' onPress={handleSubmit} />
             </View>
         </View>
     );
