@@ -44,15 +44,18 @@ const ClientsScreen = ({ navigation }: Props) => {
     return (
         <Container>
             <Header title='Clientes' />
-            <SearchBar
-                placeholder='Buscar por DNI'
-                value={textSearch}
-                keyboardType='number-pad'
-                onChangeValue={setTextSearch}
-                clicked={clicked}
-                setCLicked={setClicked}
-                onCancelSearch={() => setActiveSearching(false)}
-            />
+
+            {clients.length > 0 && (
+                <SearchBar
+                    placeholder='Buscar por DNI'
+                    value={textSearch}
+                    keyboardType='number-pad'
+                    onChangeValue={setTextSearch}
+                    clicked={clicked}
+                    setCLicked={setClicked}
+                    onCancelSearch={() => setActiveSearching(false)}
+                />
+            )}
             {!activeSearching ? (
                 <>
                     {clients.length > 0 ? (

@@ -44,13 +44,15 @@ const PetsScreen = ({ navigation }: Props) => {
     return (
         <Container>
             <Header title='Mascotas' />
-            <SearchBar
-                placeholder='Buscar por nombre mascota'
-                value={textSearch}
-                onChangeValue={setTextSearch}
-                clicked={clicked}
-                setCLicked={setClicked}
-            />
+            {pets.length > 0 && (
+                <SearchBar
+                    placeholder='Buscar por nombre mascota'
+                    value={textSearch}
+                    onChangeValue={setTextSearch}
+                    clicked={clicked}
+                    setCLicked={setClicked}
+                />
+            )}
             {!searching ? (
                 <>
                     {pets.length > 0 ? (
