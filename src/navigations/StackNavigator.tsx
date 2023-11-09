@@ -33,9 +33,9 @@ const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
 const StackAdmin = createNativeStackNavigator<AdminTabStackParamList>();
 
-export function StackNavigatorLogOut(initRoute: any) {
+export function StackNavigatorLogOut() {
     return (
-        <StackLoggedOut.Navigator initialRouteName={'OnBoardingScreen'} screenOptions={{ headerShown: false }}>
+        <StackLoggedOut.Navigator initialRouteName={'LoginScreen'} screenOptions={{ headerShown: false }}>
             <StackLoggedOut.Screen name={'LoginScreen'} component={LoginScreen} />
             <StackLoggedOut.Screen name={'SignUpScreen'} component={SignUpScreen} />
             <StackLoggedOut.Screen name={'OnBoardingScreen'} component={OnBoardingScreen} />

@@ -36,8 +36,8 @@ const ProfileScreen = ({}: Props) => {
             </View>
             <ItemProfile title='Email' data={user?.email ?? ''} />
             <ItemProfile title='DNI' data={user?.dni ?? ''} />
-            <ItemProfile title='Teléfono' data={user?.phone ?? ''} />
-            <ItemProfile title='Rol' data={user?.role.toUpperCase() ?? ''} />
+            {user?.phone && <ItemProfile title='Teléfono' data={user?.phone} />}
+            {/* <ItemProfile title='Rol' data={user?.role.toUpperCase() ?? ''} /> */}
             <TouchableOpacity style={styles.info} activeOpacity={0.7} onPress={() => setShowDetailVet(!showDetailVet)}>
                 <View style={GlobalStyles.rowBetween}>
                     <CustomText style={styles.title}>Tu veterinaria</CustomText>

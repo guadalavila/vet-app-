@@ -8,16 +8,14 @@ import { NewUser, UserResponse } from '~models/User';
 import useError from './useError';
 
 const useAuth = () => {
-    const { setIsAuth, setUser, setIsLoading, isLoading, user, setToken, logOut, setInitRoute, initRoute } =
-        useContext(AuthContext);
+    const { setIsAuth, setUser, setIsLoading, isLoading, user, setToken, logOut } = useContext(AuthContext);
     const { setErrorApp } = useError();
 
     const restoreUser = async () => {
         setIsLoading(true);
         const userCurrent = await getData(STORAGE_KEYS.USER);
         const token = await getData(STORAGE_KEYS.TOKEN);
-        const initRoute_ = (await getData(STORAGE_KEYS.INIT_ROUTE)) ?? 'OnBoardingScreen';
-        setInitRoute(initRoute_);
+
         if (userCurrent && token) {
             setUserResponse({ user: userCurrent, token: token });
         } else {
@@ -95,6 +93,6 @@ const useAuth = () => {
         setIsLoading(false);
     };
 
-    return { loginWithEmailAndPass, isLoading, logout, restoreUser, user, signUp, getMe, initRoute };
+    return { loginWithEmailAndPass, isLoading, logout, restoreUser, user, signUp, getMe };
 };
 export default useAuth;
