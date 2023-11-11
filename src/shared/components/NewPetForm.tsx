@@ -148,7 +148,7 @@ const NewPetForm: React.FC<INewPetFormProps> = ({ onSubmit, client, initData, on
                     <FormInput
                         width={'43%'}
                         value={fields.age || ''}
-                        placeholder='Edad'
+                        placeholder='Edad (Ej: 0.5)'
                         keyboardType='decimal-pad'
                         onChangeText={(value) => setFieldValue('age', value)}
                     />

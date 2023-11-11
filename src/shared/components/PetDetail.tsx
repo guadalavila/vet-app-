@@ -13,14 +13,46 @@ interface IPetDetailProps {
 }
 
 const PetDetail = ({ pet }: IPetDetailProps) => {
+    const normalizeAge = (age: number): string => {
+        let value = '';
+        if (age > 0) {
+            if (age < 1) {
+                const months = Math.round(age * 12);
+                value = `${months} `;
+            } else if (age === 1) {
+                value = '1';
+            } else {
+                value = `${Math.floor(age)} `;
+            }
+        } else {
+            value = '-';
+        }
+        return value;
+    };
+
+    const normalizeExtra = (age: number): string => {
+        let value = '';
+        if (age > 0) {
+            if (age < 1) {
+                const months = Math.round(age * 12);
+                value = `${months === 1 ? 'mes' : 'meses'}`;
+            } else {
+                age === 1 ? (value = 'año') : (value = 'años');
+            }
+        } else {
+            value = '-';
+        }
+        return value;
+    };
+
     return (
         <View>
             <View style={[GlobalStyles.rowAround]}>
                 {pet.age ? (
                     <CardValue
                         title='Edad'
-                        value={String(pet.age)}
-                        valueExtra={pet.age === 1 ? ' año' : ' años'}
+                        value={normalizeAge(pet.age)}
+                        valueExtra={normalizeExtra(pet.age)}
                         icon='calendar-outline'
                     />
                 ) : (
