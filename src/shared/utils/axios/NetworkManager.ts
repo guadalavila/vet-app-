@@ -15,7 +15,7 @@ class NetworkManager {
                     })
                     .catch((error) => {
                         if (error.response) {
-                            if (error.response.data?.message){
+                            if (error.response.data?.message) {
                                 reject(error.response?.data?.message);
                             }
                         } else if (error.message.includes('Network Error')) {
@@ -41,7 +41,7 @@ class NetworkManager {
                     })
                     .catch((error) => {
                         if (error.response) {
-                            if (error.response.data?.message){
+                            if (error.response.data?.message) {
                                 reject(error.response?.data?.message);
                             }
                         } else if (error.message.includes('Network Error')) {
@@ -68,7 +68,7 @@ class NetworkManager {
                     })
                     .catch((error) => {
                         if (error.response) {
-                            if (error.response.data?.message){
+                            if (error.response.data?.message) {
                                 reject(error.response?.data?.message);
                             }
                         } else if (error.message.includes('Network Error')) {
@@ -94,7 +94,7 @@ class NetworkManager {
                     })
                     .catch((error) => {
                         if (error.response) {
-                            if (error.response.data?.message){
+                            if (error.response.data?.message) {
                                 reject(error.response?.data?.message);
                             }
                         } else if (error.message.includes('Network Error')) {
@@ -121,7 +121,7 @@ class NetworkManager {
                     })
                     .catch((error) => {
                         if (error.response) {
-                            if (error.response.data?.message){
+                            if (error.response.data?.message) {
                                 reject(error.response?.data?.message);
                             }
                         } else if (error.message.includes('Network Error')) {
@@ -149,7 +149,7 @@ class NetworkManager {
                     })
                     .catch((error) => {
                         if (error.response) {
-                            if (error.response.data?.message){
+                            if (error.response.data?.message) {
                                 reject(error.response?.data?.message);
                             }
                         } else if (error.message.includes('Network Error')) {

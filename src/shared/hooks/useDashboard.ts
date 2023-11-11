@@ -5,11 +5,9 @@ import pathologiesServices from '~services/PathologiesServices';
 import useAuth from './useAuth';
 import { PathologiesContext } from '~contexts/PathologiesContext';
 import useError from './useError';
-import useRemoteConfig from './useRemoteConfig';
 
 const useDashboard = () => {
     const { user } = useAuth();
-    useRemoteConfig();
     const { setErrorApp } = useError();
     const [categories, setCategories] = useState<ItemDashboard[] | []>([]);
     const { setPathologies } = useContext(PathologiesContext);
@@ -28,10 +26,25 @@ const useDashboard = () => {
     const getInitialData = () => {
         try {
             if (user?.vetId) {
-                dashboardServices.getDashboard(user.vetId._id).then((res) => {
-                    setCategories(res);
-                    setIsLoading(false);
-                });
+                dashboardServices
+                    .getDashboard(user.vetId._id)
+                    .then((res) => {
+                        setCategories(res);
+                        setIsLoading(false);
+                    })
+                    // eslint-disable-next-line @typescript-eslint/no-shadow
+                    .catch((err) => {
+                        setErrorDashboard({
+                            error: true,
+                            message: 'No se pudo obtener datos iniciales.',
+                        });
+                        setErrorApp({
+                            isError: true,
+                            message: String(err) ?? 'Obtener Dashboard: Ocurrió un error',
+                            type: 'error',
+                        });
+                        setIsLoading(false);
+                    });
             }
         } catch (error) {
             setErrorDashboard({
@@ -66,24 +79,8 @@ const useDashboard = () => {
     };
 
     const refreshDashboard = () => {
-        setRefreshing(true);
-        try {
-            dashboardServices.getInitialData().then((res) => {
-                setCategories(res);
-                setRefreshing(false);
-            });
-        } catch (error) {
-            setErrorDashboard({
-                error: true,
-                message: 'No se pudo obtener datos iniciales.',
-            });
-            setErrorApp({
-                isError: true,
-                message: String(error) ?? 'Obtener Dashboard: Ocurrió un error',
-                type: 'error',
-            });
-            setRefreshing(false);
-        }
+        setIsLoading(true);
+        getInitialData();
     };
 
     return { getInitialData, categories, errorDashboard, isLoading, refreshDashboard, refreshing };

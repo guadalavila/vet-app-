@@ -7,6 +7,8 @@ export const RemoteConfigContext = React.createContext<{
     setActiveVaccine: React.Dispatch<boolean>;
     appInMaintenance: boolean;
     setAppInMaintenance: React.Dispatch<boolean>;
+    bannerText: string;
+    setBannerText: React.Dispatch<string>;
 }>({
     activeSurgery: true,
     setActiveSurgery: () => {},
@@ -14,6 +16,8 @@ export const RemoteConfigContext = React.createContext<{
     setActiveVaccine: () => {},
     appInMaintenance: false,
     setAppInMaintenance: () => {},
+    bannerText: '',
+    setBannerText: () => {},
 });
 
 interface RemoteConfigContextProviderProps {
@@ -24,6 +28,7 @@ export const RemoteConfigContextProvider: React.FC<RemoteConfigContextProviderPr
     const [activeSurgery, setActiveSurgery] = useState(true);
     const [activeVaccine, setActiveVaccine] = useState(true);
     const [appInMaintenance, setAppInMaintenance] = useState(false);
+    const [bannerText, setBannerText] = useState('');
 
     return (
         <RemoteConfigContext.Provider
@@ -34,6 +39,8 @@ export const RemoteConfigContextProvider: React.FC<RemoteConfigContextProviderPr
                 setActiveVaccine: setActiveVaccine,
                 appInMaintenance: appInMaintenance,
                 setAppInMaintenance: setAppInMaintenance,
+                bannerText: bannerText,
+                setBannerText: setBannerText,
             }}>
             {children}
         </RemoteConfigContext.Provider>

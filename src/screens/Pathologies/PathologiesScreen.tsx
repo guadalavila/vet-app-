@@ -12,6 +12,7 @@ import Loading from '~shared/components/Loading';
 import ModalInput from '~shared/components/ModalInput';
 import usePathologies from '~shared/hooks/usePathologies';
 import NoData from '~shared/components/NoData';
+import Banner from '~shared/components/Banner';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PathologiesScreen'> {}
 
@@ -33,11 +34,7 @@ const PathologiesScreen = ({}: Props) => {
     return (
         <Container>
             <Header title='Patologías' buttonBack />
-            <View style={styles.containerInformation}>
-                <CustomText style={styles.textInformation}>
-                    En esta sección podrás administrar las patologías preexistentes de una mascota.
-                </CustomText>
-            </View>
+            <Banner text='En esta sección podrás administrar las patologías preexistentes de una mascota.' />
             {loading ? (
                 <Loading />
             ) : (
@@ -76,21 +73,6 @@ const PathologiesScreen = ({}: Props) => {
 export default PathologiesScreen;
 
 const styles = StyleSheet.create({
-    containerInformation: {
-        width: '94%',
-        backgroundColor: colors.light.primaryLight,
-        borderRadius: 10,
-        alignSelf: 'center',
-        paddingHorizontal: size.XXL,
-        paddingVertical: size.XXL,
-        borderLeftWidth: 8,
-        borderLeftColor: colors.light.primary,
-        marginBottom: size.XL,
-    },
-    textInformation: {
-        fontWeight: '600',
-        color: colors.light.black,
-    },
     conditionItem: {
         marginHorizontal: size.XXL,
         marginVertical: size.XL,

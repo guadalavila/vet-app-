@@ -3,11 +3,11 @@ import { useContext, useEffect } from 'react';
 import { RemoteConfigContext } from '~contexts/RemoteConfigContext';
 
 const useRemoteConfig = () => {
-    const { setActiveSurgery, setActiveVaccine, setAppInMaintenance } = useContext(RemoteConfigContext);
+    const { setActiveSurgery, setActiveVaccine, setAppInMaintenance, setBannerText } = useContext(RemoteConfigContext);
     useEffect(() => {
         remoteConfig()
             .setConfigSettings({
-                minimumFetchIntervalMillis: 500,
+                minimumFetchIntervalMillis: 100,
             })
             .then(() => remoteConfig().fetchAndActivate())
             .then((fetchedRemotely) => {
@@ -16,6 +16,7 @@ const useRemoteConfig = () => {
                     setActiveSurgery(parameters.active_surgery.asBoolean());
                     setActiveVaccine(parameters.active_vaccine.asBoolean());
                     setAppInMaintenance(parameters.app_in_maintenance.asBoolean());
+                    setBannerText(parameters.banner_text.asString());
                 } else {
                     console.log(
                         'No configs were fetched from the backend, and the local configs were already activated',

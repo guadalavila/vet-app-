@@ -12,8 +12,10 @@ import useAuth from '../hooks/useAuth';
 import { logScreenView } from '~shared/utils/firebase/analytics';
 import useError from '../hooks/useError';
 import { RemoteConfigContext } from '~contexts/RemoteConfigContext';
+import useRemoteConfig from '~shared/hooks/useRemoteConfig';
 
 const NavigatorApp = () => {
+    useRemoteConfig();
     const { isAuth, user } = useContext(AuthContext);
     const navigationRef = useNavigationContainerRef();
     const { restoreUser } = useAuth();

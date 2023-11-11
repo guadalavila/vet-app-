@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
 import Container from '~shared/components/Container';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -12,12 +12,15 @@ import useDashboard from '~shared/hooks/useDashboard';
 import SkeletonDashboard from '~shared/components/SkeletonDashboard';
 import { GlobalStyles } from '~shared/utils/styles';
 import useAuth from '~shared/hooks/useAuth';
+import Banner from '~shared/components/Banner';
+import { RemoteConfigContext } from '~contexts/RemoteConfigContext';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'DashboardScreen'> {}
 
 const DashboardScreen = ({ navigation }: Props) => {
     const { user } = useAuth();
     const { categories, isLoading, refreshDashboard, refreshing } = useDashboard();
+    const { bannerText } = useContext(RemoteConfigContext);
 
     const onRefresh = useCallback(() => {
         refreshDashboard();
@@ -37,6 +40,7 @@ const DashboardScreen = ({ navigation }: Props) => {
     return (
         <Container>
             <Header title='Pawsome' />
+            {bannerText !== '' && <Banner text={bannerText} />}
             <View style={styles.containerWelcome}>
                 <CustomText style={[styles.welcomeText]}>¡Hola {user?.name}!</CustomText>
             </View>
