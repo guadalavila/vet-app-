@@ -209,7 +209,7 @@ const useForm = (
             });
         } else if (fields.weight && !Number(fields.weight)) {
             setErrors({
-                weight: 'El peso debe ser un valor numérico',
+                weight: 'El peso debe ser un valor numérico mayor a 0',
             });
         } else if (fields.weight && Number(fields.weight) && Number(fields.weight < 0)) {
             setErrors({
