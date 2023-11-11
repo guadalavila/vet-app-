@@ -81,7 +81,11 @@ const useForm = (
             });
         } else if (fields.age && !Number(fields.age)) {
             setErrors({
-                age: 'La edad debe ser un valor numérico',
+                age: 'La edad debe ser un valor numérico mayor a 0',
+            });
+        } else if (fields.age && Number(fields.age) <= 0) {
+            setErrors({
+                age: 'La edad debe ser un valor mayor a 0',
             });
         } else if (!fields.gender) {
             setErrors({
@@ -206,6 +210,10 @@ const useForm = (
         } else if (fields.weight && !Number(fields.weight)) {
             setErrors({
                 weight: 'El peso debe ser un valor numérico',
+            });
+        } else if (fields.weight && Number(fields.weight) && Number(fields.weight < 0)) {
+            setErrors({
+                weight: 'El peso debe ser un valor mayor a 0',
             });
         } else if (!fields.temperature) {
             setErrors({

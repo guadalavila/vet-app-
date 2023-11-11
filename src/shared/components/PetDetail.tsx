@@ -13,20 +13,9 @@ interface IPetDetailProps {
 }
 
 const PetDetail = ({ pet }: IPetDetailProps) => {
-    const normalizeAge = (age: number): string => {
-        let value = '';
-        if (age > 0) {
-            if (age < 1) {
-                const months = Math.round(age * 12);
-                value = `${months} `;
-            } else if (age === 1) {
-                value = '1';
-            } else {
-                value = `${Math.floor(age)} `;
-            }
-        } else {
-            value = '-';
-        }
+    const normalizeAge = (age: number): number => {
+        let value = 0;
+        age < 1 ? (value = Number(String(age).split('.')[1])) : (value = age);
         return value;
     };
 
@@ -34,10 +23,10 @@ const PetDetail = ({ pet }: IPetDetailProps) => {
         let value = '';
         if (age > 0) {
             if (age < 1) {
-                const months = Math.round(age * 12);
-                value = `${months === 1 ? 'mes' : 'meses'}`;
+                const months = Number(String(age).split('.')[1]);
+                value = `${months === 1 ? ' mes' : ' meses'}`;
             } else {
-                age === 1 ? (value = 'año') : (value = 'años');
+                age === 1 ? (value = ' año') : (value = ' años');
             }
         } else {
             value = '-';
