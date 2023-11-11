@@ -5,9 +5,11 @@ import pathologiesServices from '~services/PathologiesServices';
 import useAuth from './useAuth';
 import { PathologiesContext } from '~contexts/PathologiesContext';
 import useError from './useError';
+import useRemoteConfig from './useRemoteConfig';
 
 const useDashboard = () => {
     const { user } = useAuth();
+    useRemoteConfig();
     const { setErrorApp } = useError();
     const [categories, setCategories] = useState<ItemDashboard[] | []>([]);
     const { setPathologies } = useContext(PathologiesContext);

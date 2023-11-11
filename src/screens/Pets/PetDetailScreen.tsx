@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RootStackLoginParamList } from '~navigations/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -19,6 +19,7 @@ import ConditionsList from '~shared/components/ConditionsList';
 import useGetOnePet from '~shared/hooks/useGetOnePet';
 import Loading from '~shared/components/Loading';
 import useError from '~shared/hooks/useError';
+import { RemoteConfigContext } from '~contexts/RemoteConfigContext';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetDetailScreen'> {}
 
@@ -30,6 +31,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
     const [showModal, setShowModal] = useState(false);
     const { deletePet } = useDelete();
     const { setErrorApp } = useError();
+    const { activeSurgery, activeVaccine } = useContext(RemoteConfigContext);
 
     const getDetailOwner = () => {
         try {
@@ -150,8 +152,20 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                     <Option label='Editar Mascota' icon='pencil-outline' onPress={updatePet} />
                     <Option label='Agregar Visita' icon='add-outline' onPress={addVisit} />
                     <Option label='Ver Historial Clínico' icon='document-outline' onPress={showVisits} />
-                    <Option label='Registro de cirugías' icon='document-text-outline' onPress={showSurgeryRegistry} />
-                    <Option label='Registro de vacunas' icon='document-text-outline' onPress={showVaccinesRegistry} />
+                    {activeSurgery && (
+                        <Option
+                            label='Registro de cirugías'
+                            icon='document-text-outline'
+                            onPress={showSurgeryRegistry}
+                        />
+                    )}
+                    {activeVaccine && (
+                        <Option
+                            label='Registro de vacunas'
+                            icon='document-text-outline'
+                            onPress={showVaccinesRegistry}
+                        />
+                    )}
                     <Option label='Ver Detalle propietario' icon='people-outline' onPress={getDetailOwner} />
                 </View>
             </BottomSheet>

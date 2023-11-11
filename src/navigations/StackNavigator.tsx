@@ -1,5 +1,10 @@
 import React from 'react';
-import { AdminTabStackParamList, RootStackLoginParamList, RootStackLogoutParamList } from './types';
+import {
+    AdminTabStackParamList,
+    AppMaintenanceStackParamList,
+    RootStackLoginParamList,
+    RootStackLogoutParamList,
+} from './types';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '~screens/Login/LoginScreen';
 import DashboardScreen from '~screens/Home/DashboardScreen';
@@ -28,10 +33,12 @@ import BottomTabAdminScreen from '~screens/BottomTab/BottomTabAdminScreen';
 import AddUserScreen from '~screens/Administration/Users/AddUserScreen';
 import AddVetScreen from '~screens/Administration/Vets/AddVetScreen';
 import VetDetailScreen from '~screens/Administration/Vets/VetDetailScreen';
+import MaintenanceScreen from '~screens/Maintenance/MaintenanceScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
 const StackAdmin = createNativeStackNavigator<AdminTabStackParamList>();
+const StackAppMaintenance = createNativeStackNavigator<AppMaintenanceStackParamList>();
 
 export function StackNavigatorLogOut() {
     return (
@@ -80,5 +87,13 @@ export function StackNavigatorAdmin() {
             <StackAdmin.Screen name={'AddVetScreen'} component={AddVetScreen} />
             <StackAdmin.Screen name={'VetDetailScreen'} component={VetDetailScreen} />
         </StackAdmin.Navigator>
+    );
+}
+
+export function StackNavigatorAppMaintenance() {
+    return (
+        <StackAppMaintenance.Navigator screenOptions={{ headerShown: false }} initialRouteName='MaintenanceScreen'>
+            <StackAppMaintenance.Screen name={'MaintenanceScreen'} component={MaintenanceScreen} />
+        </StackAppMaintenance.Navigator>
     );
 }

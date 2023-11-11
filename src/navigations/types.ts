@@ -58,3 +58,7 @@ export type AdminTabStackParamList = {
     AddVetScreen: { vet: Veterinary | undefined };
     VetDetailScreen: { vetId: string };
 };
+
+export type AppMaintenanceStackParamList = {
+    MaintenanceScreen: undefined;
+};

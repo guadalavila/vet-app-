@@ -5,6 +5,7 @@ import NavigatorApp from './shared/components/NavigatorApp';
 import { PathologiesContextProvider } from './contexts/PathologiesContext';
 import { ErrorContextProvider } from './contexts/ErrorContext';
 import { VetsContextProvider } from './contexts/VetsContext';
+import { RemoteConfigContextProvider } from './contexts/RemoteConfigContext';
 
 const App = () => {
     return (
@@ -13,7 +14,9 @@ const App = () => {
                 <ErrorContextProvider>
                     <PathologiesContextProvider>
                         <VetsContextProvider>
-                            <NavigatorApp />
+                            <RemoteConfigContextProvider>
+                                <NavigatorApp />
+                            </RemoteConfigContextProvider>
                         </VetsContextProvider>
                     </PathologiesContextProvider>
                 </ErrorContextProvider>
