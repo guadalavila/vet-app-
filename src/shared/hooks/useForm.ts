@@ -184,6 +184,10 @@ const useForm = (
             setErrors({
                 dni: 'El DNI debe ser un valor numérico',
             });
+        } else if (fields.email && !validateEmail(String(fields.email))) {
+            setErrors({
+                email: 'El formato del email no es válido',
+            });
         } else {
             setErrors({});
             onSubmit(fields);

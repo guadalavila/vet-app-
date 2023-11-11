@@ -73,6 +73,9 @@ const NewClientForm: React.FC<INewClientFormProps> = ({ onSubmit, initData, onCa
                     keyboardType='email-address'
                     onChangeText={(value) => setFieldValue('email', value)}
                 />
+                <View style={styles.marginDefault}>
+                    {errors.email && <Text style={styles.error}>{errors.email}</Text>}
+                </View>
                 <FormInput
                     value={fields.phone || '+54'}
                     placeholder='Teléfono'
