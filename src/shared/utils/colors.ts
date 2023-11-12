@@ -1,7 +1,10 @@
 const common = {
     // primary: '#FD9340',
-    primary: '#A765C1',
-    primaryLight: '#D2C6EA',
+    primary: '#917FB3',
+    secondary: '#2A2F4F',
+    tertiary: '#E5BEEC',
+    light: '#F5F5F5',
+    primaryLight: '#FDE2F3',
 
     // secondary: '#2A2F4F',
     // tertiary: '#E5BEEC',
@@ -25,14 +28,15 @@ const common = {
     toastSuccess: '#3bd39d',
     toastWarning: '#fcc12f',
     toastDefault: '#36d0ea',
+    textButton: '#F1F1F1',
 };
 
 const light = {
     ...common,
     background: '#FFFFFF',
     text: '#11100F',
-    secondary: '#2A2F4F',
-    tertiary: '#E5BEEC',
+    // secondary: '#4D4C7D',
+    // tertiary: '#E5BEEC',
     container: '#f5f4f6',
     separator: '#F1f1f2',
     border: '#2A2F4F',
@@ -43,15 +47,14 @@ const light = {
     backgroundInput: '#ECEDF0',
     backgroundContainer: '#DEDEDE',
     blue: '#092E9C',
-    textButton: '#F1F1F1',
 };
 
 const dark = {
     ...common,
     background: '#131313',
     text: '#F1F1F1',
-    tertiary: '#2A2F4F',
-    secondary: '#E5BEEC',
+    // tertiary: '#2A2F4F',
+    // secondary: '#4D4C7D',
     container: '#222125',
     separator: '#f0f0f0',
     border: '#E5BEEC',
@@ -62,7 +65,6 @@ const dark = {
     backgroundInput: '#414141',
     backgroundContainer: '#B0B0B0',
     blue: '#2D5CE8',
-    textButton: '#F1F1F1',
 };
 
 export const colors = { light, dark };
