@@ -29,6 +29,7 @@ const SettingScreen = ({ navigation }: Props) => {
             <Select title={'Modo Oscuro'} selected={theme === 'dark'} onChangeSelect={setTheme} />
             {/* <Item label='Reportes' onPress={() => navigation.navigate('ReportsScreen')} /> */}
             <Item label='Tutorial' onPress={() => navigation.navigate('OnBoardingScreen')} />
+            <Item label='Reportar Incidencia' onPress={() => navigation.navigate('ReportBugScreen')} />
             <Item label='Cerrar Sesión' onPress={() => setShowModal(true)} />
             <View style={styles.containerVersionApp}>
                 <CustomText style={styles.versionText}>Versión {getVersionApp()}</CustomText>

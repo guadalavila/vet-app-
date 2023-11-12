@@ -21,7 +21,7 @@ const ItemCategory = ({
     icon,
     data,
     height = 250,
-    backgroundColor = colors.light.primary,
+    backgroundColor = colors.light.secondary,
 }: IItemCategoryProps) => {
     return (
         <TouchableOpacity
@@ -76,6 +76,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         marginVertical: size.XL,
-        color: colors.light.secondary,
+        color: colors.light.light,
     },
 });

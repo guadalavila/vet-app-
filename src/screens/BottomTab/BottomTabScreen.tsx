@@ -17,8 +17,8 @@ const BottomTabScreen = ({ route }: any) => {
             screenOptions={{ headerShown: false }}
             tabBar={(props) => <CustomTabBar {...props} />}>
             <Tab.Screen name={'DashboardScreen'} component={DashboardScreen} options={{ tabBarLabel: 'Home' }} />
-            <Tab.Screen name={'PetsScreen'} component={PetsScreen} options={{ tabBarLabel: 'Mascotas' }} />
             <Tab.Screen name={'ClientsScreen'} component={ClientsScreen} options={{ tabBarLabel: 'Clientes' }} />
+            <Tab.Screen name={'PetsScreen'} component={PetsScreen} options={{ tabBarLabel: 'Mascotas' }} />
             <Tab.Screen name={'SettingScreen'} component={SettingScreen} options={{ tabBarLabel: 'Configuración' }} />
         </Tab.Navigator>
     );

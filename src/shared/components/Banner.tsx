@@ -21,7 +21,7 @@ export default Banner;
 const styles = StyleSheet.create({
     containerInformation: {
         width: '94%',
-        backgroundColor: colors.light.primaryLight,
+        backgroundColor: colors.light.tertiary,
         borderRadius: 10,
         alignSelf: 'center',
         paddingHorizontal: size.XXL,

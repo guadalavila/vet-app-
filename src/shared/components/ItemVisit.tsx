@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     detail: {
         fontWeight: '600',
         alignSelf: 'center',
+        width: '60%',
     },
     buttonEdit: {
         borderColor: colors.light.primary,

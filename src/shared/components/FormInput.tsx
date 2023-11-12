@@ -38,6 +38,9 @@ const FormInput: React.FC<IFormInputProps> = ({
                 {placeholder}
                 <CustomText>{required ? ' *' : ''}</CustomText>
             </CustomText>
+            {helperText && (
+                <CustomText style={[styles.helperText, { color: themeApp.colors.primary }]}>{helperText}</CustomText>
+            )}
             <TextInput
                 secureTextEntry={secureTextEntry}
                 focusable
@@ -60,9 +63,6 @@ const FormInput: React.FC<IFormInputProps> = ({
                 // placeholder={placeholder}
                 onChangeText={onChangeText}
             />
-            {helperText && (
-                <CustomText style={[styles.helperText, { color: themeApp.colors.secondary }]}>{helperText}</CustomText>
-            )}
         </View>
     );
 };
@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     helperText: {
         fontSize: typography.size.XS,
         marginTop: size.S,
+        marginLeft: size.S,
     },
 });
 

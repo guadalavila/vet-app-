@@ -33,6 +33,7 @@ export type RootStackLoginParamList = {
     ProfileScreen: undefined;
     ReportsScreen: undefined;
     OnBoardingScreen: undefined;
+    ReportBugScreen: undefined;
 };
 
 export type BottomTabStackParamList = {

@@ -28,7 +28,7 @@ export default Input;
 
 const styles = StyleSheet.create({
     input: {
-        backgroundColor: colors.light.quaternary,
+        backgroundColor: colors.light.secondary,
         borderRadius: 10,
         marginVertical: size.S,
         paddingHorizontal: size.L,

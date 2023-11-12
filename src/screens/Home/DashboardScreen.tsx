@@ -1,5 +1,5 @@
-import React, { useCallback, useContext } from 'react';
-import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
+import React, { useCallback, useContext, useEffect } from 'react';
+import { FlatList, RefreshControl, StyleSheet, View, Image } from 'react-native';
 import Container from '~shared/components/Container';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackLoginParamList } from '~navigations/types';
@@ -39,7 +39,7 @@ const DashboardScreen = ({ navigation }: Props) => {
 
     return (
         <Container>
-            <Header title='Pawsome' />
+            <Header title='' />
             {bannerText !== '' && <Banner text={bannerText} />}
             <View style={styles.containerWelcome}>
                 <CustomText style={[styles.welcomeText]}>¡Hola {user?.name}!</CustomText>

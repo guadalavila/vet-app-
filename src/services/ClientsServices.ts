@@ -18,7 +18,7 @@ class ClientsServices {
     getClients(page: number): Promise<ClientData> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<ClientResponse>(`${API_PATHS.CLIENTS}?page=${page}&limit=20}`)
+                .get<ClientResponse>(`${API_PATHS.CLIENTS}?page=${page}&limit=50}`)
                 .then((res) => {
                     resolve(res.data.data);
                 })
@@ -32,7 +32,7 @@ class ClientsServices {
     getClientsByVetId(page: number, vetId: string): Promise<Client[]> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<Client[]>(`${API_PATHS.CLIENTS_BY_VET}${vetId}?page=${page}&limit=20}`)
+                .get<Client[]>(`${API_PATHS.CLIENTS_BY_VET}${vetId}?page=${page}&limit=50}`)
                 .then((res) => {
                     resolve(res.data);
                 })

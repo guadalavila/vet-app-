@@ -31,4 +31,5 @@ export const API_PATHS = {
     VETERINARY_UPDATE: 'vets/update',
     USERS: 'users',
     USER_UPDATE: 'users/update',
+    ISSUE: 'issue',
 };

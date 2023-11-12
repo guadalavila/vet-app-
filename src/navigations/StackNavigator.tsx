@@ -34,6 +34,7 @@ import AddUserScreen from '~screens/Administration/Users/AddUserScreen';
 import AddVetScreen from '~screens/Administration/Vets/AddVetScreen';
 import VetDetailScreen from '~screens/Administration/Vets/VetDetailScreen';
 import MaintenanceScreen from '~screens/Maintenance/MaintenanceScreen';
+import ReportBugScreen from '~screens/Settings/ReportBugScreen';
 
 const StackLoggedOut = createNativeStackNavigator<RootStackLogoutParamList>();
 const StackLoggedIn = createNativeStackNavigator<RootStackLoginParamList>();
@@ -73,6 +74,7 @@ export function StackNavigatorLogIn() {
             <StackLoggedIn.Screen name={'ProfileScreen'} component={ProfileScreen} />
             <StackLoggedIn.Screen name={'ReportsScreen'} component={ReportsScreen} />
             <StackLoggedIn.Screen name={'OnBoardingScreen'} component={OnBoardingScreen} />
+            <StackLoggedIn.Screen name={'ReportBugScreen'} component={ReportBugScreen} />
         </StackLoggedIn.Navigator>
     );
 }

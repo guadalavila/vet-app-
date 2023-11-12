@@ -26,7 +26,8 @@ const useForm = (
         | 'NewVaccineForm'
         | 'SignUp'
         | 'NewUser'
-        | 'NewVet',
+        | 'NewVet'
+        | 'NewBug',
     onSubmit: (fields: IFormFields) => void,
 ): IUseFormReturn => {
     const [fields, setFields] = useState<IFormFields>({});
@@ -60,6 +61,8 @@ const useForm = (
             validateVet();
         } else if (form === 'NewSurgeryForm') {
             validateNewSurgery();
+        } else if (form === 'NewBug') {
+            validateNewBug();
         }
         // setErrors(formErrors);
 
@@ -318,6 +321,17 @@ const useForm = (
         if (!fields.description) {
             setErrors({
                 description: 'Debes ingresar la descripción',
+            });
+        } else {
+            setErrors({});
+            onSubmit(fields);
+        }
+    };
+
+    const validateNewBug = () => {
+        if (!fields.text) {
+            setErrors({
+                text: 'Debes ingresar la descripción de la incidencia',
             });
         } else {
             setErrors({});
