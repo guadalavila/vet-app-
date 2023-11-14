@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { FlatList } from 'react-native';
 import { RootStackLoginParamList } from '~navigations/types';
@@ -10,12 +10,14 @@ import Skeleton from '~shared/components/Skeleton';
 import NoData from '~shared/components/NoData';
 import { Visit } from '~models/Visit';
 import { usePdf } from '~shared/hooks/usePdf';
+import ModalCustom from '~shared/components/ModalCustom';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'VisitsScreen'> {}
 
 const VisitsScreen = ({ route, navigation }: Props) => {
     const { visits, isLoading } = useVisits(route.params.id);
     const createAndDownloadPDF = usePdf();
+    const [showModal, setShowModal] = useState(false);
 
     const editVisit = (visit: Visit) => {
         navigation.replace('AddVisitScreen', {
@@ -25,7 +27,11 @@ const VisitsScreen = ({ route, navigation }: Props) => {
     };
 
     const onPressButtonRight = () => {
-        createAndDownloadPDF('Historial Clínico', route.params.name, visits);
+        if (visits.length > 0) {
+            createAndDownloadPDF('Historial Clínico', route.params.name, visits);
+        } else {
+            setShowModal(true);
+        }
     };
 
     if (isLoading) {
@@ -57,6 +63,12 @@ const VisitsScreen = ({ route, navigation }: Props) => {
             ) : (
                 <NoData title='No se registraron visitas' />
             )}
+            <ModalCustom
+                title='La mascota no tiene registrada visitas'
+                visible={showModal}
+                confirmButton={'Aceptar'}
+                onConfirmPressed={() => setShowModal(false)}
+            />
         </Container>
     );
 };

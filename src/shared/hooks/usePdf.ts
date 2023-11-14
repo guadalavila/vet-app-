@@ -34,15 +34,13 @@ export const usePdf = () => {
                 td,
                 th {
                     padding: 10px;
-                    border-bottom: 1px solid #917FB3;
+                    border-bottom: 1px solid #2A2F4F;
                     text-align: center;
                 }
             </style>
                 <h1 style="color: #2A2F4F;font-size:36px">Historial Clínico de ${pet}</h1>
-                <h2 style="color: #000;font-size:20px;">Veterinaria: ${
-                    typeof user?.vetId === 'object' ? user.vetId.name : ''
-                }</h2>
-                <h2 style="color: #000;font-size:20px;">DR: ${user?.name} ${user?.lastName} - ${user?.email}</h2>
+                <h2 style="color: #000;font-size:20px;">${typeof user?.vetId === 'object' ? user.vetId.name : ''}</h2>
+                <h2 style="color: #000;font-size:20px;">DR: ${user?.name} ${user?.lastName}</h2>
                 <h2 style="color: #000;font-size:20px">Fecha: ${new Date().toLocaleString('en-GB', {})}hs</h2>
                 <hr/>
                 <table cellspacing=20>
