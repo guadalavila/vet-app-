@@ -1,7 +1,8 @@
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
+import { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { instance } from './setup';
 import { getData } from '../storage/asyncStorage';
 import { STORAGE_KEYS } from '../storage/keys';
+import { appEventsHandler } from '~App';
 
 class NetworkManager {
     postNoAuth<T>(url: string, data: any, params?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
@@ -39,7 +40,11 @@ class NetworkManager {
                     .then((response) => {
                         resolve(response);
                     })
-                    .catch((error) => {
+                    .catch(async (error) => {
+                        if (error.response.status === 401) {
+                            reject(new Error('Tu sesión expiró, por favor vuelva a iniciar sesión.'));
+                            appEventsHandler.publish('logoutUser', undefined);
+                        }
                         if (error.response) {
                             if (error.response.data?.message) {
                                 reject(error.response?.data?.message);
@@ -66,7 +71,11 @@ class NetworkManager {
                     .then((response) => {
                         resolve(response);
                     })
-                    .catch((error) => {
+                    .catch(async (error) => {
+                        if (error.response.status === 401) {
+                            reject(new Error('Tu sesión expiró, por favor vuelva a iniciar sesión.'));
+                            appEventsHandler.publish('logoutUser', undefined);
+                        }
                         if (error.response) {
                             if (error.response.data?.message) {
                                 reject(error.response?.data?.message);
@@ -92,7 +101,11 @@ class NetworkManager {
                     .then((response) => {
                         resolve(response);
                     })
-                    .catch((error) => {
+                    .catch(async (error) => {
+                        if (error.response.status === 401) {
+                            reject(new Error('Tu sesión expiró, por favor vuelva a iniciar sesión.'));
+                            appEventsHandler.publish('logoutUser', undefined);
+                        }
                         if (error.response) {
                             if (error.response.data?.message) {
                                 reject(error.response?.data?.message);
@@ -119,7 +132,12 @@ class NetworkManager {
                     .then((response) => {
                         resolve(response);
                     })
-                    .catch((error) => {
+                    .catch(async (error) => {
+                        if (error.response.status === 401) {
+                            reject(new Error('Tu sesión expiró, por favor vuelva a iniciar sesión.'));
+
+                            appEventsHandler.publish('logoutUser', undefined);
+                        }
                         if (error.response) {
                             if (error.response.data?.message) {
                                 reject(error.response?.data?.message);
@@ -147,7 +165,11 @@ class NetworkManager {
                     .then((response) => {
                         resolve(response);
                     })
-                    .catch((error) => {
+                    .catch(async (error) => {
+                        if (error.response.status === 401) {
+                            reject(new Error('Tu sesión expiró, por favor vuelva a iniciar sesión.'));
+                            appEventsHandler.publish('logoutUser', undefined);
+                        }
                         if (error.response) {
                             if (error.response.data?.message) {
                                 reject(error.response?.data?.message);
@@ -164,7 +186,7 @@ class NetworkManager {
         });
     }
 
-    private async getTokenAndCookies(params?: any) {
+    async getTokenAndCookies(params?: any) {
         const jwt = (await getData(STORAGE_KEYS.TOKEN)) ?? '';
         const config: AxiosRequestConfig = {
             headers: {
@@ -177,5 +199,4 @@ class NetworkManager {
 }
 
 const networkManager = new NetworkManager();
-
 export default networkManager;

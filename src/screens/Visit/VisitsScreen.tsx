@@ -9,17 +9,23 @@ import useVisits from '~shared/hooks/useVisits';
 import Skeleton from '~shared/components/Skeleton';
 import NoData from '~shared/components/NoData';
 import { Visit } from '~models/Visit';
+import { usePdf } from '~shared/hooks/usePdf';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'VisitsScreen'> {}
 
 const VisitsScreen = ({ route, navigation }: Props) => {
     const { visits, isLoading } = useVisits(route.params.id);
+    const createAndDownloadPDF = usePdf();
 
     const editVisit = (visit: Visit) => {
         navigation.replace('AddVisitScreen', {
             pet: visit.pet,
             visit: visit,
         });
+    };
+
+    const onPressButtonRight = () => {
+        createAndDownloadPDF('Historial Clínico', route.params.name, visits);
     };
 
     if (isLoading) {
@@ -33,7 +39,13 @@ const VisitsScreen = ({ route, navigation }: Props) => {
 
     return (
         <Container>
-            <Header title='Historial Clínico' buttonBack />
+            <Header
+                title='Historial Clínico'
+                buttonBack
+                buttonRight
+                iconRight='download-outline'
+                onPressRight={onPressButtonRight}
+            />
             {visits.length > 0 ? (
                 <FlatList
                     data={visits}

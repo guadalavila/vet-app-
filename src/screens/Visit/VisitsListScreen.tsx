@@ -32,7 +32,9 @@ const VisitsListScreen = ({ navigation }: Props) => {
                     keyExtractor={(item) => item._id}
                     renderItem={({ item }) => (
                         <ItemLastVisit
-                            onPress={() => navigation.navigate('VisitsScreen', { id: item.pet._id })}
+                            onPress={() =>
+                                navigation.navigate('VisitsScreen', { id: item.pet._id, name: item.pet.name })
+                            }
                             lastVisit={item}
                         />
                     )}
