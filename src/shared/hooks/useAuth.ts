@@ -6,16 +6,18 @@ import { STORAGE_KEYS } from '~shared/utils/storage/keys';
 import { resetUserProperties, setUserProperties } from '~shared/utils/firebase/analytics';
 import { NewUser, UserResponse } from '~models/User';
 import useError from './useError';
+import { ThemeContext } from '~contexts/ThemeContext';
 
 const useAuth = () => {
     const { setIsAuth, setUser, setIsLoading, isLoading, user, setToken, logOut } = useContext(AuthContext);
+    const { restoreThemeApp } = useContext(ThemeContext);
     const { setErrorApp } = useError();
 
     const restoreUser = async () => {
         setIsLoading(true);
         const userCurrent = await getData(STORAGE_KEYS.USER);
         const token = await getData(STORAGE_KEYS.TOKEN);
-
+        restoreThemeApp();
         if (userCurrent && token) {
             setUserResponse({ user: userCurrent, token: token });
         } else {

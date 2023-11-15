@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import useForm from '../hooks/useForm';
 import { GlobalStyles } from '~shared/utils/styles';
 import FormInput from './FormInput';
@@ -15,7 +15,7 @@ const SignUpForm = ({ onSubmit }: ISignUpFormProps) => {
     const { fields, errors, setFieldValue, handleSubmit } = useForm('SignUp', onSubmit);
     return (
         <View style={GlobalStyles.flex1}>
-            <View style={styles.containerInputs}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
                 <FormInput
                     required
                     value={fields.name || ''}
@@ -47,6 +47,7 @@ const SignUpForm = ({ onSubmit }: ISignUpFormProps) => {
                     required
                     value={fields.email || ''}
                     placeholder='Email'
+                    autocomplete='email'
                     keyboardType='email-address'
                     onChangeText={(value) => setFieldValue('email', value.toLowerCase())}
                 />
@@ -73,8 +74,8 @@ const SignUpForm = ({ onSubmit }: ISignUpFormProps) => {
                 <View style={styles.marginDefault}>
                     {errors.phone && <Text style={styles.error}>{errors.phone}</Text>}
                 </View>
-            </View>
-            <View style={[GlobalStyles.flexCenter, styles.containerButton]}>
+            </ScrollView>
+            <View style={styles.bottom}>
                 <Button title='Registrarse' onPress={handleSubmit} />
             </View>
         </View>
@@ -84,10 +85,19 @@ const SignUpForm = ({ onSubmit }: ISignUpFormProps) => {
 export default SignUpForm;
 
 const styles = StyleSheet.create({
+    contentContainer: {
+        paddingBottom: 140,
+    },
     error: {
         color: colors.light.error,
         fontSize: typography.size.S,
         marginBottom: size.L,
+    },
+    bottom: {
+        // marginTop: 20,
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
     },
     containerInputs: {
         flex: 10,

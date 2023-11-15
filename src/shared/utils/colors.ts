@@ -1,6 +1,6 @@
 const common = {
     // primary: '#FD9340',
-    primary: '#917FB3',
+    primary: '#A57FEE',
     secondary: '#2A2F4F',
     tertiary: '#E5BEEC',
     light: '#F5F5F5',
@@ -44,7 +44,7 @@ const light = {
     textInput: '#515151',
     bottomSheet: '#F1f1f1',
     card: '#D6D6D6',
-    backgroundInput: '#ECEDF0',
+    backgroundInput: '#FAFAFA',
     backgroundContainer: '#DEDEDE',
     blue: '#092E9C',
 };

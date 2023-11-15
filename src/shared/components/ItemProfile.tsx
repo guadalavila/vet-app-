@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     },
     margin: {
         marginVertical: size.XS,
+        fontSize: typography.size.XS,
     },
     title: {
         fontWeight: '500',

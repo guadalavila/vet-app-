@@ -6,15 +6,30 @@ import { RootStackLogoutParamList } from '~navigations/types';
 import useAuth from '~shared/hooks/useAuth';
 import Loading from '~shared/components/Loading';
 import Button from '~shared/components/Button';
-import { Image, StyleSheet } from 'react-native';
+import { View, Keyboard } from 'react-native';
 import { getData } from '~shared/utils/storage/asyncStorage';
 import { STORAGE_KEYS } from '~shared/utils/storage/keys';
+import { GlobalStyles } from '~shared/utils/styles';
 
 interface Props extends NativeStackScreenProps<RootStackLogoutParamList, 'LoginScreen'> {}
 
 const LoginScreen = ({ navigation }: Props) => {
     const { isLoading, loginWithEmailAndPass } = useAuth();
     const [loading, setLoading] = useState(true);
+    const [keyboardStatus, setKeyboardStatus] = useState(false);
+
+    useEffect(() => {
+        const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+            setKeyboardStatus(true);
+        });
+        const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+            setKeyboardStatus(false);
+        });
+        return () => {
+            showSubscription.remove();
+            hideSubscription.remove();
+        };
+    }, []);
 
     useEffect(() => {
         checkData();
@@ -34,22 +49,22 @@ const LoginScreen = ({ navigation }: Props) => {
     return (
         <Container>
             {!isLoading && !loading ? (
-                <>
-                    <Image style={styles.image} source={require('../../../assets/images/login.png')} />
+                <View style={GlobalStyles.flex1}>
                     <LoginForm
                         onSubmit={({ email, password }) => {
                             loginWithEmailAndPass(email.trim().toLowerCase(), password.trim().toLowerCase());
                         }}
                     />
-                    <Button
-                        outlined
-                        title='¿No tenes cuenta? Registrate'
-                        onPress={() => {
-                            // logEvent(EVENTS.signUp);
-                            navigation.navigate('SignUpScreen');
-                        }}
-                    />
-                </>
+                    {!keyboardStatus && (
+                        <Button
+                            outlined
+                            title='¿No tenes cuenta? Registrate'
+                            onPress={() => {
+                                navigation.navigate('SignUpScreen');
+                            }}
+                        />
+                    )}
+                </View>
             ) : (
                 <Loading />
             )}
@@ -58,12 +73,3 @@ const LoginScreen = ({ navigation }: Props) => {
 };
 
 export default LoginScreen;
-
-const styles = StyleSheet.create({
-    image: {
-        width: 160,
-        height: 160,
-        alignSelf: 'center',
-        marginTop: 120,
-    },
-});

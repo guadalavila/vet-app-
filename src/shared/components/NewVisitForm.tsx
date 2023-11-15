@@ -49,7 +49,7 @@ const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData, onCanc
                         keyboardType='decimal-pad'
                         value={fields.weight || ''}
                         placeholder='Peso'
-                        onChangeText={(value) => setFieldValue('weight', value)}
+                        onChangeText={(value) => setFieldValue('weight', value.replace(',', '.'))}
                     />
                     <FormInput
                         width={'43%'}
@@ -57,7 +57,7 @@ const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData, onCanc
                         keyboardType='decimal-pad'
                         value={fields.temperature || ''}
                         placeholder='Temperatura'
-                        onChangeText={(value) => setFieldValue('temperature', value)}
+                        onChangeText={(value) => setFieldValue('temperature', value.replace(',', '.'))}
                     />
                 </View>
                 <View style={styles.marginDefault}>

@@ -41,7 +41,9 @@ const ClientDetail = ({ client }: IClientDetailProps) => {
                     testID='phone-button'
                     style={[GlobalStyles.row, styles.containerPhone]}
                     activeOpacity={0.7}
-                    onPress={() => Linking.openURL(`https://api.whatsapp.com/send?phone=${client.phone}`)}>
+                    onPress={() =>
+                        Linking.openURL(`https://api.whatsapp.com/send?phone=${client.phone?.split('+')[1]}`)
+                    }>
                     <Icon testID='icon' name='logo-whatsapp' size={24} color={colors.light.whatsapp} />
                     <CustomText testID='phone' style={styles.phone}>
                         {client.phone}

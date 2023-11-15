@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleProp, StyleSheet, Text as TextRN, TextStyle } from 'react-native';
 import { ThemeContext } from '~contexts/ThemeContext';
+import { typography } from '~shared/utils/typography';
 
 interface ICustomTextProps {
     children: React.ReactNode;
@@ -12,7 +13,10 @@ const CustomText = ({ children, style = {}, props = {}, testID }: ICustomTextPro
     const { themeApp } = useContext(ThemeContext);
 
     return (
-        <TextRN testID={testID} {...props} style={[{ color: themeApp.colors.text }, style]}>
+        <TextRN
+            testID={testID}
+            {...props}
+            style={[{ color: themeApp.colors.text, fontSize: typography.size.S }, style]}>
             {children}
         </TextRN>
     );

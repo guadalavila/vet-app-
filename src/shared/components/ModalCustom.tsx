@@ -46,11 +46,7 @@ const ModalCustom = ({
                     {cancelButton ? (
                         <TouchableOpacity onPress={onCancelPressed} activeOpacity={0.7} style={styles.buttonContainer}>
                             <View style={styles.buttonOutline}>
-                                <CustomText
-                                    style={[
-                                        styles.textButtonSecondary,
-                                        theme === 'light' && { color: colors.light.greyDarkSecondary },
-                                    ]}>
+                                <CustomText style={[styles.textButtonSecondary, { color: colors.light.primary }]}>
                                     {cancelButton}
                                 </CustomText>
                             </View>
@@ -121,9 +117,11 @@ const styles = StyleSheet.create({
     textButtonPrimary: {
         fontSize: typography.size.S,
         color: colors.light.white,
+        fontWeight: '500',
     },
     textButtonSecondary: {
         fontSize: typography.size.S,
         color: colors.light.greyDark,
+        fontWeight: '500',
     },
 });

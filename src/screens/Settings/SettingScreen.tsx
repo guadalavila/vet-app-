@@ -51,7 +51,7 @@ export default SettingScreen;
 const styles = StyleSheet.create({
     containerVersionApp: {
         position: 'absolute',
-        bottom: 120,
+        bottom: 80,
         alignSelf: 'center',
     },
     versionText: {

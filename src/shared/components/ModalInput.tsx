@@ -81,10 +81,7 @@ const ModalInput = ({
                                     style={styles.buttonContainer}>
                                     <View style={styles.buttonOutline}>
                                         <CustomText
-                                            style={[
-                                                styles.textButtonSecondary,
-                                                theme === 'light' && { color: colors.light.greyDarkSecondary },
-                                            ]}>
+                                            style={[styles.textButtonSecondary, { color: colors.light.primary }]}>
                                             {cancelButton}
                                         </CustomText>
                                     </View>
@@ -105,7 +102,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(42, 42, 60, 0.45)',
     },
     overlay: {
-        top: '16%',
+        top: '30%',
         position: 'absolute',
         borderRadius: 5,
         width: '94%',

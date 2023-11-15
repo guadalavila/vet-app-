@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ThemeContext } from '~contexts/ThemeContext';
+import { GlobalStyles } from '~shared/utils/styles';
 
 interface IContainerProps {
     children: React.ReactNode;
@@ -21,7 +22,9 @@ const Container = ({ children }: IContainerProps) => {
                     styles.container,
                     { backgroundColor: colors.background, paddingTop: top, paddingBottom: bottom },
                 ]}>
-                {children}
+                <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
+                    <View style={GlobalStyles.flex1}>{children}</View>
+                </KeyboardAvoidingView>
             </View>
         </>
     );

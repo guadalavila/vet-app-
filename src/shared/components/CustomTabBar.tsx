@@ -34,7 +34,7 @@ const CustomTabBar = ({ state, navigation, descriptors }: any) => {
                         <TouchableOpacity activeOpacity={0.7} onPress={onPress} style={styles.icon}>
                             <Icon
                                 name={getIconByRoute(route.name)}
-                                size={24}
+                                size={26}
                                 color={isFocused ? colors.light.primary : colors.light.greyDark}
                             />
                         </TouchableOpacity>
