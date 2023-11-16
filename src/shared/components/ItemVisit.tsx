@@ -58,6 +58,13 @@ const ItemVisit = ({ visit, open = false, editVisit }: IItemVisitProps) => {
                         </View>
                         <Separator color='transparent' />
                         <View style={GlobalStyles.row}>
+                            <CustomText style={styles.title}>Síntomas</CustomText>
+                            <CustomText style={styles.detail}>
+                                {visit.symptoms ? visit.symptoms : 'No especificado'}
+                            </CustomText>
+                        </View>
+                        <Separator color='transparent' />
+                        <View style={GlobalStyles.row}>
                             <CustomText style={styles.title}>Diagnóstico Diferencial</CustomText>
                             <CustomText style={styles.detail}>
                                 {visit.diagnosis ? visit.diagnosis : 'No especificado'}

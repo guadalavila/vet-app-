@@ -28,12 +28,13 @@ const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData, onCanc
     const setInitialData = () => {
         if (Object.entries(Object(initData)).length > 0) {
             //@ts-ignore
-            const { anamnestic, diagnosis, hospitalization, temperature, treatment, weight } = initData;
+            const { anamnestic, diagnosis, hospitalization, temperature, treatment, weight, symptoms } = initData;
             setFieldValue('anamnestic', anamnestic);
             diagnosis && setFieldValue('diagnosis', diagnosis);
             hospitalization && setFieldValue('hospitalization', hospitalization);
             setFieldValue('weight', String(weight));
             setFieldValue('temperature', String(temperature));
+            symptoms && setFieldValue('symptoms', String(symptoms));
             treatment && setFieldValue('treatment', treatment);
         }
     };
@@ -76,6 +77,12 @@ const NewVisitForm: React.FC<INewVisitFormProps> = ({ onSubmit, initData, onCanc
                 <View style={styles.marginDefault}>
                     {errors.anamnestic && <Text style={styles.error}>{errors.anamnestic}</Text>}
                 </View>
+                <FormInput
+                    isTextArea
+                    value={fields.symptoms || ''}
+                    placeholder='Síntomas'
+                    onChangeText={(value) => setFieldValue('symptoms', value)}
+                />
                 <FormInput
                     isTextArea
                     value={fields.diagnosis || ''}

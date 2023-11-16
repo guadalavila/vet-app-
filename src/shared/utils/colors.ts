@@ -44,7 +44,7 @@ const light = {
     textInput: '#515151',
     bottomSheet: '#F1f1f1',
     card: '#D6D6D6',
-    backgroundInput: '#FAFAFA',
+    backgroundInput: '#F2F2F2',
     backgroundContainer: '#DEDEDE',
     blue: '#092E9C',
 };

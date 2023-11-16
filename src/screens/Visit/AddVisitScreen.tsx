@@ -35,6 +35,7 @@ const AddVisitScreen = ({ route, navigation }: Props) => {
                                 pet: route.params.pet,
                                 anamnestic: String(data.anamnestic),
                                 temperature: Number(data.temperature),
+                                symptoms: String(data.symptoms),
                                 weight: Number(data.weight),
                                 ...data,
                             };

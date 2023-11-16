@@ -10,7 +10,7 @@ export const usePdf = () => {
             html: renderHistoryHTML(namePet, data),
             fileName: fileName,
             directory: 'Documents',
-            // width: 700,
+            bgColor: '#FFFFFF',
         };
         try {
             const file = await RNHTMLtoPDF.convert(options);
@@ -26,60 +26,79 @@ export const usePdf = () => {
 
     const renderHistoryHTML = (pet: string, visits: Visit[]) => {
         return `
-            <html>
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Historial Médico de ${pet}</title>
             <style>
-                table {
-                    border-collapse: collapse;
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 20px;
                 }
-                td,
-                th {
-                    padding: 10px;
-                    border-bottom: 1px solid #2A2F4F;
-                    text-align: center;
+                label {
+                    display: block;
+                    margin-bottom: 5px;
+                    font-weight: "500";
+                }
+                input,
+                textarea {
+                    width: 100%;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    box-sizing: border-box;
+                    background-color: red;
                 }
             </style>
-                <h1 style="color: #2A2F4F;font-size:36px">Historial Clínico de ${pet}</h1>
-                <h2 style="color: #000;font-size:20px;">${typeof user?.vetId === 'object' ? user.vetId.name : ''}</h2>
-                <h2 style="color: #000;font-size:20px;">DR: ${user?.name} ${user?.lastName}</h2>
-                <h2 style="color: #000;font-size:20px">Fecha: ${new Date().toLocaleString('en-GB', {})}hs</h2>
-                <hr/>
-                <table cellspacing=20>
-                    <thead>
-                        <tr>
-                                <th style="color: #000;font-size: 24px;">Fecha</th>
-                                <th style="color: #000;font-size: 24px;">Peso</th>
-                                <th style="color: #000;font-size: 24px;">Temp.</th>
-                                <th style="color: #000;font-size: 24px;">Anamnésicos</th>
-                                <th style="color: #000;font-size: 24px;">Diagnóstico</th>
-                                <th style="color: #000;font-size: 24px;">Tratamiento</th>
-                                <th style="color: #000;font-size: 24px;">Hospitalización</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${visits
-                            .map((v) => {
-                                return `
-                        <tr>
-                                <td style="text-align: center;" >${new Date(v.date).toLocaleString('en-GB', {
-                                    year: 'numeric',
-                                    month: 'numeric',
-                                    day: 'numeric',
-                                    hour12: false,
-                                })}</td>
-                                <td style="text-align: center;">${v.weight} kgs</td>
-                                <td style="text-align: center;">${v.temperature} ºC</td>
-                                <td style="text-align: center;">${v.anamnestic}</td>
-                                <td style="text-align: center;">${v.diagnosis}</td>
-                                <td style="text-align: center;">${v.treatment}</td>
-                                <td style="text-align: center;">${v.hospitalization}</td>
-                        </tr>
-                        `;
-                            })
-                            .join('')}
-                    </tbody>
-                </table>
-            </html>
+        </head>
+        <body>
+            <div style="position: absolute;top: 10px;right: 10px;">
+                <h3 style="color: #000;font-size:12px;">${new Date().toLocaleString('en-GB')}</h3>
+            </div>
+            <h2 style="#2A2F4F;font-size:26px">Historial Clínico de ${pet}</h2>
+            <h3 style="color: #000;font-size:20px;">Dr: ${user?.name} ${user?.lastName}</h3>
+            ${visits.map((v) => {
+                return `
+                <div style="margin:10px 0px">
+                   <b>Fecha Visita: ${new Date(v.date).toLocaleString('en-GB', {
+                       year: 'numeric',
+                       month: 'numeric',
+                       day: 'numeric',
+                       hour12: false,
+                   })}</b>
+               </div>
+               <div style="display: flex;justify-content: space-between;">
+                   <div style="width: 45%">
+                       <label for="weight">Peso (kg):</label>
+                       <input type="number" id="weight" name="weight" required value=${v.weight}>
+                   </div>
+                   <div style="width: 45%">
+   
+                       <label for="temperature">Temperatura (°C):</label>
+                       <input type="number" id="temperature" name="temperature" required value=${v.temperature}>
+
+                   </div>
+               </div>
+               <label for="anamnestic">Anamnésico:</label>
+               <textarea id="anamnestic" name="anamnestic" required>${v.anamnestic ?? ''}</textarea>
+               <label for="diagnosis">Síntomas:</label>
+               <input type="text" id="symptoms" name="symptoms" value=${v.symptoms ?? ''}>
+               <label for="diagnosis">Diagnóstico:</label>
+               <input type="text" id="diagnosis" name="diagnosis" value=${v.diagnosis ?? ''}>
+               <label for="treatment">Tratamiento:</label>
+               <input type="text" id="treatment" name="treatment" value=${v.treatment ?? ''}>
+               <label for="hospitalization">Hospitalización:</label>
+               <input type="text" id="hospitalization" name="hospitalization" value=${v.hospitalization ?? ''}>
+               <hr/>
+                `;
+            })}           
+        </body>
+        </html>
+        
+
         `;
     };
+
     return createAndDownloadPDF;
 };
