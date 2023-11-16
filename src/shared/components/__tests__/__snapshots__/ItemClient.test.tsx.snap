@@ -14,8 +14,8 @@ exports[`ItemClient should match snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#ECEDF0",
-      "borderBottomColor": "#A765C1",
+      "backgroundColor": "#F2F2F2",
+      "borderBottomColor": "#A57FEE",
       "borderBottomWidth": 1,
       "opacity": 1,
       "paddingHorizontal": 10,
@@ -29,6 +29,7 @@ exports[`ItemClient should match snapshot 1`] = `
       Array [
         Object {
           "color": "#11100F",
+          "fontSize": 16,
         },
         Object {
           "fontWeight": "bold",

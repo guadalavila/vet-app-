@@ -14,8 +14,8 @@ exports[`ItemCategory should match snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#A765C1",
-      "borderColor": "#A765C1",
+      "backgroundColor": "#2A2F4F",
+      "borderColor": "#2A2F4F",
       "borderRadius": 10,
       "borderWidth": 2,
       "elevation": 4,
@@ -43,7 +43,7 @@ exports[`ItemCategory should match snapshot 1`] = `
     style={
       Array [
         Object {
-          "color": "#2A2F4F",
+          "color": "#F5F5F5",
           "fontSize": 48,
           "fontWeight": "bold",
           "marginVertical": 10,

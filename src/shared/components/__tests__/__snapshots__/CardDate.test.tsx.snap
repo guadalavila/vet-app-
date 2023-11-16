@@ -14,7 +14,7 @@ exports[`CardDate should match snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#A765C1",
+      "backgroundColor": "#A57FEE",
       "borderRadius": 8,
       "marginHorizontal": 6,
       "marginVertical": 8,
@@ -29,6 +29,7 @@ exports[`CardDate should match snapshot 1`] = `
       Array [
         Object {
           "color": "#11100F",
+          "fontSize": 16,
         },
         Object {
           "color": "#FFFFFF",
@@ -45,6 +46,7 @@ exports[`CardDate should match snapshot 1`] = `
       Array [
         Object {
           "color": "#11100F",
+          "fontSize": 16,
         },
         Object {
           "color": "#FFFFFF",
@@ -54,7 +56,7 @@ exports[`CardDate should match snapshot 1`] = `
       ]
     }
   >
-    27/08
+    16/11
   </Text>
 </View>
 `;

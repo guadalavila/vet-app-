@@ -26,6 +26,7 @@ exports[`CardCustom should match snapshot 1`] = `
         Array [
           Object {
             "color": "#11100F",
+            "fontSize": 16,
           },
           Object {
             "color": "#EEEEEE",
@@ -42,6 +43,7 @@ exports[`CardCustom should match snapshot 1`] = `
       Array [
         Object {
           "color": "#11100F",
+          "fontSize": 16,
         },
         Array [
           Object {
@@ -60,6 +62,7 @@ exports[`CardCustom should match snapshot 1`] = `
         Array [
           Object {
             "color": "#11100F",
+            "fontSize": 16,
           },
           Object {
             "color": "#f5f5f5",

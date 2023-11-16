@@ -34,7 +34,7 @@ const mockClient: Client = {
     name: 'Juan',
     lastName: 'Pérez',
     email: 'juan@example.com',
-    phone: '123-456-7890',
+    phone: '+5491149876542',
     address: 'Calle Falsa 123',
     comment: 'Preferred contact method: email',
     createdAt: '2023-08-26T10:00:00Z',

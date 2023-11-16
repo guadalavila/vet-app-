@@ -15,6 +15,7 @@ exports[`ItemProfile should match snapshot 1`] = `
       Array [
         Object {
           "color": "#11100F",
+          "fontSize": 16,
         },
         Object {
           "fontSize": 16,
@@ -30,8 +31,10 @@ exports[`ItemProfile should match snapshot 1`] = `
       Array [
         Object {
           "color": "#11100F",
+          "fontSize": 16,
         },
         Object {
+          "fontSize": 14,
           "marginVertical": 3,
         },
       ]

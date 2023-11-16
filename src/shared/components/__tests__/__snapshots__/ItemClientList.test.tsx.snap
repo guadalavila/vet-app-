@@ -29,7 +29,7 @@ exports[`ItemClientList should match snapshot 1`] = `
       Object {
         "alignItems": "center",
         "alignSelf": "center",
-        "backgroundColor": "#A765C1",
+        "backgroundColor": "#A57FEE",
         "borderRadius": 30,
         "height": 40,
         "justifyContent": "center",
@@ -51,6 +51,7 @@ exports[`ItemClientList should match snapshot 1`] = `
         Array [
           Object {
             "color": "#11100F",
+            "fontSize": 16,
           },
           Array [
             Object {
@@ -71,6 +72,7 @@ exports[`ItemClientList should match snapshot 1`] = `
         Array [
           Object {
             "color": "#11100F",
+            "fontSize": 16,
           },
           Array [
             Object {

@@ -16,7 +16,7 @@ describe('Badge', () => {
     test('should render text styles correct', () => {
         render(<Badge label='Hello world' />);
         expect(screen.getByText('Hello world').props.style).toEqual([
-            { color: '#11100F' },
+            { color: '#11100F', fontSize: 16 },
             { color: '#11100F', fontWeight: '600' },
         ]);
     });

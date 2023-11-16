@@ -14,7 +14,7 @@ exports[`Fab should match snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#A765C1",
+      "backgroundColor": "#A57FEE",
       "borderRadius": 60,
       "bottom": 100,
       "height": 60,

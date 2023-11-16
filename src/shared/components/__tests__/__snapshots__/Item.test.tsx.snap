@@ -14,7 +14,7 @@ exports[`Item should match snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "borderBottomColor": "#A765C1",
+      "borderBottomColor": "#A57FEE",
       "borderBottomWidth": 1,
       "borderRadius": 2,
       "flexDirection": "row",
@@ -33,6 +33,7 @@ exports[`Item should match snapshot 1`] = `
       Array [
         Object {
           "color": "#11100F",
+          "fontSize": 16,
         },
         Object {
           "fontSize": 16,
@@ -44,7 +45,7 @@ exports[`Item should match snapshot 1`] = `
     Hello world!
   </Text>
   <MockedIoniconsIcons
-    color="#A765C1"
+    color="#A57FEE"
     name="chevron-forward-outline"
     size={22}
     testID="icon"

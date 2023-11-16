@@ -21,6 +21,7 @@ exports[`InfoPet should match snapshot 1`] = `
       Array [
         Object {
           "color": "#11100F",
+          "fontSize": 16,
         },
         Object {
           "fontSize": 16,
@@ -37,6 +38,7 @@ exports[`InfoPet should match snapshot 1`] = `
       Array [
         Object {
           "color": "#11100F",
+          "fontSize": 16,
         },
         Object {},
       ]

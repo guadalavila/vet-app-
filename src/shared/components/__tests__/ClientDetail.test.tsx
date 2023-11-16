@@ -31,14 +31,16 @@ describe('ClientDetail', () => {
         expect(screen.getByTestId('icon').props.name).toEqual('logo-whatsapp');
         expect(screen.getByTestId('icon').props.size).toEqual(24);
         expect(screen.getByTestId('icon').props.color).toEqual(colors.light.whatsapp);
-        expect(screen.getByTestId('phone').children).toEqual(['123-456-7890']);
+        expect(screen.getByTestId('phone').children).toEqual(['+5491149876542']);
     });
 
     test('should call a function when press phone', () => {
         render(<ClientDetail client={mockClient} />);
         const button = screen.getByTestId('phone-button');
         fireEvent.press(button);
-        expect(Linking.openURL).toHaveBeenCalledWith(`https://api.whatsapp.com/send?phone=${mockClient.phone}`);
+        expect(Linking.openURL).toHaveBeenCalledWith(
+            `https://api.whatsapp.com/send?phone=${mockClient.phone?.split('+')[1]}`,
+        );
     });
 });
 
@@ -49,7 +51,7 @@ const mockClient: Client = {
     name: 'Juan',
     lastName: 'Pérez',
     email: 'juan@example.com',
-    phone: '123-456-7890',
+    phone: '+5491149876542',
     address: 'Calle Falsa 123',
     comment: 'Preferred contact method: email',
     createdAt: '2023-08-26T10:00:00Z',

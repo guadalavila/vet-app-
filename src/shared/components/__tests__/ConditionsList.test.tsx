@@ -14,11 +14,11 @@ describe('ConditionList', () => {
         expect(screen.getByText('Sordo')).toBeTruthy();
         // screen.debug();
         expect(screen.getByTestId('Ciego').props.style).toEqual([
-            { color: '#11100F' },
+            { color: '#11100F', fontSize: 16 },
             { color: '#11100F', fontWeight: '600' },
         ]);
         expect(screen.getByTestId('Sordo').props.style).toEqual([
-            { color: '#11100F' },
+            { color: '#11100F', fontSize: 16 },
             { color: '#11100F', fontWeight: '600' },
         ]);
     });
