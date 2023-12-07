@@ -1,10 +1,9 @@
 import axios from 'axios';
 import Config from 'react-native-config';
-import { removeMultiple } from '../storage/asyncStorage';
-import { STORAGE_KEYS } from '../storage/keys';
+import { appEventsHandler } from '~App';
 
 export const instance = axios.create({
-    baseURL: Config.API_URL,
+    baseURL: 'https://vet-app-backend-dev.vercel.app/api',
     timeout: 50000,
     headers: {
         'Content-Type': 'application/json;charset=UTF-8',
@@ -16,14 +15,13 @@ export const instance = axios.create({
 
 export const setup = () => {
     instance.interceptors.response.use(
-        (next) => {
-            return next;
+        (response) => {
+            return response;
         },
-        async function (error) {
+        function (error) {
             if (error) {
                 if (error.response && error.response?.status === 401) {
-                    await removeMultiple([STORAGE_KEYS.TOKEN, STORAGE_KEYS.USER]);
-                    //TODO desloguearlo dispatch(setLogout());
+                    appEventsHandler.publish('logoutUser', undefined);
                 }
                 return Promise.reject(error);
             }

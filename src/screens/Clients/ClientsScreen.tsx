@@ -12,6 +12,8 @@ import useSearchClients from '~shared/hooks/useSearchClients';
 import Loading from '~shared/components/Loading';
 import NoData from '~shared/components/NoData';
 import Skeleton from '~shared/components/Skeleton';
+import { logEvent } from '~shared/utils/firebase/analytics';
+import { EVENTS } from '~shared/utils/firebase/events';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'ClientsScreen'> {}
 
@@ -64,7 +66,10 @@ const ClientsScreen = ({ navigation }: Props) => {
                             renderItem={({ item }) => (
                                 <ItemClientList
                                     client={item}
-                                    onPress={() => navigation.navigate('ClientDetailScreen', { client: item })}
+                                    onPress={() => {
+                                        logEvent(EVENTS.clients_select_client);
+                                        navigation.navigate('ClientDetailScreen', { client: item });
+                                    }}
                                 />
                             )}
                             keyExtractor={(item) => item._id}
@@ -84,7 +89,10 @@ const ClientsScreen = ({ navigation }: Props) => {
                             renderItem={({ item }) => (
                                 <ItemClientList
                                     client={item}
-                                    onPress={() => navigation.navigate('ClientDetailScreen', { client: item })}
+                                    onPress={() => {
+                                        logEvent(EVENTS.clients_select_client);
+                                        navigation.navigate('ClientDetailScreen', { client: item });
+                                    }}
                                 />
                             )}
                             keyExtractor={(item) => item._id}
@@ -96,7 +104,12 @@ const ClientsScreen = ({ navigation }: Props) => {
                     )}
                 </View>
             )}
-            <Fab onPress={() => navigation.navigate('AddClientScreen', { isUpdate: false })} />
+            <Fab
+                onPress={() => {
+                    logEvent(EVENTS.clients_add_client);
+                    navigation.navigate('AddClientScreen', { isUpdate: false });
+                }}
+            />
         </Container>
     );
 };

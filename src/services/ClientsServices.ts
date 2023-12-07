@@ -32,7 +32,7 @@ class ClientsServices {
     getClientsByVetId(page: number, vetId: string): Promise<Client[]> {
         return new Promise((resolve, reject) => {
             networkManager
-                .get<Client[]>(`${API_PATHS.CLIENTS_BY_VET}${vetId}?page=${page}&limit=50}`)
+                .get<Client[]>(`${API_PATHS.CLIENTS_BY_VET}${vetId}?page=${page}&limit=50`)
                 .then((res) => {
                     resolve(res.data);
                 })

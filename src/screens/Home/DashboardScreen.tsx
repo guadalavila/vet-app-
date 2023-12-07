@@ -14,6 +14,8 @@ import { GlobalStyles } from '~shared/utils/styles';
 import useAuth from '~shared/hooks/useAuth';
 import Banner from '~shared/components/Banner';
 import { RemoteConfigContext } from '~contexts/RemoteConfigContext';
+import { logEvent } from '~shared/utils/firebase/analytics';
+import { EVENTS } from '~shared/utils/firebase/events';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'DashboardScreen'> {}
 
@@ -53,7 +55,10 @@ const DashboardScreen = ({ navigation }: Props) => {
                         icon={item.icon}
                         height={item.height}
                         title={item.name}
-                        onPress={() => navigation.navigate(item.page)}
+                        onPress={() => {
+                            logEvent({ ...EVENTS.dashboard_item, action: item.name.toLowerCase() });
+                            navigation.navigate(item.page);
+                        }}
                     />
                 )}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}

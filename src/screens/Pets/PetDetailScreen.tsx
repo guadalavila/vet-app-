@@ -20,6 +20,8 @@ import useGetOnePet from '~shared/hooks/useGetOnePet';
 import Loading from '~shared/components/Loading';
 import useError from '~shared/hooks/useError';
 import { RemoteConfigContext } from '~contexts/RemoteConfigContext';
+import { logEvent } from '~shared/utils/firebase/analytics';
+import { EVENTS } from '~shared/utils/firebase/events';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetDetailScreen'> {}
 
@@ -34,6 +36,7 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
     const { activeSurgery, activeVaccine } = useContext(RemoteConfigContext);
 
     const getDetailOwner = () => {
+        logEvent(EVENTS.petDetail_bottomSheet_view_detail_client);
         try {
             clientServices.getClient(typeof pet.client === 'string' ? pet.client : pet.client._id).then((res) => {
                 navigation.navigate('ClientDetailScreen', { client: res });
@@ -60,29 +63,36 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
     const closeBottomSheet = () => bottomSheetRef.current && bottomSheetRef.current.close();
 
     const updatePet = () => {
+        logEvent(EVENTS.petDetail_bottomSheet_edit_pet);
         closeBottomSheet();
         navigation.replace('AddPetScreen', { client: undefined, isUpdate: true, pet: { ...pet, ...detailPet } });
     };
 
-    const addVisit = () => {
+    const addVisit = (bottom: boolean) => {
         closeBottomSheet();
+        bottom ? logEvent(EVENTS.petDetail_bottomSheet_add_visit) : logEvent(EVENTS.petDetail_add_visit);
         navigation.navigate('AddVisitScreen', {
             pet: pet._id,
         });
     };
 
-    const showVisits = () => {
+    const showVisits = (bottom: Boolean) => {
         closeBottomSheet();
+        bottom
+            ? logEvent(EVENTS.petDetail_bottomSheet_show_medical_history)
+            : logEvent(EVENTS.petDetail_show_medical_history);
         navigation.navigate('VisitsScreen', { id: pet._id, name: pet.name });
     };
 
     const showSurgeryRegistry = () => {
         closeBottomSheet();
+        logEvent(EVENTS.petDetail_bottomSheet_surgery_registry);
         navigation.navigate('SurgeryRegistryScreen', { petId: pet._id });
     };
 
     const showVaccinesRegistry = () => {
         closeBottomSheet();
+        logEvent(EVENTS.petDetail_bottomSheet_vaccines_registry);
         navigation.navigate('VaccinesRegistryScreen', { petId: pet._id });
     };
 
@@ -135,8 +145,8 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
                 </>
             )}
             <View style={styles.button}>
-                <Button title='Nueva Visita' onPress={addVisit} />
-                <Button title='Historial Clínico' onPress={showVisits} />
+                <Button title='Nueva Visita' onPress={() => addVisit(false)} />
+                <Button title='Historial Clínico' onPress={() => showVisits(false)} />
             </View>
             <ModalCustom
                 title='¿Seguro que querés eliminar la mascota?'
@@ -150,8 +160,8 @@ const PetDetailScreen = ({ route, navigation }: Props) => {
             <BottomSheet refBottomSheet={bottomSheetRef} height={380}>
                 <View style={styles.containerContent}>
                     <Option label='Editar Mascota' icon='pencil-outline' onPress={updatePet} />
-                    <Option label='Agregar Visita' icon='add-outline' onPress={addVisit} />
-                    <Option label='Ver Historial Clínico' icon='document-outline' onPress={showVisits} />
+                    <Option label='Agregar Visita' icon='add-outline' onPress={() => addVisit(true)} />
+                    <Option label='Ver Historial Clínico' icon='document-outline' onPress={() => showVisits(true)} />
                     {activeSurgery && (
                         <Option
                             label='Registro de cirugías'

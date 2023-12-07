@@ -12,6 +12,8 @@ import SearchBar from '~shared/components/SearchBar';
 import useSearchPets from '~shared/hooks/useSearchPets';
 import Loading from '~shared/components/Loading';
 import NoData from '~shared/components/NoData';
+import { logEvent } from '~shared/utils/firebase/analytics';
+import { EVENTS } from '~shared/utils/firebase/events';
 
 interface Props extends NativeStackScreenProps<RootStackLoginParamList, 'PetsScreen'> {}
 
@@ -61,9 +63,10 @@ const PetsScreen = ({ navigation }: Props) => {
                             renderItem={({ item }) => (
                                 <ItemPetList
                                     pet={item}
-                                    onPress={() =>
-                                        navigation.navigate('PetDetailScreen', { pet: item, getDetail: true })
-                                    }
+                                    onPress={() => {
+                                        logEvent(EVENTS.pets_select_pet);
+                                        navigation.navigate('PetDetailScreen', { pet: item, getDetail: true });
+                                    }}
                                 />
                             )}
                             keyExtractor={(item) => item._id}
@@ -83,9 +86,10 @@ const PetsScreen = ({ navigation }: Props) => {
                             renderItem={({ item }) => (
                                 <ItemPetList
                                     pet={item}
-                                    onPress={() =>
-                                        navigation.navigate('PetDetailScreen', { pet: item, getDetail: true })
-                                    }
+                                    onPress={() => {
+                                        logEvent(EVENTS.pets_select_pet);
+                                        navigation.navigate('PetDetailScreen', { pet: item, getDetail: true });
+                                    }}
                                 />
                             )}
                             keyExtractor={(item) => item._id}
@@ -97,7 +101,12 @@ const PetsScreen = ({ navigation }: Props) => {
                     )}
                 </View>
             )}
-            <Fab onPress={() => navigation.navigate('AddPetScreen', { client: undefined, isUpdate: false })} />
+            <Fab
+                onPress={() => {
+                    logEvent(EVENTS.pets_add_pet);
+                    navigation.navigate('AddPetScreen', { client: undefined, isUpdate: false });
+                }}
+            />
         </Container>
     );
 };

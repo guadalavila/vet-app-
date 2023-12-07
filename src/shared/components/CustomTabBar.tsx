@@ -5,9 +5,12 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { getIconByRoute } from '~shared/utils/routes';
 import { size } from '~shared/utils/size';
 import { ThemeContext } from '~contexts/ThemeContext';
+import { logEvent } from '~shared/utils/firebase/analytics';
+import { EVENTS } from '~shared/utils/firebase/events';
 
 const CustomTabBar = ({ state, navigation, descriptors }: any) => {
     const { themeApp } = useContext(ThemeContext);
+
     return (
         <SafeAreaView style={[styles.container, { backgroundColor: themeApp.colors.backgroundInput }]}>
             {state.routes.map((route: any, index: number) => {
@@ -20,6 +23,7 @@ const CustomTabBar = ({ state, navigation, descriptors }: any) => {
                         ? options.title
                         : route.name;
                 const onPress = () => {
+                    logEvent({ ...EVENTS.bottom_tab, action: label.toLowerCase() });
                     const event = navigation.emit({
                         type: 'tabPress',
                         target: String(route.key),
