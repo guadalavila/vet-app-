@@ -52,7 +52,7 @@ const LoginScreen = ({ navigation }: Props) => {
                 <View style={GlobalStyles.flex1}>
                     <LoginForm
                         onSubmit={({ email, password }) => {
-                            loginWithEmailAndPass(email.trim().toLowerCase(), password.trim().toLowerCase());
+                            loginWithEmailAndPass(email.trim().toLowerCase(), password.trim());
                         }}
                     />
                     {!keyboardStatus && (
